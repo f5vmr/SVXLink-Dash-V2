@@ -1,0 +1,4 @@
+svxlink ALL=NOPASSWD: /usr/bin/systemctl
+svxlink ALL=NOPASSWD: /usr/bin/mv
+svxlink ALL=NOPASSWD: /usr/bin/cp
+svxlink ALL=NOPASSWD: /usr/bin/tail
