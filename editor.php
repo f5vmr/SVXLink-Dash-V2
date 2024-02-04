@@ -1,10 +1,10 @@
 <?php
 session_start();
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
-include_once 'include/config.php';
-include_once 'include/config.inc.php';
-include_once 'include/tools.php';
-include_once 'include/functions.php';
+include_once "include/config.php";
+include_once "include/config.inc.php";
+include_once "include/tools.php";
+include_once "include/functions.php";
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
 
 if (fopen($svxConfigFile, 'r')) {
@@ -39,7 +39,7 @@ else { $callsign="NOCALL";
 
 <?php echo ("<title>" . $callsign ." ". $fmnetwork . " Dashboard</title>"); ?>
 
-<?php include_once 'include/browserdetect.php'; ?>
+<?php include_once "include/browserdetect.php"; ?>
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/functions.js"></script>
     <script type="text/javascript" src="scripts/pcm-player.min.js"></script>
@@ -70,7 +70,7 @@ else { $callsign="NOCALL";
 
 <?php
 
-include_once 'include/top_menu.php'; 
+include_once "include/top_menu.php"; 
 ?>
 
 <div class="content"><center>
@@ -84,7 +84,7 @@ include_once 'include/top_menu.php';
 ?>
 <?php
 if (MENUBUTTON=="TOP") {
-include_once 'include/buttons.php';
+include_once "include/buttons.php";
 
 }
 
@@ -143,7 +143,7 @@ elseif($_GET['id']=="nodeInfo"){
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="statusInfo" style="margin-bottom:30px;">'."\n";
-    include 'include/status.php';
+    include "include/status.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
@@ -184,13 +184,13 @@ elseif($_GET['id']=="nodeInfo"){
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="sysInfo">'."\n";
-    include 'include/system.php';
+    include "include/system.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
 ?>
 <?php
 if (MENUBUTTON=="BOTTOM") {
-include_once 'include/buttons.php'; }
+include_once "include/buttons.php"; }
 ?>
 <center><span title="Dashboard" style="font: 7pt arial, sans-serif;">SvxLink Dashboard ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate; ?>
 </div>

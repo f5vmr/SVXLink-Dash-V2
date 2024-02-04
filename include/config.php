@@ -1,6 +1,6 @@
 <?php
 
-if ( file_exists(__DIR__.'/config.inc.php') ) { include_once __DIR__.'/config.inc.php'; }
+if ( file_exists(__DIR__."/config.inc.php") ) { include_once __DIR__."/config.inc.php"; }
 else {
 // header lines for information
 define("HEADER_CAT","FM-Repeater");
@@ -53,7 +53,7 @@ define("PHP_AUTH_PW", "password");
         define("SVXLOGPATH", "/var/log/");
         define("SVXLOGPREFIX","svxlink.log");
         }
-        include_once '../parse_svxconf.php';
+        include_once "../parse_svxconf.php";
         
 error_reporting(0);
 // Define name of your FM Network

@@ -1,8 +1,8 @@
 <?php
 session_start();
-include 'include/settings.php';
-include_once 'include/config.php';
-include_once 'include/tools.php';
+include "include/settings.php";
+include_once "include/config.php";
+include_once "include/tools.php";
 
 
 
@@ -62,7 +62,7 @@ $svxConfigFile = '/etc/svxlink/svxlink.conf';
 </div></div>
 </div>
 
-<?php include_once 'include/top_menu.php'; ?>
+<?php include_once "include/top_menu.php"; ?>
 
 <div class="content"><center>
 <div style="margin-top:0px;">
@@ -70,7 +70,7 @@ $svxConfigFile = '/etc/svxlink/svxlink.conf';
 </div>
 <?php
 if (MENUBUTTON=="TOP") {
-include_once 'include/buttons.php'; 
+include_once "include/buttons.php"; 
 }
 ?>
 <?php
@@ -86,7 +86,7 @@ include_once 'include/buttons.php';
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="statusInfo" style="margin-bottom:30px;">'."\n";
-    include 'include/status.php';
+    include "include/status.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
@@ -115,13 +115,13 @@ include_once 'include/buttons.php';
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="sysInfo">'."\n";
-    include 'include/system.php';
+    include "include/system.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
 ?>
 <?php
 if (MENUBUTTON=="BOTTOM") {
-include_once 'include/buttons.php'; }
+include_once "include/buttons.php"; }
 ?>
 <center><span title="Dashboard " style="font: 7pt arial, sans-serif;">SvxLink Dashboard ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate; ?>
 	</div>

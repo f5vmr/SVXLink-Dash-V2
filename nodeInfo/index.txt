@@ -163,7 +163,7 @@ exec('sudo chown -R www-data:www-data /etc/svxlink/');
 
 ?>
 <?php
-include_once('include/functions.php');
+include_once "include/functions.php";
 $nodeInfoFile = $_GET['file'];
 exec('sudo cp ' . $file . ' ' .$file .'.bak');
 

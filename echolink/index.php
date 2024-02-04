@@ -65,7 +65,7 @@ textarea {
 
 
 <?php
-include_once('include/functions.php');
+include_once "include/functions.php";
 
 $elConfigFile = '/etc/svxlink/svxlink.d/ModuleEchoLink.conf';
 if (fopen($elConfigFile,'r'))

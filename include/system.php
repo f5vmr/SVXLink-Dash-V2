@@ -1,8 +1,8 @@
 <?php 
 session_start();
-include_once 'tools.php';
-include_once 'config.php';         
-include_once 'functions.php';
+include_once "tools.php";
+include_once "config.php";         
+include_once "functions.php";
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 
 $rawuptime = shell_exec('cat /proc/uptime');
