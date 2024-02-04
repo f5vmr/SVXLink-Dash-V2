@@ -1,0 +1,43 @@
+{
+    "esm": {
+        "version": "2.5",
+        "website": "http://127.0.0.1",
+        "check_updates": true,
+        "auto_refresh": 60,
+        "theme": "blue",
+        "custom_title": "SvxLink Network"
+    },
+    "cpu": {
+        "enable_temperature": true
+    },
+    "disk": {
+        "show_tmpfs": false,
+        "show_filesystem": true
+    },
+    "ping": {
+        "hosts": [
+            "google.com"
+        ]
+    },
+    "last_login": {
+        "enable": false,
+        "max": 5
+    },
+    "services": {
+        "show_port": false,
+        "list": [
+            {
+                "name": "Web Server",
+                "host": "localhost",
+                "port": 80,
+                "protocol": "tcp"
+            },
+            {
+                "name": "SSH Server",
+                "host": "localhost",
+                "port": 22,
+                "protocol": "tcp"
+            }
+        ]
+    }
+}

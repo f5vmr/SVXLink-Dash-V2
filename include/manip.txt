@@ -1,0 +1,33 @@
+<?php
+$file = '/etc/svxlink/svxlink.conf';
+$lines = file($file);
+echo '<table>';
+foreach ($lines as $line_num => $line) {
+    echo '<tr><td>' . htmlspecialchars($line) . '</td></tr>';
+}
+echo '</table>';
+?>
+<?php
+$file = '/etc/svxlink/svxlink.conf';
+$lines = file($file);
+echo '<form method="post">';
+echo '<table>';
+foreach ($lines as $line_num => $line) {
+    echo '<tr><td contenteditable="true">' . htmlspecialchars($line) . '</td></tr>';
+}
+echo '</table>';
+echo '<input type="submit" value="Save Changes">';
+echo '</form>';
+?>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $file = '/etc/svxlink/svxlink.conf';
+    $data = '';
+    foreach ($_POST['line'] as $line) {
+        $data .= $line . "\n";
+    }
+    file_put_contents($file, $data);
+    exec('systemctl restart svxlink');
+    echo 'Changes saved and service restarted.';
+}
+?>
