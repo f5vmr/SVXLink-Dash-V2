@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <form method="POST">
                         Username:<input type="text" id="username" name="username" value="<?php echo $username; ?>"><br>
-                        Password:<input type="password" id="password" name="password" value="<?php echo $password; ?>"><br>
+                        Password:<input type="password" id="password" name="password" value="<?php echo $password; ?>" autocomplete="off" <br>
                         <input type="submit" value="Submit" onclick="refreshPage()">
                     </form>
                 </center>
