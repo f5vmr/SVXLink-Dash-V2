@@ -1,5 +1,6 @@
 <?php
 session_start();
+echo 'Current Authorization State: ' . $_SESSION['auth'];
 include "include/settings.php";
 
 ?>
