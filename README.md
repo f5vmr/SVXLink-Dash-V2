@@ -37,17 +37,23 @@ No installation script required, simply cd to /var/www and remove any existing h
 
 <p>Now go to a browser and type in the URL of your svxlink node. Hopefully you will see a fully functional dashboard.</p>
 
+<img width="616" alt="Screenshot 2024-02-05 at 17 28 09" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/c2b6c91d-eb68-4751-a39c-e39c44cd95ad">
 
-<img width="465" alt="Screenshot 2023-08-11 at 12 39 29" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/461885a5-bc86-448c-a13b-20a360a31c90">
 
 
 <p>The Editing function function now works, but due to the obvious public access this is now username and password protected. The sysop only will be able to edit the following file in the html folder. Navigate to the 'include' directory and sudo nano config.inc.php. Scroll to the bottom of the file where you will see some define commands. Replace "svxlink" with your chosen username within the quotation marks, and replace "password" with your chosen "password".</p>
-<p>With these in place, you will have access to the 'Log', 'Power' and 'Edit' menus, allowing you as the sysop to expose the dashboard to public view, without someone corrupting your node.</p>
-
+<img width="617" alt="Screenshot 2024-02-05 at 17 28 44" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/09c9c182-3309-4719-895c-1db4810bc125">
 <p>You may edit your configuration files. Copies are saved in the /etc/svxlink/ with a date/time suffix, if you do make a mistake.
 </p>
+<p>With Username and Password in place, you will have access to the 'Log', 'Power' and 'Edit' menus, allowing you as the sysop to expose the dashboard to public view, without someone corrupting your node. As soon as you click on the blue menus, the authorisation is rescinded. Naturally as this is a web page, all the changes take place within your local browser. Without authorisation, the 'Log', 'Power' and Edit menus are blocked, so no one can turn off your repeater, or mess with the logic configuration.</p>
 
-<img width="615" alt="Screenshot 2024-01-23 at 17 23 09" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/78863b8e-e0b0-4698-af22-8b2f9f9e5e57">
+<img width="617" alt="Screenshot 2024-02-05 at 17 29 14" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/53a42480-99b6-4869-b937-cecad62034a4">
+
+
+
+
+
+
 
 
 <p>You will see no changes take place until you select the 'Power' menu and restart svxlink. You do not need a reboot.</p>
