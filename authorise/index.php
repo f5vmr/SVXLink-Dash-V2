@@ -1,6 +1,7 @@
 <?php
 session_start();
-
+include_once "../include/functions.php";
+include_once "../include/config.php";
 // Debugging output
 echo "Before function call:<br>";
 echo "PHP_AUTH_USER: " . (defined('PHP_AUTH_USER') ? PHP_AUTH_USER : 'Not defined') . "<br>";
@@ -83,11 +84,7 @@ echo "PHP_AUTH_PW: " . (defined('PHP_AUTH_PW') ? PHP_AUTH_PW : 'Not defined') . 
 
                 <?php
 
-                include_once "../include/functions.php";
-                include_once "../include/config.php";
-                echo "Included config.php<br>";
-                echo "PHP_AUTH_USER: " . PHP_AUTH_USER . "<br>";
-                echo "PHP_AUTH_PW: " . PHP_AUTH_PW . "<br>";
+              
 
                 function checkAuth($username, $password)
                 {
