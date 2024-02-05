@@ -96,12 +96,13 @@ session_start();
                 }
 
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                    include_once "../include/config.php";
                     // Process form submission
                     $username = isset($_POST['username']) ? $_POST['username'] : '';
                     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
                     echo "Before checkAuth():<br>";
-                    echo 'PHP_AUTH_USER' . " " . 'PHP_AUTH_PW' . "<br>";
+                    echo PHP_AUTH_USER . "<br>" . PHP_AUTH_PW . "<br>";
                     echo "Session auth: {$_SESSION['auth']}<br>";
                     echo "Username: $username<br>";
                     echo "Password: $password<br>";
