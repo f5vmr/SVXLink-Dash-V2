@@ -154,7 +154,7 @@ textarea {
 
 <!--h1 id="edit_info" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Edit Configuration '. $_GET['file']'</h1-->
 <?php
-if($_SESSION['auth'] = 'AUTHORISED') {
+if($_SESSION['auth'] === 'AUTHORISED') {
 include_once "../include/functions.php";
 include_once "../include/config.php";
 
