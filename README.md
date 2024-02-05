@@ -37,7 +37,8 @@ No installation script required, simply cd to /var/www and remove any existing h
 
 <p>Now go to a browser and type in the URL of your svxlink node. Hopefully you will see a fully functional dashboard.</p>
 
-<img width="930" alt="Screenshot 2024-01-28 at 10 41 02" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/5f8a75d3-53df-49b2-8c08-d13b7f5cac0b">
+
+<img width="465" alt="Screenshot 2023-08-11 at 12 39 29" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/461885a5-bc86-448c-a13b-20a360a31c90">
 
 
 <p>The Editing function function now works, but due to the obvious public access this is now username and password protected. The sysop only will be able to edit the following file in the html folder. Navigate to the 'include' directory and sudo nano config.inc.php. Scroll to the bottom of the file where you will see some define commands. Replace "svxlink" with your chosen username within the quotation marks, and replace "password" with your chosen "password".</p>
