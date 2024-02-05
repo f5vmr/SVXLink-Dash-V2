@@ -94,9 +94,6 @@ function checkAuth($username, $password) {
 }
 
 
-$username="";
-$password="";
-
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Process form submission
     $username = isset($_POST['username']) ? $_POST['username'] : '';
