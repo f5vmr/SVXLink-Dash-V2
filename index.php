@@ -1,7 +1,6 @@
 <?php
 session_start();
 $_SESSION['auth']='UNAUTHORISED';
-echo 'Current Authorization State: ' . $_SESSION['auth'];
 include "include/settings.php";
 include "include/config.php";
 

@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo 'Current Authorization State: ' . $_SESSION['auth'];
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 include_once "include/config.php";
 include_once "include/config.inc.php";

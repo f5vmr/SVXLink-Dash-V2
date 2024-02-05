@@ -154,7 +154,20 @@ if ($check_logics[0] == "SimplexLogic") {
    echo "Mode: simplex";
    echo "</div></td></tr>";
    }
-
+   echo "<table style=\"margin-top:4px;margin-bottom:13px;\"><tr><th colspan=2 >Editing</th></tr><tr>";
+   echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#000000;font-weight: bold;\">"; 
+   echo "Last Reboot<br>",exec('uptime -s');
+   echo "</div></td></tr>";
+if ($_SESSION['auth'] === "UNAUTHORISED") {
+  echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#0a7d29;font-weight: bold;\">";
+  echo "Not Authorised";
+  echo "</div></td></tr>";
+}
+if ($_SESSION['auth'] === "AUTHORISED") {
+  echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#0a7d29;font-weight: bold;\">";
+  echo "Authorised";
+  echo "</div></td></tr>";
+}
 $ip = isset($_SERVER['REMOTE_ADDR']);
 $net1= cidr_match($ip,"192.168.0.126/16");
 $net2= cidr_match($ip,"192.175.43.91/8");
