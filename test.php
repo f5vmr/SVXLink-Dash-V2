@@ -39,3 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Password: $password<br>";
 }
 ?>
+<form method="POST">
+                    Username:<input type="text" id="username" name="username" value="<?php echo $username; ?>"><br>
+                    Password:<input type="password" id="password" name="password" value="<?php echo $password; ?>"><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </center>
+        </div>
+    </fieldset>
+</body>
+</html>
