@@ -102,7 +102,6 @@ session_start();
                     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
                     echo "Before checkAuth():<br>";
-                    echo PHP_AUTH_USER . "<br>" . PHP_AUTH_PW . "<br>";
                     echo "Session auth: {$_SESSION['auth']}<br>";
                     echo "Username: $username<br>";
                     echo "Password: $password<br>";
