@@ -85,9 +85,9 @@ function checkAuth($username, $password) {
   // Check if received values match PHP_AUTH_USER and PHP_AUTH_PW
   if ($username == PHP_AUTH_USER && $password == PHP_AUTH_PW) {
       // Success
-      //$_SESSION['auth']='AUTHORISED';
+      $_SESSION['auth'] = "AUTHORISED";
   } else {
-      //$_SESSION['auth'] = 'UNAUTHORISED';
+      $_SESSION['auth'] = "UNAUTHORISED";
   }
   session_write_close();
   
@@ -99,7 +99,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-$_SESSION['auth'] = checkAuth($username, $password);
+checkAuth($username, $password);
 
 }
 var_dump($_SESSION['auth']) . $username . $password;
