@@ -70,7 +70,7 @@ textarea {
 <?php
 
 
-if($_SESSION['auth'] = 'AUTHORISED'){
+if ($_SESSION['auth'] == 'AUTHORISED'){
 include_once  '../include/config.php';
 include_once  '../include/functions.php';
 
@@ -129,7 +129,7 @@ if (isset($_POST['btnRestart']))
         exec($command,$screen,$retval);
 }
 } else {
-  echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Not Authorised</h1>';
+  echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to make changes here.</h1>';
  
 }
 ?>
