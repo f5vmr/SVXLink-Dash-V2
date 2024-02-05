@@ -1,8 +1,8 @@
 <?php
 session_start();
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
-include_once 'config.php';
-include_once 'tools.php';
+include_once "config.php";
+include_once "tools.php";
 
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
 if (fopen($svxConfigFile, 'r')) {

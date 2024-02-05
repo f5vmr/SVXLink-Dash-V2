@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'include/settings.php';
+include "include/settings.php";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -57,7 +57,7 @@ $svxConfigFile = '/etc/svxlink/svxlink.conf';
 </div></div>
 </div>
 
-<?php include_once 'include/top_menu.php'; ?>
+<?php include_once "include/top_menu.php"; ?>
 
 <div class="content"><center>
 <div style="margin-top:0px;">
@@ -65,11 +65,11 @@ $svxConfigFile = '/etc/svxlink/svxlink.conf';
 </div>
 <?php
 if (MENUBUTTON=="TOP") {
-include_once 'include/buttons.php'; 
+include_once "include/buttons.php"; 
 }
 ?>
 <?php
-include_once '/include/functions.php';
+include_once "include/functions.php";
     echo '<table style="margin-bottom:0px;border:0; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#f1f1f1;"><tr style="border:none;background-color:#f1f1f1;">';
     echo '<td width="200px" valign="top" class="hide" style="height:auto;border:0;background-color:#f1f1f1;">';
     echo '<div class="nav" style="margin-bottom:1px;margin-top:1px;">'."\n";
@@ -82,7 +82,7 @@ include_once '/include/functions.php';
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="statusInfo" style="margin-bottom:30px;">'."\n";
-    include 'include/status.php';
+    include "include/status.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
@@ -102,13 +102,13 @@ include_once '/include/functions.php';
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="sysInfo">'."\n";
-    include 'include/system.php';
+    include "include/system.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
 ?>
 <?php
 if (MENUBUTTON=="BOTTOM") {
-include_once 'include/buttons.php'; }
+include_once "include/buttons.php"; }
 ?>
 <!--- Please do not remove copyright info -->
 <center><span title="Dashboard" style="font: 7pt arial, sans-serif;">SvxLink Dashboard ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate; ?>

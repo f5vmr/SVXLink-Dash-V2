@@ -69,7 +69,7 @@ textarea {
 
 <?php
 
-include_once('include/functions.php');
+include_once "include/functions.php";
 
 /*
 $svxConfigFile = '/etc/svxlink/svxlink.conf';

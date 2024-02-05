@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once 'config.php';         
-include_once 'tools.php';        
+include_once "config.php";         
+include_once "tools.php";        
 //include_once __DIR__.'/functions.php';
 //require_once __DIR__.'/include/config.php';
 //function open_for_edit($filename) {

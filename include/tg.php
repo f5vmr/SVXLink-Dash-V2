@@ -1,9 +1,9 @@
 <?php
 session_start();
-include_once 'config.php';         
-include_once 'tools.php';        
-include_once 'functions.php';    
-include_once 'tgdb.php';    
+include_once "config.php";         
+include_once "tools.php";        
+include_once "functions.php";    
+include_once "tgdb.php";    
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
     if (fopen($svxConfigFile,'r'))
        { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);  

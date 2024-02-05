@@ -1,8 +1,8 @@
 <?php
 session_start();
 $_SESSION['auth']='UNAUTHORISED';
-include 'include/settings.php';
-include 'include/config.php';
+include "include/settings.php";
+include "include/config.php";
 
 ?>
 <!DOCTYPE html >
@@ -24,7 +24,7 @@ include 'include/config.php';
 
 <?php echo ("<title>" . $callsign ." ". $fmnetwork . " Dashboard</title>" ); ?>
 
-<?php include_once 'include/browserdetect.php'; ?>
+<?php include_once "include/browserdetect.php"; ?>
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/functions.js"></script>
     <script type="text/javascript" src="scripts/pcm-player.min.js"></script>
@@ -51,7 +51,7 @@ include 'include/config.php';
 </p></center>
 </div></div>
 </div>
-<?php include_once 'include/top_menu.php'; ?>
+<?php include_once "include/top_menu.php"; ?>
 
 <div class="content"><center>
 <div style="margin-top:0px;">
@@ -64,7 +64,7 @@ include 'include/config.php';
 ?>
 <?php
 if (MENUBUTTON=="TOP") {
-include_once 'include/buttons.php'; 
+include_once "include/buttons.php"; 
 }
 ?>
 <?php
@@ -80,7 +80,7 @@ include_once 'include/buttons.php';
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="statusInfo" style="margin-bottom:30px;">'."\n";
-    include 'include/status.php';
+    include "include/status.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
@@ -104,12 +104,12 @@ include_once 'include/buttons.php';
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<center><div id="LastHeard" style="margin-bottom:30px;">'."\n";
-    include 'include/lh.php';
+    include "include/lh.php";
     echo '</div></center>'."\n";
     echo "<br />\n";
     if (URLSVXRAPI!="") {
     echo '<center><div id="svxref" style="margin-bottom:30px;">'."\n";
-    //include 'include/svxref.php';
+    //include "include/svxref.php";
     echo '</div></center>'."\n";
     }
     echo '</td></tr></table>';
@@ -126,13 +126,13 @@ include_once 'include/buttons.php';
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="sysInfo">'."\n";
-    include 'include/system.php';
+    include "include/system.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
 ?>
 <?php
 if (MENUBUTTON=="BOTTOM") {
-include_once 'include/buttons.php'; }
+include_once "include/buttons.php"; }
 ?>
 <center><span title="Dashboard" style="font: 7pt arial, sans-serif;">SvxLink Dashboard ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate ;
  ?>

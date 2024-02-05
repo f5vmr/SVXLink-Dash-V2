@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'include/settings.php';
+include "include/settings.php";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -23,7 +23,7 @@ include 'include/settings.php';
 
 <?php echo ("<title>" . $callsign ." ". $fmnetwork . " Dashboard</title>"); ?>
 
-<?php include_once 'include/browserdetect.php'; ?>
+<?php include_once "include/browserdetect.php"; ?>
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/functions.js"></script>
     <script type="text/javascript" src="scripts/pcm-player.min.js"></script>
@@ -58,7 +58,7 @@ $svxConfigFile = '/etc/svxlink/svxlink.conf';
 </div>
 
 <?php 
-include_once 'include/top_menu.php'; 
+include_once "include/top_menu.php"; 
 
 ?>
 
@@ -68,7 +68,7 @@ include_once 'include/top_menu.php';
 </div>
 <?php
 if (MENUBUTTON=="TOP") {
-include_once 'include/buttons.php'; 
+include_once "include/buttons.php"; 
 }
 ?>
 <?php
@@ -84,7 +84,7 @@ include_once 'include/buttons.php';
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="statusInfo" style="margin-bottom:30px;">'."\n";
-    include 'include/status.php';
+    include "include/status.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
@@ -104,13 +104,13 @@ include_once 'include/buttons.php';
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="sysInfo">'."\n";
-    include 'include/system.php';
+    include "include/system.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
 ?>
 <?php
 if (MENUBUTTON=="BOTTOM") {
-include_once 'include/buttons.php'; }
+include_once "include/buttons.php"; }
 ?>
 <!--- Please do not remove copyright info -->
 <center><span title="Dashboard" style="font: 7pt arial, sans-serif;">SvxLink Dashboard ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate; ?>
