@@ -26,14 +26,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
     $_SESSION['auth'] = checkAuth($username, $password);
+    // Redirect to the same page to refresh
+    header("Location: {$_SERVER['PHP_SELF']}");
+    exit();
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Head content... -->
+    <meta charset="UTF-8">
+    <link href="/css/css.php" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        /* Your CSS styles... */
+    </style>
+    <!-- JavaScript to automatically refresh the page -->
+    <script>
+        function refreshPage() {
+            location.reload();
+        }
+    </script>
 </head>
 
 <body style="background-color: #e1e1e1; font: 11pt arial, sans-serif;">
@@ -52,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <form method="POST">
                         Username:<input type="text" id="username" name="username" value="<?php echo $username; ?>"><br>
                         Password:<input type="password" id="password" name="password" value="<?php echo $password; ?>"><br>
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" onclick="refreshPage()">
                     </form>
                 </center>
             </div>
@@ -61,3 +73,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </body>
 
 </html>
+
