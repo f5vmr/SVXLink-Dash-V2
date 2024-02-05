@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+// Debugging output
+echo "Before function call:<br>";
+echo "PHP_AUTH_USER: " . (defined('PHP_AUTH_USER') ? PHP_AUTH_USER : 'Not defined') . "<br>";
+echo "PHP_AUTH_PW: " . (defined('PHP_AUTH_PW') ? PHP_AUTH_PW : 'Not defined') . "<br>";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
