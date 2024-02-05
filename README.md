@@ -42,7 +42,7 @@ No installation script required, simply cd to /var/www and remove any existing h
 
 
 <p>The Editing function function now works, but due to the obvious public access this is now username and password protected. The sysop only will be able to edit the following file in the html folder. Navigate to the 'include' directory and sudo nano config.inc.php. Scroll to the bottom of the file where you will see some define commands. Replace "svxlink" with your chosen username within the quotation marks, and replace "password" with your chosen "password".</p>
-<p>With these in place, you will have access to the 'Log', 'Power' and 'Edit' menus, allowing you as the sysop to expose the dashboard to public view, without someone corrupting you node.</p>
+<p>With these in place, you will have access to the 'Log', 'Power' and 'Edit' menus, allowing you as the sysop to expose the dashboard to public view, without someone corrupting your node.</p>
 
 <p>You may edit your configuration files. Copies are saved in the /etc/svxlink/ with a date/time suffix, if you do make a mistake.
 </p>
