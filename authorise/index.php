@@ -79,7 +79,7 @@ session_start();
 
                 include_once "../include/functions.php";
                 include_once "../include/config.php";
-
+                    
                 function checkAuth($username, $password)
                 {
                     if (session_status() == PHP_SESSION_NONE) {
