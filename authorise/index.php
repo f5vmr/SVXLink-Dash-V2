@@ -2,10 +2,6 @@
 session_start();
 include_once "../include/functions.php";
 include_once "../include/config.php";
-// Debugging output
-echo "Before function call:<br>";
-echo "PHP_AUTH_USER: " . (defined('PHP_AUTH_USER') ? PHP_AUTH_USER : 'Not defined') . "<br>";
-echo "PHP_AUTH_PW: " . (defined('PHP_AUTH_PW') ? PHP_AUTH_PW : 'Not defined') . "<br>";
 
 ?>
 <!DOCTYPE html>
@@ -107,17 +103,8 @@ echo "PHP_AUTH_PW: " . (defined('PHP_AUTH_PW') ? PHP_AUTH_PW : 'Not defined') . 
                     $username = isset($_POST['username']) ? $_POST['username'] : '';
                     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-                    echo "Before checkAuth():<br>";
-                    echo "Session auth: {$_SESSION['auth']}<br>";
-                    echo "Username: $username<br>";
-                    echo "Password: $password<br>";
-
                     checkAuth($username, $password);
 
-                    echo "After checkAuth():<br>";
-                    echo "Session auth: {$_SESSION['auth']}<br>";
-                    echo "Username: $username<br>";
-                    echo "Password: $password<br>";
                 }
                 ?>
                 <form method="POST">
