@@ -11,11 +11,18 @@ function checkAuth($username, $password) {
     // Check if received values match PHP_AUTH_USER and PHP_AUTH_PW
     if ($username == PHP_AUTH_USER && $password == PHP_AUTH_PW) {
         // Success
-        return 'AUTHORISED';
+        $_SESSION['auth'] = 'AUTHORISED';
+        echo "Authorization successful. Session auth set to AUTHORISED.<br>";
     } else {
-        return 'UNAUTHORISED';
+        $_SESSION['auth'] = 'UNAUTHORISED';
+        echo "Authorization failed. Session auth set to UNAUTHORISED.<br>";
     }
+
+    session_write_close();
+
+    return $_SESSION['auth'];
 }
+
 
 $username = isset($_POST['username']) ? $_POST['username'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
