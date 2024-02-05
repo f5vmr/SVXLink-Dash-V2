@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 $_SESSION['auth'] = checkAuth($username, $password);
- 
+ var_dump($_SESSION['auth']);
 }
 ?>
 
