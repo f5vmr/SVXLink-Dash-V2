@@ -105,7 +105,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 $_SESSION['auth'] = checkAuth($username, $password);
 
 }
-var_dump($_SESSION['auth']);
+var_dump($_SESSION['auth']) . $username . $password;
 ?>
 
 <form method="POST">
