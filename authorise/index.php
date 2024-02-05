@@ -73,7 +73,9 @@ include_once "../include/config.php";
 
 
 function checkAuth($username, $password) {
-  session_start();
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
   // Check if received values match PHP_AUTH_USER and PHP_AUTH_PW
   if ($username == PHP_AUTH_USER && $password == PHP_AUTH_PW) {
       // Success
