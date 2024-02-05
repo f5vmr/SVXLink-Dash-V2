@@ -37,12 +37,15 @@ No installation script required, simply cd to /var/www and remove any existing h
 
 <p>Now go to a browser and type in the URL of your svxlink node. Hopefully you will see a fully functional dashboard.</p>
 
-<img width="616" alt="Screenshot 2024-02-05 at 17 28 09" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/c2b6c91d-eb68-4751-a39c-e39c44cd95ad">
+<img width="617" alt="Screenshot 2024-02-05 at 17 36 24" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/4eabb239-af89-4ad4-8a14-d232888fbb62">
+
 
 
 
 <p>The Editing function function now works, but due to the obvious public access this is now username and password protected. The sysop only will be able to edit the following file in the html folder. Navigate to the 'include' directory and sudo nano config.inc.php. Scroll to the bottom of the file where you will see some define commands. Replace "svxlink" with your chosen username within the quotation marks, and replace "password" with your chosen "password".</p>
+
 <img width="617" alt="Screenshot 2024-02-05 at 17 28 44" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/09c9c182-3309-4719-895c-1db4810bc125">
+
 <p>You may edit your configuration files. Copies are saved in the /etc/svxlink/ with a date/time suffix, if you do make a mistake.
 </p>
 <p>With Username and Password in place, you will have access to the 'Log', 'Power' and 'Edit' menus, allowing you as the sysop to expose the dashboard to public view, without someone corrupting your node. As soon as you click on the blue menus, the authorisation is rescinded. Naturally as this is a web page, all the changes take place within your local browser. Without authorisation, the 'Log', 'Power' and Edit menus are blocked, so no one can turn off your repeater, or mess with the logic configuration.</p>
