@@ -91,7 +91,7 @@ include_once "include/buttons.php";
 ?>
 <?php
 
-if($_SESSION['auth'] = 'AUTHORISED') {
+if($_SESSION['auth'] == 'AUTHORISED') {
 
 if($_GET['id']=="svxlink") {
     //checkAuth();
