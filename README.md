@@ -37,14 +37,23 @@ No installation script required, simply cd to /var/www and remove any existing h
 
 <p>Now go to a browser and type in the URL of your svxlink node. Hopefully you will see a fully functional dashboard.</p>
 
-<img width="615" alt="Screenshot 2024-01-23 at 17 23 09" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/9195de55-ca4b-4f4d-8200-0bcddf8f80f3">
+<img width="930" alt="Screenshot 2024-01-28 at 10 41 02" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/5f8a75d3-53df-49b2-8c08-d13b7f5cac0b">
 
-<p>You may edit your configuration files. Copies are saved in the /etc/svxlink/ with a date/time suffix, if you do make a mistake.</p>
+
+<p>The Editing function function now works, but due to the obvious public access this is now username and password protected. The sysop only will be able to edit the following file in the html folder. Navigate to the 'include' directory and sudo nano config.inc.php. Scroll to the bottom of the file where you will see some define commands. Replace "svxlink" with your chosen username within the quotation marks, and replace "password" with your chosen "password".</p>
+<p>With these in place, you will have access to the 'Log', 'Power' and 'Edit' menus, allowing you as the sysop to expose the dashboard to public view, without someone corrupting you node.</p>
+
+<p>You may edit your configuration files. Copies are saved in the /etc/svxlink/ with a date/time suffix, if you do make a mistake.
+</p>
+
+<img width="615" alt="Screenshot 2024-01-23 at 17 23 09" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/78863b8e-e0b0-4698-af22-8b2f9f9e5e57">
+
+
 <p>You will see no changes take place until you select the 'Power' menu and restart svxlink. You do not need a reboot.</p>
 
 <p>On the DTMF menu you will see a dtmf Keypad arrangement. This needs more work and editing of that page. Whatch for further development.</p>
 <p>Below the footer menu you will see a dtmf control facility. The D buttons are not yet programmed, and will need to correspond with the Macros in svxlink.conf so you will need to self-edit the dtmf.php file in your dashboard configuration and the macros in svxlink.conf.</p>
-<p>I will eventually examine the possibility of making this editable from the dashboardin the future.</p>
+<p>I will eventually examine the possibility of making improvements and additions in the future.</p>
 
 
 <p>The svxlink dashboard has some ideas created by G4NAB, SP2ONG, SP0DZ
