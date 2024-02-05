@@ -70,15 +70,7 @@ textarea {
 ?>
 <?php 
 
-//if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//  if (empty($_POST["ssid"])) {
-//     echo "Name is required";
-//  } else {
-//    $ssid = $_POST["ssid"]);
-//  }
-//}}
-
-// load the connlist
+if ($_SESSION['auth'] == 'AUTHORISED'){
 $retval = null;
 $conns = null;
 //exec('nmcli  -t -f NAME  con show',$conns,$retval);
@@ -104,7 +96,10 @@ if (isset($_POST['btnLog']))
        $command = "tail -n 30 /var/log/svxlink.log";
        exec($command,$screen,$retval);
 }
-
+} else {
+  echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to view the log.</h1>';
+ 
+}
 ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
