@@ -105,7 +105,7 @@ checkAuth($username, $password);
  //echo "\nAuthorisation State: $_SESSION['auth']\n";
   //echo "Username: $username\n";
   //echo "Password: $password\n";
-
+  var_dump($_SESSION['auth']);
 }
 ?>
 
