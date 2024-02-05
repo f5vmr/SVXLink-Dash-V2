@@ -79,7 +79,7 @@ session_start();
 
                 include_once "../include/functions.php";
                 include_once "../include/config.php";
-                    
+
                 function checkAuth($username, $password)
                 {
                     if (session_status() == PHP_SESSION_NONE) {
@@ -101,6 +101,7 @@ session_start();
                     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
                     echo "Before checkAuth():<br>";
+                    echo PHP_AUTH_USER . " " . PHP_AUTH_PW. "<br>";
                     echo "Session auth: {$_SESSION['auth']}<br>";
                     echo "Username: $username<br>";
                     echo "Password: $password<br>";
