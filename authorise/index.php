@@ -82,7 +82,7 @@ function checkAuth($username, $password) {
       $_SESSION['auth'] = 'UNAUTHORISED';
   }
   session_write_close();
-  echo 'Current Authorization State: ' . $_SESSION['auth'];
+  
 }
 
 
@@ -105,7 +105,7 @@ checkAuth($username, $password);
  //echo "\nAuthorisation State: $_SESSION['auth']\n";
   //echo "Username: $username\n";
   //echo "Password: $password\n";
-  var_dump($_SESSION['auth']);
+  
 }
 ?>
 
