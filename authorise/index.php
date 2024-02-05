@@ -106,6 +106,7 @@ checkAuth($username, $password);
   //echo "Password: $password\n";
 
 }
+echo 'Current Authorization State: ' . $_SESSION['auth'];
 ?>
 
 <form method="POST">
