@@ -79,6 +79,9 @@ session_start();
 
                 include_once "../include/functions.php";
                 include_once "../include/config.php";
+                echo "Included config.php<br>";
+                echo "PHP_AUTH_USER: " . PHP_AUTH_USER . "<br>";
+                echo "PHP_AUTH_PW: " . PHP_AUTH_PW . "<br>";
 
                 function checkAuth($username, $password)
                 {
