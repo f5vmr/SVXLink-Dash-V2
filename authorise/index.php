@@ -17,14 +17,11 @@ function checkAuth($username, $password) {
     }
 }
 
-$username = "";
-$password = "";
+$username = isset($_POST['username']) ? $_POST['username'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Process form submission
-    $username = isset($_POST['username']) ? $_POST['username'] : '';
-    $password = isset($_POST['password']) ? $_POST['password'] : '';
-
     $_SESSION['auth'] = checkAuth($username, $password);
     // Redirect to the same page to refresh
     header("Location: {$_SERVER['PHP_SELF']}");
@@ -73,4 +70,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </body>
 
 </html>
+
 
