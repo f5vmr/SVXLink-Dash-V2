@@ -34,7 +34,7 @@ session_start();
 include_once('parse_svxconf.php');
 
 
-/*if (fopen($svxConfigFile,'r'))
+if (fopen($svxConfigFile,'r'))
 {
 
   $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
@@ -49,7 +49,7 @@ include_once('parse_svxconf.php');
   foreach ($modules as $key){
 	if ($key == "EchoLink") $isEchoLink = true;
  }
- */
+ 
  //if ($isEchoLink==true) {echo ' <a href="/echolink.php" style="color: #0000ff;">EchoLink</a> |';};
 //$globalRf = $svxconfig['GLOBAL']['RF_MODULE'];
 
