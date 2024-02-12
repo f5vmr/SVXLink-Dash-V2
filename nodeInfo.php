@@ -70,7 +70,7 @@ include_once "include/buttons.php";
 
 if($_GET['id']=="svxlink") {
     //shell_exec("cd ");
-    $edit_file = "/etc/svxlink/svxlink.conf";
+    $edit_file = "/etc/svxlink/svxreflector.conf";
 }
 elseif($_GET['id']=="gpio") {
     //shell_exec("cd ");

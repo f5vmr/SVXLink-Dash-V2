@@ -48,9 +48,9 @@ define("RF_MODULE","");
         define("KEY20", array(' D20 ','*D20#','red'));
         
         define("SVXCONFPATH", "/etc/svxlink/");
-        define("SVXCONFIG", "svxlink.conf");
+        define("SVXCONFIG", "svxreflector.conf");
         define("SVXLOGPATH", "/var/log/");
-        define("SVXLOGPREFIX","svxlink.log");
+        define("SVXLOGPREFIX","svxreflector.log");
         }
         include_once "../parse_svxconf.php";
         
@@ -76,11 +76,11 @@ define("CPU_TEMP_OFFSET","0");
 //
 // Path and file name of confguration
 define("SVXCONFPATH", "/etc/svxlink/");
-define("SVXCONFIG", "svxlink.conf");
+define("SVXCONFIG", "svxreflector.conf");
 //
 // Path and file name of log
 define("SVXLOGPATH", "/var/log/");
-define("SVXLOGPREFIX", "svxlink.log");
+define("SVXLOGPREFIX", "svxreflector.log");
 //
 //
 // Define where is located menu wit buttons TOP or BOTTOM
@@ -113,7 +113,7 @@ define("KEY9", array(' D9 ','D9#','blue'));
 define("KEY10", array(" D0 ","D0#","blue"));
 
 //
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
+$svxConfigFile = '/etc/svxlink/svxreflector.conf';
 if (fopen($svxConfigFile,'r'))
    { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
      $refApi = $svxconfig['ReflectorLogic']['API'];

@@ -7,7 +7,7 @@ include_once "include/editor.php";
 
 // migrate to external class tbc
 
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
+$svxConfigFile = '/etc/svxlink/svxreflector.conf';
     if (fopen($svxConfigFile,'r'))
        { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
          $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];

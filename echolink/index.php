@@ -132,8 +132,8 @@ if (isset($_POST['btnSave'])) {
 //        $elconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
 //};
 
-//$svxConfigFile = '/etc/svxlink/svxlink.conf';
-//$svxConfigFile = '/var/www/html/svxlink.conf';    
+//$svxConfigFile = '/etc/svxlink/svxreflector.conf';
+//$svxConfigFile = '/var/www/html/svxreflector.conf';    
 
 
 

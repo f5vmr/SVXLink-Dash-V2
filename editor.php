@@ -5,7 +5,7 @@ include_once "include/config.php";
 include_once "include/config.inc.php";
 include_once "include/tools.php";
 include_once "include/functions.php";
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
+$svxConfigFile = '/etc/svxlink/svxreflector.conf';
 
 if (fopen($svxConfigFile, 'r')) {
     $svxconfig = parse_ini_file($svxConfigFile, true, INI_SCANNER_RAW);
@@ -96,9 +96,9 @@ if($_SESSION['auth'] == 'AUTHORISED') {
 if($_GET['id']=="svxlink") {
     //checkAuth();
     //shell_exec("cd ");
-    file_backup("svxlink.conf");
-    $edit_file = file_name("svxlink.conf"); 
-    //"/etc/svxlink/svxlink.conf";
+    file_backup("svxreflector.conf");
+    $edit_file = file_name("svxreflector.conf"); 
+    //"/etc/svxlink/svxreflector.conf";
 }
 elseif($_GET['id']=="gpio") {
     //shell_exec("cd ");

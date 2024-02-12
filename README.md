@@ -1,4 +1,4 @@
-# SVXLink-Dashboard-V2
+# SVXReflector-Dashboard-V3
 SVXLink Node dashboard repository inspired by pi star dashboard
 Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.
 Brought up to date by Chris Jackson G4NAB with new code. Thanks to Craig Gardiner Z21LX for assistance in the area of permissions used in the web server.
@@ -10,7 +10,7 @@ For the moment it is still incomplete, a work in progress.
 
 No installation script required, simply cd to /var/www and remove any existing html folder.
 <p>
- sudo git clone https://github.com/f5vmr/SVXLink-Dash-V2 html</p>
+ sudo git clone https://github.com/f5vmr/SVXReflector-Dash-V3 html</p>
 <p> cd html</p>
 <p>However there are some changes required to both the filing system and the web management as follows:</p>
 <p>sudo visudo and add the following lines to the bottom of the current file.</p>
@@ -33,7 +33,7 @@ No installation script required, simply cd to /var/www and remove any existing h
 <p>You may edit it in situ or copy it to /etc/systemd/system/</p>
 <p>Locate 'PrivateTmp=true' and change this to 'PrivateTmp=false' and save the file.</p>
 <p>sudo systemctl daemon-reload && sudo systemctl restart apache2 to restart the webserver.</p>
-<p>For a RepeaterLogic enabled setup,while we are in the terminal, sudo nano /etc/svxlink/svxlink.conf and locate in [RepeaterLogic] the line DTMF_CTRL_PTY, and edit the file information to read /tmp/dtmf_svx and save the file and sudo systemctl restart svxlink .</p>
+<p>For a RepeaterLogic enabled setup,while we are in the terminal, sudo nano /etc/svxlink/svxreflector.conf and locate in [RepeaterLogic] the line DTMF_CTRL_PTY, and edit the file information to read /tmp/dtmf_svx and save the file and sudo systemctl restart svxlink .</p>
 
 <p>Now go to a browser and type in the URL of your svxlink node. Hopefully you will see a fully functional dashboard.</p>
 
@@ -43,7 +43,7 @@ No installation script required, simply cd to /var/www and remove any existing h
 <p>You will see no changes take place until you select the 'Power' menu and restart svxlink. You do not need a reboot.</p>
 
 <p>On the DTMF menu you will see a dtmf Keypad arrangement. This needs more work and editing of that page. Whatch for further development.</p>
-<p>Below the footer menu you will see a dtmf control facility. The D buttons are not yet programmed, and will need to correspond with the Macros in svxlink.conf so you will need to self-edit the dtmf.php file in your dashboard configuration and the macros in svxlink.conf.</p>
+<p>Below the footer menu you will see a dtmf control facility. The D buttons are not yet programmed, and will need to correspond with the Macros in svxreflector.conf so you will need to self-edit the dtmf.php file in your dashboard configuration and the macros in svxreflector.conf.</p>
 <p>I will eventually examine the possibility of making this editable from the dashboardin the future.</p>
 
 

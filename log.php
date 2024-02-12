@@ -6,7 +6,7 @@ include_once "include/tools.php";
 
 // migrate to external class tbc
 
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
+$svxConfigFile = '/etc/svxlink/svxreflector.conf';
     if (fopen($svxConfigFile,'r'))
        { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
          $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
@@ -57,7 +57,7 @@ else { $callsign="NOCALL";
     <div class="text"style="padding-right:230px">
 <center><p style="margin-top:5px;margin-bottom:0px;">
 <?php
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
+$svxConfigFile = '/etc/svxlink/svxreflector.conf';
     if (fopen($svxConfigFile,'r')) 
        { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); 
          $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];}
