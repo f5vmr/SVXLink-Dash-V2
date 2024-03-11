@@ -1,14 +1,14 @@
 <?php
 include 'site_config.php';
-echo DIR_BASE;
-echo DIR_CLASSES;
-echo DIR_SITE;
-echo DIR_SITE_VIEWS;
-echo DIR_SITE_COMPONENTS;
-echo BASE_URL;
-echo SITE_URL;
-echo DIR_STATIC;
-echo DIR_JS;
-echo DIR_CSS;
-echo DIR_SITE_IMG;
+echo DIR_BASE, PHP_EOL;
+echo DIR_CLASSES, PHP_EOL;
+echo DIR_SITE, PHP_EOL;
+echo DIR_SITE_VIEWS,PHP_EOL;
+echo DIR_SITE_COMPONENTS,PHP_EOL;
+echo BASE_URL,PHP_EOL;
+echo SITE_URL,PHP_EOL;
+echo DIR_STATIC,PHP_EOL;
+echo DIR_JS,PHP_EOL;
+echo DIR_CSS,PHP_EOL;
+echo DIR_SITE_IMG,PHP_EOL;
 ?>
