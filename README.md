@@ -5,7 +5,7 @@ Brought up to date by Chris Jackson G4NAB with new code. Thanks to Craig Gardine
 
 This installation requires that svxlink has been compiled on Debian 11 (raspberry pi OS bullseye), and php version 8.0 or greater, and Apache 2. Debian 12 will require PHP 8.2. After that follow the instructions below.
 
-For the moment it is still incomplete, a work in progress.
+For the moment it is still slightly incomplete, a work in progress.
 
 
 No installation script required, simply cd to /var/www and remove any existing html folder.
