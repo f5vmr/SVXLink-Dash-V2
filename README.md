@@ -19,6 +19,9 @@ No installation script required, simply cd to /var/www and remove any existing h
 <p>svxlink ALL=NOPASSWD: /bin/chown</p>
 <p>svxlink ALL=NOPASSWD: /bin/chmod</p>
 <p>svxlink ALL=NOPASSWD: /bin/systemctl</p>
+<p>svxlink ALL=NOPASSWD: /bin/reboot</p>
+<p>svxlink ALL=NOPASSWD: /bin/shutdown</p>
+
 <p>Save the file. No further action need be taken as sudo will automatically take these changes into account.</p>
 <p>Next sudo nano /etc/apache2/envvars file and make the following changes</p>
 <p>export APACHE_RUN_USER=www-data</p>
