@@ -91,7 +91,7 @@ if (isset($_POST['btnPower']))
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
         //exec('nmcli dev wifi rescan');
-        $command = "sudo /sbin/shutdown -h now 2>&1";
+        $command = "sudo shutdown -h now 2>&1";
         exec($command,$screen,$retval);
 }
 
@@ -127,7 +127,7 @@ if (isset($_POST['btnRestart']))
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
         //exec('nmcli dev wifi rescan');
-        $command = "sudo /sbin/shutdown -r now 2>&1";
+        $command = "sudo shutdown -r now 2>&1";
         exec($command,$screen,$retval);
 }
 } else {
