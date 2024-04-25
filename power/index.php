@@ -81,16 +81,21 @@ $conns = null;
 // find the gateway
 
 
-if (isset($_POST['btnPower']))
-    {
+if (isset($_POST['btnPower'])) {
+  $command = "sudo /sbin/shutdown -h now 2>&1";
+  $retval = null;
+  $screen = null;
+  
+  exec($command, $screen, $retval);
 
-        $retval = null;
-        $screen = null;
-        //$sAconn = $_POST['sAconn'];
-        //$password = $_POST['password'];
-        //exec('nmcli dev wifi rescan');
-        $command = "sudo /usr/bin/shutdown -h now 2>&1";
-        exec($command,$screen,$retval);
+  if ($retval !== 0) {
+      echo "Error executing command: $command<br>";
+      echo "Return value: $retval<br>";
+      echo "Command output: ";
+      print_r($screen);
+  } else {
+      echo "Command executed successfully";
+  }
 }
 
 //if (isset($_POST['btnLcd']))
@@ -117,20 +122,26 @@ if (isset($_POST['btnSvxlink']))
         exec($command,$screen,$retval);
 }
 
-if (isset($_POST['btnRestart']))
-    {
+if (isset($_POST['btnRestart'])) {
+  $retval = null;
+  $screen = null;
+  
+  // Execute the shutdown command
+  $command = "sudo /sbin/shutdown -r now 2>&1";
+  exec($command, $screen, $retval);
 
-        $retval = null;
-        $screen = null;
-        //$sAconn = $_POST['sAconn'];
-        //$password = $_POST['password'];
-        //exec('nmcli dev wifi rescan');
-        $command = "sudo /usr/bin/shutdown -r now 2>&1";
-        exec($command,$screen,$retval);
-}
+  // Check if the command executed successfully
+  if ($retval !== 0) {
+      echo "Error executing command: $command<br>";
+      echo "Return value: $retval<br>";
+      echo "Command output: ";
+      print_r($screen);
+  } else {
+      echo "Command executed successfully";
+  }
 } else {
-  echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to make changes here.</h1>';
- 
+  // Display a message if the user is not authorized
+  echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorized to make changes here.</h1>';
 }
 ?>
 
