@@ -113,7 +113,7 @@ if (isset($_POST['btnSave'])) {
   exec('sudo mv /var/www/html/echolink/ModuleEchoLink.conf /etc/svxlink/svxlink.d/ModuleEchoLink.conf', $screen, $retval);
 
   //Service SVXlink restart
-  exec('sudo service svxlink restart 2>&1', $screen, $retval);
+  exec('sudo systemctl restart svxlink 2>&1', $screen, $retval);
 
 
 

@@ -224,7 +224,7 @@ if (isset($_POST['btnSave']))
 		//move generated file to current config
 		exec('sudo mv /var/www/html/nodeInfo/node_info.json /etc/svxlink/node_info.json', $screen, $retval);
         	//Service SVXlink restart
-       	exec('sudo service svxlink restart 2>&1',$screen,$retval);
+       	exec('sudo systemctl restart svxlink 2>&1',$screen,$retval);
 
 };
 

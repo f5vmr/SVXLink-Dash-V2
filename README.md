@@ -14,13 +14,13 @@ No installation script required, simply cd to /var/www and remove any existing h
 <p> cd html</p>
 <p>However there are some changes required to both the filing system and the web management as follows:</p>
 <p>sudo visudo and add the following lines to the bottom of the current file.</p>
-<p>svxlink ALL=NOPASSWD: /usr/sbin/service</p>
-<p>svxlink ALL=NOPASSWD: /usr/bin/cp</p>
-<p>svxlink ALL=NOPASSWD: /usr/bin/chown</p>
-<p>svxlink ALL=NOPASSWD: /usr/bin/chmod</p>
-<p>svxlink ALL=NOPASSWD: /usr/bin/systemctl</p>
-<p>svxlink ALL=NOPASSWD: /usr/bin/reboot</p>
-<p>svxlink ALL=NOPASSWD: /usr/bin/shutdown</p>
+<p>svxlink ALL=NOPASSWD: /sbin/service</p>
+<p>svxlink ALL=NOPASSWD: /bin/cp</p>
+<p>svxlink ALL=NOPASSWD: /bin/chown</p>
+<p>svxlink ALL=NOPASSWD: /bin/chmod</p>
+<p>svxlink ALL=NOPASSWD: /bin/systemctl</p>
+<p>svxlink ALL=NOPASSWD: /sbin/reboot</p>
+<p>svxlink ALL=NOPASSWD: /sbin/shutdown</p>
 
 <p>Save the file. No further action need be taken as sudo will automatically take these changes into account.</p>
 <p>Next sudo nano /etc/apache2/envvars file and make the following changes</p>

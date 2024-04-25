@@ -177,7 +177,7 @@ if (isset($_POST['btnSave']))
 	exec('sudo mv /var/www/html/svxlink/svxlink.conf /etc/svxlink/svxlink.conf', $screen, $retval);
 //	exec('sudo cp /etc/svxlink/svxlink.conf /etc/svxlink/svxlink.d/SomeLogic.conf', $screen, $retval);
         //Service SVXlink restart
-        exec('sudo service svxlink restart 2>&1',$screen,$retval);
+        exec('sudo systemctl restart svxlink 2>&1',$screen,$retval);
 
 
 

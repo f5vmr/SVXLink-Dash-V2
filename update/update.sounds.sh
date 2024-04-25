@@ -34,6 +34,6 @@ echo "--- sounds version update & cleanup ---"
 echo $tagname > /opt/version.sounds 
 rm -R /opt/src
 echo "--- SVXlink service restart"
-sudo service svxlink restart
+sudo systemctl restart svxlink
 
 echo "###-FINISH-####"

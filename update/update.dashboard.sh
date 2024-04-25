@@ -35,6 +35,6 @@ echo $tagname > /opt/version.dashboard
 
 #rm -R /opt/src
 echo "--- SVXlink service restart"
-sudo service svxlink restart
+sudo systemctl restart svxlink 
 
 echo "###-FINISH-####"
