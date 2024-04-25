@@ -52,7 +52,7 @@ define("RF_MODULE","");
         define("SVXLOGPATH", "/var/log/");
         define("SVXLOGPREFIX","svxlink.log");
         }
-        include_once "../parse_svxconf.php";
+        include_once "parse_svxconf.php";
         
 error_reporting(0);
 // Define name of your FM Network
