@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
    <div id="display-links">
 	<p style="padding-right: 5px; text-align: right; color: #000000;">

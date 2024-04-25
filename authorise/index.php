@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "../include/functions.php";
 include_once "../include/config.php";
 
@@ -85,7 +87,9 @@ include_once "../include/config.php";
                 function checkAuth($username, $password)
                 {
                     if (session_status() == PHP_SESSION_NONE) {
-                        session_start();
+                        if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
                     }
                     // Check if received values match PHP_AUTH_USER and PHP_AUTH_PW
                     if ($username == PHP_AUTH_USER && $password == PHP_AUTH_PW) {

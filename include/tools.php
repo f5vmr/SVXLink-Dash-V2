@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 function format_time($seconds) {
 	$secs = intval($seconds % 60);
 	$mins = intval($seconds / 60 % 60);

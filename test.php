@@ -3,7 +3,9 @@ include "include/config.php";
 function checkAuth($username, $password)
 {
     if (session_status() == PHP_SESSION_NONE) {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
     }
     
     // Debugging output before authentication
