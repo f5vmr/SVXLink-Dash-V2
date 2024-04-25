@@ -40,4 +40,3 @@ else { $callsign="NOCALL";
        $fmnetwork="no registered";
        $refApi="";
         }
-?>

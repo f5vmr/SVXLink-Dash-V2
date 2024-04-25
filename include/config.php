@@ -125,4 +125,4 @@ if (fopen($svxConfigFile,'r'))
 else { $callsign="NOCALL";
    $fmnetwork="no registered";
     }
-?>
+
