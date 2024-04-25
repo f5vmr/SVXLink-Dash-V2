@@ -37,6 +37,6 @@ else {$svxConfigFile = trim(substr(shell_exec("grep CFGFILE /etc/default/svxlink
     $globalRf = $svxconfig['GLOBAL']['RF_MODULE'];
        }
 else { $callsign="NOCALL";
-       $fmnetwork="no registered";
+       $fmnetwork="not registered";
        $refApi="";
         }
