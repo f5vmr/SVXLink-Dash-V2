@@ -87,7 +87,8 @@ if ($_SESSION['auth'] == 'AUTHORISED') {
     echo '</td>';
 }
 else 
-// end of if ($_SESSION['auth'] == '') {}
+{echo '<h1 id="edit_info" style="color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to edit this file</h1>';
+}
 
 ?>
 </tr></table>
