@@ -272,7 +272,7 @@ textarea {
 	$inDefaultTg = $svxconfig['ReflectorLogic']['DEFAULT_TG'];
 	$inTgSelectTimeout = $svxconfig['ReflectorLogic']['TG_SELECT_TIMEOUT'];
         $inMonitorTgs = $svxconfig['ReflectorLogic']['MONITOR_TGS'];
-	$password = $svxconfig['ReflectorLogic']['AUTH_KEY'];
+	$inPassword = $svxconfig['ReflectorLogic']['AUTH_KEY'];
         $inCallsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
         $inReflectorDefaultLang = $svxconfig['ReflectorLogic']['DEFAULT_LANG'];
 	$inReflectorNodeInfoFile = $svxconfig['ReflectorLogic']['NODE_INFO_FILE'];
