@@ -75,25 +75,25 @@ textarea {
 <?php
 
 if ($_SESSION['auth'] == 'AUTHORISED'){
-include_once "include/functions.php";
+        include_once "include/functions.php";
 
 
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
-if (fopen($svxConfigFile,'r'))
-      {
-        $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
-        };
-//divide up the Paragraphs
-$logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
-foreach ($logics as $key) {
-  echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
- if ($key == "SimplexLogic") $isSimplex = true;
- if ($key == "RepeaterLogic") $isRepeater = true;
-  }
+        $svxConfigFile = '/etc/svxlink/svxlink.conf';
+        if (fopen($svxConfigFile,'r'))
+              {
+                $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
+                };
+        //divide up the Paragraphs
+        $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
+        foreach ($logics as $key) {
+          echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
+         if ($key == "SimplexLogic") $isSimplex = true;
+         if ($key == "RepeaterLogic") $isRepeater = true;
+          }
 
-include_once('parse_svxconf.php');
-if (isset($_POST['btnSave']))
-    {
+        include_once('parse_svxconf.php');
+        if (isset($_POST['btnSave']))
+            {
         $retval = null;
         $screen = null;
               
@@ -136,7 +136,7 @@ if (isset($_POST['btnSave']))
         $svxconfig['RepeaterLogic']['IDLE_SOUND_INTERVAL'] = $_POST['inIdleIntervalTime'];
         $svxconfig['RepeaterLogic']['ONLINE_CMD'] = $_POST['inOnLineCommand'];
         $svxconfig['RepeaterLogic']['ONLINE'] = $_POST['inOnline'];
-};
+        };
         $svxconfig['LinkToReflector']['CONNECT_LOGICS'] = $_PORT['inConnLogic'];
         $svxconfig['Macros']['0'] = $_POST['inMD0'];
         $svxconfig['Macros']['1'] = $_POST['inMD1'];
@@ -148,8 +148,8 @@ if (isset($_POST['btnSave']))
 	$svxconfig['Macros']['7'] = $_POST['inMD7'];
 	$svxconfig['Macros']['8'] = $_POST['inMD8'];
 	$svxconfig['Macros']['9'] = $_POST['inMD9'];
-        $svxconfig['Rx1']['AUDIO_DEV'] = $_PORT['inRxAudioDev'];
-        $svxconfig['Rx1']['AUDIO_CHANNEL'] = $_PORT['inAudioChan'];
+        $svxconfig['Rx1']['AUDIO_DEV'] = $_POST['inRxAudioDev'];
+        $svxconfig['Rx1']['AUDIO_CHANNEL'] = $_POST['inAudioChan'];
         $svxconfig['Rx1']['SQL_DET'] = $_POST['inSql_Det'];
         $svxconfig['Rx1']['GPIO_SQL_PIN'] = $_POST['inGPIOPin'];
         $svxconfig['Rx1']['DTMF_MUTING'] = $_POST['inDTMFMute'];
@@ -179,39 +179,39 @@ if (isset($_POST['btnSave']))
 	exec('sudo cp /etc/svxlink/svxlink.conf /etc/svxlink/svxlink.conf.' .date("YmdThis") ,$screen,$retval);
 	//move generated file to current config
 	exec('sudo mv /var/www/html/svxlink/svxlink.conf /etc/svxlink/svxlink.conf', $screen, $retval);
-//	exec('sudo cp /etc/svxlink/svxlink.conf /etc/svxlink/svxlink.d/SomeLogic.conf', $screen, $retval);
+        //	exec('sudo cp /etc/svxlink/svxlink.conf /etc/svxlink/svxlink.d/SomeLogic.conf', $screen, $retval);
         //Service SVXlink restart
         exec('sudo systemctl restart svxlink 2>&1',$screen,$retval);
 
 
 
-// debug
-//      echo '<pre>';
-//      print_r($ini);
+        // debug
+        //      echo '<pre>';
+        //      print_r($ini);
 
-//end of debug
+        //end of debug
 
-}
-
-
-//if (fopen($svxConfigFile,'r'))
-//      {
-
-//        $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
-//};
-
-//$svxConfigFile = '/etc/svxlink/svxlink.conf';
-//$svxConfigFile = '/var/www/html/svxlink.conf';    
+        }
 
 
+        //if (fopen($svxConfigFile,'r'))
+        //      {
+
+        //        $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
+        //};
+
+        //$svxConfigFile = '/etc/svxlink/svxlink.conf';
+        //$svxConfigFile = '/var/www/html/svxlink.conf';    
 
 
 
 
-//if (fopen($svxConfigFile,'r'))
-  //    { 
 
-//	$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
+
+        //if (fopen($svxConfigFile,'r'))
+          //    { 
+
+        //	$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
         
         $inGlobalLogics = $svxconfig['GLOBAL']['LOGICS'];
         $inGlobalRf = $svxconfig['GLOBAL']['RF_MODULE'];
@@ -238,7 +238,7 @@ if (isset($_POST['btnSave']))
         $inSimLongInterval = $svxconfig['SimplexLogic']['LONG_IDENT_INTERVAL'];
         $inRgrDelay = $svxconfig['SimplexLogic']['RGR_SOUND_DELAY'];
         $inRgr = $svxconfig['SimplexLogic']['RGR_SOUND_ALWAYS'];
-};
+        };
         if ($system_type=="IS_DUPLEX"){
         $inRepeaterCallsign = $svxconfig['RepeaterLogic']['CALLSIGN'];
         $inRepeaterDefaultLang = $svxconfig['RepeaterLogic']['DEFAULT_LANG'];
@@ -268,29 +268,29 @@ if (isset($_POST['btnSave']))
 
 	$inRx1PeakMeter = $svxconfig['Rx1']['PEAK_METER'];
 
-//}
-//    else { $callsign="NOCALL";}
+        //}
+        //    else { $callsign="NOCALL";}
 
 
 
-//if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//  if (empty($_POST["ssid"])) {
-//     echo "Name is required";
-//  } else {
-//    $ssid = $_POST["ssid"]);
-//  }
-//}}
+        //if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        //  if (empty($_POST["ssid"])) {
+        //     echo "Name is required";
+        //  } else {
+        //    $ssid = $_POST["ssid"]);
+        //  }
+        //}}
 
 
-// load the connlist
-$retval = null;
-$conns = null;
-// find the gateway
-//tbc - load the data from ini RF.
-}
-else 
-{ echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to make changes here.</h1>';
-}
+        // load the connlist
+        $retval = null;
+        $conns = null;
+        // find the gateway
+        //tbc - load the data from ini RF.
+        }
+        else 
+        { echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to make changes here.</h1>';
+        }
 ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
