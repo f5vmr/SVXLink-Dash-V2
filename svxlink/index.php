@@ -73,7 +73,7 @@ textarea {
 
 include_once "include/functions.php";
 
-/*
+
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
 if (fopen($svxConfigFile,'r'))
       {
@@ -86,7 +86,7 @@ foreach ($logics as $key) {
  if ($key == "SimplexLogic") $isSimplex = true;
  if ($key == "RepeaterLogic") $isRepeater = true;
   }
-*/
+
 include_once('parse_svxconf.php');
 if (isset($_POST['btnSave']))
     {
