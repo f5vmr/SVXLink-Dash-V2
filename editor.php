@@ -125,11 +125,8 @@ elseif($_GET['id']=="nodeInfo"){
 
 
 }
- else {
-    echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not yet authorised.</h1>';
-    }
-?>
-<?php
+
+
     echo '<table style="margin-bottom:0px;border:0; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#f1f1f1;"><tr style="border:none;background-color:#f1f1f1;">';
     echo '<td width="200px" valign="top" class="hide" style="height:auto;border:0;background-color:#f1f1f1;">';
     echo '<div class="nav" style="margin-bottom:1px;margin-top:1px;">'."\n";
@@ -170,6 +167,9 @@ elseif($_GET['id']=="nodeInfo"){
 echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="495px" title="EDIT"></iframe>';
 
     echo '</td>';
+    else {
+        echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not yet authorised.</h1>';
+        }
 ?>
 </tr></table>
 <?php
