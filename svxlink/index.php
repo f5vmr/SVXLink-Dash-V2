@@ -116,7 +116,7 @@ textarea {
         $svxconfig['ReflectorLogic']['DEFAULT_TG'] = $_POST['inDefaultTg'];
         $svxconfig['ReflectorLogic']['TG_SELECT_TIMEOUT'] = $_POST['inTgSelectTimeout'];
         $svxconfig['ReflectorLogic']['MONITOR_TGS'] = $_POST['inMonitorTgs'];
-        $svxconfig['ReflectorLogic']['AUTH_KEY'] = $_POST['inReflectorAuthKey'];
+        $svxconfig['ReflectorLogic']['AUTH_KEY'] = $_POST['password'];
         $svxconfig['ReflectorLogic']['CALLSIGN'] = $_POST['inCallsign'];
         $svxconfig['ReflectorLogic']['DEFAULT_LANG'] = $_POST['inReflectorDefaultLang'];
         $svxconfig['ReflectorLogic']['NODE_INFO_FILE'] = $_POST['inReflectorNodeInfoFile'];
@@ -272,7 +272,7 @@ textarea {
 	$inDefaultTg = $svxconfig['ReflectorLogic']['DEFAULT_TG'];
 	$inTgSelectTimeout = $svxconfig['ReflectorLogic']['TG_SELECT_TIMEOUT'];
         $inMonitorTgs = $svxconfig['ReflectorLogic']['MONITOR_TGS'];
-	$inReflectorAuthKey = $svxconfig['ReflectorLogic']['AUTH_KEY'];
+	$password = $svxconfig['ReflectorLogic']['AUTH_KEY'];
         $inCallsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
         $inReflectorDefaultLang = $svxconfig['ReflectorLogic']['DEFAULT_LANG'];
 	$inReflectorNodeInfoFile = $svxconfig['ReflectorLogic']['NODE_INFO_FILE'];
