@@ -86,8 +86,8 @@ if ($_SESSION['auth'] == 'AUTHORISED') {
     echo '<iframe src="/svxlink"  style="width:615px; height:650px"></iframe>';
     echo '</td>';
 }
-else 
-{echo '<h1 id="edit_info" style="color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to edit this file</h1>';
+else
+ { echo '<h1 id="edit_info" style="color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to edit this file</h1>';
 }
 
 ?>
