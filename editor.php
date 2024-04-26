@@ -93,7 +93,7 @@ include_once "include/buttons.php";
 ?>
 <?php
 
-if($_SESSION['auth'] == 'AUTHORISED') {
+
 
 if($_GET['id']=="svxlink") {
     //checkAuth();
@@ -164,12 +164,14 @@ elseif($_GET['id']=="nodeInfo"){
 //  
 //  }
 //
+if($_SESSION['auth'] == 'AUTHORISED') {
 echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="495px" title="EDIT"></iframe>';
 
     echo '</td>';
    }   else {
         echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not yet authorised.</h1>';
-        }
+        echo '</td>';    
+    }
 ?>
 </tr></table>
 <?php
