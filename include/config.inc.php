@@ -50,4 +50,4 @@ define("NODE_INFO_FILE","");
 define("RF_MODULE","");
 define("PHP_AUTH_USER", "svxlink");
 define("PHP_AUTH_PW", "password");
-?>
+
