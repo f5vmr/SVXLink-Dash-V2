@@ -436,7 +436,7 @@ textarea {
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">TG select Timeout</td>
-        <td style="border: none;"><input type="text" name="inMonitorTgs" style="width:98%" value="<?php echo $inMonitorTgs;?>">
+        <td style="border: none;"><input type="text" name="inTgSelectTimeout" style="width:98%" value="<?php echo $inTgSelectTimeout;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Reflector Host</td>
