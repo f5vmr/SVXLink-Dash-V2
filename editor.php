@@ -116,7 +116,7 @@ elseif($_GET['id']=="metarinfo"){
     //$edit_file = "/etc/svxlink/svxlink.d/ModuleMetarInfo.conf";
 }
 elseif($_GET['id']=="nodeInfo"){
-    //$edit_file = "/etc/svxlink/node_info.json";
+    file_backup("/etc/svxlink/node_info.json");
     $edit_file="nodeInfo/index.php";
 }
 
@@ -126,7 +126,7 @@ elseif($_GET['id']=="nodeInfo"){
 
 }
  else {
-    echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to make changes here.</h1>';
+    echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not yet authorised.</h1>';
     }
 ?>
 <?php
