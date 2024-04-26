@@ -74,7 +74,10 @@ textarea {
 
 <?php
 
-        if ($_SESSION['auth'] == 'AUTHORISED'){
+        if ($_SESSION['auth'] == '') {
+        
+                echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to make changes here.</h1>';
+        } else {   
         include_once "include/functions.php";
 
 
@@ -288,9 +291,7 @@ textarea {
         // find the gateway
         //tbc - load the data from ini RF.
         
-} else {
-        echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to make changes here.</h1>';
-        }
+}
 ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
