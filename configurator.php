@@ -52,17 +52,7 @@ include "include/settings.php";
 </div></div>
 </div>
 
-<?php include_once "include/top_menu.php"; ?>
 
-<div class="content"><center>
-<div style="margin-top:0px;">
-</div></center>
-</div>
-<?php
-if (MENUBUTTON=="TOP") {
-include_once "include/buttons.php"; 
-}
-?>
 <?php
     echo '<table style="margin-bottom:0px;border:0; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#f1f1f1;"><tr style="border:none;background-color:#f1f1f1;">';
     echo '<td width="200px" valign="top" class="hide" style="height:auto;border:0;background-color:#f1f1f1;">';
@@ -100,10 +90,7 @@ include_once "include/buttons.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
 ?>
-<?php
-if (MENUBUTTON=="BOTTOM") {
-include_once "include/buttons.php"; }
-?>
+
 <!--- Please do not remove copyright info -->
 <center><span title="Dashboard" style="font: 7pt arial, sans-serif;">SvxLink Dashboard ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate; ?>
 	</div>
