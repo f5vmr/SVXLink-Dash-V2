@@ -277,6 +277,26 @@ textarea {
         $inReflectorDefaultLang = $svxconfig['ReflectorLogic']['DEFAULT_LANG'];
 	$inReflectorNodeInfoFile = $svxconfig['ReflectorLogic']['NODE_INFO_FILE'];
         $inConnLogic = $svxconfig['ReflectorLogic']['CONNECT_LOGICS'];
+        $inRxType = $svxconfig['Rx1']['TYPE'];
+        $inRxAudioDev = $svxconfig['Rx1']['RX_AUDIO_DEV'];
+        $inRxAudioChan = $svxconfig['Rx1']['RX_AUDIO_CHANNEL'];
+        $inSqlDet = $svxconfig['Rx1']['SQL_DET'];
+        $inSqlStartDelay = $svxconfig['Rx1']['SQL_START_DELAY'];
+        $inSqlDelay = $svxconfig['Rx1']['SQL_DELAY'];
+        $inSqlHangTime = $svxconfig['Rx1']['SQL_HANG_TIME'];
+        $inSqlGPIOChip = $svxconfig['Rx1']['SQL_GPIO_CHIP'];
+        $inSqlGPIOLine = $svxconfig['Rx1']['SQL_GPIO_LINE'];
+        $inRxHIDDevice = $svxconfig['Rx1']['HID_DEVICE'];
+        $inRxHIDPin = $svxconfig['Rx1']['HID_PIN'];
+        $in1750Mute = $svxconfig['Rx1']['1750_MUTING'];
+        $inDTMFMute = $svxconfig['Rx1']['DTMF_MUTING'];
+        $inRxFreq = $svxconfig['Rx1']['FREQ'];
+        $inMod = $svxconfig['Rx1']['MOD'];
+        $inRx1PeakMeter = $svxconfig['Rx1']['PEAK_METER'];
+
+
+
+
         //$inReflectorTgUri = $svxconfig['ReflectorLogic']['TG_URI'];
 
         if ($system_type=="IS_SIMPLEX"){ 
@@ -320,8 +340,6 @@ textarea {
 	$inMD7 =$svxconfig['Macros']['7'];
 	$inMD8 =$svxconfig['Macros']['8'];
 	$inMD9 =$svxconfig['Macros']['9'];
-
-	$inRx1PeakMeter = $svxconfig['Rx1']['PEAK_METER'];
 
         //}
         //    else { $callsign="NOCALL";}
