@@ -73,6 +73,7 @@ textarea {
 
 
 <?php
+
 if ($_SESSION['auth'] == 'AUTHORISED'){
 include_once "include/functions.php";
 
