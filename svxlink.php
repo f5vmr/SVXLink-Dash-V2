@@ -81,10 +81,14 @@ include_once "include/buttons.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
-
+    
     echo '<td valign="top"  style="height:700px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';
+    if ($_SESSION['auth'] == 'AUTHORISED'){
     echo '<iframe src="/svxlink"  style="width:615px; height:650px"></iframe>';
     echo '</td>';
+    } else {
+    echo '<h1 id="power" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to make changes here.</h1>';
+    }
 ?>
 </tr></table>
 <?php
