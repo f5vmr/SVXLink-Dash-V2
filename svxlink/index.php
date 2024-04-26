@@ -369,7 +369,7 @@ textarea {
 
 <table>
         <tr>
-        <th width = "380px">Global Input</th>
+        <th width = "380px">Global Information</th>
         <th width = "100px">Action</th>
         </tr>
 <tr>
@@ -421,11 +421,11 @@ textarea {
 <!-- Section for Simplex -->
         <table>
         <tr>
-        <th width = "380px">Reflector Input</th>
+        <th width = "380px">Reflector Information</th>
 	<th width = "100px">Action</th>
         </tr>
 <tr>
-<TD>
+<td>
 
 <table style="border-collapse: collapse; border: none;">
         <tr style="border: none;">
@@ -473,7 +473,23 @@ textarea {
         <td style="border: none;"><input type="text" name="inReflectorTgUri" style="width:98%" value="<?php echo $inReflectorTgUri;?>">
         </td></tr>-->
 </table>
+<table>
+        <tr>
+        <th width = "380px">Links Information</th>
+	<th width = "100px">Action</th>
+        </tr>
+        <tr>
+<td>
 
+<table style="border-collapse: collapse; border: none;">
+        <tr style="border: none;">
+                <th width = "30%"></th>
+                <th width = "70%"></th>
+        </tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Connect Logics</td>
+        <td style="border: none;"><input type="text" name="inConnLogic" style="width:98%" value="<?php echo $inConnLogic;?>">
+        </td></tr>
 </td>
 <td> 
 	<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> 
@@ -493,7 +509,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 
 <table>
         <tr>
-        <th width = "380px">Macros Input</th>
+        <th width = "380px">Macros Information</th>
         <th width = "100px">Action</th>
         </tr>
 <tr>
@@ -555,7 +571,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 
 <table>
         <tr>
-        <th width = "380px">Rx1 Input</th>
+        <th width = "380px">Rx1 Information</th>
         <th width = "100px">Action</th>
         </tr>
 <tr>
@@ -576,7 +592,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Audio Channel</td>
-        <td style="border: none;"><input type="number" name="inRxAudioChannel" style="width:98%" value="<?php echo $inRxAudioChannel;?>">
+        <td style="border: none;"><input type="text" name="inRxAudioChannel" style="width:98%" value="<?php echo $inRxAudioChannel;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Sql Detect</td>
@@ -584,15 +600,15 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Sql Start Delay</td>
-        <td style="border: none;"><input type="number" name="inSqlStartDelay" style="width:98%" value="<?php echo $inSqlStartDelay;?>">
+        <td style="border: none;"><input type="text" name="inSqlStartDelay" style="width:98%" value="<?php echo $inSqlStartDelay;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Sql_Delay</td>
-        <td style="border: none;"><input type="number" name="inSqlDelay   " style="width:98%" value="<?php echo $inSqlDelay;?>">
+        <td style="border: none;"><input type="text" name="inSqlDelay   " style="width:98%" value="<?php echo $inSqlDelay;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Sql_Hangtime</td>
-        <td style="border: none;"><input type="number" name="inSqlHangTime" style="width:98%" value="<?php echo $inSqlHangTime;?>">
+        <td style="border: none;"><input type="text" name="inSqlHangTime" style="width:98%" value="<?php echo $inSqlHangTime;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Sql_GPIOD_Chip</td>
