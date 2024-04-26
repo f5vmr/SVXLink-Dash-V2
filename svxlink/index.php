@@ -86,10 +86,11 @@ textarea {
         //divide up the Paragraphs
         $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
         foreach ($logics as $key) {
-          echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
+          //echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
          if ($key == "SimplexLogic") $isSimplex = true;
          if ($key == "RepeaterLogic") $isRepeater = true;
           }
+          
 
         include_once('include/parse_svxconf.php');
         if (isset($_POST['btnSave']))
