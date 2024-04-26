@@ -91,7 +91,7 @@ textarea {
          if ($key == "RepeaterLogic") $isRepeater = true;
           }
 
-        include_once('parse_svxconf.php');
+        include_once('include/parse_svxconf.php');
         if (isset($_POST['btnSave']))
             {
         $retval = null;
