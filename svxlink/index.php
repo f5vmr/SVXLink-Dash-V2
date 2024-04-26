@@ -153,10 +153,20 @@ textarea {
 	$svxconfig['Macros']['7'] = $_POST['inMD7'];
 	$svxconfig['Macros']['8'] = $_POST['inMD8'];
 	$svxconfig['Macros']['9'] = $_POST['inMD9'];
+        $svxconfig['Rx1']['TYPE'] = $_POST['inRxType'];
         $svxconfig['Rx1']['AUDIO_DEV'] = $_POST['inRxAudioDev'];
         $svxconfig['Rx1']['AUDIO_CHANNEL'] = $_POST['inAudioChan'];
         $svxconfig['Rx1']['SQL_DET'] = $_POST['inSql_Det'];
+        $svxconfig['Rx1']['SQL_START_DELAY'] = $_POST['inSqlStartDelay'];
+        $svxconfig['Rx1']['SQL_DELAY'] = $_POST['inSqlDelay'];
+        $svxconfig['Rx1']['SQL_HANG_TIME'] = $_POST['inSqlHangTime'];
+        $svxconfig['Rx1']['SQL_GPIOD_CHIP'] = $_POST['inSqlChip'];
+        $svxconfig['Rx1']['SQL_GPIOD_LINE'] = $_POST['inSqlLine'];
         $svxconfig['Rx1']['GPIO_SQL_PIN'] = $_POST['inGPIOPin'];
+        $svxconfig['Rx1']['HID_DEVICE'] = $_POST['inRxHIDDevice'];
+        $svxconfig['Rx1']['HID_SQL_PIN'] = $_POST['inHIDPin'];
+        $svxconfig['Rx1']['SQL_TAIL_ELIM'] = $_POST['inSqlTail'];
+        $svxconfig['Rx1']['1750_MUTING'] = $_POST['in1750Mute'];
         $svxconfig['Rx1']['DTMF_MUTING'] = $_POST['inDTMFMute'];
         $svxconfig['Rx1']['FQ'] = $_POST['inRxFreq'];
         $svxconfig['Rx1']['MODULATION'] = $POST['inMod'];
@@ -164,8 +174,23 @@ textarea {
         $svxconfig['Tx1']['TYPE'] = $_POST['inTxType'];
         $svxconfig['Tx1']['PTT_TYPE'] = $_POST['inPTTType'];
         $svxconfig['Tx1']['AUDIO_DEV'] = $_POST['inTxAudioDev'];
+        $svxconfig['Tx1']['AUDIO_CHANNEL'] = $_POST['inTxAudioChan'];
         $svxconfig['Tx1']['PTT_PORT'] = $_POST['inPTTPort'];
+        $svxconfig['Tx1']['HID_DEVICE'] = $_POST['inHIDDevice'];
+        $svxconfig['Tx1']['HID_PTT_PIN'] = $_POST['inHIDPin'];
         $svxconfig['Tx1']['PTT_PIN'] = $_POST['inPTTPin'];
+        $svxconfig['Tx1']['PTT_GPIOD_CHIP'] = $_POST['inPTTChip'];
+        $svxconfig['Tx1']['PTT_GPIOD_LINE'] = $_POST['inPTTLine'];
+        $svxconfig['Tx1']['PTT_HANGTIME'] = $_POST['inPTTHangtime'];
+        $svxconfig['Tx1']['TIMEOUT'] = $_POST['inTxTimeout'];
+        $svxconfig['MultiTx']['TRANSMITTERS'] = $_POST['inMultiTx'];
+        $svxconfig['TxStream']['AUDIO_DEV'] = $_POST['inTxStreamAudioDev'];
+        $svxconfig['NetRx']['HOST'] = $_POST['inNetRxHost'];
+        $svxconfig['NetRx']['PORT'] = $_POST['inNetRxPort'];
+        $svxconfig['NetRx']['AUTH_KEY'] = $_POST['inNetRxAuthKey'];
+        $svxconfig['NetTx']['HOST'] = $_POST['inNetTxHost'];
+        $svxconfig['NetTx']['PORT'] = $_POST['inNetTxPort'];
+        $svxconfig['NetTx']['AUTH_KEY'] = $_POST['inNetTxAuthKey'];
         $svxconfig['LocationInfo']['LON_POSITION'] = $_POST['inLon'];
         $svxconfig['LocationInfo']['LAT_POSITION'] = $_POST['inLat'];
         $svxconfig['LocationInfo']['CALLSIGN'] = $_POST['inLocInfoCallsign'];
@@ -317,10 +342,6 @@ textarea {
         <td style="border: none;"><input type="text" name="inGlobalLogics" style="width:98%" value="<?php echo $inGlobalLogics;?>"></td>
         </tr>
         <tr style="border: none;"> 
-        <td style="border: none;">RF Module</td>
-        <td style="border: none;"><input type="text" name="inGlobalRf" style="width:98%" value="<?php echo $inGlobalRf;?>"></td>
-        </tr>
-        <tr style="border: none;"> 
         <td style="border: none;">Config Directory</td>
         <td style="border: none;"><input type="text" name="inGlobalCfgDir" style="width:98%" value="<?php echo $inGlobalCfgDir;?>"></td>
         </tr>
@@ -331,6 +352,10 @@ textarea {
         <tr style="border: none;"> 
         <td style="border: none;">Card Channels</td>
         <td style="border: none;"><input type="text" name="inCardChannels" style="width:98%" value="<?php echo $inCardChannels;?>"></td>
+        </tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Card Sample Rate</td>
+        <td style="border: none;"><input type="text" name="inCardSampleRate" style="width:98%" value="<?php echo $inCardChannels;?>"></td>
         </tr>
         <tr style="border: none;"> 
         <td style="border: none;">Location Info</td>
@@ -373,8 +398,8 @@ textarea {
         <td style="border: none;"><input type="text" name="inCallsign" style="width:98%" value="<?php echo $inCallsign;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Password</td>
-        <td style="border: none;"><input type="password" name="inPassword" style="width:98%" value="<?php echo $inPassword;?>">
+        <td style="border: none;">Authorised Key</td>
+        <td style="border: none;"><input type="password" name="inReflectorAuthKey" style="width:98%" value="<?php echo $inPassword;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Default TG</td>
@@ -385,7 +410,11 @@ textarea {
         <td style="border: none;"><input type="text" name="inMonitorTgs" style="width:98%" value="<?php echo $inMonitorTgs;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Reflector Server</td>
+        <td style="border: none;">TG select Timeout</td>
+        <td style="border: none;"><input type="text" name="inMonitorTgs" style="width:98%" value="<?php echo $inMonitorTgs;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Reflector Host</td>
         <td style="border: none;"><input type="text" name="inReflectorServer" style="width:98%" value="<?php echo $inReflectorServer;?>">
         </td></tr>
         <tr style="border: none;"> 
@@ -396,10 +425,10 @@ textarea {
         <td style="border: none;">Reflector Api</td>
         <td style="border: none;"><input type="text" name="inReflectorApi" style="width:98%" value="<?php echo $inReflectorApi;?>">
         </td></tr>
-        <tr style="border: none;"> 
+  <!--      <tr style="border: none;"> 
         <td style="border: none;">Reflector TgUri</td>
         <td style="border: none;"><input type="text" name="inReflectorTgUri" style="width:98%" value="<?php echo $inReflectorTgUri;?>">
-        </td></tr>
+        </td></tr>-->
 </table>
 
 </td>
@@ -494,6 +523,10 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Audio_Dev</td>
+        <td style="border: none;"><input type="text" name="inMonitorTgs" style="width:98%" value="<?php echo $inMonitorTgs;?>">
+        </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Peak Meter</td>
         <td style="border: none;"><input type="text" name="inRx1PeakMeter" style="width:98%" value="<?php echo $inRx1PeakMeter;?>">

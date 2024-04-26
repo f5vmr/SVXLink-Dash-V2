@@ -10,6 +10,7 @@
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
+        
         <tr style="border: none;"> 
         <td style="border: none;">Default Language</td>
         <td style="border: none;"><input type="text" name="inRepeaterDefaultLang" style="width:98%" value="<?php echo $inRepeaterDefaultLang;?>">
