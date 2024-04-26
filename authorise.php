@@ -89,7 +89,7 @@ include_once "include/functions.php";
     echo '</div>'."\n";
     echo '</td>'."\n";
 
-    echo '<td valign="top"  style="height:400px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';
+    echo '<td valign="top"  style="height:360px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';
     echo '<iframe src="/authorise"  style="width:615px; height:330px"></iframe>';
     echo '</td>';
 ?>
