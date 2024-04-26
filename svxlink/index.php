@@ -165,16 +165,15 @@ textarea {
 	$svxconfig['Macros']['9'] = $_POST['inMD9'];
         $svxconfig['Rx1']['TYPE'] = $_POST['inRxType'];
         $svxconfig['Rx1']['AUDIO_DEV'] = $_POST['inRxAudioDev'];
-        $svxconfig['Rx1']['AUDIO_CHANNEL'] = $_POST['inAudioChan'];
+        $svxconfig['Rx1']['AUDIO_CHANNEL'] = $_POST['inRxAudioChan'];
         $svxconfig['Rx1']['SQL_DET'] = $_POST['inSql_Det'];
         $svxconfig['Rx1']['SQL_START_DELAY'] = $_POST['inSqlStartDelay'];
         $svxconfig['Rx1']['SQL_DELAY'] = $_POST['inSqlDelay'];
         $svxconfig['Rx1']['SQL_HANG_TIME'] = $_POST['inSqlHangTime'];
         $svxconfig['Rx1']['SQL_GPIOD_CHIP'] = $_POST['inSqlChip'];
         $svxconfig['Rx1']['SQL_GPIOD_LINE'] = $_POST['inSqlLine'];
-        $svxconfig['Rx1']['GPIO_SQL_PIN'] = $_POST['inGPIOPin'];
         $svxconfig['Rx1']['HID_DEVICE'] = $_POST['inRxHIDDevice'];
-        $svxconfig['Rx1']['HID_SQL_PIN'] = $_POST['inHIDPin'];
+        $svxconfig['Rx1']['HID_SQL_PIN'] = $_POST['inRxHIDPin'];
         $svxconfig['Rx1']['SQL_TAIL_ELIM'] = $_POST['inSqlTail'];
         $svxconfig['Rx1']['1750_MUTING'] = $_POST['in1750Mute'];
         $svxconfig['Rx1']['DTMF_MUTING'] = $_POST['inDTMFMute'];
@@ -534,8 +533,64 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
                 <th width = "70%"></th>
         </tr>
         <tr style="border: none;"> 
+        <td style="border: none;">Rx_Type</td>
+        <td style="border: none;"><input type="text" name="inRxType" style="width:98%" value="<?php echo $inRxType;?>">
+        </td></tr>
+        <tr style="border: none;"> 
         <td style="border: none;">Audio_Dev</td>
-        <td style="border: none;"><input type="text" name="inMonitorTgs" style="width:98%" value="<?php echo $inMonitorTgs;?>">
+        <td style="border: none;"><input type="text" name="inRxAudioDev" style="width:98%" value="<?php echo $inRxAudioDev;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Audio_Channel</td>
+        <td style="border: none;"><input type="text" name="inRxAudioChannel" style="width:98%" value="<?php echo $inRxAudioChannel;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Sql_Detect</td>
+        <td style="border: none;"><input type="text" name="inSql_Det" style="width:98%" value="<?php echo $inSqlDet;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Sql_Start_Delay</td>
+        <td style="border: none;"><input type="text" name="inSqlStartDelay" style="width:98%" value="<?php echo $inSqlStartDelay;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Sql_Delay</td>
+        <td style="border: none;"><input type="text" name="inSqlDelay   " style="width:98%" value="<?php echo $inSqlDelay;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Sql_Hangtime</td>
+        <td style="border: none;"><input type="text" name="inSqlHangTime" style="width:98%" value="<?php echo $inSqlHangTime;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Sql_GPIOD_Chip</td>
+        <td style="border: none;"><input type="text" name="inSqlChip" style="width:98%" value="<?php echo $inSqlChip;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Sql_GPIOD_Line</td>
+        <td style="border: none;"><input type="text" name="inSqlLine" style="width:98%" value="<?php echo $inSqlLine;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">HID_Device</td>
+        <td style="border: none;"><input type="text" name="inRxHIDDevice" style="width:98%" value="<?php echo $inRxHIDDevice;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">HID_Sql_Pin</td>
+        <td style="border: none;"><input type="text" name="inRxHIDPin" style="width:98%" value="<?php echo $inRxHIDPin;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">1750_Muting</td>
+        <td style="border: none;"><input type="text" name="in1750Mute" style="width:98%" value="<?php echo $in1750Mute;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">DTMF_Muting</td>
+        <td style="border: none;"><input type="text" name="inDTMFMute" style="width:98%" value="<?php echo $inDTMFMute;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Rx Frequency</td>
+        <td style="border: none;"><input type="text" name="inRxFreq" style="width:98%" value="<?php echo $inRxFreq;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Modulation</td>
+        <td style="border: none;"><input type="text" name="inMod" style="width:98%" value="<?php echo $inMod;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Peak Meter</td>
