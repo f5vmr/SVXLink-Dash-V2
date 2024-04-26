@@ -20,7 +20,7 @@ if (session_status() === PHP_SESSION_NONE) {
 	<div id="full-edit-links">
 	<p style="padding-right: 5px; text-align: right; color: #000000;" <a style="color: black;">Full Edit</a> |
 	<a href="/svxlink.php" style="color: crimson;" id="svxlink">SVXLink </a> |
-	<a href="/editor.php?id=echolink" style="color: crimson;" id="echolink">EchoLink</a> |
+	<a href="/echolink.php" style="color: crimson;" id="echolink">EchoLink</a> |
 	<a href="/editor.php?id=metarinfo" style="color: crimson;" id="metarinfo">MetarInfo</a> |
 	<a href="/editor.php?id=nodeInfo" style="color: crimson;" id="nodeInfo">NodeInfo</a> |
 	<a href="/power.php" style="color: green;">Power</a></p>
