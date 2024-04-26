@@ -1,6 +1,7 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+    if ($_SESSION['auth'] == 'AUTHORISED')
+    session_start();} else if ($_SESSION['auth'] == '') {  
 }
 include "include/settings.php";
 
