@@ -1,11 +1,11 @@
 <?php
 // header lines for information
 define("HEADER_CAT","FM-Repeater");
-define("HEADER_QTH","");
-define("HEADER_QRG","");
+define("HEADER_QTH","$qth");
+define("HEADER_QRG","$freq");
 define("HEADER_SYSOP","");
 define("FMNETWORK_EXTRA","");
-define("EL_NODE_NR","");
+define("EL_NODE_NR","$EL_node");
 define("FULLACCESS_OUTSIDE", 0);
 define("ADD_BUTTONS", 1);
 //
@@ -50,4 +50,15 @@ define("NODE_INFO_FILE","");
 define("RF_MODULE","");
 define("PHP_AUTH_USER", "svxlink");
 define("PHP_AUTH_PW", "password");
-
+$svxConfigFile = '/etc/svxlink/svxlink.conf';
+if (fopen($svxConfigFile,'r'))
+   { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
+     $refApi = $svxconfig['ReflectorLogic']['API'];
+     $fmnetwork =$svxconfig['ReflectorLogic']['HOSTS'];
+     $qth = $svxconfig['LocationInfo']['QTH'];
+     $freq = $svxconfig['Rx1']['RX'];
+    $EL_node = $svxconfig['LocationInfo']['LOCATION'];
+    }
+else { $callsign="NOCALL";
+   $fmnetwork="no registered";
+    }
