@@ -86,7 +86,7 @@ textarea {
         //divide up the Paragraphs
         $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
         foreach ($logics as $key) {
-          echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
+          //echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
          if ($key == "SimplexLogic") $isSimplex = true;
          if ($key == "RepeaterLogic") $isRepeater = true;
           }
@@ -101,17 +101,22 @@ textarea {
         $svxconfig['GLOBAL']['RF_MODULE'] = $_POST['inGlobalRf'];
         $svxconfig['GLOBAL']['CFG_DIR'] = $_POST['inGlobalCfgDir'];
         $svxconfig['GLOBAL']['TIME_FORMAT'] = $_POST['inTimeFormat'];
+        $svxconfig['GLOBAL']['CARD_SAMPLE_RATE'] = $_POST['inCardSampleRate'];
         $svxconfig['GLOBAL']['CARD_CHANNELS'] = $_POST['inCardChannels'];
         $svxconfig['GLOBAL']['LOCATION_INFO'] = $_POST['inLocationInfo'];
         $svxconfig['GLOBAL']['LINKS'] = $_POST['inLinks'];
-	$svxconfig['ReflectorLogic']['HOST_PORT'] = $_POST['inReflectorPort'];
+	$svxconfig['ReflectorLogic']['HOSTS'] = $_POST['inReflectorServer'];
+        $svxconfig['ReflectorLogic']['HOST_PORT'] = $_POST['inReflectorPort'];
+        $svxconfig['ReflectorLogic']['FMNET'] = $_POST['inReflectorFmnet'];
 	$svxconfig['ReflectorLogic']['API'] = $_POST['inReflectorApi'];
-        $svxconfig['ReflectorLogic']['HOSTS'] = $_POST['inReflectorServer'];
         $svxconfig['ReflectorLogic']['DEFAULT_TG'] = $_POST['inDefaultTg'];
+        $svxconfig['ReflectorLogic']['TG_SELECT_TIMEOUT'] = $_POST['inTgSelectTimeout'];
         $svxconfig['ReflectorLogic']['MONITOR_TGS'] = $_POST['inMonitorTgs'];
-        $svxconfig['ReflectorLogic']['AUTH_KEY'] = $_POST['inPassword'];
-        $svxconfig['ReflectorLogic']['HOSTS'] = $_POST['inFmNetwork'];
+        $svxconfig['ReflectorLogic']['AUTH_KEY'] = $_POST['inReflectorAuthKey'];
         $svxconfig['ReflectorLogic']['CALLSIGN'] = $_POST['inCallsign'];
+        $svxconfig['ReflectorLogic']['DEFAULT_LANG'] = $_POST['inReflectorDefaultLang'];
+        $svxconfig['ReflectorLogic']['NODE_INFO_FILE'] = $_POST['inReflectorNodeInfoFile'];
+
 	//$svxconfig['ReflectorLogic']['TG_URI'] = $_POST['inReflectorTgUri'];
 
         if ($system_type=="IS_SIMPLEX"){
