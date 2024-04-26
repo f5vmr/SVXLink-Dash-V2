@@ -64,6 +64,7 @@ include_once "include/buttons.php";
 }
 ?>
 <?php
+if ($_SESSION['auth'] == 'AUTHORISED') {
     echo '<table style="margin-bottom:0px;border:0; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#f1f1f1;"><tr style="border:none;background-color:#f1f1f1;">';
     echo '<td width="200px" valign="top" class="hide" style="height:auto;border:0;background-color:#f1f1f1;">';
     echo '<div class="nav" style="margin-bottom:1px;margin-top:1px;">'."\n";
@@ -84,6 +85,10 @@ include_once "include/buttons.php";
     echo '<td valign="top"  style="height:700px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';
     echo '<iframe src="/svxlink"  style="width:615px; height:650px"></iframe>';
     echo '</td>';
+}
+else 
+// end of if ($_SESSION['auth'] == '') {}
+
 ?>
 </tr></table>
 <?php
