@@ -99,31 +99,25 @@ if($_GET['id']=="svxlink") {
     //checkAuth();
     //shell_exec("cd ");
     file_backup("svxlink.conf");
-    $edit_file = file_name("svxlink.conf"); 
+    $edit_file = "svxlink.php"; 
     //"/etc/svxlink/svxlink.conf";
 }
-elseif($_GET['id']=="gpio") {
-    //shell_exec("cd ");
-    file_backup("gpio.conf");
-    $edit_file = file_name("gpio.conf");
-    //$edit_file = "/etc/svxlink/gpio.conf";
-}
+
 elseif($_GET['id']=="echolink"){
     //shell_exec("cd ");
     file_backup("svxlink.d/ModuleEchoLink.conf");
-    $edit_file = file_name("svxlink.d/ModuleEchoLink.conf");
+    $edit_file = "echolink.php";
     //$edit_file = "/etc/svxlink/svxlink.d/ModuleEchoLink.conf";
 }
 elseif($_GET['id']=="metarinfo"){
     //shell_exec("cd ");
     file_backup("svxlink.d/ModuleMetarInfo.conf");
-    $edit_file = file_name("svxlink.d/ModuleMetarInfo.conf");
+    $edit_file = "metarinfo.php";
     //$edit_file = "/etc/svxlink/svxlink.d/ModuleMetarInfo.conf";
 }
 elseif($_GET['id']=="nodeInfo"){
     //$edit_file = "/etc/svxlink/node_info.json";
-    file_backup("node_info.json");
-    $edit_file = file_name("node_info.json");
+    $edit_file="nodeInfo.php";
 }
 
 // check if form has been submitted
@@ -170,7 +164,7 @@ elseif($_GET['id']=="nodeInfo"){
 //  
 //  }
 //
-    echo '<iframe height="100%" id="editIframe" src="/edit?file=' . $edit_file . '"  width="620px" height="495px" title="EDIT" </iframe>';
+    echo '<iframe height="100%" id="editIframe" src="/ . $edit_file . "  width="620px" height="495px" title="EDIT" </iframe>';
 
     echo '</td>';
 ?>
