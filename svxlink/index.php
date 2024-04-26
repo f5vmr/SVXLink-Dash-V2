@@ -567,32 +567,32 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
                 <th width = "70%"></th>
         </tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Rx_Type</td>
+        <td style="border: none;">Rx Type</td>
         <td style="border: none;"><input type="text" name="inRxType" style="width:98%" value="<?php echo $inRxType;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Audio_Dev</td>
+        <td style="border: none;">Audio Dev</td>
         <td style="border: none;"><input type="text" name="inRxAudioDev" style="width:98%" value="<?php echo $inRxAudioDev;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Audio_Channel</td>
-        <td style="border: none;"><input type="text" name="inRxAudioChannel" style="width:98%" value="<?php echo $inRxAudioChannel;?>">
+        <td style="border: none;">Audio Channel</td>
+        <td style="border: none;"><input type="number" name="inRxAudioChannel" style="width:98%" value="<?php echo $inRxAudioChannel;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Sql_Detect</td>
+        <td style="border: none;">Sql Detect</td>
         <td style="border: none;"><input type="text" name="inSql_Det" style="width:98%" value="<?php echo $inSqlDet;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Sql_Start_Delay</td>
-        <td style="border: none;"><input type="text" name="inSqlStartDelay" style="width:98%" value="<?php echo $inSqlStartDelay;?>">
+        <td style="border: none;">Sql Start Delay</td>
+        <td style="border: none;"><input type="number" name="inSqlStartDelay" style="width:98%" value="<?php echo $inSqlStartDelay;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Sql_Delay</td>
-        <td style="border: none;"><input type="text" name="inSqlDelay   " style="width:98%" value="<?php echo $inSqlDelay;?>">
+        <td style="border: none;"><input type="number" name="inSqlDelay   " style="width:98%" value="<?php echo $inSqlDelay;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Sql_Hangtime</td>
-        <td style="border: none;"><input type="text" name="inSqlHangTime" style="width:98%" value="<?php echo $inSqlHangTime;?>">
+        <td style="border: none;"><input type="number" name="inSqlHangTime" style="width:98%" value="<?php echo $inSqlHangTime;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Sql_GPIOD_Chip</td>
