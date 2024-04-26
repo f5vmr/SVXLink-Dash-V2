@@ -164,7 +164,7 @@ elseif($_GET['id']=="nodeInfo"){
 //  
 //  }
 //
-    echo '<iframe height="100%" id="editIframe" src="/.$edit_file"  width="620px" height="495px" title="EDIT" </iframe>';
+echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="495px" title="EDIT"></iframe>';
 
     echo '</td>';
 ?>
