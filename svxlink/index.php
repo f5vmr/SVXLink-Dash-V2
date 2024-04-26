@@ -90,7 +90,7 @@ textarea {
          if ($key == "SimplexLogic") $isSimplex = true;
          if ($key == "RepeaterLogic") $isRepeater = true;
           }
-          
+
 
         include_once('include/parse_svxconf.php');
         if (isset($_POST['btnSave']))
@@ -108,7 +108,7 @@ textarea {
         $svxconfig['GLOBAL']['LINKS'] = $_POST['inLinks'];
         $svxconfig['GLOBAL']['CW_AMP'] = $_POST['inCwAmp'];
         $svxconfig['GLOBAL']['CW_PITCH'] = $_POST['inCwPitch'];
-        $svxconfig['GLOBAL']['CW_CPM'] = $_POST['inCwFrequency'];
+        $svxconfig['GLOBAL']['CW_CPM'] = $_POST['inCwCpm'];
 	$svxconfig['ReflectorLogic']['HOSTS'] = $_POST['inReflectorServer'];
         $svxconfig['ReflectorLogic']['HOST_PORT'] = $_POST['inReflectorPort'];
         $svxconfig['ReflectorLogic']['FMNET'] = $_POST['inReflectorFmnet'];
@@ -120,6 +120,7 @@ textarea {
         $svxconfig['ReflectorLogic']['CALLSIGN'] = $_POST['inCallsign'];
         $svxconfig['ReflectorLogic']['DEFAULT_LANG'] = $_POST['inReflectorDefaultLang'];
         $svxconfig['ReflectorLogic']['NODE_INFO_FILE'] = $_POST['inReflectorNodeInfoFile'];
+        
 
 	//$svxconfig['ReflectorLogic']['TG_URI'] = $_POST['inReflectorTgUri'];
 
@@ -153,7 +154,7 @@ textarea {
         $svxconfig['RepeaterLogic']['FX_GAIN_NORMAL'] = $_POST['inFxGainNormal'];
         $svxconfig['RepeaterLogic']['FX_GAIN_LOW'] = $_POST['inFxGainLow'];
         };
-        $svxconfig['LinkToReflector']['CONNECT_LOGICS'] = $_PORT['inConnLogic'];
+        $svxconfig['LinkToReflector']['CONNECT_LOGICS'] = $_POST['inConnLogic'];
         $svxconfig['Macros']['0'] = $_POST['inMD0'];
         $svxconfig['Macros']['1'] = $_POST['inMD1'];
 	$svxconfig['Macros']['2'] = $_POST['inMD2'];
@@ -257,31 +258,43 @@ textarea {
         $inGlobalRf = $svxconfig['GLOBAL']['RF_MODULE'];
         $inGlobalCfgDir = $svxconfig['GLOBAL']['CFG_DIR'];
         $inTimeFormat = $svxconfig['GLOBAL']['TIME_FORMAT'];
+        $inCardSampleRate = $svxconfig['GLOBAL']['CARD_SAMPLE_RATE'];
         $inCardChannels = $svxconfig['GLOBAL']['CARD_CHANNELS'];
         $inLocationInfo = $svxconfig['GLOBAL']['LOCATION_INFO'];
         $inLinks = $svxconfig['GLOBAL']['LINKS'];
-	$inCallsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
+        $inCwAmp = $svxconfig['GLOBAL']['CW_AMP'];
+        $inCwPitch = $svxconfig['GLOBAL']['CW_PITCH'];
+        $inCwCpm = $svxconfig['GLOBAL']['CW_CPM'];
 	$inReflectorServer = $svxconfig['ReflectorLogic']['HOSTS'];
-	$inReflectorApi = $svxconfig['ReflectorLogic']['API'];
 	$inReflectorPort = $svxconfig['ReflectorLogic']['HOST_PORT'];
+        $inReflectorFmnet = $svxconfig['ReflectorLogic']['FMNET'];
+        $inReflectorApi = $svxconfig['ReflectorLogic']['API'];
 	$inDefaultTg = $svxconfig['ReflectorLogic']['DEFAULT_TG'];
-	$inMonitorTgs = $svxconfig['ReflectorLogic']['MONITOR_TGS'];
-	$inPassword = $svxconfig['ReflectorLogic']['AUTH_KEY'];
-	$inFmNetwork = $svxconfig['ReflectorLogic']['HOSTS'];
-	//$inReflectorTgUri = $svxconfig['ReflectorLogic']['TG_URI'];
+	$inTgSelectTimeout = $svxconfig['ReflectorLogic']['TG_SELECT_TIMEOUT'];
+        $inMonitorTgs = $svxconfig['ReflectorLogic']['MONITOR_TGS'];
+	$inReflectorAuthKey = $svxconfig['ReflectorLogic']['AUTH_KEY'];
+        $inCallsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
+        $inReflectorDefaultLang = $svxconfig['ReflectorLogic']['DEFAULT_LANG'];
+	$inReflectorNodeInfoFile = $svxconfig['ReflectorLogic']['NODE_INFO_FILE'];
+        $inConnLogic = $svxconfig['ReflectorLogic']['CONNECT_LOGICS'];
+        //$inReflectorTgUri = $svxconfig['ReflectorLogic']['TG_URI'];
 
         if ($system_type=="IS_SIMPLEX"){ 
-	$inSimplexCallsign = $svxconfig['SimplexLogic']['CALLSIGN'];
 	$inSimplexDefaultLang = $svxconfig['SimplexLogic']['DEFAULT_LANG'];
-        $inSimplexModules = $svxconfig['SimplexLogic']['MODULES'];
+        $inSimplexCallsign = $svxconfig['SimplexLogic']['CALLSIGN'];
+	$inSimplexModules = $svxconfig['SimplexLogic']['MODULES'];
         $inSimShortInterval = $svxconfig['SimplexLogic']['SHORT_IDENT_INTERVAL'];
         $inSimLongInterval = $svxconfig['SimplexLogic']['LONG_IDENT_INTERVAL'];
         $inRgrDelay = $svxconfig['SimplexLogic']['RGR_SOUND_DELAY'];
         $inRgr = $svxconfig['SimplexLogic']['RGR_SOUND_ALWAYS'];
+        $inFxGainNormal = $svxconfig['SimplexLogic']['FX_GAIN_NORMAL'];
+        $inFxGainLow = $svxconfig['SimplexLogic']['FX_GAIN_LOW'];
+        $inOnLineCmd = $svxconfig['SimplexLogic']['ONLINE_CMD'];
+        $inOnLine = $svxconfig['SimplexLogic']['ONLINE'];
         };
         if ($system_type=="IS_DUPLEX"){
-        $inRepeaterCallsign = $svxconfig['RepeaterLogic']['CALLSIGN'];
         $inRepeaterDefaultLang = $svxconfig['RepeaterLogic']['DEFAULT_LANG'];
+        $inRepeaterCallsign = $svxconfig['RepeaterLogic']['CALLSIGN'];
         $inRepeaterModules = $svxconfig['RepeaterLogic']['MODULES'];
         $inRepShortInterval = $svxconfig['RepeaterLogic']['SHORT_IDENT_INTERVAL'];
         $inRepLongInterval = $svxconfig['RepeaterLogic']['LONG_IDENT_INTERVAL'];
@@ -291,10 +304,12 @@ textarea {
         $inSqlFlank = $svxconfig['RepeaterLogic']['OPEN_SQL_FLANK'];
         $inIdleIntervalTime = $svxconfig['RepeaterLogic']['IDLE_SOUND_INTERVAL'];
         $inOnLineCommand = $svxconfig['RepeaterLogic']['ONLINE_CMD'];
-        $inOnline = $svxconfig['RepeaterLogic']['ONLINE'];
+        $inOnLine = $svxconfig['RepeaterLogic']['ONLINE'];
+        $inFxGainNormal = $svxconfig['RepeaterLogic']['FX_GAIN_NORMAL'];
+        $inFxGainLow = $svxconfig['RepeaterLogic']['FX_GAIN_LOW'];
         
         }
-
+        
 	$inMD0 =$svxconfig['Macros']['0'];
 	$inMD1 =$svxconfig['Macros']['1'];
 	$inMD2 =$svxconfig['Macros']['2'];
