@@ -473,23 +473,8 @@ textarea {
         <td style="border: none;"><input type="text" name="inReflectorTgUri" style="width:98%" value="<?php echo $inReflectorTgUri;?>">
         </td></tr>-->
 </table>
-<table>
-        <tr>
-        <th width = "380px">Links Information</th>
-	<th width = "100px">Action</th>
-        </tr>
-        <tr>
-<td>
 
-<table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
-                <th width = "30%"></th>
-                <th width = "70%"></th>
-        </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Connect Logics</td>
-        <td style="border: none;"><input type="text" name="inConnLogic" style="width:98%" value="<?php echo $inConnLogic;?>">
-        </td></tr>
+
 </td>
 <td> 
 	<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> 
