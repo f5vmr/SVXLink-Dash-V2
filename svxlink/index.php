@@ -77,7 +77,7 @@ textarea {
 
 
 <?php
-if ($_SESSION['auth'] == 'AUTHORISED'){
+
 include_once "include/functions.php";
 
 
@@ -290,8 +290,6 @@ $retval = null;
 $conns = null;
 // find the gateway
 //tbc - load the data from ini RF.
-} else 
-{} 
 
 ?>
 
