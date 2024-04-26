@@ -74,7 +74,7 @@ if (fopen($elConfigFile,'r'))
       };
   $module = str_split($elconfig['ModuleEchoLink']);
   foreach ($module as $key) {
-//if ($logics[0] == "[ModuleEchoLink]") $isEchoLink = true;
+  if ($logics[0] == "[ModuleEchoLink]") $isEchoLink = true;
   }
 
 if (isset($_POST['btnSave'])) {
@@ -126,10 +126,10 @@ if (isset($_POST['btnSave'])) {
 }
 
 
-//if (fopen($svxConfigFile,'r'))
+if (fopen($svxConfigFile,'r'))
 //      {
 
-//        $elconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
+        $elconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
 //};
 
 //$svxConfigFile = '/etc/svxlink/svxlink.conf';
