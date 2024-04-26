@@ -105,6 +105,9 @@ textarea {
         $svxconfig['GLOBAL']['CARD_CHANNELS'] = $_POST['inCardChannels'];
         $svxconfig['GLOBAL']['LOCATION_INFO'] = $_POST['inLocationInfo'];
         $svxconfig['GLOBAL']['LINKS'] = $_POST['inLinks'];
+        $svxconfig['GLOBAL']['CW_AMP'] = $_POST['inCwAmp'];
+        $svxconfig['GLOBAL']['CW_PITCH'] = $_POST['inCwPitch'];
+        $svxconfig['GLOBAL']['CW_CPM'] = $_POST['inCwFrequency'];
 	$svxconfig['ReflectorLogic']['HOSTS'] = $_POST['inReflectorServer'];
         $svxconfig['ReflectorLogic']['HOST_PORT'] = $_POST['inReflectorPort'];
         $svxconfig['ReflectorLogic']['FMNET'] = $_POST['inReflectorFmnet'];
@@ -127,6 +130,10 @@ textarea {
         $svxconfig['SimplexLogic']['LONG_IDENT_INTERVAL'] = $_POST['inSimLongInterval'];
         $svxconfig['SimplexLogic']['RGR_SOUND_DELAY'] = $_POST['inRgrDelay'];
         $svxconfig['SimplexLogic']['RGR_SOUND_ALWAYS'] = $_POST['inRgr'];
+        $svxconfig['SimplexLogic']['FX_GAIN_NORMAL'] = $_POST['inFxGainNormal'];
+        $svxconfig['SimplexLogic']['FX_GAIN_LOW'] = $_POST['inFxGainLow'];
+        $svxconfig['SimplexLogic']['ONLINE_CMD'] = $_POST['inOnLineCmd'];
+        $svxconfig['SimplexLogic']['ONLINE'] = $_POST['inOnLine'];    
         };
         if ($system_type=="IS_DUPLEX") {
         $svxconfig['RepeaterLogic']['DEFAULT_LANG'] = $_POST['inRepeaterDefaultLang'];
@@ -138,9 +145,12 @@ textarea {
         $svxconfig['RepeaterLogic']['OPEN_ON_1750'] = $_POST['in1750'];
         $svxconfig['RepeaterLogic']['OPEN_ON_CTCSS'] = $_POST['inCTCSS'];
         $svxconfig['RepeaterLogic']['OPEN_SQL_FLANK'] = $_POST['inSqlFlank'];
+        $svxconfig['RepeaterLogic']['RGR_SOUND_DELAY'] = $_POST['inRgrDelay'];
         $svxconfig['RepeaterLogic']['IDLE_SOUND_INTERVAL'] = $_POST['inIdleIntervalTime'];
         $svxconfig['RepeaterLogic']['ONLINE_CMD'] = $_POST['inOnLineCommand'];
         $svxconfig['RepeaterLogic']['ONLINE'] = $_POST['inOnline'];
+        $svxconfig['RepeaterLogic']['FX_GAIN_NORMAL'] = $_POST['inFxGainNormal'];
+        $svxconfig['RepeaterLogic']['FX_GAIN_LOW'] = $_POST['inFxGainLow'];
         };
         $svxconfig['LinkToReflector']['CONNECT_LOGICS'] = $_PORT['inConnLogic'];
         $svxconfig['Macros']['0'] = $_POST['inMD0'];
