@@ -284,10 +284,10 @@ textarea {
         $inSqlStartDelay = $svxconfig['Rx1']['SQL_START_DELAY'];
         $inSqlDelay = $svxconfig['Rx1']['SQL_DELAY'];
         $inSqlHangTime = $svxconfig['Rx1']['SQL_HANG_TIME'];
-        $inSqlGPIOChip = $svxconfig['Rx1']['SQL_GPIO_CHIP'];
-        $inSqlGPIOLine = $svxconfig['Rx1']['SQL_GPIO_LINE'];
-        $inRxHIDDevice = $svxconfig['Rx1']['HID_DEVICE'];
-        $inRxHIDPin = $svxconfig['Rx1']['HID_PIN'];
+        $inSqlGpioChip = $svxconfig['Rx1']['SQL_GPIO_CHIP'];
+        $inSqlGpioLine = $svxconfig['Rx1']['SQL_GPIO_LINE'];
+        $inRxHidDevice = $svxconfig['Rx1']['HID_DEVICE'];
+        $inRxHidPin = $svxconfig['Rx1']['HID_PIN'];
         $in1750Mute = $svxconfig['Rx1']['1750_MUTING'];
         $inDTMFMute = $svxconfig['Rx1']['DTMF_MUTING'];
         $inRxFreq = $svxconfig['Rx1']['FREQ'];
@@ -593,36 +593,36 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         <td style="border: none;"><input type="text" name="inRxAudioChannel" style="width:98%" value="<?php echo $inRxAudioChannel;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Sql Detect</td>
+        <td style="border: none;">Squelch Detect</td>
         <td style="border: none;"><input type="text" name="inSql_Det" style="width:98%" value="<?php echo $inSqlDet;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Sql Start Delay</td>
+        <td style="border: none;">Squelch Start Delay</td>
         <td style="border: none;"><input type="text" name="inSqlStartDelay" style="width:98%" value="<?php echo $inSqlStartDelay;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Sql_Delay</td>
+        <td style="border: none;">Squelch Delay</td>
         <td style="border: none;"><input type="text" name="inSqlDelay   " style="width:98%" value="<?php echo $inSqlDelay;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Sql_Hangtime</td>
+        <td style="border: none;">Squelch Hangtime</td>
         <td style="border: none;"><input type="text" name="inSqlHangTime" style="width:98%" value="<?php echo $inSqlHangTime;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Sql_GPIOD_Chip</td>
-        <td style="border: none;"><input type="text" name="inSqlChip" style="width:98%" value="<?php echo $inSqlChip;?>">
+        <td style="border: none;">Squelch GPIO Chip</td>
+        <td style="border: none;"><input type="text" name="inSqlChip" style="width:98%" value="<?php echo $inSqlGpioChip;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Sql_GPIOD_Line</td>
-        <td style="border: none;"><input type="text" name="inSqlLine" style="width:98%" value="<?php echo $inSqlLine;?>">
+        <td style="border: none;">Squelch GPIO Line</td>
+        <td style="border: none;"><input type="text" name="inSqlLine" style="width:98%" value="<?php echo $inSqlGpioLine;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">HID_Device</td>
-        <td style="border: none;"><input type="text" name="inRxHIDDevice" style="width:98%" value="<?php echo $inRxHIDDevice;?>">
+        <td style="border: none;">HID Device</td>
+        <td style="border: none;"><input type="text" name="inRxHidDevice" style="width:98%" value="<?php echo $inRxHidDevice;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">HID_Sql_Pin</td>
-        <td style="border: none;"><input type="text" name="inRxHIDPin" style="width:98%" value="<?php echo $inRxHIDPin;?>">
+        <td style="border: none;">HID Squelch Pin</td>
+        <td style="border: none;"><input type="text" name="inRxHidPin" style="width:98%" value="<?php echo $inRxHidPin;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">1750_Muting</td>
