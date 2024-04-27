@@ -284,8 +284,8 @@ textarea {
         $inSqlStartDelay = $svxconfig['Rx1']['SQL_START_DELAY'];
         $inSqlDelay = $svxconfig['Rx1']['SQL_DELAY'];
         $inSqlHangTime = $svxconfig['Rx1']['SQL_HANG_TIME'];
-        $inSqlChip = $svxconfig['Rx1']['SQL_GPIO_CHIP'];
-        $inSqlLine = $svxconfig['Rx1']['SQL_GPIO_LINE'];
+        $inSqlChip = $svxconfig['Rx1']['SQL_GPIOD_CHIP'];
+        $inSqlLine = $svxconfig['Rx1']['SQL_GPIOD_LINE'];
         $inRxHidDevice = $svxconfig['Rx1']['HID_DEVICE'];
         $inRxHidPin = $svxconfig['Rx1']['HID_PIN'];
         $in1750Mute = $svxconfig['Rx1']['1750_MUTING'];
