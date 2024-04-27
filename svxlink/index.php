@@ -284,8 +284,8 @@ textarea {
         $inSqlStartDelay = $svxconfig['Rx1']['SQL_START_DELAY'];
         $inSqlDelay = $svxconfig['Rx1']['SQL_DELAY'];
         $inSqlHangTime = $svxconfig['Rx1']['SQL_HANG_TIME'];
-        $inSqlGpioChip = $svxconfig['Rx1']['SQL_GPIO_CHIP'];
-        $inSqlGpioLine = $svxconfig['Rx1']['SQL_GPIO_LINE'];
+        $inSqlChip = $svxconfig['Rx1']['SQL_GPIO_CHIP'];
+        $inSqlLine = $svxconfig['Rx1']['SQL_GPIO_LINE'];
         $inRxHidDevice = $svxconfig['Rx1']['HID_DEVICE'];
         $inRxHidPin = $svxconfig['Rx1']['HID_PIN'];
         $in1750Mute = $svxconfig['Rx1']['1750_MUTING'];
@@ -610,11 +610,11 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Squelch GPIO Chip</td>
-        <td style="border: none;"><input type="text" name="inSqlChip" style="width:98%" value="<?php echo $inSqlGpioChip;?>">
+        <td style="border: none;"><input type="text" name="inSqlChip" style="width:98%" value="<?php echo $inSqlChip;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Squelch GPIO Line</td>
-        <td style="border: none;"><input type="text" name="inSqlLine" style="width:98%" value="<?php echo $inSqlGpioLine;?>">
+        <td style="border: none;"><input type="text" name="inSqlLine" style="width:98%" value="<?php echo $inSqlLine;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">HID Device</td>
