@@ -184,15 +184,15 @@ textarea {
 	$svxconfig['Rx1']['PEAK_METER'] = $_POST['inRx1PeakMeter'];
         $svxconfig['Tx1']['TYPE'] = $_POST['inTxType'];
         $svxconfig['Tx1']['AUDIO_DEV'] = $_POST['inTxAudioDev'];
-        $svxconfig['Tx1']['AUDIO_CHANNEL'] = $_POST['inTxAudioChan'];
-        $svxconfig['Tx1']['PTT_TYPE'] = $_POST['inPTTType'];
-        $svxconfig['Tx1']['PTT_PORT'] = $_POST['inPTTPort'];
-        $svxconfig['Tx1']['HID_DEVICE'] = $_POST['inHIDDevice'];
-        $svxconfig['Tx1']['HID_PTT_PIN'] = $_POST['inHIDPin'];
-        $svxconfig['Tx1']['PTT_PIN'] = $_POST['inPTTPin'];
-        $svxconfig['Tx1']['PTT_GPIOD_CHIP'] = $_POST['inPTTChip'];
-        $svxconfig['Tx1']['PTT_GPIOD_LINE'] = $_POST['inPTTLine'];
-        $svxconfig['Tx1']['PTT_HANGTIME'] = $_POST['inPTTHangtime'];
+        $svxconfig['Tx1']['AUDIO_CHANNEL'] = $_POST['inTxAudioChannel'];
+        $svxconfig['Tx1']['PTT_TYPE'] = $_POST['inPttType'];
+        $svxconfig['Tx1']['PTT_PORT'] = $_POST['inPttPort'];
+        $svxconfig['Tx1']['HID_DEVICE'] = $_POST['inTxHidDevice'];
+        $svxconfig['Tx1']['PTT_PIN'] = $_POST['inPttPin'];
+        $svxconfig['Tx1']['HID_PTT_PIN'] = $_POST['inHidPttPin'];
+        $svxconfig['Tx1']['PTT_HANGTIME'] = $_POST['inPttHangtime'];
+        $svxconfig['Tx1']['PTT_GPIOD_CHIP'] = $_POST['inPttGPIOChip'];
+        $svxconfig['Tx1']['PTT_GPIOD_LINE'] = $_POST['inPttGPIOLine'];
         $svxconfig['Tx1']['TIMEOUT'] = $_POST['inTxTimeout'];
         $svxconfig['MultiTx']['TRANSMITTERS'] = $_POST['inMultiTx'];
         $svxconfig['TxStream']['AUDIO_DEV'] = $_POST['inTxStreamAudioDev'];
@@ -299,6 +299,7 @@ textarea {
         $inTxHidDevice = $svxconfig['Tx1']['HID_DEVICE'];
         $inPttType = $svxconfig['Tx1']['PTT_TYPE'];
         $inPttPort = $svxconfig['Tx1']['PTT_PORT'];
+        $inPttPin = $svxconfig['Tx1']['PTT_PIN'];
         $inHidPttPin = $svxconfig['Tx1']['HID_PTT_PIN'];
         $inPttHangTime = $svxconfig['Tx1']['PTT_HANG_TIME'];
         $inPttGPIOChip = $svxconfig['Tx1']['PTT_GPIO_CHIP'];
@@ -683,27 +684,31 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">PTT Type</td>
-        <td style="border: none;"><input type="text" name="inTxPttType" style="width:98%" value="<?php echo $inTxPttType;?>">
+        <td style="border: none;"><input type="text" name="inPttType" style="width:98%" value="<?php echo $inPttType;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">PTT Port</td>
-        <td style="border: none;"><input type="text" name="inTxPttPort" style="width:98%" value="<?php echo $inTxPttPort;?>">
+        <td style="border: none;"><input type="text" name="inPttPort" style="width:98%" value="<?php echo $inPttPort;?>">
         </td></tr>
         <tr style="border: none;"> 
-        <td style="border: none;">HID PTT Port</td>
-        <td style="border: none;"><input type="text" name="inTxHidPttPort" style="width:98%" value="<?php echo $inTxHidPttPort;?>">
+        <td style="border: none;">PTT Pin</td>
+        <td style="border: none;"><input type="text" name="inPttPin" style="width:98%" value="<?php echo $inPttPin;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">HID PTT Pin</td>
+        <td style="border: none;"><input type="text" name="inHidPttPin" style="width:98%" value="<?php echo $inHidPttPin;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">PTT Hangtime</td>
-        <td style="border: none;"><input type="text" name="inTxPttHangtime" style="width:98%" value="<?php echo $inTxPttHangtime;?>">
+        <td style="border: none;"><input type="text" name="inPttHangtime" style="width:98%" value="<?php echo $inPttHangtime;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">PTT GPIOD Chip</td>
-        <td style="border: none;"><input type="text" name="inPttGpiodChip" style="width:98%" value="<?php echo $inPttGpiodChip;?>">
+        <td style="border: none;"><input type="text" name="inPttGpioChip" style="width:98%" value="<?php echo $inPttGpioChip;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">PTT GPIOD Line</td>
-        <td style="border: none;"><input type="text" name="inPttGpiodLine" style="width:98%" value="<?php echo $inPttGpiodLine;?>">
+        <td style="border: none;"><input type="text" name="inPttGpioLine" style="width:98%" value="<?php echo $inPttGpioLine;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Timeout</td>
