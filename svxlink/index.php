@@ -279,7 +279,7 @@ textarea {
         $inConnLogic = $svxconfig['ReflectorLogic']['CONNECT_LOGICS'];
         $inRxType = $svxconfig['Rx1']['TYPE'];
         $inRxAudioDev = $svxconfig['Rx1']['AUDIO_DEV'];
-        $inRxAudioChan = $svxconfig['Rx1']['AUDIO_CHANNEL'];
+        $inRxAudioChannel = $svxconfig['Rx1']['AUDIO_CHANNEL'];
         $inSqlDet = $svxconfig['Rx1']['SQL_DET'];
         $inSqlStartDelay = $svxconfig['Rx1']['SQL_START_DELAY'];
         $inSqlDelay = $svxconfig['Rx1']['SQL_DELAY'];
