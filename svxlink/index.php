@@ -183,9 +183,9 @@ textarea {
         $svxconfig['Rx1']['MODULATION'] = $POST['inMod'];
 	$svxconfig['Rx1']['PEAK_METER'] = $_POST['inRx1PeakMeter'];
         $svxconfig['Tx1']['TYPE'] = $_POST['inTxType'];
-        $svxconfig['Tx1']['PTT_TYPE'] = $_POST['inPTTType'];
         $svxconfig['Tx1']['AUDIO_DEV'] = $_POST['inTxAudioDev'];
         $svxconfig['Tx1']['AUDIO_CHANNEL'] = $_POST['inTxAudioChan'];
+        $svxconfig['Tx1']['PTT_TYPE'] = $_POST['inPTTType'];
         $svxconfig['Tx1']['PTT_PORT'] = $_POST['inPTTPort'];
         $svxconfig['Tx1']['HID_DEVICE'] = $_POST['inHIDDevice'];
         $svxconfig['Tx1']['HID_PTT_PIN'] = $_POST['inHIDPin'];
@@ -293,6 +293,18 @@ textarea {
         $inRxFreq = $svxconfig['Rx1']['FREQ'];
         $inMod = $svxconfig['Rx1']['MOD'];
         $inRx1PeakMeter = $svxconfig['Rx1']['PEAK_METER'];
+        $inTxType = $svxconfig['Tx1']['TYPE'];
+        $inTxAudioDev = $svxconfig['Tx1']['AUDIO_DEV'];
+        $inTxAudioChannel = $svxconfig['Tx1']['AUDIO_CHANNEL'];
+        $inTxHidDevice = $svxconfig['Tx1']['HID_DEVICE'];
+        $inPttType = $svxconfig['Tx1']['PTT_TYPE'];
+        $inPttPort = $svxconfig['Tx1']['PTT_PORT'];
+        $inHidPttPin = $svxconfig['Tx1']['HID_PTT_PIN'];
+        $inPttHangTime = $svxconfig['Tx1']['PTT_HANG_TIME'];
+        $inPttGPIOChip = $svxconfig['Tx1']['PTT_GPIO_CHIP'];
+        $inPttGPIOLine = $svxconfig['Tx1']['PTT_GPIO_LINE'];
+        $inTxTimeout = $svxconfig['Tx1']['TIMEOUT'];
+
 
 
 
@@ -560,7 +572,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         <th width = "100px">Action</th>
         </tr>
 <tr>
-<TD>
+<td>
         
 <table style="border-collapse: collapse; border: none;">
         <tr style="border: none;">
@@ -640,10 +652,35 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 </td>
 </tr>
 </table>
-
-
-
-
+<table>
+        <tr>
+        <th width = "380px">Tx1 Information</th>
+        <th width = "100px">Action</th>
+        </tr>
+<tr>
+<td>
+        
+<table style="border-collapse: collapse; border: none;">
+        <tr style="border: none;">
+                <th width = "30%"></th>
+                <th width = "70%"></th>
+        </tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Tx Type</td>
+        <td style="border: none;"><input type="text" name="inTxType" style="width:98%" value="<?php echo $inTxType;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Audio Dev</td>
+        <td style="border: none;"><input type="text" name="inTxAudioDev" style="width:98%" value="<?php echo $inTxAudioDev;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Audio Channel</td>
+        <td style="border: none;"><input type="text" name="inTxAudioChannel" style="width:98%" value="<?php echo $inTxAudioChannel;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">HID Device</td>
+        <td style="border: none;"><input type="text" name="inTxHidDevice" style="width:98%" value="<?php echo $inTxHidDevice;?>">
+        </td></tr>
 </form>
 
 <p style="margin: 0 auto;"></p>
