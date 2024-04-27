@@ -227,8 +227,8 @@ textarea {
 
 
         // debug
-        //      echo '<pre>';
-        //      print_r($ini);
+              echo '<pre>';
+              print_r($ini);
 
         //end of debug
 
