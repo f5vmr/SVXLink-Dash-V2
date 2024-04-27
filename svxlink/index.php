@@ -681,6 +681,34 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         <td style="border: none;">HID Device</td>
         <td style="border: none;"><input type="text" name="inTxHidDevice" style="width:98%" value="<?php echo $inTxHidDevice;?>">
         </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">PTT Type</td>
+        <td style="border: none;"><input type="text" name="inTxPttType" style="width:98%" value="<?php echo $inTxPttType;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">PTT Port</td>
+        <td style="border: none;"><input type="text" name="inTxPttPort" style="width:98%" value="<?php echo $inTxPttPort;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">HID PTT Port</td>
+        <td style="border: none;"><input type="text" name="inTxHidPttPort" style="width:98%" value="<?php echo $inTxHidPttPort;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">PTT Hangtime</td>
+        <td style="border: none;"><input type="text" name="inTxPttHangtime" style="width:98%" value="<?php echo $inTxPttHangtime;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">PTT GPIOD Chip</td>
+        <td style="border: none;"><input type="text" name="inPttGpiodChip" style="width:98%" value="<?php echo $inPttGpiodChip;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">PTT GPIOD Line</td>
+        <td style="border: none;"><input type="text" name="inPttGpiodLine" style="width:98%" value="<?php echo $inPttGpiodLine;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Timeout</td>
+        <td style="border: none;"><input type="text" name="inTxTimeout" style="width:98%" value="<?php echo $inTxTimeout;?>">
+        </td></tr>
 </form>
 
 <p style="margin: 0 auto;"></p>
