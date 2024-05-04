@@ -431,7 +431,7 @@ textarea {
 
 <table>
         <tr>
-        <th width = "380px">Global Information <?php echo $system_type?></th>
+        <th width = "380px">Global Information </th>
         <th width = "100px">Action</th>
         </tr>
 <tr>
