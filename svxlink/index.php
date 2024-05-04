@@ -773,7 +773,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         <th width = "380px">Location Information</th>
         <th width = "100px">Action</th>
         </tr>
-        tr>
+<tr>
 <td>
         
 <table style="border-collapse: collapse; border: none;">
