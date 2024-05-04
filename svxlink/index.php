@@ -90,7 +90,7 @@ textarea {
          if ($key == "SimplexLogic") $isSimplex = true;
          if ($key == "RepeaterLogic") $isRepeater = true;
           }
-          echo $key;
+        
 
         include_once('include/parse_svxconf.php');
         
@@ -122,7 +122,7 @@ textarea {
         $svxconfig['ReflectorLogic']['CALLSIGN'] = $_POST['inRefCallsign'];
         $svxconfig['ReflectorLogic']['DEFAULT_LANG'] = $_POST['inReflectorDefaultLang'];
         $svxconfig['ReflectorLogic']['NODE_INFO_FILE'] = $_POST['inNodeInfoFile'];
-        };
+        }
 
 	//$svxconfig['ReflectorLogic']['TG_URI'] = $_POST['inReflectorTgUri'];
 
@@ -138,7 +138,7 @@ textarea {
         $svxconfig['SimplexLogic']['FX_GAIN_LOW'] = $_POST['inFxGainLow'];
         $svxconfig['SimplexLogic']['ONLINE_CMD'] = $_POST['inOnLineCmd'];
         $svxconfig['SimplexLogic']['ONLINE'] = $_POST['inOnLine'];    
-        };
+        }
         if ($system_type=="IS_DUPLEX") {
         $svxconfig['RepeaterLogic']['DEFAULT_LANG'] = $_POST['inRepeaterDefaultLang'];
         $svxconfig['RepeaterLogic']['CALLSIGN'] = $_POST['inRepeaterCallsign'];
@@ -155,8 +155,10 @@ textarea {
         $svxconfig['RepeaterLogic']['ONLINE'] = $_POST['inOnline'];
         $svxconfig['RepeaterLogic']['FX_GAIN_NORMAL'] = $_POST['inFxGainNormal'];
         $svxconfig['RepeaterLogic']['FX_GAIN_LOW'] = $_POST['inFxGainLow'];
-        };
+        }
+        if ($key == "ReflectorLogic") {
         $svxconfig['LinkToReflector']['CONNECT_LOGICS'] = $_POST['inConnLogic'];
+        }
         $svxconfig['Macros']['0'] = $_POST['inMD0'];
         $svxconfig['Macros']['1'] = $_POST['inMD1'];
 	$svxconfig['Macros']['2'] = $_POST['inMD2'];
