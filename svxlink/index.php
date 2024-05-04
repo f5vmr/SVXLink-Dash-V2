@@ -84,13 +84,13 @@ textarea {
                 $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
                 };
         //divide up the Paragraphs
-        $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
-        foreach ($logics as $key) {
-          //echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
-         if ($key == "SimplexLogic") $isSimplex = true;
-         if ($key == "RepeaterLogic") $isRepeater = true;
-          }
-          echo $key;
+       // $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
+       // foreach ($logics as $key) {
+       //   //echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
+       //  if ($key == "SimplexLogic") {$isSimplex = true; break; }
+       //  if ($key == "RepeaterLogic") {$isRepeater = true; break;}
+       //   }
+       //   echo $key;
 
         include_once('include/parse_svxconf.php');
         if (isset($_POST['btnSave']))
@@ -111,15 +111,15 @@ textarea {
         $svxconfig['GLOBAL']['CW_CPM'] = $_POST['inCwCpm'];
 	$svxconfig['ReflectorLogic']['HOSTS'] = $_POST['inReflectorServer'];
         $svxconfig['ReflectorLogic']['HOST_PORT'] = $_POST['inReflectorPort'];
-        $svxconfig['ReflectorLogic']['FMNET'] = $_POST['inReflectorFmnet'];
-	$svxconfig['ReflectorLogic']['API'] = $_POST['inReflectorApi'];
+        $svxconfig['ReflectorLogic']['FMNET'] = $_POST['inFmnetwork'];
+	$svxconfig['ReflectorLogic']['API'] = $_POST['inrefApi'];
         $svxconfig['ReflectorLogic']['DEFAULT_TG'] = $_POST['inDefaultTg'];
         $svxconfig['ReflectorLogic']['TG_SELECT_TIMEOUT'] = $_POST['inTgSelectTimeout'];
         $svxconfig['ReflectorLogic']['MONITOR_TGS'] = $_POST['inMonitorTgs'];
         $svxconfig['ReflectorLogic']['AUTH_KEY'] = $_POST['password'];
         $svxconfig['ReflectorLogic']['CALLSIGN'] = $_POST['inCallsign'];
         $svxconfig['ReflectorLogic']['DEFAULT_LANG'] = $_POST['inReflectorDefaultLang'];
-        $svxconfig['ReflectorLogic']['NODE_INFO_FILE'] = $_POST['inReflectorNodeInfoFile'];
+        $svxconfig['ReflectorLogic']['NODE_INFO_FILE'] = $_POST['inNodeInfoFile'];
         
 
 	//$svxconfig['ReflectorLogic']['TG_URI'] = $_POST['inReflectorTgUri'];
@@ -277,15 +277,13 @@ textarea {
         $inCwCpm = $svxconfig['GLOBAL']['CW_CPM'];
 	$inReflectorServer = $svxconfig['ReflectorLogic']['HOSTS'];
 	$inReflectorPort = $svxconfig['ReflectorLogic']['HOST_PORT'];
-        $inReflectorFmnet = $svxconfig['ReflectorLogic']['FMNET'];
-        $inReflectorApi = $svxconfig['ReflectorLogic']['API'];
+        $inrefApi = $svxconfig['ReflectorLogic']['API'];
 	$inDefaultTg = $svxconfig['ReflectorLogic']['DEFAULT_TG'];
 	$inTgSelectTimeout = $svxconfig['ReflectorLogic']['TG_SELECT_TIMEOUT'];
         $inMonitorTgs = $svxconfig['ReflectorLogic']['MONITOR_TGS'];
 	$inPassword = $svxconfig['ReflectorLogic']['AUTH_KEY'];
         $inCallsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
         $inReflectorDefaultLang = $svxconfig['ReflectorLogic']['DEFAULT_LANG'];
-	$inReflectorNodeInfoFile = $svxconfig['ReflectorLogic']['NODE_INFO_FILE'];
         $inConnLogic = $svxconfig['ReflectorLogic']['CONNECT_LOGICS'];
         $inRxType = $svxconfig['Rx1']['TYPE'];
         $inRxAudioDev = $svxconfig['Rx1']['AUDIO_DEV'];
@@ -495,9 +493,21 @@ textarea {
         </tr>
         <tr style="border: none;"> 
         <td style="border: none;">FM Network</td>
-        <td style="border: none;"><input type="text" name="inFmNetwork" style="width:98%" value="<?php echo $inFmNetwork;?>">
+        <td style="border: none;"><input type="text" name="inFmNetwork" style="width:98%" value="<?php echo $infmnetwork;?>">
+        </td></tr>
+        </tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Reflector Host</td>
+        <td style="border: none;"><input type="text" name="inReflectorServer" style="width:98%" value="<?php echo $inReflectorServer;?>">
         </td></tr>
         <tr style="border: none;"> 
+        <td style="border: none;">Reflector Api if used</td>
+        <td style="border: none;"><input type="text" name="inrefApi" style="width:98%" value="<?php echo $inrefApi;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Reflector Port</td>
+        <td style="border: none;"><input type="text" name="inReflectorPort" style="width:98%" value="<?php echo $inReflectorPort;?>">
+        </td></tr><tr style="border: none;"> 
         <td style="border: none;">Callsign</td>
         <td style="border: none;"><input type="text" name="inCallsign" style="width:98%" value="<?php echo $inCallsign;?>">
         </td></tr>
@@ -517,18 +527,7 @@ textarea {
         <td style="border: none;">TG select Timeout</td>
         <td style="border: none;"><input type="text" name="inTgSelectTimeout" style="width:98%" value="<?php echo $inTgSelectTimeout;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Reflector Host</td>
-        <td style="border: none;"><input type="text" name="inReflectorServer" style="width:98%" value="<?php echo $inReflectorServer;?>">
-        </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Reflector Port</td>
-        <td style="border: none;"><input type="text" name="inReflectorPort" style="width:98%" value="<?php echo $inReflectorPort;?>">
-        </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Reflector Api</td>
-        <td style="border: none;"><input type="text" name="inReflectorApi" style="width:98%" value="<?php echo $inReflectorApi;?>">
-        </td></tr>
+        
   <!--      <tr style="border: none;"> 
         <td style="border: none;">Reflector TgUri</td>
         <td style="border: none;"><input type="text" name="inReflectorTgUri" style="width:98%" value="<?php echo $inReflectorTgUri;?>">

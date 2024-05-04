@@ -30,11 +30,11 @@ else {$svxConfigFile = trim(substr(shell_exec("grep CFGFILE /etc/default/svxlink
          // FMNET - Name of FM-Network
          // API - URI for access the status of SVXReflector you are connected
          // TG_URI ??? I don't know...
-         $refApi = $svxconfig['ReflectorLogic']['API'];
-         $fmnetwork =$svxconfig['ReflectorLogic']['HOSTS'];
-         //$tgUri = $svxconfig['ReflectorLogic']['TG_URI'];
-         $nodeInfoFile = $svxconfig['ReflectorLogic']['NODE_INFO_FILE'];
-    $globalRf = $svxconfig['GLOBAL']['RF_MODULE'];
+        // $refApi = $svxconfig['ReflectorLogic']['API'];
+        // $fmnetwork =$svxconfig['ReflectorLogic']['HOSTS'];
+        // //$tgUri = $svxconfig['ReflectorLogic']['TG_URI'];
+        // $nodeInfoFile = $svxconfig['ReflectorLogic']['NODE_INFO_FILE'];
+    
        }
 else { $callsign="NOCALL";
        $fmnetwork="not registered";
