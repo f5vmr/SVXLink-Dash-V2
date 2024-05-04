@@ -558,7 +558,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 
 
 ?>
-<table>
+        <table>
         <tr>
         <th width = "380px">Reflector Links Information</th>
         <th width = "100px">Action</th>
@@ -575,6 +575,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         <td style="border: none;">LinkToReflector</td>
         <td style="border: none;"><input type="text" name="inConnLogic" style="width:98%" value="<?php echo $inConnLogic;?>">
         </td></tr>
+        </tr>
         </table>
 </td>
 <td>
