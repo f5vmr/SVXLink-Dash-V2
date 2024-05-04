@@ -90,7 +90,7 @@ textarea {
          if ($key == "SimplexLogic") $isSimplex = true;
          if ($key == "RepeaterLogic") $isRepeater = true;
           }
-         
+          echo $key;
 
         include_once('include/parse_svxconf.php');
         
@@ -110,8 +110,7 @@ textarea {
         $svxconfig['GLOBAL']['CW_AMP'] = $_POST['inCwAmp'];
         $svxconfig['GLOBAL']['CW_PITCH'] = $_POST['inCwPitch'];
         $svxconfig['GLOBAL']['CW_CPM'] = $_POST['inCwCpm'];
-	if ($key == "ReflectorLogic") $isReflector = true;
-        $svxconfig['ReflectorLogic']['HOSTS'] = $_POST['inReflectorServer'];
+	$svxconfig['ReflectorLogic']['HOSTS'] = $_POST['inReflectorServer'];
         $svxconfig['ReflectorLogic']['HOST_PORT'] = $_POST['inReflectorPort'];
         $svxconfig['ReflectorLogic']['FMNET'] = $_POST['inFmnetwork'];
 	$svxconfig['ReflectorLogic']['API'] = $_POST['inrefApi'];
@@ -122,7 +121,6 @@ textarea {
         $svxconfig['ReflectorLogic']['CALLSIGN'] = $_POST['inRefCallsign'];
         $svxconfig['ReflectorLogic']['DEFAULT_LANG'] = $_POST['inReflectorDefaultLang'];
         $svxconfig['ReflectorLogic']['NODE_INFO_FILE'] = $_POST['inNodeInfoFile'];
-            }
         
 
 	//$svxconfig['ReflectorLogic']['TG_URI'] = $_POST['inReflectorTgUri'];
