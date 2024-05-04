@@ -490,12 +490,12 @@ function file_name($file_name) {
 // should filename include path?
 
 function file_backup($file_name){
-        $command = "sudo cp /etc/svxlink/".$file_name." /etc/svxlink/".$file_name.".".date('d-m-Y_hia');
+        $command = "sudo cp /etc/svxlink/".$file_name." /var/www/html/svxlink/".$file_name.".".date('d-m-Y_hia');
         echo exec($command);
         return;
 }
 function file_replace($file_name){
-        $command = "sudo cp -r /var/www/htmp/php_work/".$file_name." /etc/svxlink/".$file_name;
+        $command = "sudo cp -r /var/www/html/svxlink/".$file_name." /etc/svxlink/".$file_name;
         echo exec($command);
 }
       // Refresh iframe on save

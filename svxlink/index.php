@@ -90,7 +90,7 @@ textarea {
          if ($key == "SimplexLogic") $isSimplex = true;
          if ($key == "RepeaterLogic") $isRepeater = true;
           }
-
+          echo $key;
 
         include_once('include/parse_svxconf.php');
         if (isset($_POST['btnSave']))
