@@ -54,7 +54,7 @@ $svxConfigFile = '/etc/svxlink/svxlink.conf';
 if (fopen($svxConfigFile,'r'))
    { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
      $refApi = $svxconfig['ReflectorLogic']['API'];
-     $fmnetwork =$svxconfig['ReflectorLogic']['HOSTS'];
+     $fmnetwork = $svxconfig['ReflectorLogic']['HOSTS'];
      $qth = $svxconfig['LocationInfo']['QTH'];
      $freq = $svxconfig['Rx1']['RX'];
     $EL_node = $svxconfig['LocationInfo']['LOCATION'];
