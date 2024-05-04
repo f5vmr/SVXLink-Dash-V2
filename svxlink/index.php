@@ -117,7 +117,7 @@ textarea {
         $svxconfig['ReflectorLogic']['TG_SELECT_TIMEOUT'] = $_POST['inTgSelectTimeout'];
         $svxconfig['ReflectorLogic']['MONITOR_TGS'] = $_POST['inMonitorTgs'];
         $svxconfig['ReflectorLogic']['AUTH_KEY'] = $_POST['password'];
-        $svxconfig['ReflectorLogic']['CALLSIGN'] = $_POST['inCallsign'];
+        $svxconfig['ReflectorLogic']['CALLSIGN'] = $_POST['inRefCallsign'];
         $svxconfig['ReflectorLogic']['DEFAULT_LANG'] = $_POST['inReflectorDefaultLang'];
         $svxconfig['ReflectorLogic']['NODE_INFO_FILE'] = $_POST['inNodeInfoFile'];
         
@@ -282,7 +282,7 @@ textarea {
 	$inTgSelectTimeout = $svxconfig['ReflectorLogic']['TG_SELECT_TIMEOUT'];
         $inMonitorTgs = $svxconfig['ReflectorLogic']['MONITOR_TGS'];
 	$inPassword = $svxconfig['ReflectorLogic']['AUTH_KEY'];
-        $inCallsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
+        $inRefCallsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
         $inReflectorDefaultLang = $svxconfig['ReflectorLogic']['DEFAULT_LANG'];
         $inConnLogic = $svxconfig['ReflectorLogic']['CONNECT_LOGICS'];
         $inRxType = $svxconfig['Rx1']['TYPE'];
@@ -509,7 +509,7 @@ textarea {
         <td style="border: none;"><input type="text" name="inReflectorPort" style="width:98%" value="<?php echo $inReflectorPort;?>">
         </td></tr><tr style="border: none;"> 
         <td style="border: none;">Callsign</td>
-        <td style="border: none;"><input type="text" name="inCallsign" style="width:98%" value="<?php echo $inCallsign;?>">
+        <td style="border: none;"><input type="text" name="inRefCallsign" style="width:98%" value="<?php echo $inRefCallsign;?>">
         </td></tr>
         <tr style="border: none;"> 
         <td style="border: none;">Authorised Key</td>
