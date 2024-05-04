@@ -110,6 +110,7 @@ textarea {
         $svxconfig['GLOBAL']['CW_AMP'] = $_POST['inCwAmp'];
         $svxconfig['GLOBAL']['CW_PITCH'] = $_POST['inCwPitch'];
         $svxconfig['GLOBAL']['CW_CPM'] = $_POST['inCwCpm'];
+        if ($key == "ReflectorLogic") {
 	$svxconfig['ReflectorLogic']['HOSTS'] = $_POST['inReflectorServer'];
         $svxconfig['ReflectorLogic']['HOST_PORT'] = $_POST['inReflectorPort'];
         $svxconfig['ReflectorLogic']['FMNET'] = $_POST['inFmnetwork'];
@@ -121,7 +122,7 @@ textarea {
         $svxconfig['ReflectorLogic']['CALLSIGN'] = $_POST['inRefCallsign'];
         $svxconfig['ReflectorLogic']['DEFAULT_LANG'] = $_POST['inReflectorDefaultLang'];
         $svxconfig['ReflectorLogic']['NODE_INFO_FILE'] = $_POST['inNodeInfoFile'];
-        
+        };
 
 	//$svxconfig['ReflectorLogic']['TG_URI'] = $_POST['inReflectorTgUri'];
 
