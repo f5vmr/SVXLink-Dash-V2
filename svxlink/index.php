@@ -572,7 +572,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
                 <th width = "70%"></th>
         </tr>
         <tr style="border: none;"> 
-        <td style="border: none;">Reflector Link</td>
+        <td style="border: none;">LinkToReflector</td>
         <td style="border: none;"><input type="text" name="inConnLogic" style="width:98%" value="<?php echo $inConnLogic;?>">
         </td></tr>
         </table>
