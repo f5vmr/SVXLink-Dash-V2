@@ -762,6 +762,85 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         <td style="border: none;">Timeout</td>
         <td style="border: none;"><input type="text" name="inTxTimeout" style="width:98%" value="<?php echo $inTxTimeout;?>">
         </td></tr>
+</table>
+</td>
+<td>
+        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <BR><Br> & <BR><BR> ReLoad</button>
+</td>
+</tr>
+</table>
+<table>
+        <tr>
+        <th width = "380px">Location Information</th>
+        <th width = "100px">Action</th>
+        </tr>
+        tr>
+<td>
+        
+<table style="border-collapse: collapse; border: none;">
+        <tr style="border: none;">
+                <th width = "30%"></th>
+                <th width = "70%"></th>
+        </tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">APRS Server</td>
+        <td style="border: none;"><input type="text" name="inAprsServerList" style="width:98%" value="<?php echo $inAprsServerList;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">ECHOLINK Server</td>
+        <td style="border: none;"><input type="text" name="inServerStatusList" style="width:98%" value="<?php echo $inServerStatusList;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Longitude - Deg.Hrs.Min</td>
+        <td style="border: none;"><input type="text" name="inLon" style="width:98%" value="<?php echo $inLon;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Latitude - Deg.Hrs.Min</td>
+        <td style="border: none;"><input type="text" name="inLat" style="width:98%" value="<?php echo $inLat;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Call Sign</td>
+        <td style="border: none;"><input type="text" name="inCallsign" style="width:98%" value="<?php echo $inCallsign;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Frequency</td>
+        <td style="border: none;"><input type="text" name="inFrequency" style="width:98%" value="<?php echo $inFrequency;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Power</td>
+        <td style="border: none;"><input type="text" name="inTxPower" style="width:98%" value="<?php echo $inTxPower;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Antenna Gain</td>
+        <td style="border: none;"><input type="text" name="inAntennaGain" style="width:98%" value="<?php echo $inAntennaGain;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Antenna Height</td>
+        <td style="border: none;"><input type="text" name="inAntennaHeight" style="width:98%" value="<?php echo $inAntennaHeight;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Antenna Direction</td>
+        <td style="border: none;"><input type="text" name="inAntennaDir" style="width:98%" value="<?php echo $inAntennaDir;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Path</td>
+        <td style="border: none;"><input type="text" name="inPath" style="width:98%" value="<?php echo $inPath;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Beacon Interval</td>
+        <td style="border: none;"><input type="text" name="inBeaconInterval" style="width:98%" value="<?php echo $inBeaconInterval;?>">
+        </td></tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Comment</td>
+        <td style="border: none;"><input type="text" name="inComment" style="width:98%" value="<?php echo $inComment;?>">
+        </td></tr>
+</table>
+</td>
+<td>
+        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <BR><Br> & <BR><BR> ReLoad</button>
+</td>
+</tr>
+</table>
 </form>
 
 <p style="margin: 0 auto;"></p>
