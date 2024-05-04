@@ -276,6 +276,7 @@ textarea {
         $inCwAmp = $svxconfig['GLOBAL']['CW_AMP'];
         $inCwPitch = $svxconfig['GLOBAL']['CW_PITCH'];
         $inCwCpm = $svxconfig['GLOBAL']['CW_CPM'];
+        $inFmnetwork = $svxconfig['ReflectorLogic']['FMNET'];
 	$inReflectorServer = $svxconfig['ReflectorLogic']['HOSTS'];
 	$inReflectorPort = $svxconfig['ReflectorLogic']['HOST_PORT'];
         $inrefApi = $svxconfig['ReflectorLogic']['API'];
@@ -496,7 +497,7 @@ textarea {
         </tr>
         <tr style="border: none;"> 
         <td style="border: none;">FM Network</td>
-        <td style="border: none;"><input type="text" name="inFmNetwork" style="width:98%" value="<?php echo $infmnetwork;?>">
+        <td style="border: none;"><input type="text" name="inFmNetwork" style="width:98%" value="<?php echo $inFmnetwork;?>">
         </td></tr>
         </tr>
         <tr style="border: none;"> 
