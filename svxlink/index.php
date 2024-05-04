@@ -202,10 +202,20 @@ textarea {
         $svxconfig['NetTx']['HOST'] = $_POST['inNetTxHost'];
         $svxconfig['NetTx']['PORT'] = $_POST['inNetTxPort'];
         $svxconfig['NetTx']['AUTH_KEY'] = $_POST['inNetTxAuthKey'];
+        $svxconfig['LocationInfo']['APRS_SERVER_LIST'] = $_POST['inAprsServerList'];
+        $svxconfig['LocationInfo']['STATUS_SERVER_LIST'] = $_POST['inStatusServerList'];
         $svxconfig['LocationInfo']['LON_POSITION'] = $_POST['inLon'];
         $svxconfig['LocationInfo']['LAT_POSITION'] = $_POST['inLat'];
         $svxconfig['LocationInfo']['CALLSIGN'] = $_POST['inLocInfoCallsign'];
         $svxconfig['LocationInfo']['FREQUENCY'] = $_POST['inLocInfFreq'];
+        $svxconfig['LocationInfo']['TXPOWER'] = $_POST['inTxPower'];
+        $svxconfig['LocationInfo']['ANTENNA_GAIN'] = $_POST['inAntennaGain'];
+        $svxconfig['LocationInfo']['ANTENNA_HEIGHT'] = $_POST['inAntennaHeight'];
+        $svxconfig['LocationInfo']['ANTENNA_DIR'] = $_POST['inAntennaDir'];
+        $svxconfig['LocationInfo']['PATH'] = $_POST['inPath'];
+        $svxconfig['LocationInfo']['BEACON_INTERVAL'] = $_POST['inBeaconInterval'];
+        $svxconfig['LocationInfo']['COMMENT'] = $_POST['inComment'];      
+
 
         $ini = build_ini_string($svxconfig);
 
@@ -306,10 +316,6 @@ textarea {
         $inPttGPIOLine = $svxconfig['Tx1']['PTT_GPIO_LINE'];
         $inTxTimeout = $svxconfig['Tx1']['TIMEOUT'];
 
-
-
-
-
         //$inReflectorTgUri = $svxconfig['ReflectorLogic']['TG_URI'];
 
         if ($system_type=="IS_SIMPLEX"){ 
@@ -354,6 +360,48 @@ textarea {
 	$inMD8 =$svxconfig['Macros']['8'];
 	$inMD9 =$svxconfig['Macros']['9'];
 
+        $inRxType = $svxconfig['Rx1']['TYPE'];
+        $inRxAudioDev = $svxconfig['Rx1']['AUDIO_DEV'];
+        $inRxAudioChannel = $svxconfig['Rx1']['AUDIO_CHANNEL'];
+        $inSqlDet = $svxconfig['Rx1']['SQL_DET'];
+        $inSqlStartDelay = $svxconfig['Rx1']['SQL_START_DELAY'];
+        $inSqlDelay = $svxconfig['Rx1']['SQL_DELAY'];
+        $inSqlHangTime = $svxconfig['Rx1']['SQL_HANG_TIME'];
+        $inSqlChip = $svxconfig['Rx1']['SQL_GPIOD_CHIP'];
+        $inSqlLine = $svxconfig['Rx1']['SQL_GPIOD_LINE'];
+        $inRxHidDevice = $svxconfig['Rx1']['HID_DEVICE'];
+        $inRxHidPin = $svxconfig['Rx1']['HID_PIN'];
+        $in1750Mute = $svxconfig['Rx1']['1750_MUTING'];
+        $inDTMFMute = $svxconfig['Rx1']['DTMF_MUTING'];
+        $inRxFreq = $svxconfig['Rx1']['FREQ'];
+        $inMod = $svxconfig['Rx1']['MOD'];
+        $inRx1PeakMeter = $svxconfig['Rx1']['PEAK_METER'];
+        $inTxType = $svxconfig['Tx1']['TYPE'];
+        $inTxAudioDev = $svxconfig['Tx1']['AUDIO_DEV'];
+        $inTxAudioChannel = $svxconfig['Tx1']['AUDIO_CHANNEL'];
+        $inTxHidDevice = $svxconfig['Tx1']['HID_DEVICE'];
+        $inPttType = $svxconfig['Tx1']['PTT_TYPE'];
+        $inPttPort = $svxconfig['Tx1']['PTT_PORT'];
+        $inPttPin = $svxconfig['Tx1']['PTT_PIN'];
+        $inHidPttPin = $svxconfig['Tx1']['HID_PTT_PIN'];
+        $inPttHangTime = $svxconfig['Tx1']['PTT_HANG_TIME'];
+        $inPttGPIOChip = $svxconfig['Tx1']['PTT_GPIO_CHIP'];
+        $inPttGPIOLine = $svxconfig['Tx1']['PTT_GPIO_LINE'];
+        $inTxTimeout = $svxconfig['Tx1']['TIMEOUT'];
+        $inAprsServerList = $svxconfig['LocationInfo']['APRS_SERVER_LIST'];
+        $inServerStatusList = $svxconfig['LocationInfo']['SERVER_STATUS_LIST'];
+        $inLon = $svxconfig['LocationInfo']['LON_POSTION'];
+        $inLat = $svxconfig['LocationInfo']['LAT_POSITION'];
+        $inCallsign = $svxconfig['LocationInfo']['CALLSIGN'];
+        $inFrequency = $svxconfig['LocationInfo']['FREQUENCY'];
+        $inTxPower = $svxconfig['LocationInfo']['TX_POWER'];
+        $inAntennaGain  = $svxconfig['LocationInfo']['ANTENNA_GAIN'];
+        $inAntennaHeight = $svxconfig['LocationInfo']['ANTENNA_HEIGHT'];
+        $inAntennaDir = $svxconfig['LocationInfo']['ANTENNA_DIR'];
+        $inPath = $svxconfig['LocationInfo']['PATH'];
+        $inBeaconInterval = $svxconfig['LocationInfo']['BEACON_INTERVAL'];
+        $inComment = $svxconfig['LocationInfo']['COMMENT'];
+        
         //}
         //    else { $callsign="NOCALL";}
 

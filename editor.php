@@ -144,26 +144,8 @@ elseif($_GET['id']=="nodeInfo"){
     echo '</div>'."\n";
     echo '</td>'."\n";
     echo '<td valign="top"  style="height:595px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';	
-//Validate User Password
-//if($_SERVER['REQUEST_METHOD'] == 'POST') {
-//
-//    // Check posted credentials
-//    checkAuth();
-//    
-//    // Credentials valid, show content
-//    echo "Authenticated!";
-//  
-//  } else {
-//  
-//    // Show login form
-//    echo '<form method="post">
-//             <input name="username">
-//             <input name="password">
-//             <input type="submit">
-//          </form>';
-//  
-//  }
-//
+
+
 if($_SESSION['auth'] == 'AUTHORISED') {
 echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="495px" title="EDIT"></iframe>';
 

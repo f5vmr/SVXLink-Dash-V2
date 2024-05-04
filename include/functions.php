@@ -490,10 +490,11 @@ function file_name($file_name) {
 // should filename include path?
 
 function file_backup($file_name){
-        $command = "sudo cp /etc/svxlink/".$file_name." /var/www/html/svxlink/".$file_name.".".date('d-m-Y_hia');
+        $command = "sudo cp -f /etc/svxlink/".$file_name." /var/www/html/svxlink/".$file_name.".bak";
         echo exec($command);
         return;
-}
+    }
+    
 function file_replace($file_name){
         $command = "sudo cp -r /var/www/html/svxlink/".$file_name." /etc/svxlink/".$file_name;
         echo exec($command);
@@ -516,17 +517,6 @@ function file_replace($file_name){
 
       }
 
-     //function checkAuth($username, $password) {
-     //  // Check if received values match PHP_AUTH_USER and PHP_AUTH_PW
-     //  if ($username == PHP_AUTH_USER && $password == PHP_AUTH_PW) {
-     //          // Success
-     //          return 'AUTHORISED';            
-     //      
-     //          } else {
-     //          
-     //          return "UNAUTHORISED";
-     //   
-     //  }
-     // }
+   
     
 
