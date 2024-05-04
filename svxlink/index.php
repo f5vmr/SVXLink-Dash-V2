@@ -93,6 +93,7 @@ textarea {
        //   echo $key;
 
         include_once('include/parse_svxconf.php');
+        echo $system_type;
         if (isset($_POST['btnSave']))
             {
         $retval = null;
