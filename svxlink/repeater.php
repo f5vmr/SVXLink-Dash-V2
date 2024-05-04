@@ -40,6 +40,10 @@
         <td style="border: none;"><input type="text" name="in1750" style="width:98%" value="<?php echo $in1750;?>">
         </td></tr>
         <tr style="border: none;"> 
+        <td style="border: none;">Report CTCSS</td>
+        <td style="border: none;"><input type="text" name="inReportCTCSS" style="width:98%" value="<?php echo $CTCSS;?>">
+        </td></tr>
+        <tr style="border: none;"> 
         <td style="border: none;">Open on CTCSS</td>
         <td style="border: none;"><input type="text" name="inCTCSS" style="width:98%" value="<?php echo $inCTCSS;?>">
         </td></tr>

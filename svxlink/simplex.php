@@ -31,6 +31,10 @@
         <td style="border: none;"><input type="text" name="inSimLongInterval" style="width:98%" value="<?php echo $inSimLongInterval;?>">
         </td></tr>
         <tr style="border: none;"> 
+        <td style="border: none;">Report CTCSS</td>
+        <td style="border: none;"><input type="text" name="inReportCTCSS" style="width:98%" value="<?php echo $CTCSS;?>">
+        </td></tr>
+        <tr style="border: none;"> 
         <td style="border: none;">Roger Sound Delay</td>
         <td style="border: none;"><input type="text" name="inRgrDelay" style="width:98%" value="<?php echo $inRgrDelay;?>">
         </td></tr>
