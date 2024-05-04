@@ -93,7 +93,7 @@ textarea {
        //   echo $key;
 
         include_once('include/parse_svxconf.php');
-        echo $system_type;
+        
         if (isset($_POST['btnSave']))
             {
         $retval = null;
@@ -431,7 +431,7 @@ textarea {
 
 <table>
         <tr>
-        <th width = "380px">Global Information</th>
+        <th width = "380px">Global Information $system_type</th>
         <th width = "100px">Action</th>
         </tr>
 <tr>
