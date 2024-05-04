@@ -289,7 +289,7 @@ textarea {
 	$inPassword = $svxconfig['ReflectorLogic']['AUTH_KEY'];
         $inRefCallsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
         $inReflectorDefaultLang = $svxconfig['ReflectorLogic']['DEFAULT_LANG'];
-        $inConnLogic = $svxconfig['ReflectorLogic']['CONNECT_LOGICS'];
+        $inConnLogic = $svxconfig['LinkToReflector']['CONNECT_LOGICS'];
         $inRxType = $svxconfig['Rx1']['TYPE'];
         $inRxAudioDev = $svxconfig['Rx1']['AUDIO_DEV'];
         $inRxAudioChannel = $svxconfig['Rx1']['AUDIO_CHANNEL'];
@@ -558,14 +558,32 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 
 
 ?>
-
+<table>
+        <tr>
+        <th width = "380px">Reflector Links Information</th>
+        <th width = "100px">Action</th>
+        </tr>
+<tr>
+<td>
+        
+<table style="border-collapse: collapse; border: none;">
+        <tr style="border: none;">
+                <th width = "30%"></th>
+                <th width = "70%"></th>
+        </tr>
+        <tr style="border: none;"> 
+        <td style="border: none;">Reflector Link</td>
+        <td style="border: none;"><input type="text" name="inConnLogic" style="width:98%" value="<?php echo $inConnLogic;?>">
+        </td></tr>
+        </table>
+</td>
 <table>
         <tr>
         <th width = "380px">Macros Information</th>
         <th width = "100px">Action</th>
         </tr>
 <tr>
-<TD>
+<td>
         
 <table style="border-collapse: collapse; border: none;">
         <tr style="border: none;">
