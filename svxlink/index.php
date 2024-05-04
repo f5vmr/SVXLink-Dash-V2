@@ -317,6 +317,7 @@ textarea {
         //$inReflectorTgUri = $svxconfig['ReflectorLogic']['TG_URI'];
 
         if ($system_type=="IS_SIMPLEX"){ 
+        include "simplex.php";
 	$inSimplexDefaultLang = $svxconfig['SimplexLogic']['DEFAULT_LANG'];
         $inSimplexCallsign = $svxconfig['SimplexLogic']['CALLSIGN'];
 	$inSimplexModules = $svxconfig['SimplexLogic']['MODULES'];
@@ -330,6 +331,7 @@ textarea {
         $inOnLine = $svxconfig['SimplexLogic']['ONLINE'];
         };
         if ($system_type=="IS_DUPLEX"){
+        include "repeater.php";
         $inRepeaterDefaultLang = $svxconfig['RepeaterLogic']['DEFAULT_LANG'];
         $inRepeaterCallsign = $svxconfig['RepeaterLogic']['CALLSIGN'];
         $inRepeaterModules = $svxconfig['RepeaterLogic']['MODULES'];
