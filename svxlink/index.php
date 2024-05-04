@@ -388,7 +388,7 @@ textarea {
         $inTxTimeout = $svxconfig['Tx1']['TIMEOUT'];
         $inAprsServerList = $svxconfig['LocationInfo']['APRS_SERVER_LIST'];
         $inServerStatusList = $svxconfig['LocationInfo']['SERVER_STATUS_LIST'];
-        $inLon = $svxconfig['LocationInfo']['LON_POSTION'];
+        $inLon = $svxconfig['LocationInfo']['LON_POSITION'];
         $inLat = $svxconfig['LocationInfo']['LAT_POSITION'];
         $inCallsign = $svxconfig['LocationInfo']['CALLSIGN'];
         $inFrequency = $svxconfig['LocationInfo']['FREQUENCY'];
