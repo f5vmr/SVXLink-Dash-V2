@@ -476,7 +476,7 @@ textarea {
         </tr>
         </table>
 
-</TD>
+        </td>
 
 <td>
         <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <BR><Br> & <BR><BR> ReLoad</button>
@@ -576,6 +576,9 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         <td style="border: none;"><input type="text" name="inConnLogic" style="width:98%" value="<?php echo $inConnLogic;?>">
         </td></tr>
         </table>
+</td>
+<td>
+        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <BR><Br> & <BR><BR> ReLoad</button>
 </td>
 <table>
         <tr>
