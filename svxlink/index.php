@@ -93,7 +93,7 @@ textarea {
         
 
         include_once('include/parse_svxconf.php');
-        $system_type = $_SESSION['system_type'];
+       
         
         if (isset($_POST['btnSave']))
             {
@@ -125,8 +125,8 @@ textarea {
         $svxconfig['ReflectorLogic']['NODE_INFO_FILE'] = $_POST['inNodeInfoFile'];
         }
 
-	//$svxconfig['ReflectorLogic']['TG_URI'] = $_POST['inReflectorTgUri'];
-
+        $system_type = $_SESSION['system_type'];
+        
         if ($system_type == "IS_SIMPLEX"){
 	$svxconfig['SimplexLogic']['DEFAULT_LANG'] = $_POST['inSimplexDefaultLang'];
         $svxconfig['SimplexLogic']['CALLSIGN'] = $_POST['inSimplexCallsign'];
