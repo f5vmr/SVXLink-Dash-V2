@@ -29,6 +29,8 @@ foreach ($check_logics as $logic_key) {
     
 }
 $_SESSION['system_type'] = $system_type;
+var_dump($system_type);
+
 // additional variables need to define in svxlink.conf in stanza [ReflectorLogic]: API, FMNET, TG_URI
 // FMNET - Name of FM-Network
 // API - URI for access the status of SVXReflector you are connected
