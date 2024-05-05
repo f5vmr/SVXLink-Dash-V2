@@ -16,6 +16,7 @@ No installation script required, simply cd to /var/www and remove any existing h
 <p>make a new folder called svxlink in the /etc/sudoers.d/ folder. and add the following lines to it</p>
 <p>svxlink ALL=NOPASSWD: /sbin/service</p>
 <p>svxlink ALL=NOPASSWD: /bin/cp</p>
+<p>svxlink ALL=NOPASSWD: /bin/mv</p>
 <p>svxlink ALL=NOPASSWD: /bin/chown</p>
 <p>svxlink ALL=NOPASSWD: /bin/chmod</p>
 <p>svxlink ALL=NOPASSWD: /bin/systemctl</p>
