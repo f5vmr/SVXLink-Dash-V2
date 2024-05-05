@@ -13,7 +13,7 @@ No installation script required, simply cd to /var/www and remove any existing h
  sudo git clone https://github.com/f5vmr/SVXLink-Dash-V2 html</p>
 <p> cd html</p>
 <p>However there are some changes required to both the filing system and the web management as follows:</p>
-<p>sudo visudo and add the following lines to the bottom of the current file.</p>
+<p>make a new folder called svxlink in the /etc/sudoers.d/ folder. and add the following lines to it</p>
 <p>svxlink ALL=NOPASSWD: /sbin/service</p>
 <p>svxlink ALL=NOPASSWD: /bin/cp</p>
 <p>svxlink ALL=NOPASSWD: /bin/chown</p>
