@@ -21,7 +21,8 @@ foreach ($check_logics as $logic_key) {
     
 }
 $_SESSION['system_type'] = $system_type;
-echo $check_logics[0];
-echo $callsign;
-echo $ctcss;
-echo $system_type;
+echo "\n$check_logics[0]";
+
+echo "\n$callsign";
+echo "\n$ctcss";
+echo "\n$system_type";
