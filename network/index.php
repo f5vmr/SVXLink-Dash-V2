@@ -255,7 +255,7 @@ if (isset($_POST['btnDown']))
 <tr>
 <Td>
 	<button name="btnDetails" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Show Details</button>        
-	<BR>
+	<br>
 	<button name="btnPingGw" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Ping GW</button>
  	<br>
 	<button name="btnPingGoogle" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Ping Google</button>
@@ -278,18 +278,18 @@ foreach ($conns as $conn){
 <br><br>	
 	IP: <input type="text" name="myIp" style="width: 150px;" value="<?php echo $myIp;?>">
         /<input type="text" name="cidr" style="width: 50px;" value="<?php echo $cidr;?>">
-<BR>
+<br>
         GW: <input type="text" name="gw" style="width: 120px;" value="<?php echo $gw;?>">
-<BR> 
+<br> 
        DNS: <input type="text" name="dns" style="width: 120px;" value="<?php echo $dns;?>">
 </td>
 <td> 
 	<button name="btnAuto" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Set Auto IP</button>
-	<BR>
+	<br>
 	<button name="btnUp" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">conn UP</button>
-	<BR>
+	<br>
 	<button name="btnDown" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">conn DOWN</button>
-	<BR>
+	<br>
 	<button name="btnStatic" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Set Static IP</$
 
 </td>

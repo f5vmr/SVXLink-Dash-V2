@@ -195,14 +195,14 @@ if (isset($_POST['btnWifiOn']))
         <button name="btnScan" type="submit" class="red" style="height:30px;width:105px;font-size:12px;">Air Scan</button>
  	<br>
 	<button name="btnConnList" type="submit" class="red" style="height:30px; width:105px;font-size:12px;">Conn List</button>
-	<BR>
+	<br>
 	<button name="btnWifiStatus" type="submit" class="red"  style="height:30px; width:105px; font-size:12px;">WiFi Status</button>
 </tD><TD>
 
 SSID (network name): <input type="text" name="ssid" value="<?php echo $ssid;?>">
-<BR>
+<br>
 Password: <input type="password" name="password" value="<?php echo $password;?>">
-<BR>
+<br>
 <button name="btnAdd" type="submit" class="red" style="height:30px;font-size:12px;">Add Network & Connect</button>
 </td>
 <td>

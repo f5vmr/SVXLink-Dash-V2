@@ -479,7 +479,7 @@ textarea {
         </td>
 
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <BR><Br> & <BR><BR> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 
 </tr>
@@ -545,7 +545,7 @@ textarea {
 </td>
 <td> 
 	<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> 
-        <Br> & <BR><BR> ReLoad</button>
+        <br> & <br><br> ReLoad</button>
 </td>
 </tr>
 </table>
@@ -579,7 +579,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
         </table>
 </td>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <BR><Br> & <BR><BR> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 <table>
         <tr>
@@ -636,7 +636,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 </table>
 </td>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <BR><Br> & <BR><BR> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 </tr>
 </table>
@@ -725,7 +725,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 </table>
 </td>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <BR><Br> & <BR><BR> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 </tr>
 </table>
@@ -793,7 +793,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 </table>
 </td>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <BR><Br> & <BR><BR> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 </tr>
 </table>
@@ -865,7 +865,7 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 </table>
 </td>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <BR><Br> & <BR><BR> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 </tr>
 </table>

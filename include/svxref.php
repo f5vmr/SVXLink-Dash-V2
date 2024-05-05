@@ -59,7 +59,7 @@ foreach ($nodes['nodes'] as $key =>$value)
       }
    echo "&nbsp;&nbsp;Monitored TGs:<br><span style='color:yellow;margin-left:10px;margin-right:10px;'>";
    echo "<form method=\"post\">";
-   echo "<BR><center>";
+   echo "<br><center>";
    echo "<table style=\"width:150px\" >";
    echo"<tr height=15px>";
 	echo "<th >TG#</th>";
@@ -80,7 +80,7 @@ foreach ($nodes['nodes'] as $key =>$value)
 	echo "<button type=submit id=jmptoA name=jmptoA class=active_id value=".$item."><i class=\"material-icons\"style=\"font-size:15px;\">cell_tower</i></button>";
 	//echo "]";
 	//echo "</span> ";
-	//echo "<BR>";
+	//echo "<br>";
 	echo "</td></Tr>";
 }
 echo "</table>";

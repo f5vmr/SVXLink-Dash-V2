@@ -122,7 +122,7 @@ if (isset($_POST['btnDetect']))
 	exec($command_top,$screen_top,$retval);
 	
 	//print_r($screen_top); 
-	//print_r("<BR>");
+	//print_r("<br>");
 	$retval = null;
 	
 	$i = 0;
