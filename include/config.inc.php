@@ -39,24 +39,29 @@ define("SVXCONFPATH", "/etc/svxlink/");
 define("SVXCONFIG", "svxlink.conf");
 define("SVXLOGPATH", "/var/log/");
 define("SVXLOGPREFIX","svxlink.log");
-define("CALLSIGN","");
+define("CALLSIGN","$callsign");
 define("LOGICS","");
-define("REPORT_CTCSS","");
-define("DTMF_CTRL_PTY","");
-define("API","");
-define("FMNET","");
-define("TG_URI","");
-define("NODE_INFO_FILE","");
-define("RF_MODULE","");
+define("REPORT_CTCSS","$ctcss");
+define("DTMF_CTRL_PTY","$pty");
+define("API","$refApi");
+define("FMNET","$fmnetwork");
+define("TG_URI","$tg_uri");
+define("NODE_INFO_FILE","/etc/svxlink/node_info.json");
+define("RF_MODULE","null");
 define("PHP_AUTH_USER", "svxlink");
 define("PHP_AUTH_PW", "password");
+define('QTH','$qth');
+define('FREQ','$freq');
+define("LOCATION","null");
+
+
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
 if (fopen($svxConfigFile,'r'))
    { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
      $refApi = $svxconfig['ReflectorLogic']['API'];
      $fmnetwork = $svxconfig['ReflectorLogic']['HOSTS'];
      $qth = $svxconfig['LocationInfo']['QTH'];
-     $freq = $svxconfig['Rx1']['RX'];
+     $freq = $svxconfig['Rx1']['FREQ'];
     $EL_node = $svxconfig['LocationInfo']['LOCATION'];
     }
 else { $callsign="NOCALL";
