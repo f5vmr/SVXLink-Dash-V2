@@ -185,7 +185,7 @@ textarea {
         $svxconfig['Rx1']['SQL_TAIL_ELIM'] = $_POST['inSqlTail'];
         $svxconfig['Rx1']['1750_MUTING'] = $_POST['in1750Mute'];
         $svxconfig['Rx1']['DTMF_MUTING'] = $_POST['inDTMFMute'];
-        $svxconfig['Rx1']['FQ'] = $_POST['inRxFreq'];
+        $svxconfig['Rx1']['FREQ'] = $_POST['inRxFreq'];
         $svxconfig['Rx1']['MODULATION'] = $POST['inMod'];
 	$svxconfig['Rx1']['PEAK_METER'] = $_POST['inRx1PeakMeter'];
         $svxconfig['Tx1']['TYPE'] = $_POST['inTxType'];
