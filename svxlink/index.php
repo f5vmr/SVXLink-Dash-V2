@@ -102,7 +102,7 @@ textarea {
         $screen = null;
               
 	$svxconfig['GLOBAL']['LOGICS'] = $_POST['inGlobalLogics'];
-        $svxconfig['GLOBAL']['RF_MODULE'] = $_POST['inGlobalRf'];
+        //$svxconfig['GLOBAL']['RF_MODULE'] = $_POST['inGlobalRf'];
         $svxconfig['GLOBAL']['CFG_DIR'] = $_POST['inGlobalCfgDir'];
         $svxconfig['GLOBAL']['TIME_FORMAT'] = $_POST['inTimeFormat'];
         $svxconfig['GLOBAL']['CARD_SAMPLE_RATE'] = $_POST['inCardSampleRate'];
