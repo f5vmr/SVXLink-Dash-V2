@@ -94,7 +94,7 @@ textarea {
 
         include_once('include/parse_svxconf.php');
         $system_type = $_SESSION['system_type'];
-        echo $system_type;
+        echo  $system_type;
         if (isset($_POST['btnSave']))
             {
         $retval = null;
@@ -127,7 +127,7 @@ textarea {
 
 	//$svxconfig['ReflectorLogic']['TG_URI'] = $_POST['inReflectorTgUri'];
 
-        if ($system_type=="IS_SIMPLEX"){
+        if ($system_type == "IS_SIMPLEX"){
 	$svxconfig['SimplexLogic']['DEFAULT_LANG'] = $_POST['inSimplexDefaultLang'];
         $svxconfig['SimplexLogic']['CALLSIGN'] = $_POST['inSimplexCallsign'];
         $svxconfig['SimplexLogic']['MODULES'] = $_POST['inSimplexModules'];
@@ -140,7 +140,7 @@ textarea {
         $svxconfig['SimplexLogic']['ONLINE_CMD'] = $_POST['inOnLineCmd'];
         $svxconfig['SimplexLogic']['ONLINE'] = $_POST['inOnLine'];    
         }
-        if ($system_type=="IS_DUPLEX") {
+        if ($system_type == "IS_DUPLEX") {
         $svxconfig['RepeaterLogic']['DEFAULT_LANG'] = $_POST['inRepeaterDefaultLang'];
         $svxconfig['RepeaterLogic']['CALLSIGN'] = $_POST['inRepeaterCallsign'];
         $svxconfig['RepeaterLogic']['MODULES'] = $_POST['inRepeaterModules'];
