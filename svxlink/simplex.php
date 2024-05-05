@@ -1,6 +1,6 @@
 <table>
         <tr>
-        <th width = "380px">Simplex Input</th>
+        <th width = "380px">Simplex Logic</th>
         <th width = "100px">Action</th>
         </tr>
 <tr>

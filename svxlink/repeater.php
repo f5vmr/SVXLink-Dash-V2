@@ -1,6 +1,6 @@
 <table>
         <tr>
-        <th width = "380px">Repeater Input</th>
+        <th width = "380px">Repeater Logic</th>
         <th width = "100px">Action</th>
         </tr>
 <tr>

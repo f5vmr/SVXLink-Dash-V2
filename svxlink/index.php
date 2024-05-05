@@ -94,7 +94,7 @@ textarea {
 
         include_once('include/parse_svxconf.php');
         $system_type = $_SESSION['system_type'];
-        var_dump($system_type);
+        
         if (isset($_POST['btnSave']))
             {
         $retval = null;
