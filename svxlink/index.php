@@ -75,7 +75,7 @@ textarea {
 <?php
 
           
-        include_once "include/functions.php";
+        include_once "../include/functions.php";
 
 
         $svxConfigFile = '/etc/svxlink/svxlink.conf';
@@ -92,7 +92,7 @@ textarea {
           }
         
 
-        include_once('include/parse_svxconf.php');
+        include_once('../include/parse_svxconf.php');
         
         $system_type = $_SESSION['system_type'];
         if (isset($_POST['btnSave']))
