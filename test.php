@@ -26,3 +26,4 @@ echo "\n$check_logics[0]";
 echo "\n$callsign";
 echo "\n$ctcss";
 echo "\n$system_type";
+echo "\n$_SESSION[system_type]";
