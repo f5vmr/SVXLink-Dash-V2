@@ -271,7 +271,7 @@ textarea {
         //	$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
         
         $inGlobalLogics = $svxconfig['GLOBAL']['LOGICS'];
-        $inGlobalRf = $svxconfig['GLOBAL']['RF_MODULE'];
+        //$inGlobalRf = $svxconfig['GLOBAL']['RF_MODULE'];
         $inGlobalCfgDir = $svxconfig['GLOBAL']['CFG_DIR'];
         $inTimeFormat = $svxconfig['GLOBAL']['TIME_FORMAT'];
         $inCardSampleRate = $svxconfig['GLOBAL']['CARD_SAMPLE_RATE'];

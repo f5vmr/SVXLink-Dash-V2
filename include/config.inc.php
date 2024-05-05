@@ -53,7 +53,20 @@ define("PHP_AUTH_PW", "password");
 define('QTH','$qth');
 define('FREQ','$freq');
 define("LOCATION","null");
-
+define("CW_AMP","inCwAmp");
+define("CW_PITCH","inCwPitch");
+define("CW_CPM","inCwCpm");
+define("LINKS","null");
+define("AUTH_KEY","password");
+define("FMNETWORK","inFmnetwork");
+define("DEFAULT_LANG","inReflectorDefaultLang");
+define("RGR_DELAY","inRgrDelay");
+define("IDLE_INTERVAL_TIME","inIdleIntervalTime");
+define("FX_GAIN_NORMAL","inFxGainNormal");
+define("FX_GAIN_LOW","inFxGainLow");
+define("AUDIO_CHANNEL","inRxAudioChannel");
+define("SQL_DELAY","inSqlDelay");
+define("HID_DEVICE","inRxHidDevice");
 
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
 if (fopen($svxConfigFile,'r'))

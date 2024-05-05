@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include "include/settings.php";
+include "../include/settings.php";
 ?>
 <!DOCTYPE html >
 <html >
@@ -79,7 +79,7 @@ include_once "../include/buttons.php";
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="statusInfo" style="margin-bottom:30px;">'."\n";
-    include "include/status.php";
+    include "../include/status.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
@@ -103,7 +103,7 @@ include_once "../include/buttons.php";
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<center><div id="LastHeard" style="margin-bottom:30px;">'."\n";
-    include "include/lh.php";
+    include "../include/lh.php";
     echo '</div></center>'."\n";
     echo "<br />\n";
     if (URLSVXRAPI!="") {
@@ -124,7 +124,7 @@ include_once "../include/buttons.php";
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="sysInfo">'."\n";
-    include "include/system.php";
+    include "../include/system.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
 ?>
