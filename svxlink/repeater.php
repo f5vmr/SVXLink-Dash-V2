@@ -1,3 +1,23 @@
+<?php
+
+        
+        $inRepeaterDefaultLang = $svxconfig['RepeaterLogic']['DEFAULT_LANG'];
+        $inRepeaterCallsign = $svxconfig['RepeaterLogic']['CALLSIGN'];
+        $inRepeaterModules = $svxconfig['RepeaterLogic']['MODULES'];
+        $inRepShortInterval = $svxconfig['RepeaterLogic']['SHORT_IDENT_INTERVAL'];
+        $inRepLongInterval = $svxconfig['RepeaterLogic']['LONG_IDENT_INTERVAL'];
+        $inIdleTime = $svxconfig['RepeaterLogic']['IDLE_TIMEOUT'];
+        $in1750 = $svxconfig['RepeaterLogic']['OPEN_ON_1750'];
+        $inCTCSS = $svxconfig['RepeaterLogic']['OPEN_ON_CTCSS'];
+        $inSqlFlank = $svxconfig['RepeaterLogic']['OPEN_SQL_FLANK'];
+        $inIdleIntervalTime = $svxconfig['RepeaterLogic']['IDLE_SOUND_INTERVAL'];
+        $inOnLineCommand = $svxconfig['RepeaterLogic']['ONLINE_CMD'];
+        $inOnLine = $svxconfig['RepeaterLogic']['ONLINE'];
+        $inFxGainNormal = $svxconfig['RepeaterLogic']['FX_GAIN_NORMAL'];
+        $inFxGainLow = $svxconfig['RepeaterLogic']['FX_GAIN_LOW'];
+        
+        
+        ?>
 <table>
         <tr>
         <th width = "380px">Repeater Logic</th>

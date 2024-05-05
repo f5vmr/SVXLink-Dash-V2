@@ -1,3 +1,18 @@
+<?php
+
+	$inSimplexDefaultLang = $svxconfig['SimplexLogic']['DEFAULT_LANG'];
+        $inSimplexCallsign = $svxconfig['SimplexLogic']['CALLSIGN'];
+	$inSimplexModules = $svxconfig['SimplexLogic']['MODULES'];
+        $inSimShortInterval = $svxconfig['SimplexLogic']['SHORT_IDENT_INTERVAL'];
+        $inSimLongInterval = $svxconfig['SimplexLogic']['LONG_IDENT_INTERVAL'];
+        $inRgrDelay = $svxconfig['SimplexLogic']['RGR_SOUND_DELAY'];
+        $inRgr = $svxconfig['SimplexLogic']['RGR_SOUND_ALWAYS'];
+        $inFxGainNormal = $svxconfig['SimplexLogic']['FX_GAIN_NORMAL'];
+        $inFxGainLow = $svxconfig['SimplexLogic']['FX_GAIN_LOW'];
+        $inOnLineCmd = $svxconfig['SimplexLogic']['ONLINE_CMD'];
+        $inOnLine = $svxconfig['SimplexLogic']['ONLINE'];
+        };
+        ?>
 <table>
         <tr>
         <th width = "380px">Simplex Logic</th>

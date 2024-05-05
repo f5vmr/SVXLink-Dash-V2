@@ -522,40 +522,13 @@ textarea {
 </table>
 
 
-<?php
-if ($system_type=="IS_SIMPLEX"){ 
-        include "simplex.php";
-	$inSimplexDefaultLang = $svxconfig['SimplexLogic']['DEFAULT_LANG'];
-        $inSimplexCallsign = $svxconfig['SimplexLogic']['CALLSIGN'];
-	$inSimplexModules = $svxconfig['SimplexLogic']['MODULES'];
-        $inSimShortInterval = $svxconfig['SimplexLogic']['SHORT_IDENT_INTERVAL'];
-        $inSimLongInterval = $svxconfig['SimplexLogic']['LONG_IDENT_INTERVAL'];
-        $inRgrDelay = $svxconfig['SimplexLogic']['RGR_SOUND_DELAY'];
-        $inRgr = $svxconfig['SimplexLogic']['RGR_SOUND_ALWAYS'];
-        $inFxGainNormal = $svxconfig['SimplexLogic']['FX_GAIN_NORMAL'];
-        $inFxGainLow = $svxconfig['SimplexLogic']['FX_GAIN_LOW'];
-        $inOnLineCmd = $svxconfig['SimplexLogic']['ONLINE_CMD'];
-        $inOnLine = $svxconfig['SimplexLogic']['ONLINE'];
-        };
-        if ($system_type=="IS_DUPLEX"){
-        include "repeater.php";
-        $inRepeaterDefaultLang = $svxconfig['RepeaterLogic']['DEFAULT_LANG'];
-        $inRepeaterCallsign = $svxconfig['RepeaterLogic']['CALLSIGN'];
-        $inRepeaterModules = $svxconfig['RepeaterLogic']['MODULES'];
-        $inRepShortInterval = $svxconfig['RepeaterLogic']['SHORT_IDENT_INTERVAL'];
-        $inRepLongInterval = $svxconfig['RepeaterLogic']['LONG_IDENT_INTERVAL'];
-        $inIdleTime = $svxconfig['RepeaterLogic']['IDLE_TIMEOUT'];
-        $in1750 = $svxconfig['RepeaterLogic']['OPEN_ON_1750'];
-        $inCTCSS = $svxconfig['RepeaterLogic']['OPEN_ON_CTCSS'];
-        $inSqlFlank = $svxconfig['RepeaterLogic']['OPEN_SQL_FLANK'];
-        $inIdleIntervalTime = $svxconfig['RepeaterLogic']['IDLE_SOUND_INTERVAL'];
-        $inOnLineCommand = $svxconfig['RepeaterLogic']['ONLINE_CMD'];
-        $inOnLine = $svxconfig['RepeaterLogic']['ONLINE'];
-        $inFxGainNormal = $svxconfig['RepeaterLogic']['FX_GAIN_NORMAL'];
-        $inFxGainLow = $svxconfig['RepeaterLogic']['FX_GAIN_LOW'];
-        
-        }
-        ?>
+<?php 
+if ($system_type=="IS_SIMPLEX"){ include "simplex.php" ;};
+if ($system_type=="IS_DUPLEX") { include "repeater.php";};
+
+
+
+?>
         <table>
         <tr>
         <th width = "380px">Reflector Links Information</th>
