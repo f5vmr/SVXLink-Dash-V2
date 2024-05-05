@@ -36,6 +36,7 @@ No installation script required, simply cd to /var/www and remove any existing h
 <p>It may be elsewhere in your system.</p>
 <p>You may edit it in situ or copy it to /etc/systemd/system/</p>
 <p>Locate 'PrivateTmp=true' and change this to 'PrivateTmp=false' and save the file.</p>
+<p>Next cd /var/www and sudo chown -R svxlink:svxlink html </p>
 <p>sudo systemctl daemon-reload && sudo systemctl restart apache2 to restart the webserver.</p>
 <p>For a RepeaterLogic enabled setup,while we are in the terminal, sudo nano /etc/svxlink/svxlink.conf and locate in [RepeaterLogic] the line DTMF_CTRL_PTY, and edit the file information to read /tmp/dtmf_svx and save the file and sudo systemctl restart svxlink .</p>
 
