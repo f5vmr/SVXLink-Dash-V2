@@ -11,7 +11,7 @@
         $inFxGainLow = $svxconfig['SimplexLogic']['FX_GAIN_LOW'];
         $inOnLineCmd = $svxconfig['SimplexLogic']['ONLINE_CMD'];
         $inOnLine = $svxconfig['SimplexLogic']['ONLINE'];
-        };
+        
         ?>
 <table>
         <tr>
