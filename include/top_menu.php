@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
 	<a href="/tg.php" style="color: #0000ff;">Talk Groups</a> | 
 	<a href="/dtmf.php" style="color: #0000ff;">Dtmf</a> | 
 	<a href="/audio.php" style="color: #0000ff;">Audio</a> | 
-	<a href="/wifi.php" style="color: #0000ff;">Wifi</a> | 
+	<!<a href="/wifi.php" style="color: #0000ff;">Wifi</a> | 
 	<a href="/network.php" style="color: #0000ff;">Network</a> |
 	<a href="/nodeInfo.php" style="color: #0000ff;">Node Info</a> |-->
 	<a href="/log.php" style="color: #0000ff;">Log</a> |
