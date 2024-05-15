@@ -71,12 +71,12 @@ foreach(glob('*.wav') as $filename) {
 $filelist[] = $filename;
 }
 $filelist = array_reverse($filelist);
-//foreach($filelist as $value) {
+foreach($filelist as $value) {
 echo '<p style="margin-bottom:10px;margin-top:10px;"><a href='.$filelist[0].'><span style="font-size:14px;color:blue;font-weight:bold">'.$filelist[0].'</span>&nbsp&nbsp&nbsp&nbsp;<img src=/images/download.png></a></p>';
 echo '<div id="player"><audio id="my-audio" preload="none" crossorigin="anonymous" controls="controls"><source src="'.$filelist[0].'?[';
 echo time(); 
 echo ']" type="audio/wav"></audio></div>';
-// }
+}
 ?>
   </center>
   <script>
