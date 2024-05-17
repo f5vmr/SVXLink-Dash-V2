@@ -97,7 +97,7 @@ echo ']" type="audio/wav"></audio></div>';
 <?php
     if (isset($_POST['recAudio']))
     {
-         exec('record.sh');
+         exec('/var/www/html/audio/record.sh');
          header("Refresh:0; url=index.php");
     }
 ?>
