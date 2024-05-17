@@ -6,7 +6,7 @@
 
 #
 # This is the namespace in which all functions below will exist. The name
-# must match the corresponding section "[SimplexLogic]" in the configuration
+# must match the corresponding section "[SimplexLogicTS]" in the configuration
 # file. The name may be changed but it must be changed in both places.
 #
 namespace eval SimplexLogicTS {
