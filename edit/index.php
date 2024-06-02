@@ -193,7 +193,6 @@ if(isset($_POST['save'])) {
 //$content = file_get_contents($file);
 //displayEditor($content);
 
-} else {echo '<h1 id="edit_info" style="color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to edit this file</h1>';
 }
 ?>
 </fieldset>
