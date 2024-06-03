@@ -66,11 +66,22 @@ textarea {
 
 <?php
 include_once "include/functions.php";
+$svxConfigFile = '/etc/svxlink/svxlink.conf';
+        if (fopen($svxConfigFile,'r'))
+              {
+                $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
+                };
+                $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
+                foreach ($logics as $key) {
+                  //echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
+                 if ($key == "SimplexLogic") $isSimplex = true;
+                 if ($key == "RepeaterLogic") $isRepeater = true;
+                  }
 
 $miConfigFile = '/etc/svxlink/svxlink.d/ModuleMetarInfo.conf';
 if (fopen($miConfigFile,'r'))
       {
-          $miconfig = parse_ini_file($miConfigFile,true,INI_SCANNER_RAW);
+          $miconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
       };
   $module = str_split($miconfig['ModuleMetarInfo']);
   foreach ($module as $key) {
