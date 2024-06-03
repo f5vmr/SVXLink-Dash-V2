@@ -93,8 +93,6 @@ include_once "include/buttons.php";
 ?>
 <?php
 
-
-
 if($_GET['id']=="svxlink") {
     //checkAuth();
     //shell_exec("cd ");
