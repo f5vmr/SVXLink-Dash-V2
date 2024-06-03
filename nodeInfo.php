@@ -69,7 +69,9 @@ include_once "include/buttons.php";
 }
 ?>
 <?php
-
+if($_GET)['id']=="log"  {
+    $edit_file = "/var/log/svxlink.log";
+}
 if($_GET['id']=="svxlink") {
     //shell_exec("cd ");
     $edit_file = "/etc/svxlink/svxlink.conf";
