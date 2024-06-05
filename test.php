@@ -49,27 +49,7 @@ $nodeInfoFile = '/etc/svxlink/node_info.json';
 //	print_r($nodeInfo);
 //};
 
-if (fopen($nodeInfoFile, 'r')) {
-    $filedata = file_get_contents($nodeInfoFile);
-    $nodeInfo = json_decode($filedata, true);
 
-    build_ini_string(array($nodeInfo));
-
-    $output = '';
-    foreach ($nodeInfo as $key => $value) {
-        if ($key === 'qth') {
-            $output .= "qth:" . PHP_EOL;
-            foreach ($value as $qthIndex => $qthData) {
-                $output .= "    " . ($qthIndex + 1) . ":" . PHP_EOL;
-                $output .= printArray($qthData, '        ');
-            }
-        } else {
-            $output .= $key . ": " . printValue($value) . PHP_EOL;
-        }
-    }
-
-    echo $output;
-}
 
 if (fopen($nodeInfoFile, 'r')) {
     $filedata = file_get_contents($nodeInfoFile);
@@ -78,7 +58,7 @@ if (fopen($nodeInfoFile, 'r')) {
     build_ini_string(array($nodeInfo));
 
     echo '<pre>';
-    print_r($nodeInfo);
+    echo var_export($nodeInfo, true);
     echo '</pre>';
 }
       
