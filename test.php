@@ -54,15 +54,23 @@ if (fopen($nodeInfoFile, 'r')) {
     $nodeInfo = json_decode($filedata, true);
 
     build_ini_string(array($nodeInfo));
-    foreach ($nodeInfo as $key => $value) {
+
+    $output = '';
+    $output .= printArray($nodeInfo);
+
+    echo $output;
+}
+
+function printArray($array, $indent = '') {
+    $output = '';
+    foreach ($array as $key => $value) {
         if (is_array($value)) {
-            echo $key . ":" . PHP_EOL;
-            foreach ($value as $subKey => $subValue) {
-                echo "    $subKey: $subValue" . PHP_EOL;
-            }
+            $output .= $indent . $key . ":" . PHP_EOL;
+            $output .= printArray($value, $indent . '    ');
         } else {
-            echo "$key: $value\n";
+            $output .= $indent . $key . ": " . $value . PHP_EOL;
         }
     }
-}  
+    return $output;
+} 
       
