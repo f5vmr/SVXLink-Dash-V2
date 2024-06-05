@@ -71,24 +71,14 @@ if (fopen($nodeInfoFile, 'r')) {
     echo $output;
 }
 
-function printValue($value) {
-    if (is_array($value)) {
-        return printArray($value);
-    } else {
-        return $value;
-    }
-}
+if (fopen($nodeInfoFile, 'r')) {
+    $filedata = file_get_contents($nodeInfoFile);
+    $nodeInfo = json_decode($filedata, true);
 
-function printArray($array, $indent = '') {
-    $output = '';
-    foreach ($array as $key => $value) {
-        if (is_array($value)) {
-            $output .= $indent . $key . ":" . PHP_EOL;
-            $output .= printArray($value, $indent . '    ');
-        } else {
-            $output .= $indent . $key . ": " . $value . PHP_EOL;
-        }
-    }
-    return $output;
+    build_ini_string(array($nodeInfo));
+
+    echo '<pre>';
+    print_r($nodeInfo);
+    echo '</pre>';
 }
       
