@@ -160,8 +160,7 @@ if (isset($_POST['btnSave']))
 		exec('sudo mv /var/www/html/nodeInfo/node_info.json /etc/svxlink/node_info.json', $screen, $retval);
         	//Service SVXlink restart
        		exec('sudo systemctl restart svxlink 2>&1',$screen,$retval);
-            exec('sudo chown -R root:svxlink /etc/svxlink/');
-           };
+            };
 
 //  	$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
 //        $inCallsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
