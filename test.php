@@ -40,14 +40,29 @@ function build_ini_string(array $a) {
 exec('sudo cp /etc/svxlink/node_info.json /etc/svxlink/node_info.bak');
 $nodeInfoFile = '/etc/svxlink/node_info.json';  
 
-if (fopen($nodeInfoFile,'r'))
-{
-	$filedata = file_get_contents($nodeInfoFile);
-	$nodeInfo = json_decode($filedata,true);
+//if (fopen($nodeInfoFile,'r'))
+//{
+//	$filedata = file_get_contents($nodeInfoFile);
+//	$nodeInfo = json_decode($filedata,true);
+//
+//	build_ini_string(array($nodeInfo));
+//	print_r($nodeInfo);
+//};
 
-	build_ini_string(array($nodeInfo));
-	print_r($nodeInfo);
-};
+if (fopen($nodeInfoFile, 'r')) {
+    $filedata = file_get_contents($nodeInfoFile);
+    $nodeInfo = json_decode($filedata, true);
 
-      
+    build_ini_string(array($nodeInfo));
+    foreach ($nodeInfo as $key => $value) {
+        if (is_array($value)) {
+            echo $key . ":" . PHP_EOL;
+            foreach ($value as $subKey => $subValue) {
+                echo "    $subKey: $subValue" . PHP_EOL;
+            }
+        } else {
+            echo "$key: $value" . PHP_EOL;
+        }
+    }
+}  
       
