@@ -115,11 +115,7 @@ function build_ini_string(array $a) {
 }
 
 
-$password = "www-data";
-$command = "echo '$password' | sudo -S chmod -R 777 /etc/svxlink/";
-exec($command);
-exec('sudo chown -R root:svxlink /etc/svxlink/');
-exec('sudo chown -R root:svxlink /var/www/html');
+
 exec('sudo cp /etc/svxlink/node_info.json /etc/svxlink/node_info.bak');
 $nodeInfoFile = '/etc/svxlink/node_info.json';  
 
@@ -129,7 +125,7 @@ if (fopen($nodeInfoFile,'r'))
 	$nodeInfo = json_decode($filedata,true);
 
 	build_ini_string(array($nodeInfo));
-	//print_r($nodeInfo);
+	print_r($nodeInfo);
 };
 
 

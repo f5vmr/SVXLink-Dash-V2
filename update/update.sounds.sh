@@ -24,7 +24,7 @@ mv /opt/src/sounds/usr/share/svxlink/sounds /usr/share/svxlink/sounds
 #rm -R html
 #mv hs_dashboard_pi-main html
 chown root:svxlink -R /usr/share/svxlink
-chmod 755 /usr/share/svxlink
+chmod -R 755 /usr/share/svxlink
 
 
 
