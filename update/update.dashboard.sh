@@ -27,7 +27,7 @@ cp /var/www/html/update/screen.log /opt/screen.log
 rm -R /var/www/html
 mv /opt/src/html /var/www/html
 cp /opt/screen.log /var/www/html/update/screen.log
-chown svxlink -R /var/www/html
+chown root:svxlink -R /var/www/html
 
 echo "--- Dashboard Pi version update & cleanup ---"
 echo $tagname > /opt/version.dashboard 

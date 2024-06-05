@@ -19,7 +19,7 @@ cp -R /usr/share/svxlink/events.d/local    /usr/share/svxlink/events.d/local.$(d
 echo "--- events - local - migration ---"
 rm -R /usr/share/svxlink/events.d/local
 mv /opt/src/config/usr/share/svxlink/events.d/local /usr/share/svxlink/events.d/local
-chown svxlink -R /usr/share/svxlink
+chown root:svxlink -R /usr/share/svxlink
 
 echo "--- config version update & cleanup ---"
 echo $tagname > /opt/version.config 

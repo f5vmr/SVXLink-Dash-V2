@@ -118,8 +118,8 @@ function build_ini_string(array $a) {
 $password = "www-data";
 $command = "echo '$password' | sudo -S chmod -R 777 /etc/svxlink/";
 exec($command);
-exec('sudo chown -R www-data:www-data /etc/svxlink/');
-exec('sudo chown -R www-data:www:data /var/www/html');
+exec('sudo chown -R root:svxlink /etc/svxlink/');
+exec('sudo chown -R root:svxlink /var/www/html');
 exec('sudo cp /etc/svxlink/node_info.json /etc/svxlink/node_info.bak');
 $nodeInfoFile = '/etc/svxlink/node_info.json';  
 
@@ -165,7 +165,7 @@ if (isset($_POST['btnSave']))
 		exec('sudo mv /var/www/html/nodeInfo/node_info.json /etc/svxlink/node_info.json', $screen, $retval);
         	//Service SVXlink restart
        		exec('sudo systemctl restart svxlink 2>&1',$screen,$retval);
-            exec('sudo chown -R www-data:root /etc/svxlink/');
+            exec('sudo chown -R root:svxlink /etc/svxlink/');
            };
 
 //  	$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
