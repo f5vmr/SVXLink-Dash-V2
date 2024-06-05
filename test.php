@@ -55,24 +55,22 @@ if (fopen($nodeInfoFile, 'r')) {
 
     build_ini_string(array($nodeInfo));
 
-    $output = '';
-    foreach ($nodeInfo as $key => $value) {
-        $output .= printValue($key, $value);
-    }
+    $output = printArray($nodeInfo);
 
     echo $output;
 }
 
-function printValue($key, $value, $indent = '') {
+function printArray($array, $indent = '') {
     $output = '';
-    if (is_array($value)) {
-        $output .= $indent . $key . ":" . PHP_EOL;
-        foreach ($value as $subKey => $subValue) {
-            $output .= printValue($subKey, $subValue, $indent . '    ');
+    foreach ($array as $key => $value) {
+        $output .= $indent . $key . ": ";
+        if (is_array($value)) {
+            $output .= PHP_EOL;
+            $output .= printArray($value, $indent . '    ');
+        } else {
+            $output .= $value . PHP_EOL;
         }
-    } else {
-        $output .= $indent . $key . ": " . $value . PHP_EOL;
     }
     return $output;
-} 
+}
       
