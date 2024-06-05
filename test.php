@@ -61,7 +61,7 @@ if (fopen($nodeInfoFile, 'r')) {
                 echo "    $subKey: $subValue" . PHP_EOL;
             }
         } else {
-            echo "$key: $value" . PHP_EOL;
+            echo "$key: $value\n";
         }
     }
 }  
