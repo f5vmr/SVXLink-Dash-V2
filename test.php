@@ -55,20 +55,38 @@ if (fopen($nodeInfoFile, 'r')) {
 
     build_ini_string(array($nodeInfo));
 
-    $output = printArray($nodeInfo);
+    $output = '';
+    foreach ($nodeInfo as $key => $value) {
+        if ($key === 'qth') {
+            $output .= "qth:" . PHP_EOL;
+            foreach ($value as $qthIndex => $qthData) {
+                $output .= "    " . ($qthIndex + 1) . ":" . PHP_EOL;
+                $output .= printArray($qthData, '        ');
+            }
+        } else {
+            $output .= $key . ": " . printValue($value) . PHP_EOL;
+        }
+    }
 
     echo $output;
+}
+
+function printValue($value) {
+    if (is_array($value)) {
+        return printArray($value);
+    } else {
+        return $value;
+    }
 }
 
 function printArray($array, $indent = '') {
     $output = '';
     foreach ($array as $key => $value) {
-        $output .= $indent . $key . ": ";
         if (is_array($value)) {
-            $output .= PHP_EOL;
+            $output .= $indent . $key . ":" . PHP_EOL;
             $output .= printArray($value, $indent . '    ');
         } else {
-            $output .= $value . PHP_EOL;
+            $output .= $indent . $key . ": " . $value . PHP_EOL;
         }
     }
     return $output;
