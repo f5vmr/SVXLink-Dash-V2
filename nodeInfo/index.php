@@ -118,14 +118,14 @@ $nodeInfoFile = '/etc/svxlink/node_info.json';
 
 exec('sudo cp ' . escapeshellarg($nodeInfoFile) . ' /etc/svxlink/node_info.bak');
 
- if (fopen($nodeInfoFile,'r'))
-{
-	$filedata = file_get_contents($nodeInfoFile);
-	$nodeInfo = json_decode($filedata,true);
-
-	build_ini_string(array($nodeInfo));
-	print_r($nodeInfo);
-};
+// if (fopen($nodeInfoFile,'r'))
+//{
+//	$filedata = file_get_contents($nodeInfoFile);
+//	$nodeInfo = json_decode($filedata,true);
+//
+//	build_ini_string(array($nodeInfo));
+//	print_r($nodeInfo);
+//};
 
 
 
@@ -155,7 +155,7 @@ if (isset($_POST['btnSave']))
 
 	///file manipulation section
 		//archive the current config
-		exec('sudo cp /etc/svxlink/node_info.json /etc/svxlink/node_info.json.' .date("YmdThis") ,$screen,$retval);
+		exec('sudo ' . escapeshellarg($nodeInfoFile) . ' /etc/svxlink/node_info.json.' .date("YmdThis") ,$screen,$retval);
 		//move generated file to current config
 		exec('sudo mv /var/www/html/nodeInfo/node_info.json /etc/svxlink/node_info.json', $screen, $retval);
         	//Service SVXlink restart
