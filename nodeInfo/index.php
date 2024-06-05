@@ -114,12 +114,11 @@ function build_ini_string(array $a) {
     return $sectionless.$out;
 }
 
+$nodeInfoFile = '/etc/svxlink/node_info.json';
 
+exec('sudo cp ' . escapeshellarg($nodeInfoFile) . ' /etc/svxlink/node_info.bak');
 
-exec('sudo cp /etc/svxlink/node_info.json /etc/svxlink/node_info.bak');
-$nodeInfoFile = '/etc/svxlink/node_info.json';  
-
-if (fopen($nodeInfoFile,'r'))
+ if (fopen($nodeInfoFile,'r'))
 {
 	$filedata = file_get_contents($nodeInfoFile);
 	$nodeInfo = json_decode($filedata,true);
