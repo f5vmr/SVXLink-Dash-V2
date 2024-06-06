@@ -2,6 +2,8 @@
 //Access to the Webserver for editing the config files
 define("PHP_AUTH_USER", "svxlink");
 define("PHP_AUTH_PW", "password");
+define("$progname","svxlink");
+define("$svxConfigFile","/etc/svxlink/svxlink.conf");
 // header lines for information
 //define("HEADER_CAT","FM-Repeater");
 //define("HEADER_QTH","$qth");

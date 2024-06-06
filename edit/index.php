@@ -162,7 +162,7 @@ include_once "../include/config.php";
 
 
 echo '<h1 id="edit_info" style = "color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Editing ' . $_GET['file'] . '</h1>';
-include_once "../include/config.php";
+
 // Get filename from query parameter
 $file = $_GET['file']; 
 
