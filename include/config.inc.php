@@ -3,28 +3,28 @@
 define("PHP_AUTH_USER", "svxlink");
 define("PHP_AUTH_PW", "password");
 // header lines for information
-define("HEADER_CAT","FM-Repeater");
-define("HEADER_QTH","$qth");
-define("HEADER_QRG","$freq");
-define("HEADER_SYSOP","");
-define("FMNETWORK_EXTRA","");
-define("EL_NODE_NR","$EL_node");
-define("FULLACCESS_OUTSIDE", 0);
-define("ADD_BUTTONS", 1);
-//Variables for the webpages
-define("$qth","qth");
-define("$freq","freq");
-define("$EL_node","EL_node");
-define("$callsign","callsign");
-define("$ctcss","ctcss.hz");
-define("$pty","pty");
-define("$refApi","refApi");
-define("fmnetwork","fmnetwork");
-define("$tg_uri","tg_uri");
-define("$API","API");
-define("$QTH","QTH");
-define("$FREQ","FREQ");
-define("$LOCATION","LOCATION");
+//define("HEADER_CAT","FM-Repeater");
+//define("HEADER_QTH","$qth");
+//define("HEADER_QRG","$freq");
+//define("HEADER_SYSOP","");
+//define("FMNETWORK_EXTRA","");
+//define("EL_NODE_NR","$EL_node");
+//define("FULLACCESS_OUTSIDE", 0);
+//define("ADD_BUTTONS", 1);
+////Variables for the webpages
+//define("$qth","qth");
+//define("$freq","freq");
+//define("$EL_node","EL_node");
+//define("$callsign","callsign");
+//define("$ctcss","ctcss.hz");
+//define("$pty","pty");
+//define("$refApi","refApi");
+//define("fmnetwork","fmnetwork");
+//define("$tg_uri","tg_uri");
+//define("$API","API");
+//define("$QTH","QTH");
+//define("$FREQ","FREQ");
+//define("$LOCATION","LOCATION");
 
 
 
