@@ -490,7 +490,7 @@ function file_name($file_name) {
 // should filename include path?
 
 function file_backup($file_name){
-        $backup_filename = $file_name . date("YmdHis");
+        $backup_filename = $file_name . "." . date("YmdHis");
         $command = "sudo cp -f /etc/svxlink/". $file_name . " /var/www/html/backups/" . $backup_filename;
         echo exec($command);
         return;
