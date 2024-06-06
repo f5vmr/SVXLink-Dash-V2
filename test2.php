@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
         </tr>
 <tr>
-<tdt>
+<td>
         <table style="border-collapse: collapse; border: none;">
         <tr style="border: none;">
                 <th width = "30%"></th>
