@@ -56,12 +56,12 @@ textarea {
 
 </style>
 </head>
-<body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
+<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <center>
-<fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
+<fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<h1 id="echolink" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">ModuleMetarInfo Configurator</h1>
+<h1 id="echolink" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">ModuleMetarInfo Configurator</h1>
 
 
 <?php
@@ -188,41 +188,41 @@ $conns = null;
         </tr>
 <tr>
 <td>
-        <table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+        <table style = "border-collapse: collapse; border: none;">
+        <tr style = "border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Muting Logic Linking \(advised\)</td>
-        <td style="border: none;"><input type="text" name="inMiMuteLogicLinking" style="width:98%" value="<?php echo $inMiMuteLogicLinking;?>"></td>
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Muting Logic Linking \(advised\)</td>
+        <td style = "border: none;"><input type="text" name="inMiMuteLogicLinking" style = "width:98%" value="<?php echo $inMiMuteLogicLinking;?>"></td>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Metar Server</td>
-        <td style="border: none;"><input type="text" name="inMiServer" style="width:98%" value="<?php echo $inMiServer;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Metar Server</td>
+        <td style = "border: none;"><input type="text" name="inMiServer" style = "width:98%" value="<?php echo $inMiServer;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Link Text</td>
-        <td style="border: none;"><input type="text" name="inMiLink" style="width:98%" value="<?php echo $inMiLink;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Link Text</td>
+        <td style = "border: none;"><input type="text" name="inMiLink" style = "width:98%" value="<?php echo $inMiLink;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Long Messages</td>
-        <td style="border: none;"><input type="text" name="inMiLongMessages" style="width:98%" value="<?php echo $inMiLongMessages;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Long Messages</td>
+        <td style = "border: none;"><input type="text" name="inMiLongMessages" style = "width:98%" value="<?php echo $inMiLongMessages;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Default Airport</td>
-        <td style="border: none;"><input type="text" name="inMiStartDefault" style="width:98%" value="<?php echo $inMiStartDefault;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Default Airport</td>
+        <td style = "border: none;"><input type="text" name="inMiStartDefault" style = "width:98%" value="<?php echo $inMiStartDefault;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Other Airports comma separated</td>
-        <td style="border: none;"><input type="text" name="inMiAirports" style="width:98%" value="<?php echo $inmiAirports;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Other Airports comma separated</td>
+        <td style = "border: none;"><input type="text" name="inMiAirports" style = "width:98%" value="<?php echo $inmiAirports;?>">
         </td></tr>
         </table>
 
 
 </TD>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 
 </tr>
@@ -233,8 +233,8 @@ $conns = null;
 
 </form>
 
-<p style="margin: 0 auto;"></p>
-<p style="margin-bottom:-2px;"></p>
+<p style = "margin: 0 auto;"></p>
+<p style = "margin-bottom:-2px;"></p>
 
 </body>
 </html>

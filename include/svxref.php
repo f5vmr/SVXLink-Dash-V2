@@ -27,15 +27,15 @@ if(array_key_exists('Name', $nodes)) {
 ?>
 <!--
 
-<span style="font-weight: bold;font-size:14px;">SVXReflector Nodes</span>
+<span style = "font-weight: bold;font-size:14px;">SVXReflector Nodes</span>
 
 <br>
 
 -->
-<fieldset style="width:550px;border:rgb(255, 156, 42) 2px groove; box-shadow: 5px 5px 20px rgb(255, 236, 214); background-color:#f1f1f1;margin-left:0px;margin-right:0px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
+<fieldset style = "width:550px;border:rgb(255, 156, 42) 2px groove; box-shadow: 5px 5px 20px rgb(255, 236, 214); background-color:#f1f1f1;margin-left:0px;margin-right:0px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<p id="rcornerh" style="margin-bottom:35px;"><span style="font-weight: 580;font-size:18px;">Connected Nodes to: </span><span style="font-weight: 580;font-size:16px;color:red;"><?php echo FMNETWORK; ?></span><br>
+<p id="rcornerh" style = "margin-bottom:35px;"><span style = "font-weight: 580;font-size:18px;">Connected Nodes to: </span><span style = "font-weight: 580;font-size:16px;color:red;"><?php echo FMNETWORK; ?></span><br>
 <?php
 $count=0;
 foreach ($nodes['nodes'] as $key =>$value)
@@ -46,7 +46,7 @@ echo $count;
 echo "</span></p>";
 ?>
 </center>
-<div style="text-align:left;font:9pt arial,sans-serif;margin-left:25px; margin-right:25px;margin-top:15px;margin-bottom:30px;line-height:1.6;white-space:normal;">
+<div style = "text-align:left;font:9pt arial,sans-serif;margin-left:25px; margin-right:25px;margin-top:15px;margin-bottom:30px;line-height:1.6;white-space:normal;">
 <center>
 <?php
 foreach ($nodes['nodes'] as $key =>$value)

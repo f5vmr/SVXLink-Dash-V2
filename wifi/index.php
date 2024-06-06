@@ -56,10 +56,10 @@ textarea {
 
 </style>
 </head>
-<body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
-<fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
-<h1 id="web-audio-peak-meters" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">WiFi Configurator</h1>
+<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
+<fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
+<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">WiFi Configurator</h1>
 
 
 <?php 
@@ -169,7 +169,7 @@ if (isset($_POST['btnWifiOn']))
 
 ?>
  <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-<DIV style="height:150px">
+<DIV style = "height:150px">
 <table>
 	<tr>
 	<th>Screen</th> 
@@ -192,33 +192,33 @@ if (isset($_POST['btnWifiOn']))
         </tr>
 <tr>
 <td>
-        <button name="btnScan" type="submit" class="red" style="height:30px;width:105px;font-size:12px;">Air Scan</button>
+        <button name="btnScan" type="submit" class="red" style = "height:30px;width:105px;font-size:12px;">Air Scan</button>
  	<br>
-	<button name="btnConnList" type="submit" class="red" style="height:30px; width:105px;font-size:12px;">Conn List</button>
+	<button name="btnConnList" type="submit" class="red" style = "height:30px; width:105px;font-size:12px;">Conn List</button>
 	<br>
-	<button name="btnWifiStatus" type="submit" class="red"  style="height:30px; width:105px; font-size:12px;">WiFi Status</button>
+	<button name="btnWifiStatus" type="submit" class="red"  style = "height:30px; width:105px; font-size:12px;">WiFi Status</button>
 </tD><td>
 
 SSID (network name): <input type="text" name="ssid" value="<?php echo $ssid;?>">
 <br>
 Password: <input type="password" name="password" value="<?php echo $password;?>">
 <br>
-<button name="btnAdd" type="submit" class="red" style="height:30px;font-size:12px;">Add Network & Connect</button>
+<button name="btnAdd" type="submit" class="red" style = "height:30px;font-size:12px;">Add Network & Connect</button>
 </td>
 <td>
-        <button name="btnSwitch" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Switch to SSID</button>
+        <button name="btnSwitch" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Switch to SSID</button>
         <br>
-        <button name="btnDelete" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Delete SSID</button>
+        <button name="btnDelete" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Delete SSID</button>
 	<br>
-	<button name="btnWifiOn" type="submit" class="red"  style="height:30px; width:105px; font-size:12px;">WiFi On</button>
+	<button name="btnWifiOn" type="submit" class="red"  style = "height:30px; width:105px; font-size:12px;">WiFi On</button>
 </td>
 </tr>
 </table>
 
 </form>
 
-<p style="margin: 0 auto;"></p>
-<p style="margin-bottom:-2px;"></p>
+<p style = "margin: 0 auto;"></p>
+<p style = "margin-bottom:-2px;"></p>
 
 </body>
 </html>

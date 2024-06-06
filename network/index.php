@@ -61,13 +61,13 @@ textarea {
 
 </style>
 </head>
-<body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
+<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <script src="web-audio-peak-meter.js"></script>
 <center>
-<fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
+<fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<h1 id="web-audio-peak-meters" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Network Configurator</h1>
+<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Network Configurator</h1>
 
 
 <?php 
@@ -231,7 +231,7 @@ if (isset($_POST['btnDown']))
 ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-<DIV style="height:150px">
+<DIV style = "height:150px">
 <table>
 	<tr>
 	<th>Screen</th> 
@@ -254,13 +254,13 @@ if (isset($_POST['btnDown']))
         </tr>
 <tr>
 <td>
-	<button name="btnDetails" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Show Details</button>        
+	<button name="btnDetails" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Show Details</button>        
 	<br>
-	<button name="btnPingGw" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Ping GW</button>
+	<button name="btnPingGw" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Ping GW</button>
  	<br>
-	<button name="btnPingGoogle" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Ping Google</button>
+	<button name="btnPingGoogle" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Ping Google</button>
 	<br>
-        <button name="btnPingRef" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Ping Reflector</button>
+        <button name="btnPingRef" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Ping Reflector</button>
 
 </tD><td>
 	connection: 
@@ -276,21 +276,21 @@ foreach ($conns as $conn){
   </select>
 	
 <br><br>	
-	IP: <input type="text" name="myIp" style="width: 150px;" value="<?php echo $myIp;?>">
-        /<input type="text" name="cidr" style="width: 50px;" value="<?php echo $cidr;?>">
+	IP: <input type="text" name="myIp" style = "width: 150px;" value="<?php echo $myIp;?>">
+        /<input type="text" name="cidr" style = "width: 50px;" value="<?php echo $cidr;?>">
 <br>
-        GW: <input type="text" name="gw" style="width: 120px;" value="<?php echo $gw;?>">
+        GW: <input type="text" name="gw" style = "width: 120px;" value="<?php echo $gw;?>">
 <br> 
-       DNS: <input type="text" name="dns" style="width: 120px;" value="<?php echo $dns;?>">
+       DNS: <input type="text" name="dns" style = "width: 120px;" value="<?php echo $dns;?>">
 </td>
 <td> 
-	<button name="btnAuto" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Set Auto IP</button>
+	<button name="btnAuto" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Auto IP</button>
 	<br>
-	<button name="btnUp" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">conn UP</button>
+	<button name="btnUp" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">conn UP</button>
 	<br>
-	<button name="btnDown" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">conn DOWN</button>
+	<button name="btnDown" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">conn DOWN</button>
 	<br>
-	<button name="btnStatic" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Set Static IP</$
+	<button name="btnStatic" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Static IP</$
 
 </td>
 </tr>
@@ -298,8 +298,8 @@ foreach ($conns as $conn){
 
 </form>
 
-<p style="margin: 0 auto;"></p>
-<p style="margin-bottom:-2px;"></p>
+<p style = "margin: 0 auto;"></p>
+<p style = "margin-bottom:-2px;"></p>
 
 </body>
 </html>

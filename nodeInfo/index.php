@@ -65,12 +65,12 @@ textarea {
 
 </style>
 </head>
-<body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
+<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <center>
-<fieldset style="border:#3083b8 2px groove;box-shadow:0 0 10px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
+<fieldset style = "border:#3083b8 2px groove;box-shadow:0 0 10px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<h1 id="ConfEditor" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Node Info Configurator</h1>
+<h1 id="ConfEditor" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Node Info Configurator</h1>
 
 
 <?php 
@@ -232,103 +232,103 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <tr>
 <td>
 
-<table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+<table style = "border-collapse: collapse; border: none;">
+        <tr style = "border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Location
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Location
         </td>
-        <td style="border: none;">
-        <input type="text" name="inLocation" style="width:98%" value="<?php echo $inLocation;?>">
+        <td style = "border: none;">
+        <input type="text" name="inLocation" style = "width:98%" value="<?php echo $inLocation;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Locator</td>
-        <td style="border: none;">
-        <input  type="text" name="inLocator" style="width:98%" value="<?php echo $inLocator;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Locator</td>
+        <td style = "border: none;">
+        <input  type="text" name="inLocator" style = "width:98%" value="<?php echo $inLocator;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">SysOp</td>
-        <td style="border: none;">
-        <input  type="text" name="inSysOp" style="width:98%" value="<?php echo $inSysOp;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">SysOp</td>
+        <td style = "border: none;">
+        <input  type="text" name="inSysOp" style = "width:98%" value="<?php echo $inSysOp;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Lat</td>
-        <td style="border: none;">
-        <input  type="text" name="inLAT" style="width:98%" value="<?php echo $inLAT;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Lat</td>
+        <td style = "border: none;">
+        <input  type="text" name="inLAT" style = "width:98%" value="<?php echo $inLAT;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Long</td>
-        <td style="border: none;">
-        <input  type="text" name="inLONG" style="width:98%" value="<?php echo $inLONG;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Long</td>
+        <td style = "border: none;">
+        <input  type="text" name="inLONG" style = "width:98%" value="<?php echo $inLONG;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Rx Freq</td>
-        <td style="border: none;">
-        <input  type="text" name="inRXFREQ" style="width:98%" value="<?php echo $inRXFREQ;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Rx Freq</td>
+        <td style = "border: none;">
+        <input  type="text" name="inRXFREQ" style = "width:98%" value="<?php echo $inRXFREQ;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Tx Freq</td>
-        <td style="border: none;">
-        <input  type="text" name="inTXFREQ" style="width:98%" value="<?php echo $inTXFREQ;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Tx Freq</td>
+        <td style = "border: none;">
+        <input  type="text" name="inTXFREQ" style = "width:98%" value="<?php echo $inTXFREQ;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Website</td>
-        <td style="border: none;">
-        <input  type="text" name="inWebsite" style="width:98%" value="<?php echo $inWebsite;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Website</td>
+        <td style = "border: none;">
+        <input  type="text" name="inWebsite" style = "width:98%" value="<?php echo $inWebsite;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Mode</td>
-        <td style="border: none;">
-        <input  type="text" name="inMode" style="width:98%" value="<?php echo $inMode;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Mode</td>
+        <td style = "border: none;">
+        <input  type="text" name="inMode" style = "width:98%" value="<?php echo $inMode;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Type</td>
-        <td style="border: none;">
-        <input  type="text" name="inType" style="width:98%" value="<?php echo $inType;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Type</td>
+        <td style = "border: none;">
+        <input  type="text" name="inType" style = "width:98%" value="<?php echo $inType;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">EchoLink</td>
-        <td style="border: none;">
-        <input  type="text" name="inEcholink" style="width:98%" value="<?php echo $inEcholink;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">EchoLink</td>
+        <td style = "border: none;">
+        <input  type="text" name="inEcholink" style = "width:98%" value="<?php echo $inEcholink;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Node Location</td>
-        <td style="border: none;">
-        <input  type="text" name="innodeLocation" style="width:98%" value="<?php echo $innodeLocation;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Node Location</td>
+        <td style = "border: none;">
+        <input  type="text" name="innodeLocation" style = "width:98%" value="<?php echo $innodeLocation;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Sysop</td>
-        <td style="border: none;">
-        <input  type="text" name="inSysop" style="width:98%" value="<?php echo $inSysop;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Sysop</td>
+        <td style = "border: none;">
+        <input  type="text" name="inSysop" style = "width:98%" value="<?php echo $inSysop;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Network</td>
-        <td style="border: none;">
-        <input  type="text" name="inNetwork" style="width:98%" value="<?php echo $inNetwork;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Network</td>
+        <td style = "border: none;">
+        <input  type="text" name="inNetwork" style = "width:98%" value="<?php echo $inNetwork;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">LinkedTo</td>
-        <td style="border: none;">
-        <input  type="text" name="inLinkedTo" style="width:98%" value="<?php echo $inLinkedTo;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">LinkedTo</td>
+        <td style = "border: none;">
+        <input  type="text" name="inLinkedTo" style = "width:98%" value="<?php echo $inLinkedTo;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">CTCSS</td>
-        <td style="border: none;">
-        <input  type="text" name="inCTCSS" style="width:98%" value="<?php echo $inCTCSS;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">CTCSS</td>
+        <td style = "border: none;">
+        <input  type="text" name="inCTCSS" style = "width:98%" value="<?php echo $inCTCSS;?>">
         </td></tr>
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">DefaultTG</td>
-        <td style="border: none;">
-        <input  type="text" name="inDefaultTg" style="width:98%" value="<?php echo $inDefaultTg;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">DefaultTG</td>
+        <td style = "border: none;">
+        <input  type="text" name="inDefaultTg" style = "width:98%" value="<?php echo $inDefaultTg;?>">
         </td></tr>
 
     </table>
 </td>
 <td> 
-	<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+	<button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 </tr>
 </table>
@@ -336,8 +336,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </form>
 
-<p style="margin: 0 auto;"></p>
-<p style="margin-bottom:-2px;"></p>
+<p style = "margin: 0 auto;"></p>
+<p style = "margin-bottom:-2px;"></p>
 
 </body>
 </html>

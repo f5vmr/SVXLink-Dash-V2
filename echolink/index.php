@@ -56,12 +56,12 @@ textarea {
 
 </style>
 </head>
-<body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
+<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <center>
-<fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
+<fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<h1 id="echolink" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">EchoLink Configurator</h1>
+<h1 id="echolink" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">EchoLink Configurator</h1>
 
 
 <?php
@@ -188,61 +188,61 @@ $conns = null;
         </tr>
 <tr>
 <td>
-        <table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+        <table style = "border-collapse: collapse; border: none;">
+        <tr style = "border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Default Language</td>
-        <td style="border: none;"><input type="text" name="inElDefaultLang" style="width:98%" value="<?php echo $inElDefaultLang;?>"></td>
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Default Language</td>
+        <td style = "border: none;"><input type="text" name="inElDefaultLang" style = "width:98%" value="<?php echo $inElDefaultLang;?>"></td>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Callsign</td>
-        <td style="border: none;"><input type="text" name="inElCallsign" style="width:98%" value="<?php echo $inElCallsign;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Callsign</td>
+        <td style = "border: none;"><input type="text" name="inElCallsign" style = "width:98%" value="<?php echo $inElCallsign;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Password</td>
-        <td style="border: none;"><input type="text" name="inElPassword" style="width:98%" value="<?php echo $inElPassword;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Password</td>
+        <td style = "border: none;"><input type="text" name="inElPassword" style = "width:98%" value="<?php echo $inElPassword;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">SysOp Name</td>
-        <td style="border: none;"><input type="text" name="inElSysOpName" style="width:98%" value="<?php echo $inElSysOpName;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">SysOp Name</td>
+        <td style = "border: none;"><input type="text" name="inElSysOpName" style = "width:98%" value="<?php echo $inElSysOpName;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Location</td>
-        <td style="border: none;"><input type="text" name="inElLocation" style="width:98%" value="<?php echo $inElLocation;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Location</td>
+        <td style = "border: none;"><input type="text" name="inElLocation" style = "width:98%" value="<?php echo $inElLocation;?>">
         </td></tr>
-        <!--<tr style="border: none;"> 
-        <td style="border: none;">Description</td>
-        <td style="border: none;"><input type="text" name="inElDescription" style="width:98%" value="<?php echo $inElDescription;?>">
+        <!--<tr style = "border: none;"> 
+        <td style = "border: none;">Description</td>
+        <td style = "border: none;"><input type="text" name="inElDescription" style = "width:98%" value="<?php echo $inElDescription;?>">
         </td></tr>-->
-        <tr style="border: none;"> 
-        <td style="border: none;">Servers</td>
-        <td style="border: none;"><input type="text" name="inElServers" style="width:98%" value="<?php echo $inElServers;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Servers</td>
+        <td style = "border: none;"><input type="text" name="inElServers" style = "width:98%" value="<?php echo $inElServers;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Proxy Server</td>
-        <td style="border: none;"><input type="text" name="inElProxyServer" style="width:98%" value="<?php echo $inElProxyServer;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Proxy Server</td>
+        <td style = "border: none;"><input type="text" name="inElProxyServer" style = "width:98%" value="<?php echo $inElProxyServer;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Proxy Port</td>
-        <td style="border: none;"><input type="text" name="inElProxyPort" style="width:98%" value="<?php echo $inElProxyPort;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Proxy Port</td>
+        <td style = "border: none;"><input type="text" name="inElProxyPort" style = "width:98%" value="<?php echo $inElProxyPort;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Proxy Password</td>
-        <td style="border: none;"><input type="text" name="inElProxyPassword" style="width:98%" value="<?php echo $inElProxyPassword;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Proxy Password</td>
+        <td style = "border: none;"><input type="text" name="inElProxyPassword" style = "width:98%" value="<?php echo $inElProxyPassword;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Mute Logic Linking</td>
-        <td style="border: none;"><input type="text" name="inElMuteLogicLinking" style="width:98%" value="<?php echo $inElMuteLogicLinking;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Mute Logic Linking</td>
+        <td style = "border: none;"><input type="text" name="inElMuteLogicLinking" style = "width:98%" value="<?php echo $inElMuteLogicLinking;?>">
         </td></tr>
         </table>
 
 
 </TD>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 
 </tr>
@@ -253,8 +253,8 @@ $conns = null;
 
 </form>
 
-<p style="margin: 0 auto;"></p>
-<p style="margin-bottom:-2px;"></p>
+<p style = "margin: 0 auto;"></p>
+<p style = "margin-bottom:-2px;"></p>
 
 </body>
 </html>

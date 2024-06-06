@@ -64,12 +64,12 @@ textarea {
 
 </style>
 </head>
-<body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
+<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <center>
-<fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
+<fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<h1 id="svxlink" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">SVXLink Configurator</h1>
+<h1 id="svxlink" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">SVXLink Configurator</h1>
 
 
 <?php
@@ -411,46 +411,46 @@ textarea {
         </tr>
 <tr>
 <td>
-        <table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+        <table style = "border-collapse: collapse; border: none;">
+        <tr style = "border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
         
-        <tr style="border: none;">
-        <td style="border: none;">Logics</td>
-        <td style="border: none;"><input type="text" name="inGlobalLogics" style="width:98%" value="<?php echo $inGlobalLogics;?>"></td>
+        <tr style = "border: none;">
+        <td style = "border: none;">Logics</td>
+        <td style = "border: none;"><input type="text" name="inGlobalLogics" style = "width:98%" value="<?php echo $inGlobalLogics;?>"></td>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Config Directory</td>
-        <td style="border: none;"><input type="text" name="inGlobalCfgDir" style="width:98%" value="<?php echo $inGlobalCfgDir;?>"></td>
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Config Directory</td>
+        <td style = "border: none;"><input type="text" name="inGlobalCfgDir" style = "width:98%" value="<?php echo $inGlobalCfgDir;?>"></td>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Time Format</td>
-        <td style="border: none;"><input type="text" name="inTimeFormat" style="width:98%" value="<?php echo $inTimeFormat;?>"></td>
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Time Format</td>
+        <td style = "border: none;"><input type="text" name="inTimeFormat" style = "width:98%" value="<?php echo $inTimeFormat;?>"></td>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Card Channels</td>
-        <td style="border: none;"><input type="text" name="inCardChannels" style="width:98%" value="<?php echo $inCardChannels;?>"></td>
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Card Channels</td>
+        <td style = "border: none;"><input type="text" name="inCardChannels" style = "width:98%" value="<?php echo $inCardChannels;?>"></td>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Card Sample Rate</td>
-        <td style="border: none;"><input type="text" name="inCardSampleRate" style="width:98%" value="<?php echo $inCardChannels;?>"></td>
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Card Sample Rate</td>
+        <td style = "border: none;"><input type="text" name="inCardSampleRate" style = "width:98%" value="<?php echo $inCardChannels;?>"></td>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Location Info</td>
-        <td style="border: none;"><input type="text" name="inLocationInfo" style="width:98%" value="<?php echo $inLocationInfo;?>"></td>
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Location Info</td>
+        <td style = "border: none;"><input type="text" name="inLocationInfo" style = "width:98%" value="<?php echo $inLocationInfo;?>"></td>
         </tr>
-        <tr style="border: none;">
-        <td style="border: none;">Links</td>
-        <td style="border: none;"> <input type="text" name="inLinks" style="width:98%" value="<?php echo $inLinks;?>"></td>
+        <tr style = "border: none;">
+        <td style = "border: none;">Links</td>
+        <td style = "border: none;"> <input type="text" name="inLinks" style = "width:98%" value="<?php echo $inLinks;?>"></td>
         </tr>
         </table>
 
         </td>
 
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 
 </tr>
@@ -464,58 +464,58 @@ textarea {
 <tr>
 <td>
 
-<table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+<table style = "border-collapse: collapse; border: none;">
+        <tr style = "border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">FM Network</td>
-        <td style="border: none;"><input type="text" name="inFmNetwork" style="width:98%" value="<?php echo $inFmnetwork;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">FM Network</td>
+        <td style = "border: none;"><input type="text" name="inFmNetwork" style = "width:98%" value="<?php echo $inFmnetwork;?>">
         </td></tr>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Reflector Host</td>
-        <td style="border: none;"><input type="text" name="inReflectorServer" style="width:98%" value="<?php echo $inReflectorServer;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Reflector Host</td>
+        <td style = "border: none;"><input type="text" name="inReflectorServer" style = "width:98%" value="<?php echo $inReflectorServer;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Reflector Api if used</td>
-        <td style="border: none;"><input type="text" name="inrefApi" style="width:98%" value="<?php echo $inrefApi;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Reflector Api if used</td>
+        <td style = "border: none;"><input type="text" name="inrefApi" style = "width:98%" value="<?php echo $inrefApi;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Reflector Port</td>
-        <td style="border: none;"><input type="text" name="inReflectorPort" style="width:98%" value="<?php echo $inReflectorPort;?>">
-        </td></tr><tr style="border: none;"> 
-        <td style="border: none;">Callsign</td>
-        <td style="border: none;"><input type="text" name="inRefCallsign" style="width:98%" value="<?php echo $inRefCallsign;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Reflector Port</td>
+        <td style = "border: none;"><input type="text" name="inReflectorPort" style = "width:98%" value="<?php echo $inReflectorPort;?>">
+        </td></tr><tr style = "border: none;"> 
+        <td style = "border: none;">Callsign</td>
+        <td style = "border: none;"><input type="text" name="inRefCallsign" style = "width:98%" value="<?php echo $inRefCallsign;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Authorised Key</td>
-        <td style="border: none;"><input type="password" name="inReflectorAuthKey" style="width:98%" value="<?php echo $inPassword;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Authorised Key</td>
+        <td style = "border: none;"><input type="password" name="inReflectorAuthKey" style = "width:98%" value="<?php echo $inPassword;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Default TG</td>
-        <td style="border: none;"><input type="text" name="inDefaultTg" style="width:98%" value="<?php echo $inDefaultTg;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Default TG</td>
+        <td style = "border: none;"><input type="text" name="inDefaultTg" style = "width:98%" value="<?php echo $inDefaultTg;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Monitor TGs</td>
-        <td style="border: none;"><input type="text" name="inMonitorTgs" style="width:98%" value="<?php echo $inMonitorTgs;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Monitor TGs</td>
+        <td style = "border: none;"><input type="text" name="inMonitorTgs" style = "width:98%" value="<?php echo $inMonitorTgs;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">TG select Timeout</td>
-        <td style="border: none;"><input type="text" name="inTgSelectTimeout" style="width:98%" value="<?php echo $inTgSelectTimeout;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">TG select Timeout</td>
+        <td style = "border: none;"><input type="text" name="inTgSelectTimeout" style = "width:98%" value="<?php echo $inTgSelectTimeout;?>">
         </td></tr>
         
-  <!--      <tr style="border: none;"> 
-        <td style="border: none;">Reflector TgUri</td>
-        <td style="border: none;"><input type="text" name="inReflectorTgUri" style="width:98%" value="<?php echo $inReflectorTgUri;?>">
+  <!--      <tr style = "border: none;"> 
+        <td style = "border: none;">Reflector TgUri</td>
+        <td style = "border: none;"><input type="text" name="inReflectorTgUri" style = "width:98%" value="<?php echo $inReflectorTgUri;?>">
         </td></tr>-->
 </table>
 
 
 </td>
 <td> 
-	<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> 
+	<button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br> 
         <br> & <br><br> ReLoad</button>
 </td>
 </tr>
@@ -537,20 +537,20 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 <tr>
 <td>
         
-<table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+<table style = "border-collapse: collapse; border: none;">
+        <tr style = "border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">LinkToReflector</td>
-        <td style="border: none;"><input type="text" name="inConnLogic" style="width:98%" value="<?php echo $inConnLogic;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">LinkToReflector</td>
+        <td style = "border: none;"><input type="text" name="inConnLogic" style = "width:98%" value="<?php echo $inConnLogic;?>">
         </td></tr>
         </tr>
         </table>
 </td>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 <table>
         <tr>
@@ -560,54 +560,54 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 <tr>
 <td>
         
-<table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+<table style = "border-collapse: collapse; border: none;">
+        <tr style = "border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Macro D1</td>
-        <td style="border: none;"><input type="text" name="inMD1" style="width:98%" value="<?php echo $inMD1;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Macro D1</td>
+        <td style = "border: none;"><input type="text" name="inMD1" style = "width:98%" value="<?php echo $inMD1;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Macro D2</td>
-        <td style="border: none;"><input type="text" name="inMD2" style="width:98%" value="<?php echo $inMD2;?>">
-        <tr style="border: none;"> 
-        <td style="border: none;">Macro D3</td>
-        <td style="border: none;"><input type="text" name="inMD3" style="width:98%" value="<?php echo $inMD3;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Macro D2</td>
+        <td style = "border: none;"><input type="text" name="inMD2" style = "width:98%" value="<?php echo $inMD2;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Macro D3</td>
+        <td style = "border: none;"><input type="text" name="inMD3" style = "width:98%" value="<?php echo $inMD3;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Macro D4</td>
-        <td style="border: none;"><input type="text" name="inMD4" style="width:98%" value="<?php echo $inMD4;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Macro D4</td>
+        <td style = "border: none;"><input type="text" name="inMD4" style = "width:98%" value="<?php echo $inMD4;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Macro D5</td>
-        <td style="border: none;"><input type="text" name="inMD5" style="width:98%" value="<?php echo $inMD5;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Macro D5</td>
+        <td style = "border: none;"><input type="text" name="inMD5" style = "width:98%" value="<?php echo $inMD5;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Macro D6</td>
-        <td style="border: none;"><input type="text" name="inMD6" style="width:98%" value="<?php echo $inMD6;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Macro D6</td>
+        <td style = "border: none;"><input type="text" name="inMD6" style = "width:98%" value="<?php echo $inMD6;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Macro D7</td>
-        <td style="border: none;"><input type="text" name="inMD7" style="width:98%" value="<?php echo $inMD7;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Macro D7</td>
+        <td style = "border: none;"><input type="text" name="inMD7" style = "width:98%" value="<?php echo $inMD7;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Macro D8</td>
-        <td style="border: none;"><input type="text" name="inMD8" style="width:98%" value="<?php echo $inMD8;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Macro D8</td>
+        <td style = "border: none;"><input type="text" name="inMD8" style = "width:98%" value="<?php echo $inMD8;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Macro D9</td>
-        <td style="border: none;"><input type="text" name="inMD9" style="width:98%" value="<?php echo $inMD9;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Macro D9</td>
+        <td style = "border: none;"><input type="text" name="inMD9" style = "width:98%" value="<?php echo $inMD9;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Macro D0</td>
-        <td style="border: none;"><input type="text" name="inMD0" style="width:98%" value="<?php echo $inMD0;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Macro D0</td>
+        <td style = "border: none;"><input type="text" name="inMD0" style = "width:98%" value="<?php echo $inMD0;?>">
         </td></tr>
 </table>
 </td>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 </tr>
 </table>
@@ -622,81 +622,81 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 <tr>
 <td>
         
-<table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+<table style = "border-collapse: collapse; border: none;">
+        <tr style = "border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Rx Type</td>
-        <td style="border: none;"><input type="text" name="inRxType" style="width:98%" value="<?php echo $inRxType;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Rx Type</td>
+        <td style = "border: none;"><input type="text" name="inRxType" style = "width:98%" value="<?php echo $inRxType;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Audio Dev</td>
-        <td style="border: none;"><input type="text" name="inRxAudioDev" style="width:98%" value="<?php echo $inRxAudioDev;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Audio Dev</td>
+        <td style = "border: none;"><input type="text" name="inRxAudioDev" style = "width:98%" value="<?php echo $inRxAudioDev;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Audio Channel</td>
-        <td style="border: none;"><input type="text" name="inRxAudioChannel" style="width:98%" value="<?php echo $inRxAudioChannel;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Audio Channel</td>
+        <td style = "border: none;"><input type="text" name="inRxAudioChannel" style = "width:98%" value="<?php echo $inRxAudioChannel;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Squelch Detect</td>
-        <td style="border: none;"><input type="text" name="inSql_Det" style="width:98%" value="<?php echo $inSqlDet;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Squelch Detect</td>
+        <td style = "border: none;"><input type="text" name="inSql_Det" style = "width:98%" value="<?php echo $inSqlDet;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Squelch Start Delay</td>
-        <td style="border: none;"><input type="text" name="inSqlStartDelay" style="width:98%" value="<?php echo $inSqlStartDelay;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Squelch Start Delay</td>
+        <td style = "border: none;"><input type="text" name="inSqlStartDelay" style = "width:98%" value="<?php echo $inSqlStartDelay;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Squelch Delay</td>
-        <td style="border: none;"><input type="text" name="inSqlDelay   " style="width:98%" value="<?php echo $inSqlDelay;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Squelch Delay</td>
+        <td style = "border: none;"><input type="text" name="inSqlDelay   " style = "width:98%" value="<?php echo $inSqlDelay;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Squelch Hangtime</td>
-        <td style="border: none;"><input type="text" name="inSqlHangTime" style="width:98%" value="<?php echo $inSqlHangTime;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Squelch Hangtime</td>
+        <td style = "border: none;"><input type="text" name="inSqlHangTime" style = "width:98%" value="<?php echo $inSqlHangTime;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Squelch GPIO Chip</td>
-        <td style="border: none;"><input type="text" name="inSqlChip" style="width:98%" value="<?php echo $inSqlChip;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Squelch GPIO Chip</td>
+        <td style = "border: none;"><input type="text" name="inSqlChip" style = "width:98%" value="<?php echo $inSqlChip;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Squelch GPIO Line</td>
-        <td style="border: none;"><input type="text" name="inSqlLine" style="width:98%" value="<?php echo $inSqlLine;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Squelch GPIO Line</td>
+        <td style = "border: none;"><input type="text" name="inSqlLine" style = "width:98%" value="<?php echo $inSqlLine;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">HID Device</td>
-        <td style="border: none;"><input type="text" name="inRxHidDevice" style="width:98%" value="<?php echo $inRxHidDevice;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">HID Device</td>
+        <td style = "border: none;"><input type="text" name="inRxHidDevice" style = "width:98%" value="<?php echo $inRxHidDevice;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">HID Squelch Pin</td>
-        <td style="border: none;"><input type="text" name="inRxHidPin" style="width:98%" value="<?php echo $inRxHidPin;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">HID Squelch Pin</td>
+        <td style = "border: none;"><input type="text" name="inRxHidPin" style = "width:98%" value="<?php echo $inRxHidPin;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">1750_Muting</td>
-        <td style="border: none;"><input type="text" name="in1750Mute" style="width:98%" value="<?php echo $in1750Mute;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">1750_Muting</td>
+        <td style = "border: none;"><input type="text" name="in1750Mute" style = "width:98%" value="<?php echo $in1750Mute;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">DTMF_Muting</td>
-        <td style="border: none;"><input type="text" name="inDTMFMute" style="width:98%" value="<?php echo $inDTMFMute;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">DTMF_Muting</td>
+        <td style = "border: none;"><input type="text" name="inDTMFMute" style = "width:98%" value="<?php echo $inDTMFMute;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Rx Frequency</td>
-        <td style="border: none;"><input type="text" name="inRxFreq" style="width:98%" value="<?php echo $inRxFreq;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Rx Frequency</td>
+        <td style = "border: none;"><input type="text" name="inRxFreq" style = "width:98%" value="<?php echo $inRxFreq;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Modulation</td>
-        <td style="border: none;"><input type="text" name="inMod" style="width:98%" value="<?php echo $inMod;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Modulation</td>
+        <td style = "border: none;"><input type="text" name="inMod" style = "width:98%" value="<?php echo $inMod;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Peak Meter</td>
-        <td style="border: none;"><input type="text" name="inRx1PeakMeter" style="width:98%" value="<?php echo $inRx1PeakMeter;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Peak Meter</td>
+        <td style = "border: none;"><input type="text" name="inRx1PeakMeter" style = "width:98%" value="<?php echo $inRx1PeakMeter;?>">
         </td></tr>
 
 
 </table>
 </td>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 </tr>
 </table>
@@ -708,63 +708,63 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 <tr>
 <td>
         
-<table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+<table style = "border-collapse: collapse; border: none;">
+        <tr style = "border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Tx Type</td>
-        <td style="border: none;"><input type="text" name="inTxType" style="width:98%" value="<?php echo $inTxType;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Tx Type</td>
+        <td style = "border: none;"><input type="text" name="inTxType" style = "width:98%" value="<?php echo $inTxType;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Audio Dev</td>
-        <td style="border: none;"><input type="text" name="inTxAudioDev" style="width:98%" value="<?php echo $inTxAudioDev;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Audio Dev</td>
+        <td style = "border: none;"><input type="text" name="inTxAudioDev" style = "width:98%" value="<?php echo $inTxAudioDev;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Audio Channel</td>
-        <td style="border: none;"><input type="text" name="inTxAudioChannel" style="width:98%" value="<?php echo $inTxAudioChannel;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Audio Channel</td>
+        <td style = "border: none;"><input type="text" name="inTxAudioChannel" style = "width:98%" value="<?php echo $inTxAudioChannel;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">HID Device</td>
-        <td style="border: none;"><input type="text" name="inTxHidDevice" style="width:98%" value="<?php echo $inTxHidDevice;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">HID Device</td>
+        <td style = "border: none;"><input type="text" name="inTxHidDevice" style = "width:98%" value="<?php echo $inTxHidDevice;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">PTT Type</td>
-        <td style="border: none;"><input type="text" name="inPttType" style="width:98%" value="<?php echo $inPttType;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">PTT Type</td>
+        <td style = "border: none;"><input type="text" name="inPttType" style = "width:98%" value="<?php echo $inPttType;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">PTT Port</td>
-        <td style="border: none;"><input type="text" name="inPttPort" style="width:98%" value="<?php echo $inPttPort;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">PTT Port</td>
+        <td style = "border: none;"><input type="text" name="inPttPort" style = "width:98%" value="<?php echo $inPttPort;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">PTT Pin</td>
-        <td style="border: none;"><input type="text" name="inPttPin" style="width:98%" value="<?php echo $inPttPin;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">PTT Pin</td>
+        <td style = "border: none;"><input type="text" name="inPttPin" style = "width:98%" value="<?php echo $inPttPin;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">HID PTT Pin</td>
-        <td style="border: none;"><input type="text" name="inHidPttPin" style="width:98%" value="<?php echo $inHidPttPin;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">HID PTT Pin</td>
+        <td style = "border: none;"><input type="text" name="inHidPttPin" style = "width:98%" value="<?php echo $inHidPttPin;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">PTT Hangtime</td>
-        <td style="border: none;"><input type="text" name="inPttHangtime" style="width:98%" value="<?php echo $inPttHangtime;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">PTT Hangtime</td>
+        <td style = "border: none;"><input type="text" name="inPttHangtime" style = "width:98%" value="<?php echo $inPttHangtime;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">PTT GPIOD Chip</td>
-        <td style="border: none;"><input type="text" name="inPttGpioChip" style="width:98%" value="<?php echo $inPttGpioChip;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">PTT GPIOD Chip</td>
+        <td style = "border: none;"><input type="text" name="inPttGpioChip" style = "width:98%" value="<?php echo $inPttGpioChip;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">PTT GPIOD Line</td>
-        <td style="border: none;"><input type="text" name="inPttGpioLine" style="width:98%" value="<?php echo $inPttGpioLine;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">PTT GPIOD Line</td>
+        <td style = "border: none;"><input type="text" name="inPttGpioLine" style = "width:98%" value="<?php echo $inPttGpioLine;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Timeout</td>
-        <td style="border: none;"><input type="text" name="inTxTimeout" style="width:98%" value="<?php echo $inTxTimeout;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Timeout</td>
+        <td style = "border: none;"><input type="text" name="inTxTimeout" style = "width:98%" value="<?php echo $inTxTimeout;?>">
         </td></tr>
 </table>
 </td>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 </tr>
 </table>
@@ -776,74 +776,74 @@ if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 <tr>
 <td>
         
-<table style="border-collapse: collapse; border: none;">
-        <tr style="border: none;">
+<table style = "border-collapse: collapse; border: none;">
+        <tr style = "border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
         </tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">APRS Server</td>
-        <td style="border: none;"><input type="text" name="inAprsServerList" style="width:98%" value="<?php echo $inAprsServerList;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">APRS Server</td>
+        <td style = "border: none;"><input type="text" name="inAprsServerList" style = "width:98%" value="<?php echo $inAprsServerList;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">ECHOLINK Server</td>
-        <td style="border: none;"><input type="text" name="inServerStatusList" style="width:98%" value="<?php echo $inServerStatusList;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">ECHOLINK Server</td>
+        <td style = "border: none;"><input type="text" name="inServerStatusList" style = "width:98%" value="<?php echo $inServerStatusList;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Longitude - Deg.Hrs.Min</td>
-        <td style="border: none;"><input type="text" name="inLon" style="width:98%" value="<?php echo $inLon;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Longitude - Deg.Hrs.Min</td>
+        <td style = "border: none;"><input type="text" name="inLon" style = "width:98%" value="<?php echo $inLon;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Latitude - Deg.Hrs.Min</td>
-        <td style="border: none;"><input type="text" name="inLat" style="width:98%" value="<?php echo $inLat;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Latitude - Deg.Hrs.Min</td>
+        <td style = "border: none;"><input type="text" name="inLat" style = "width:98%" value="<?php echo $inLat;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Call Sign</td>
-        <td style="border: none;"><input type="text" name="inCallsign" style="width:98%" value="<?php echo $inCallsign;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Call Sign</td>
+        <td style = "border: none;"><input type="text" name="inCallsign" style = "width:98%" value="<?php echo $inCallsign;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Frequency</td>
-        <td style="border: none;"><input type="text" name="inFrequency" style="width:98%" value="<?php echo $inFrequency;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Frequency</td>
+        <td style = "border: none;"><input type="text" name="inFrequency" style = "width:98%" value="<?php echo $inFrequency;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Power</td>
-        <td style="border: none;"><input type="text" name="inTxPower" style="width:98%" value="<?php echo $inTxPower;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Power</td>
+        <td style = "border: none;"><input type="text" name="inTxPower" style = "width:98%" value="<?php echo $inTxPower;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Antenna Gain</td>
-        <td style="border: none;"><input type="text" name="inAntennaGain" style="width:98%" value="<?php echo $inAntennaGain;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Antenna Gain</td>
+        <td style = "border: none;"><input type="text" name="inAntennaGain" style = "width:98%" value="<?php echo $inAntennaGain;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Antenna Height</td>
-        <td style="border: none;"><input type="text" name="inAntennaHeight" style="width:98%" value="<?php echo $inAntennaHeight;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Antenna Height</td>
+        <td style = "border: none;"><input type="text" name="inAntennaHeight" style = "width:98%" value="<?php echo $inAntennaHeight;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Antenna Direction</td>
-        <td style="border: none;"><input type="text" name="inAntennaDir" style="width:98%" value="<?php echo $inAntennaDir;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Antenna Direction</td>
+        <td style = "border: none;"><input type="text" name="inAntennaDir" style = "width:98%" value="<?php echo $inAntennaDir;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Path</td>
-        <td style="border: none;"><input type="text" name="inPath" style="width:98%" value="<?php echo $inPath;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Path</td>
+        <td style = "border: none;"><input type="text" name="inPath" style = "width:98%" value="<?php echo $inPath;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Beacon Interval</td>
-        <td style="border: none;"><input type="text" name="inBeaconInterval" style="width:98%" value="<?php echo $inBeaconInterval;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Beacon Interval</td>
+        <td style = "border: none;"><input type="text" name="inBeaconInterval" style = "width:98%" value="<?php echo $inBeaconInterval;?>">
         </td></tr>
-        <tr style="border: none;"> 
-        <td style="border: none;">Comment</td>
-        <td style="border: none;"><input type="text" name="inComment" style="width:98%" value="<?php echo $inComment;?>">
+        <tr style = "border: none;"> 
+        <td style = "border: none;">Comment</td>
+        <td style = "border: none;"><input type="text" name="inComment" style = "width:98%" value="<?php echo $inComment;?>">
         </td></tr>
 </table>
 </td>
 <td>
-        <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+        <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
 </td>
 </tr>
 </table>
 </form>
 
-<p style="margin: 0 auto;"></p>
-<p style="margin-bottom:-2px;"></p>
+<p style = "margin: 0 auto;"></p>
+<p style = "margin-bottom:-2px;"></p>
 
 </body>
 </html>
