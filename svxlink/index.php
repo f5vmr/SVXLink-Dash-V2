@@ -76,9 +76,9 @@ textarea {
 
           
         include_once "../include/functions.php";
-
-
-        $svxConfigFile = '/etc/svxlink/svxlink.conf';
+        $directory="/etc/svxlink/";
+        $svxConfigFile = 'svxlink.conf';
+        file_backup($directory,$svxConfigFile);
         if (fopen($svxConfigFile,'r'))
               {
                 $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
@@ -233,7 +233,6 @@ textarea {
 	$retval = null;
         $screen = null;
 	//archive the current config
-	exec('sudo cp /etc/svxlink/svxlink.conf /etc/svxlink/svxlink.conf.' .date("YmdThis") ,$screen,$retval);
 	//move generated file to current config
 	exec('sudo mv /var/www/html/svxlink/svxlink.conf /etc/svxlink/svxlink.conf', $screen, $retval);
         //	exec('sudo cp /etc/svxlink/svxlink.conf /etc/svxlink/svxlink.d/SomeLogic.conf', $screen, $retval);

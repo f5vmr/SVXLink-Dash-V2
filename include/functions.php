@@ -481,22 +481,22 @@ function createjson($filename)
 
         return (json_encode($json_array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 }
-function file_name($file_name) {
+function file_name($dir,$file_name) {
 //        $command = "sudo cp /etc/svxlink/".$file_name." /etc/svxlink/".$file_name."bak";
 //        echo exec($command);
-        $file_and_path = "/etc/svxlink/".$file_name;
+        $file_and_path = $dir . $file_name;
         return($file_and_path);
 }
 // should filename include path?
 
-function file_backup($file_name){
+function file_backup($dir,$file_name){
         $backup_filename = $file_name . "." . date("YmdHis");
-        $command = "sudo cp -f /etc/svxlink/". $file_name . " /var/www/html/backups/" . $backup_filename;
+        $command = "sudo cp -f " . $dir . $file_name . " /var/www/html/backups/" . $backup_filename;
         echo exec($command);
         return;
     }
     
-function file_replace($file_name){
+function file_replace($dir,$file_name){
         $command = "sudo cp -r /var/www/html/svxlink/".$file_name." /etc/svxlink/".$file_name;
         echo exec($command);
 }
