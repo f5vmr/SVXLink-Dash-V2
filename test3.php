@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </tr>
     <tr>
         <td>Node Location:</td>
-        <td><input type="text" name="nodeLocation" style="width:98%" value="<?php echo htmlspecialchars($data['nodeLocation']); ?>"></td>
+        <td><input type="text" name="nodeLocation" style="width:103%" value="<?php echo htmlspecialchars($data['nodeLocation']); ?>"></td>
     </tr>
     <tr>
         <td>Hidden:</td>
@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </tr>
     <tr>
         <td>Sysop:</td>
-        <td><input type="text" class="form-control" name="sysop" value="<?php echo htmlspecialchars($data['sysop']); ?>"></td>
+        <td><input type="text" class="form-control" name="sysop" style="width:103%" value="<?php echo htmlspecialchars($data['sysop']); ?>"></td>
     </tr>
     <tr>
         <th width="55%">QTH Information</th>
@@ -146,19 +146,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </tr>
     <tr>
         <td>Name:</td>
-        <td><input type="text" class="form-control" name="qth_name" value="<?php echo htmlspecialchars($data['qth'][0]['name']); ?>"></td>
+        <td><input type="text" class="form-control" name="qth_name" style="width:103%" value="<?php echo htmlspecialchars($data['qth'][0]['name']); ?>"></td>
     </tr>
     <tr>
         <td>Latitude:</td>
-        <td><input type="text" class="form-control" name="qth_lat" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['lat']); ?>"></td>
+        <td><input type="text" class="form-control" name="qth_lat" style="width:103%" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['lat']); ?>"></td>
     </tr>
     <tr>
         <td>Longitude:</td>
-        <td><input type="text" class="form-control" name="qth_long" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['long']); ?>"></td>
+        <td><input type="text" class="form-control" name="qth_long" style="width:103%" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['long']); ?>"></td>
     </tr>
     <tr>
         <td>Locator:</td>
-        <td><input type="text" class="form-control" name="qth_loc" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['loc']); ?>"></td>
+        <td><input type="text" class="form-control" name="qth_loc" style="width:103%" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['loc']); ?>"></td>
     </tr>
     <tr>
         <th width="55%">Receiver Information</th>
@@ -166,15 +166,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </tr>
     <tr>
         <td>Name:</td>
-        <td><input type="text" class="form-control" name="rx_name" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['name']); ?>"></td>
+        <td><input type="text" class="form-control" name="rx_name" style="width:103%" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['name']); ?>"></td>
     </tr>
     <tr>
         <td>Frequency:</td>
-        <td><input type="text" class="form-control" name="rx_freq" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['freq']); ?>"></td>
+        <td><input type="text" class="form-control" name="rx_freq" style="width:103%" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['freq']); ?>"></td>
     </tr>
     <tr>
         <td>SQL Type:</td>
-        <td><input type="text" class="form-control" name="rx_sqlType" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['sqlType']); ?>"></td>
+        <td><input type="text" class="form-control" name="rx_sqlType" style="width:103%" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['sqlType']); ?>"></td>
     </tr>
     <tr>
         <th width="55%">Transmitter Information</th>
@@ -182,22 +182,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </tr>
     <tr>
         <td>Name:</td>
-        <td><input type="text" class="form-control" name="tx_name" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['name']); ?>"></td>
+        <td><input type="text" class="form-control" name="tx_name" style="width:103%" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['name']); ?>"></td>
     </tr>
     <tr>
         <td>Frequency:</td>
-        <td><input type="text" class="form-control" name="tx_freq" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['freq']); ?>"></td>
+        <td><input type="text" class="form-control" name="tx_freq" style="width:103%" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['freq']); ?>"></td>
     </tr>
     <tr>
         <td>Power:</td>
-        <td><input type="text" class="form-control" name="tx_pwr" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['pwr']); ?>"></td>
+        <td><input type="text" class="form-control" name="tx_pwr" style="width:103%" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['pwr']); ?>"></td>
     </tr>
     <tr>
         <td colspan="2" style="text-align: right;">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-danger">Save and Restart</button>
         </td>
     </tr>
 </table>
 </form>
+
 
 
