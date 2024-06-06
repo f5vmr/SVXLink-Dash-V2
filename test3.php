@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">Sysop:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="sysop" value="<?php echo htmlspecialchars($data['sysop']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="sysop" style="width:98%" value="<?php echo htmlspecialchars($data['sysop']); ?>"></td>
                 </tr>
             </table>
         </td>
@@ -167,19 +167,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">Name:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="qth_name" value="<?php echo htmlspecialchars($data['qth'][0]['name']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="qth_name" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['name']); ?>"></td>
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">Latitude:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="qth_lat" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['lat']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="qth_lat" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['lat']); ?>"></td>
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">Longitude:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="qth_long" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['long']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="qth_long" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['long']); ?>"></td>
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">Locator:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="qth_loc" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['loc']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="qth_loc" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['loc']); ?>"></td>
                 </tr>
             </table>
         </td>
@@ -200,15 +200,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">Name:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="rx_name" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['name']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="rx_name" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['name']); ?>"></td>
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">Frequency:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="rx_freq" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['freq']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="rx_freq" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['freq']); ?>"></td>
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">SQL Type:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="rx_sqlType" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['sqlType']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="rx_sqlType" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['sqlType']); ?>"></td>
                 </tr>
             </table>
         </td>
@@ -229,20 +229,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">Name:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="tx_name" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['name']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="tx_name" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['name']); ?>"></td>
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">Frequency:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="tx_freq" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['freq']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="tx_freq" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['freq']); ?>"></td>
                 </tr>
                 <tr style="border: none;">
                     <td style="border: none;">Power:</td>
-                    <td style="border: none;"><input type="text" class="form-control" name="tx_pwr" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['pwr']); ?>"></td>
+                    <td style="border: none;"><input type="text" class="form-control" name="tx_pwr" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['pwr']); ?>"></td>
                 </tr>
             </table>
         </td>
         <td>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Save and Restart</button>
         </td>
     </tr>
 </table>
