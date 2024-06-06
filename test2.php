@@ -124,6 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+
 <table>
         <tr>
         <th width="380 px">Edit Node Info</th>
@@ -141,15 +142,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </tr>
 
         <tr style="border: none;">
-        <td style = "border: none;" label for="nodeLocation">Node Location:</td>
+        <td style = "border: none;">Node Location:</td>
         <td style = "border: none;"><input type="text" name="nodeLocation" style ="width:98%" value="<?php echo htmlspecialchars($data['nodeLocation']); ?>">
         </td></tr>
         <tr style="border: none;">
-        <td style = "border: none;" label for="hidden">Hidden:</td>
+        <td style = "border: none;" >Hidden:</td>
         <td style = "border: none;"><input type="checkbox" class="form-check-input"  <?php echo $data['hidden'] ? 'checked' : ''; ?>>
         </td></tr>
         <tr style="border: none;">
-        <td style = "border: none;" label for="sysop">Sysop:</td>
+        <td style = "border: none;">Sysop:</td>
         <td style = "border: none;"><input type="text" class="form-control" name="sysop" value="<?php echo htmlspecialchars($data['sysop']); ?>">
         </td></tr>
 </table>
