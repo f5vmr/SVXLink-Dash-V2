@@ -123,11 +123,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-
 <table>
     <tr>
-        <th width="380px">Edit Node Info</th>
-        <th width="100px">Action</th>
+        <th width="55%">Edit Node Info</th>
+        <th width="45%">Action</th>
     </tr>
     <tr>
         <td>Node Location:</td>
@@ -142,8 +141,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <td><input type="text" class="form-control" name="sysop" value="<?php echo htmlspecialchars($data['sysop']); ?>"></td>
     </tr>
     <tr>
-        <th width="380px">QTH Information</th>
-        <th width="100px">Action</th>
+        <th width="55%">QTH Information</th>
+        <th width="45%">Action</th>
     </tr>
     <tr>
         <td>Name:</td>
@@ -162,8 +161,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <td><input type="text" class="form-control" name="qth_loc" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['loc']); ?>"></td>
     </tr>
     <tr>
-        <th width="380px">Receiver Information</th>
-        <th width="100px">Action</th>
+        <th width="55%">Receiver Information</th>
+        <th width="45%">Action</th>
     </tr>
     <tr>
         <td>Name:</td>
@@ -178,8 +177,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <td><input type="text" class="form-control" name="rx_sqlType" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['sqlType']); ?>"></td>
     </tr>
     <tr>
-        <th width="380px">Transmitter Information</th>
-        <th width="100px">Action</th>
+        <th width="55%">Transmitter Information</th>
+        <th width="45%">Action</th>
     </tr>
     <tr>
         <td>Name:</td>
@@ -200,4 +199,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </tr>
 </table>
 </form>
+
 
