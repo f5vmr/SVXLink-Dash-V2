@@ -1,6 +1,6 @@
-<?php
+<td?php
 $filename = '/etc/svxlink/node_info.json';
-$backup_dir = '/etc/svxlink/backups/';
+$backup_dir = '/var/www/html/backups/';
 
 // Ensure backup directory exists
 if (!file_exists($backup_dir)) {
@@ -53,49 +53,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Node Info</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Edit Node Info</h1>
-        <?php if (isset($message)): ?>
-            <div class="alert alert-info"><?php echo $message; ?></div>
-        <?php endif; ?>
-        <form action="parse_nodeInfo.php" method="post">
-            <div class="form-group">
-                <label for="nodeLocation">Node Location:</label>
-                <input type="text" class="form-control" name="nodeLocation" value="<?php echo htmlspecialchars($data['nodeLocation']); ?>">
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" name="hidden" <?php echo $data['hidden'] ? 'checked' : ''; ?>>
-                <label class="form-check-label" for="hidden">Hidden</label>
-            </div>
-            <div class="form-group">
-                <label for="sysop">Sysop:</label>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+    <table>
+            <tr>
+            <th width="380 px">Edit Node Info</th>
+            <th width="100 px">Action</th>
+            <?php if (isset($message)): ?>
+                <div class="alert alert-info"><?php echo $message; ?></div>
+            <?php endif; ?>
+            </tr>
+    <table style="border-collapse: collapse; border: none;">
+            <tr style="border: none;">
+                <th width = "30%"></th>
+                <th width = "70%"></th>
+            </tr>
+            
+<!--        <form action="index.php" method="post">
+            <div class="form-group"> -->
+                <tr style="border: none;">
+                <td style = "border: none;" label for="nodeLocation">Node Location:</label>
+                </td>
+                <td style = "border: none;">
+                <input type="text" name="nodeLocation" style ="width:98%" value="<?php echo htmlspecialchars($data['nodeLocation']); ?>">
+            </td></tr>
+                <tr style="border: none;">
+                <td style = "border: none;" label for="hidden">Hidden:</td>
+                <td style = "border: none;">
+                <input type="checkbox" class="form-check-input"  <?php echo $data['hidden'] ? 'checked' : ''; ?>>
+            </td></tr>
+                <tr style="border: none;">
+                <td style = "border: none;" label for="sysop">Sysop:</td>
+                <td style = "border: none;">
                 <input type="text" class="form-control" name="sysop" value="<?php echo htmlspecialchars($data['sysop']); ?>">
-            </div>
-            <h3>QTH</h3>
-            <div class="form-group">
-                <label for="qth_name">Name:</label>
-                <input type="text" class="form-control" name="qth_name" value="<?php echo htmlspecialchars($data['qth'][0]['name']); ?>">
-            </div>
-            <div class="form-group">
-                <label for="qth_lat">Latitude:</label>
-                <input type="text" class="form-control" name="qth_lat" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['lat']); ?>">
-            </div>
-            <div class="form-group">
-                <label for="qth_long">Longitude:</label>
-                <input type="text" class="form-control" name="qth_long" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['long']); ?>">
-            </div>
-            <div class="form-group">
-                <label for="qth_loc">Locator:</label>
-                <input type="text" class="form-control" name="qth_loc" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['loc']); ?>">
-            </div>
+            </td></tr>
+            <table>
+        <tr>
+        <th width = "380px">QTH Information </th>
+        <th width = "100px">Action</th>
+        </tr>
+<tr>
+<TD>
+        <Table style="border-collapse: collapse; border: none;">
+        <tr style="border: none;">
+                <th width = "30%"></th>
+                <th width = "70%"></th>
+        </tr>
+            <tr style="border: none;">
+            <td style = "border: none;" label for="qth_name">Name:</td>
+            <td style = "border: none;">
+            <input type="text" class="form-control" name="qth_name" value="<?php echo htmlspecialchars($data['qth'][0]['name']); ?>">
+        </td></tr>
+            <tr style="border: none;">
+            <td style = "border: none;" label for="qth_lat">Latitude:</td>
+            <td style = "border: none;">
+            <input type="text" class="form-control" name="qth_lat" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['lat']); ?>">
+            </td>
+            </tr>
+        <tr style="border: none;">
+            <tr style="border: none;">
+            <td style = "border: none;" label for="qth_long">Longitude:</td>
+            <td style = "border: none;">
+            <input type="text" class="form-control" name="qth_long" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['long']); ?>">
+            </td></tr>
+        <tr style="border: none;">
+            <tr style="border: none;">
+            <td style = "border: none;" label for="qth_loc">Locator:</td>
+            <td style = "border: none;">
+            <input type="text" class="form-control" name="qth_loc" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['loc']); ?>">
+            </td></tr>
+        
             <h3>RX</h3>
             <div class="form-group">
                 <label for="rx_name">Name:</label>
@@ -125,5 +151,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
-</body>
+</bodtable>
 </html>

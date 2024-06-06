@@ -74,49 +74,50 @@ textarea {
 
 
 <?php 
+$filename = '/etc/svxlink/node_info.json';
+$backup_dir = '/var/www/html/backups/';
+//function build_ini_string(array $a) {
+//    $out = '';
+//    $sectionless = '';
+//    foreach($a as $rootkey => $rootvalue){
+//        if(is_array($rootvalue)){
+//            // find out if the root-level item is an indexed or associative array
+//            $indexed_root = array_keys($rootvalue) == range(0, count($rootvalue) - 1);
+//            // associative arrays at the root level have a section heading
+//            if(!$indexed_root) $out .= PHP_EOL."[$rootkey]".PHP_EOL;
+//            // loop through items under a section heading
+//            foreach($rootvalue as $key => $value){
+//                if(is_array($value)){
+//                    // indexed arrays under a section heading will have their key omitted
+//                    $indexed_item = array_keys($value) == range(0, count($value) - 1);
+//                    foreach($value as $subkey=>$subvalue){
+//                        // omit subkey for indexed arrays
+//                        if($indexed_item) $subkey = "";
+//                        // add this line under the section heading
+//                        $out .= "{$key}[$subkey] = $subvalue" . PHP_EOL;
+//                    }
+//                }else{
+//                    if($indexed_root){
+//                        // root level indexed array becomes sectionless
+//                        $sectionless .= "{$rootkey}[] = $value" . PHP_EOL;
+//                    }else{
+//                        // plain values within root level sections
+//                        $out .= "$key = $value" . PHP_EOL;
+//                    }
+//                }
+//            }
+//
+//        }else{
+//            // root level sectionless values
+//            $sectionless .= "$rootkey = $rootvalue" . PHP_EOL;
+//        }
+//    }
+//    return $sectionless.$out;
+//}
 
-function build_ini_string(array $a) {
-    $out = '';
-    $sectionless = '';
-    foreach($a as $rootkey => $rootvalue){
-        if(is_array($rootvalue)){
-            // find out if the root-level item is an indexed or associative array
-            $indexed_root = array_keys($rootvalue) == range(0, count($rootvalue) - 1);
-            // associative arrays at the root level have a section heading
-            if(!$indexed_root) $out .= PHP_EOL."[$rootkey]".PHP_EOL;
-            // loop through items under a section heading
-            foreach($rootvalue as $key => $value){
-                if(is_array($value)){
-                    // indexed arrays under a section heading will have their key omitted
-                    $indexed_item = array_keys($value) == range(0, count($value) - 1);
-                    foreach($value as $subkey=>$subvalue){
-                        // omit subkey for indexed arrays
-                        if($indexed_item) $subkey = "";
-                        // add this line under the section heading
-                        $out .= "{$key}[$subkey] = $subvalue" . PHP_EOL;
-                    }
-                }else{
-                    if($indexed_root){
-                        // root level indexed array becomes sectionless
-                        $sectionless .= "{$rootkey}[] = $value" . PHP_EOL;
-                    }else{
-                        // plain values within root level sections
-                        $out .= "$key = $value" . PHP_EOL;
-                    }
-                }
-            }
+//$nodeInfoFile = '/etc/svxlink/node_info.json';
 
-        }else{
-            // root level sectionless values
-            $sectionless .= "$rootkey = $rootvalue" . PHP_EOL;
-        }
-    }
-    return $sectionless.$out;
-}
-
-$nodeInfoFile = '/etc/svxlink/node_info.json';
-
-exec('sudo cp ' . escapeshellarg($nodeInfoFile) . ' /etc/svxlink/node_info.bak');
+//exec('sudo cp ' . escapeshellarg($nodeInfoFile) . ' /etc/svxlink/node_info.bak');
 
 // if (fopen($nodeInfoFile,'r'))
 //{
@@ -137,49 +138,95 @@ exec('sudo cp ' . escapeshellarg($nodeInfoFile) . ' /etc/svxlink/node_info.bak')
 
 
 
-if (isset($_POST['btnSave']))
-    {
-	$nodeInfo["Location"] = $_POST['inLocation']; $nodeInfo["Locator"] = $_POST['inLocator'];$nodeInfo["SysOp"] = $_POST['inSysOp'];
-	$nodeInfo["LAT"] = $_POST['inLAT']; $nodeInfo["LONG"] = $_POST['inLONG'];$nodeInfo["RXFREQ"] = $_POST['inRXFREQ'];
-	$nodeInfo["TXFREQ"] = $_POST['inTXFREQ']; $nodeInfo["Website"] = $_POST['inWebsite'];$nodeInfo["Mode"] = $_POST['inMode'];
-	$nodeInfo["Type"] = $_POST['inType']; $nodeInfo["Echolink"] = $_POST['inEcholink'];$nodeInfo["nodeLocation"] = $_POST['innodeLocation'];
-	$nodeInfo["Sysop"] = $_POST['inSysop']; $nodeInfo["Network"] = $_POST['inNetwork'];$nodeInfo["CTCSS"] = $_POST['inCTCSS'];
-	$nodeInfo["LinkedTo"] = $_POST['inLinkedTo'];$nodeInfo["DefaultTg"] = $_POST['inDefaultTg'];
-
-	$jsonNodeInfo = json_encode($nodeInfo);
-	file_put_contents("/var/www/html/nodeInfo/node_info.json", $jsonNodeInfo ,FILE_USE_INCLUDE_PATH);
-
-        $retval = null;
-        $screen = null;
-
-
-	///file manipulation section
+//if (isset($_POST['btnSave']))
+//    {
+//	$nodeInfo["Location"] = $_POST['inLocation']; $nodeInfo["Locator"] = $_POST['inLocator'];$nodeInfo["SysOp"] = $_POST['inSysOp'];
+//	$nodeInfo["LAT"] = $_POST['inLAT']; $nodeInfo["LONG"] = $_POST['inLONG'];$nodeInfo["RXFREQ"] = $_POST['inRXFREQ'];
+//	$nodeInfo["TXFREQ"] = $_POST['inTXFREQ']; $nodeInfo["Website"] = $_POST['inWebsite'];$nodeInfo["Mode"] = $_POST['inMode'];
+//	$nodeInfo["Type"] = $_POST['inType']; $nodeInfo["Echolink"] = $_POST['inEcholink'];$nodeInfo["nodeLocation"] = $_POST['innodeLocation'];
+//	$nodeInfo["Sysop"] = $_POST['inSysop']; $nodeInfo["Network"] = $_POST['inNetwork'];$nodeInfo["CTCSS"] = $_POST['inCTCSS'];
+//	$nodeInfo["LinkedTo"] = $_POST['inLinkedTo'];$nodeInfo["DefaultTg"] = $_POST['inDefaultTg'];
+//
+//	$jsonNodeInfo = json_encode($nodeInfo);
+//	file_put_contents("/var/www/html/nodeInfo/node_info.json", $jsonNodeInfo ,FILE_USE_INCLUDE_PATH);
+//
+//        $retval = null;
+//        $screen = null;
+//
+//
+//	///file manipulation section
 		//archive the current config
-		exec('sudo ' . escapeshellarg($nodeInfoFile) . ' /etc/svxlink/node_info.json.' .date("YmdThis") ,$screen,$retval);
-		//move generated file to current config
-		exec('sudo mv /var/www/html/nodeInfo/node_info.json /etc/svxlink/node_info.json', $screen, $retval);
-        	//Service SVXlink restart
-       		exec('sudo systemctl restart svxlink 2>&1',$screen,$retval);
-            };
+//		exec('sudo ' . escapeshellarg($nodeInfoFile) . ' /etc/svxlink/node_info.json.' .date("YmdThis") ,$screen,$retval);
+//		//move generated file to current config
+//		exec('sudo mv /var/www/html/nodeInfo/node_info.json /etc/svxlink/node_info.json', $screen, $retval);
+//        	//Service SVXlink restart
+//       		exec('sudo systemctl restart svxlink 2>&1',$screen,$retval);
+//            };
 
 //  	$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
 //        $inCallsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
 
 
-	$inLocation = $nodeInfo["Location"];$inLocator = $nodeInfo["Locator"]; $inSysOp = $nodeInfo["SysOp"];
-	$inLAT = $nodeInfo["LAT"];$inLONG = $nodeInfo["LONG"]; $inRXFREQ = $nodeInfo["RXFREQ"];
-	$inTXFREQ = $nodeInfo["TXFREQ"];$inWebsite = $nodeInfo["Website"]; $inMode = $nodeInfo["Mode"];
-	$inType = $nodeInfo["Type"];$inEcholink = $nodeInfo["Echolink"]; $innodeLocation = $nodeInfo["nodeLocation"];
-	$inSysop = $nodeInfo["Sysop"];$inNetwork = $nodeInfo["Network"]; $inCTCSS = $nodeInfo["CTCSS"];
-	$inLinkedTo = $nodeInfo["LinkedTo"];$inDefaultTg = $nodeInfo["DefaultTg"];
-echo $inLocation . " " . $inLocator;
+//	$inLocation = $nodeInfo["Location"];$inLocator = $nodeInfo["Locator"]; $inSysOp = $nodeInfo["SysOp"];
+//	$inLAT = $nodeInfo["LAT"];$inLONG = $nodeInfo["LONG"]; $inRXFREQ = $nodeInfo["RXFREQ"];
+//	$inTXFREQ = $nodeInfo["TXFREQ"];$inWebsite = $nodeInfo["Website"]; $inMode = $nodeInfo["Mode"];
+//	$inType = $nodeInfo["Type"];$inEcholink = $nodeInfo["Echolink"]; $innodeLocation = $nodeInfo["nodeLocation"];
+//	$inSysop = $nodeInfo["Sysop"];$inNetwork = $nodeInfo["Network"]; $inCTCSS = $nodeInfo["CTCSS"];
+//	$inLinkedTo = $nodeInfo["LinkedTo"];$inDefaultTg = $nodeInfo["DefaultTg"];
+//    echo $inLocation . " " . $inLocator;
+//?>
+<?php
+function get_form_data($key, $default = '') {
+    return isset($_POST[$key]) ? htmlspecialchars($_POST[$key], ENT_QUOTES, 'UTF-8') : htmlspecialchars($default, ENT_QUOTES, 'UTF-8');
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Read the file content again
+    $json_content = file_get_contents($filename);
+    $data = json_decode($json_content, true);
+
+    // Update the data with posted values
+    $data['nodeLocation'] = get_form_data('nodeLocation');
+    $data['hidden'] = isset($_POST['hidden']) ? true : false;
+    $data['sysop'] = get_form_data('sysop');
+
+    $data['qth'][0]['name'] = get_form_data('qth_name');
+    $data['qth'][0]['pos']['lat'] = get_form_data('qth_lat');
+    $data['qth'][0]['pos']['long'] = get_form_data('qth_long');
+    $data['qth'][0]['pos']['loc'] = get_form_data('qth_loc');
+    $data['qth'][0]['rx']['K']['name'] = get_form_data('rx_name');
+    $data['qth'][0]['rx']['K']['freq'] = filter_input(INPUT_POST, 'rx_freq', FILTER_VALIDATE_FLOAT);
+    $data['qth'][0]['rx']['K']['sqlType'] = get_form_data('rx_sqlType');
+    $data['qth'][0]['tx']['K']['name'] = get_form_data('tx_name');
+    $data['qth'][0]['tx']['K']['freq'] = filter_input(INPUT_POST, 'tx_freq', FILTER_VALIDATE_FLOAT);
+    $data['qth'][0]['tx']['K']['pwr'] = get_form_data('tx_pwr');
+
+    // Encode the updated array back to JSON
+    $new_json_content = json_encode($data, JSON_PRETTY_PRINT);
+
+    // Create a backup
+    $backup_filename = $backup_dir . 'node_info_backup_' . date('YmdHis') . '.json';
+    if (copy($filename, $backup_filename)) {
+        if (file_put_contents($filename, $new_json_content) === false) {
+            $message = 'Error saving file';
+        } else {
+            $message = 'File saved successfully';
+        }
+    } else {
+        $message = 'Error creating backup file';
+    }
+} else {
+    // Read the file content
+    $json_content = file_get_contents($filename);
+    $data = json_decode($json_content, true);
+}
 ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 <table>
         <tr>
-        <th width = "380px">Node Info Input</th>
+        <th width = "380px">Edit Node Info</th>
 	<th width = "100px">Action</th>
         </tr>
 <tr>
