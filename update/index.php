@@ -316,7 +316,7 @@ if (isset($_POST['btnUpdateSvxlink']))
 	<th>Screen</th> 
 	</tr>
 <tr>
-<Td>
+<td>
 	<textarea name="scan" rows="15" cols="80"><?php 
 			echo implode("\n",$screen); ?></textarea>
 
@@ -328,7 +328,7 @@ if (isset($_POST['btnUpdateSvxlink']))
         <th>Check versions</th>
         </tr>
 <tr>
-<Td>
+<td>
         <button name="btnChkOs" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">OS</button>
         <button name="btnChkSounds" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">Sounds</button>
 	<button name="btnChkConfig" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">Config</button>
@@ -343,7 +343,7 @@ if (isset($_POST['btnUpdateSvxlink']))
         <th>Upgrade</th>
         </tr>
 <tr>
-<Td>
+<td>
         
 	<button name="btnUpdateOs" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">OS</button>
         <button name="btnUpdateSounds" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">Sounds</button>

@@ -237,7 +237,7 @@ if (isset($_POST['btnDown']))
 	<th>Screen</th> 
 	</tr>
 <tr>
-<Td>
+<td>
 	<textarea name="scan" rows="10" cols="80"><?php 
 			echo implode("\n",$screen); ?></textarea>
 
@@ -253,7 +253,7 @@ if (isset($_POST['btnDown']))
 	<th width = "100px">Action</th>
         </tr>
 <tr>
-<Td>
+<td>
 	<button name="btnDetails" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Show Details</button>        
 	<br>
 	<button name="btnPingGw" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Ping GW</button>
@@ -262,7 +262,7 @@ if (isset($_POST['btnDown']))
 	<br>
         <button name="btnPingRef" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Ping Reflector</button>
 
-</tD><TD>
+</tD><td>
 	connection: 
    <select name="sAconn">
 	

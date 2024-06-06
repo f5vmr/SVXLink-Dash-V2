@@ -117,7 +117,7 @@ if (isset($_POST['btnLog']))
 	<th>Screen</th> 
 	</tr>
 <tr>
-<Td>
+<td>
 	<textarea name="scan" rows="23" cols="80"><?php 
 			echo implode("\n",$screen); ?></textarea>
 

@@ -279,7 +279,7 @@ if ($volume === "" || is_null($volume)) $volume = "8";
 	<th>Screen</th> 
 	</tr>
 <tr>
-<Td>
+<td>
 	<textarea name="scan" rows="4" cols="80"><?php 
 			echo implode("\n",$screen); ?></textarea>
 
@@ -297,7 +297,7 @@ if ($volume === "" || is_null($volume)) $volume = "8";
 	<th width = "100px">Action</th>
         </tr>
 <tr>
-<Td> 
+<td> 
    <button name="btnDetect" type="submit" class="red"style="height:30px; width:105px; font-size:12px;">Detect</button> 
 	Port: <input type "text" name="port" style="width: 150px" value="<?php echo $port;?>"
 </TD>
@@ -313,7 +313,7 @@ if ($volume === "" || is_null($volume)) $volume = "8";
         <th width = "100px">Action</th>
         </tr>
 <tr>
-<Td>
+<td>
    	Freq: <input type "text" name="freq" style="width: 180px" value="<?php echo $freq;?>">
 	Shift: <input type "text" name="offset" style="width: 50px" value="<?php echo $offset;?>"> <br>
    	Ctcss: <input type "text" name="ctcss" style="width: 50px" value="<?php echo $ctcss;?>">
@@ -332,7 +332,7 @@ if ($volume === "" || is_null($volume)) $volume = "8";
         <th width = "100px">Action</th>
         </tr>
 <tr>
-<Td>
+<td>
    Emphasis: <input type "text" name="fEmph" style="width: 50px" value="<?php echo $fEmph;?>">
    Low: <input type "text" name="fLow" style="width: 50px" value="<?php echo $fLow;?>">
    High: <input type "text" name="fHigh" style="width: 50px" value="<?php echo $fHigh;?>">
@@ -350,7 +350,7 @@ if ($volume === "" || is_null($volume)) $volume = "8";
         <th width = "100px">Action</th>
         </tr>
 <tr>
-<Td>
+<td>
    Volume: <input type "text" name="volume" style="width: 50px" value="<?php echo $volume;?>">
 </TD>
 <td>

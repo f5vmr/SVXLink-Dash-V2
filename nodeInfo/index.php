@@ -230,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<th width = "100px">Action</th>
         </tr>
 <tr>
-<TD>
+<td>
 
 <Table style="border-collapse: collapse; border: none;">
         <tr style="border: none;">

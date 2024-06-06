@@ -175,7 +175,7 @@ if (isset($_POST['btnWifiOn']))
 	<th>Screen</th> 
 	</tr>
 <tr>
-<Td>
+<td>
 	 
 	<textarea name="scan" rows="10" cols="80"><?php 
 			echo implode("\n",$screen); ?></textarea>
@@ -191,13 +191,13 @@ if (isset($_POST['btnWifiOn']))
 	<th width = "110px">Action</th>
         </tr>
 <tr>
-<Td>
+<td>
         <button name="btnScan" type="submit" class="red" style="height:30px;width:105px;font-size:12px;">Air Scan</button>
  	<br>
 	<button name="btnConnList" type="submit" class="red" style="height:30px; width:105px;font-size:12px;">Conn List</button>
 	<br>
 	<button name="btnWifiStatus" type="submit" class="red"  style="height:30px; width:105px; font-size:12px;">WiFi Status</button>
-</tD><TD>
+</tD><td>
 
 SSID (network name): <input type="text" name="ssid" value="<?php echo $ssid;?>">
 <br>
