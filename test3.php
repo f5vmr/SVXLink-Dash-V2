@@ -123,82 +123,131 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+
 <table>
     <tr>
-        <th width="55%">Edit Node Info</th>
-        <th width="45%">Action</th>
+        <th width="380px">Edit Node Info</th>
+        <th width="100px">Action</th>
     </tr>
     <tr>
-        <td>Node Location:</td>
-        <td><input type="text" name="nodeLocation" style="width:98%" value="<?php echo htmlspecialchars($data['nodeLocation']); ?>"></td>
+        <td>
+            <table style="border-collapse: collapse; border: none;">
+                <tr style="border: none;">
+                    <th width="30%"></th>
+                    <th width="70%"></th>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Node Location:</td>
+                    <td style="border: none;"><input type="text" name="nodeLocation" style="width:98%" value="<?php echo htmlspecialchars($data['nodeLocation']); ?>"></td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Hidden:</td>
+                    <td style="border: none;"><input type="checkbox" class="form-check-input" name="hidden" <?php echo $data['hidden'] ? 'checked' : ''; ?>></td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Sysop:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="sysop" value="<?php echo htmlspecialchars($data['sysop']); ?>"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </td>
     </tr>
     <tr>
-        <td>Hidden:</td>
-        <td><input type="checkbox" class="form-check-input" name="hidden" <?php echo $data['hidden'] ? 'checked' : ''; ?>></td>
+        <th width="380px">QTH Information</th>
+        <th width="100px">Action</th>
     </tr>
     <tr>
-        <td>Sysop:</td>
-        <td><input type="text" class="form-control" name="sysop" style="width:98%" value="<?php echo htmlspecialchars($data['sysop']); ?>"></td>
+        <td>
+            <table style="border-collapse: collapse; border: none;">
+                <tr style="border: none;">
+                    <th width="30%"></th>
+                    <th width="70%"></th>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Name:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="qth_name" value="<?php echo htmlspecialchars($data['qth'][0]['name']); ?>"></td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Latitude:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="qth_lat" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['lat']); ?>"></td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Longitude:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="qth_long" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['long']); ?>"></td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Locator:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="qth_loc" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['loc']); ?>"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </td>
     </tr>
     <tr>
-        <th width="55%">QTH Information</th>
-        <th width="45%">Action</th>
+        <th width="380px">Receiver Information</th>
+        <th width="100px">Action</th>
     </tr>
     <tr>
-        <td>Name:</td>
-        <td><input type="text" class="form-control" name="qth_name" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['name']); ?>"></td>
+        <td>
+            <table style="border-collapse: collapse; border: none;">
+                <tr style="border: none;">
+                    <th width="30%"></th>
+                    <th width="70%"></th>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Name:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="rx_name" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['name']); ?>"></td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Frequency:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="rx_freq" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['freq']); ?>"></td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">SQL Type:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="rx_sqlType" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['sqlType']); ?>"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </td>
     </tr>
     <tr>
-        <td>Latitude:</td>
-        <td><input type="text" class="form-control" name="qth_lat" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['lat']); ?>"></td>
+        <th width="380px">Transmitter Information</th>
+        <th width="100px">Action</th>
     </tr>
     <tr>
-        <td>Longitude:</td>
-        <td><input type="text" class="form-control" name="qth_long" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['long']); ?>"></td>
-    </tr>
-    <tr>
-        <td>Locator:</td>
-        <td><input type="text" class="form-control" name="qth_loc" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['loc']); ?>"></td>
-    </tr>
-    <tr>
-        <th width="55%">Receiver Information</th>
-        <th width="45%">Action</th>
-    </tr>
-    <tr>
-        <td>Name:</td>
-        <td><input type="text" class="form-control" name="rx_name" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['name']); ?>"></td>
-    </tr>
-    <tr>
-        <td>Frequency:</td>
-        <td><input type="text" class="form-control" name="rx_freq" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['freq']); ?>"></td>
-    </tr>
-    <tr>
-        <td>SQL Type:</td>
-        <td><input type="text" class="form-control" name="rx_sqlType" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['sqlType']); ?>"></td>
-    </tr>
-    <tr>
-        <th width="55%">Transmitter Information</th>
-        <th width="45%">Action</th>
-    </tr>
-    <tr>
-        <td>Name:</td>
-        <td><input type="text" class="form-control" name="tx_name" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['name']); ?>"></td>
-    </tr>
-    <tr>
-        <td>Frequency:</td>
-        <td><input type="text" class="form-control" name="tx_freq" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['freq']); ?>"></td>
-    </tr>
-    <tr>
-        <td>Power:</td>
-        <td><input type="text" class="form-control" name="tx_pwr" style="width:98%" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['pwr']); ?>"></td>
-    </tr>
-    <tr>
-        <td colspan="2" style="text-align: right;">
-            <button type="submit" class="btn btn-danger">Save and Restart</button>
+        <td>
+            <table style="border-collapse: collapse; border: none;">
+                <tr style="border: none;">
+                    <th width="30%"></th>
+                    <th width="70%"></th>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Name:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="tx_name" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['name']); ?>"></td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Frequency:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="tx_freq" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['freq']); ?>"></td>
+                </tr>
+                <tr style="border: none;">
+                    <td style="border: none;">Power:</td>
+                    <td style="border: none;"><input type="text" class="form-control" name="tx_pwr" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['pwr']); ?>"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <button type="submit" class="btn btn-primary">Save</button>
         </td>
     </tr>
 </table>
 </form>
+
 
 
 
