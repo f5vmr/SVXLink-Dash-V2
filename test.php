@@ -1,6 +1,6 @@
 <?php
 // Include the functions
-include 'include/functions/config_functions.php';
+include '../include/functions.php';
 
 // Path to the configuration file
 $file_path = 'path/to/svxlink.conf';
@@ -21,6 +21,5 @@ save_config($config, $file_path);
 
 // Display the updated configuration
 display_config($config);
-?>
 
       
