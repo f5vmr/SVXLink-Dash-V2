@@ -73,8 +73,8 @@ textarea {
 
 <?php
 // Include the functions
-include '../include.config.php';
-include '../include/functions.php';
+include 'include.config.php';
+include 'include/functions.php';
 
 // Path to the configuration file
 $file_path = '/etc/svxlink/';
