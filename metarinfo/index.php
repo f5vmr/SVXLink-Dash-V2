@@ -194,7 +194,7 @@ $conns = null;
                 <th width = "70%"></th>
         </tr>
         <tr style = "border: none;"> 
-        <td style = "border: none;">Muting Logic Linking \(advised\)</td>
+        <td style = "border: none;">Muting Logic Linking (advised 1)</td>
         <td style = "border: none;"><input type="text" name="inMiMuteLogicLinking" style = "width:98%" value="<?php echo $inMiMuteLogicLinking;?>"></td>
         </tr>
         <tr style = "border: none;"> 
