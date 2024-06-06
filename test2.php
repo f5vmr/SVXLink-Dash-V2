@@ -121,35 +121,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <td style = "border: none;">
             <input type="text" class="form-control" name="qth_loc" value="<?php echo htmlspecialchars($data['qth'][0]['pos']['loc']); ?>">
             </td></tr>
-        
-            <h3>RX</h3>
-            <div class="form-group">
-                <label for="rx_name">Name:</label>
-                <input type="text" class="form-control" name="rx_name" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['name']); ?>">
-            </div>
-            <div class="form-group">
-                <label for="rx_freq">Frequency:</label>
-                <input type="text" class="form-control" name="rx_freq" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['freq']); ?>">
-            </div>
-            <div class="form-group">
-                <label for="rx_sqlType">SQL Type:</label>
-                <input type="text" class="form-control" name="rx_sqlType" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['sqlType']); ?>">
-            </div>
-            <h3>TX</h3>
-            <div class="form-group">
-                <label for="tx_name">Name:</label>
+            <table>
+        <tr>
+        <th width = "380px">Receiver Information</th>
+        <th width = "100px">Action</th>
+        </tr>
+<tr>
+<TD>
+        <Table style="border-collapse: collapse; border: none;">
+        <tr style="border: none;">
+                <th width = "30%"></th>
+                <th width = "70%"></th>
+        </tr>
+        <tr style="border: none;">
+        <td style = "border: none;" label for="rx_name">Name:</td>
+        <td style="border: none;">        
+        <input type="text" class="form-control" name="rx_name" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['name']); ?>">
+        </td></tr>
+        <tr style="border: none;">
+        <td style = "border: none;" label for="rx_freq">Frequency:</td>
+        <td style="border: none;">
+        <input type="text" class="form-control" name="rx_freq" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['freq']); ?>">
+        </td></tr>
+        <tr style="border: none;">
+        <td style = "border: none;" label for="rx_sqlType">SQL Type:</label>
+        <td style="border: none;">
+        <input type="text" class="form-control" name="rx_sqlType" value="<?php echo htmlspecialchars($data['qth'][0]['rx']['K']['sqlType']); ?>">
+        </td></tr>
+        <table>
+        <tr>
+        <th width = "380px">Transmitter Information </th>
+        <th width = "100px">Action</th>
+        </tr>
+<tr>
+<TD>
+        <Table style="border-collapse: collapse; border: none;">
+        <tr style="border: none;">
+                <th width = "30%"></th>
+                <th width = "70%"></th>
+        </tr>
+        <tr style="border: none;">
+        <td style = "border: none;" label for="tx_name">Name:</td>            < class="form-group">
+                <td style="border: none;">
                 <input type="text" class="form-control" name="tx_name" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['name']); ?>">
-            </div>
-            <div class="form-group">
-                <label for="tx_freq">Frequency:</label>
+            </td></tr>
+        <tr style="border: none;">
+        <td style = "border: none;" label for="tx_freq">Frequency:</td>
+        <td style="border: none;">
                 <input type="text" class="form-control" name="tx_freq" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['freq']); ?>">
-            </div>
-            <div class="form-group">
-                <label for="tx_pwr">Power:</label>
+            </td></tr>
+        <tr style="border: none;">
+        <td style = "border: none;" label for="tx_sqlType">SQL Type:</label>
+            <td style="border: none;">
                 <input type="text" class="form-control" name="tx_pwr" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['pwr']); ?>">
-            </div>
+            </td></tr>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
-    </div>
-</bodtable>
 </html>
