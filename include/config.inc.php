@@ -2,34 +2,17 @@
 //Access to the Webserver for editing the config files
 define("PHP_AUTH_USER", "svxlink");
 define("PHP_AUTH_PW", "password");
-define("$progname","svxlink");
-define("$svxConfigFile","/etc/svxlink/svxlink.conf");
+
 // header lines for information
-//define("HEADER_CAT","FM-Repeater");
-//define("HEADER_QTH","$qth");
-//define("HEADER_QRG","$freq");
-//define("HEADER_SYSOP","");
-//define("FMNETWORK_EXTRA","");
-//define("EL_NODE_NR","$EL_node");
-//define("FULLACCESS_OUTSIDE", 0);
-//define("ADD_BUTTONS", 1);
-////Variables for the webpages
-//define("$qth","qth");
-//define("$freq","freq");
-//define("$EL_node","EL_node");
-//define("$callsign","callsign");
-//define("$ctcss","ctcss.hz");
-//define("$pty","pty");
-//define("$refApi","refApi");
-//define("fmnetwork","fmnetwork");
-//define("$tg_uri","tg_uri");
-//define("$API","API");
-//define("$QTH","QTH");
-//define("$FREQ","FREQ");
-//define("$LOCATION","LOCATION");
-
-
-
+define("HEADER_CAT","FM-Repeater");
+define("HEADER_QTH","$qth");
+define("HEADER_QRG","$freq");
+define("HEADER_SYSOP","");
+define("FMNETWORK_EXTRA","");
+define("EL_NODE_NR","$EL_node");
+define("FULLACCESS_OUTSIDE", 0);
+define("ADD_BUTTONS", 1);
+///Variables for the webpages
 //
 // Button keys define: description button, DTMF command or command, color of button
 //
@@ -70,8 +53,8 @@ define("FMNET","$fmnetwork");
 define("TG_URI","$tg_uri");
 define("NODE_INFO_FILE","/etc/svxlink/node_info.json");
 define("RF_MODULE","null");
-define('QTH','$qth');
-define('FREQ','$freq');
+define("QTH","$qth");
+define("FREQ","$freq");
 define("LOCATION","null");
 define("CW_AMP","inCwAmp");
 define("CW_PITCH","inCwPitch");
