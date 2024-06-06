@@ -234,6 +234,7 @@ textarea {
         $screen = null;
 	//archive the current config
 	//move generated file to current config
+        exec('sudo chown root:svxlink /var/www/html/svxlink/svxlink.conf', $screen, $retval);
 	exec('sudo mv /var/www/html/svxlink/svxlink.conf /etc/svxlink/svxlink.conf', $screen, $retval);
         //	exec('sudo cp /etc/svxlink/svxlink.conf /etc/svxlink/svxlink.d/SomeLogic.conf', $screen, $retval);
         //Service SVXlink restart
