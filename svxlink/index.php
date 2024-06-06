@@ -225,8 +225,8 @@ textarea {
 
         $ini = build_ini_string($svxconfig);
   
-        file_put_contents("/var/www/html/test.ini",$ini,FILE_USE_INCLUDE_PATH);
-        file_put_contents("/var/www/html/svxlink/svxlink.conf", $ini ,FILE_USE_INCLUDE_PATH);
+//        file_put_contents("/var/www/html/test.ini",$ini,FILE_USE_INCLUDE_PATH);
+//        file_put_contents("/var/www/html/svxlink/svxlink.conf", $ini ,FILE_USE_INCLUDE_PATH);
 
 	///file manipulation section
 
@@ -242,8 +242,8 @@ textarea {
 
 
         // debug
-              echo '<pre>';
-              print_r($ini);
+        //      echo '<pre>';
+        //      print_r($ini);
 
         //end of debug
 
