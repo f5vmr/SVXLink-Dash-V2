@@ -74,18 +74,16 @@ define("HID_DEVICE","inRxHidDevice");
 define("HOSTS","null");
 
 
-
-    $svxConfigFile = '/etc/svxlink/svxlink.conf';
-    if (fopen($svxConfigFile, 'r')) {
-        $svxconfig = parse_ini_file($svxConfigFile, true, INI_SCANNER_RAW);
-        $refApi = $svxconfig['ReflectorLogic']['API'];
-        $fmnetwork = $svxconfig['ReflectorLogic']['HOSTS'];
-        $qth = $svxconfig['LocationInfo']['QTH'];
-        $freq = $svxconfig['Rx1']['FREQ'];
-        $EL_node = $svxconfig['LocationInfo']['LOCATION'];
-    } else {
-        $callsign = "NOCALL";
-        $fmnetwork = "not registered";
-        $EL_node = "unknown"; // Set a default value for $EL_node
-    }
-    
+$svxConfigFile = '/etc/svxlink/svxlink.conf';
+if (fopen($svxConfigFile, 'r')) {
+    $svxconfig = parse_ini_file($svxConfigFile, true, INI_SCANNER_RAW);
+    $refApi = isset($svxconfig['ReflectorLogic']['API']) ? $svxconfig['ReflectorLogic']['API'] : '';
+    $fmnetwork = isset($svxconfig['ReflectorLogic']['HOSTS']) ? $svxconfig['ReflectorLogic']['HOSTS'] : '';
+    $qth = isset($svxconfig['LocationInfo']['QTH']) ? $svxconfig['LocationInfo']['QTH'] : '';
+    $freq = isset($svxconfig['Rx1']['FREQ']) ? $svxconfig['Rx1']['FREQ'] : '';
+    $EL_node = isset($svxconfig['LocationInfo']['LOCATION']) ? $svxconfig['LocationInfo']['LOCATION'] : '';
+} else {
+    $callsign = "NOCALL";
+    $fmnetwork = "not registered";
+    $EL_node = "unknown";
+}
