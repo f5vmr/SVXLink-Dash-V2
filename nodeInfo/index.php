@@ -232,7 +232,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <tr>
 <td>
 
-<Table style="border-collapse: collapse; border: none;">
+<table style="border-collapse: collapse; border: none;">
         <tr style="border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>

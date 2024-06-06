@@ -188,7 +188,7 @@ $conns = null;
         </tr>
 <tr>
 <td>
-        <Table style="border-collapse: collapse; border: none;">
+        <table style="border-collapse: collapse; border: none;">
         <tr style="border: none;">
                 <th width = "30%"></th>
                 <th width = "70%"></th>
@@ -237,7 +237,7 @@ $conns = null;
         <td style="border: none;">Mute Logic Linking</td>
         <td style="border: none;"><input type="text" name="inElMuteLogicLinking" style="width:98%" value="<?php echo $inElMuteLogicLinking;?>">
         </td></tr>
-        </Table>
+        </table>
 
 
 </TD>
