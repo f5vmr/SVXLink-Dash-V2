@@ -45,16 +45,16 @@ define("SVXCONFIG", "svxlink.conf");
 define("SVXLOGPATH", "/var/log/");
 define("SVXLOGPREFIX","svxlink.log");
 define("CALLSIGN","null");
-define("LOGICS","");
+define("LOGICS","null");
 define("REPORT_CTCSS","null");
 define("DTMF_CTRL_PTY","null");
 define("API","null");
 define("FMNET","null");
-define("TG_URI","");
+define("TG_URI","null");
 define("NODE_INFO_FILE","/etc/svxlink/node_info.json");
 define("RF_MODULE","null");
-define("QTH","");
-define("FREQ","");
+define("QTH","null");
+define("FREQ","null");
 define("LOCATION","null");
 define("CW_AMP","inCwAmp");
 define("CW_PITCH","inCwPitch");
@@ -70,6 +70,10 @@ define("FX_GAIN_LOW","inFxGainLow");
 define("AUDIO_CHANNEL","inRxAudioChannel");
 define("SQL_DELAY","inSqlDelay");
 define("HID_DEVICE","inRxHidDevice");
+
+define("HOSTS","null");
+
+
 
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
 if (fopen($svxConfigFile,'r'))
