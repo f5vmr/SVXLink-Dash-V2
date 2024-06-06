@@ -519,8 +519,9 @@ function file_replace($dir,$file_name){
       }
       
 
-function parse_config($file_path) {
-    $lines = file($file_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+function parse_config($file_path,$file_name) {
+    $file_edit = "$file_path"."$file_name";
+    $lines = file($file_edit, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $config = [];
 
     foreach ($lines as $line) {
@@ -567,13 +568,14 @@ function edit_config(&$config, $line_number, $new_content, $comment_out) {
     }
 }
 
-function save_config($config, $file_path) {
+function save_config($config, $file_path, $file_name) {
+        $file_save = "$file_path"."$file_name";
     $file_content = '';
     foreach ($config as $entry) {
         $file_content .= $entry['content'] . "\n";
     }
 
-    file_put_contents($file_path, $file_content);
+    file_put_contents($file_save, $file_content);
 }
 
 
