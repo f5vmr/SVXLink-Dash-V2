@@ -241,6 +241,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <td style = "border: none;"><input type="text" class="form-control" name="tx_pwr" value="<?php echo htmlspecialchars($data['qth'][0]['tx']['K']['pwr']); ?>">
             </td></tr>
             <button name="btnSave" type="submit" class="red"style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
-</td>/button>
+</td>
         </form>
 </html>
