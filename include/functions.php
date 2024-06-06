@@ -517,6 +517,66 @@ function file_replace($dir,$file_name){
         echo '<textarea name="content">'.$content.'</textarea>';
 
       }
+      
+
+function parse_config($file_path) {
+    $lines = file($file_path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $config = [];
+
+    foreach ($lines as $line) {
+        $line = rtrim($line);
+        if (strpos($line, '#') === 0) {
+            $config[] = ['type' => 'comment', 'content' => $line];
+        } elseif (preg_match('/^\[.*\]$/', $line)) {
+            $config[] = ['type' => 'section', 'content' => $line];
+        } else {
+            $config[] = ['type' => 'parameter', 'content' => $line];
+        }
+    }
+    
+    return $config;
+}
+
+function display_config($config) {
+    foreach ($config as $i => $entry) {
+        if ($entry['type'] == 'section') {
+            echo "\n" . $entry['content'] . "\n";
+        } elseif ($entry['type'] == 'comment') {
+            echo sprintf("%03d: %s [Commented]\n", $i, $entry['content']);
+        } else {
+            echo sprintf("%03d: %s\n", $i, $entry['content']);
+        }
+    }
+}
+
+function edit_config(&$config, $line_number, $new_content, $comment_out) {
+    if ($line_number < 0 || $line_number >= count($config)) {
+        echo "Invalid line number\n";
+        return;
+    }
+
+    if ($config[$line_number]['type'] == 'section') {
+        echo "Cannot edit section headers\n";
+        return;
+    }
+
+    if ($comment_out) {
+        $config[$line_number] = ['type' => 'comment', 'content' => '#' . $new_content];
+    } else {
+        $config[$line_number] = ['type' => 'parameter', 'content' => $new_content];
+    }
+}
+
+function save_config($config, $file_path) {
+    $file_content = '';
+    foreach ($config as $entry) {
+        $file_content .= $entry['content'] . "\n";
+    }
+
+    file_put_contents($file_path, $file_content);
+}
+
+
 
    
     
