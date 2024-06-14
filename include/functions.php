@@ -574,6 +574,7 @@ function file_replace($dir,$file_name){
     
     
     
+    
       
       function edit_config(&$config, $line_number, $new_content, $comment_out) {
           $line_number -= 4; // Adjust for the header lines
