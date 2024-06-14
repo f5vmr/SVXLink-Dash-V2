@@ -7,8 +7,8 @@ if (session_status() === PHP_SESSION_NONE) {
 define("DATABASES", "/var/www/html/databases");
 
 // Include the functions
-include 'include/config.php';
-include 'include/functions.php';
+include '/var/www/html/include/config.php';
+include '/var/www/html/include/functions.php';
 
 // Path to the configuration file
 $file_path = '/etc/svxlink/';
