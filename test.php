@@ -2,8 +2,6 @@
 if (session_status() === PHP_SESSION_NONE) {       
     session_start();
 }
-include "include/config.php";
-include "include/functions.php";
 
 
 
@@ -74,6 +72,9 @@ textarea {
 <h1 id="svxlink" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">SVXLink Configurator</h1>
 
 <?php
+// Include the functions
+include 'include.config.php';
+include 'include/functions.php';
 
 // Path to the configuration file
 $file_path = '/etc/svxlink/';
