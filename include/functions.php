@@ -552,25 +552,20 @@ function file_replace($dir,$file_name){
             echo "<td>{$entry['type']}</td>"; // Type (section, comment, etc.)
     
             echo "<td>";
-            if ($entry['type'] == 'comment') {
-                echo "<span style='color: gray;'>[{$content} - Commented]</span>";
-            } else {
-                // Display editable text input for content
-                echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;' " . ($commented ? "disabled" : "") . ">";
-            }
+            // Display input field with the content
+            echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
             echo "</td>";
     
             echo "<td>";
-            if ($entry['type'] != 'comment') {
-                // Toggle comment button
-                $toggleSymbol = $commented ? '[Uncomment]' : '[Comment]';
-                echo "<a href='?action={$toggleAction}&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>{$toggleSymbol}</a>";
-            }
+            // Display toggle button for commenting/uncommenting lines
+            $toggleSymbol = $commented ? 'Uncomment' : 'Comment';
+            echo "<a href='?action={$toggleAction}&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[{$toggleSymbol}]</a>";
             echo "</td>";
     
             echo "</tr>";
         }
     }
+    
     
     
     
