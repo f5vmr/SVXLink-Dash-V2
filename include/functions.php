@@ -541,36 +541,39 @@ function file_replace($dir,$file_name){
           return ['header' => $header, 'config' => $config];
       }
       
+      <?php
+      // Assuming this function is in your include/functions.php file
+      
       function display_config($config) {
-        foreach ($config['config'] as $i => $entry) {
-            $content = htmlspecialchars($entry['content']);
-            $commented = (substr($content, 0, 1) === '#');
-    
-            echo "<tr>";
-            echo "<td>{$entry['type']}</td>"; // Type (section, comment, etc.)
-    
-            echo "<td>";
-            if ($commented) {
-                // Display commented line with leading '#'
-                echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
-            } else {
-                // Display editable text input for content
-                echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
-            }
-            echo "</td>";
-    
-            echo "<td>";
-            // Display toggle button for commenting/uncommenting lines
-            if ($commented) {
-                echo "<a href='?action=uncomment&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Uncomment]</a>";
-            } else {
-                echo "<a href='?action=comment&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Comment]</a>";
-            }
-            echo "</td>";
-    
-            echo "</tr>";
-        }
-    }
+          foreach ($config['config'] as $i => $entry) {
+              $content = htmlspecialchars($entry['content']);
+              $commented = (substr($content, 0, 1) === '#');
+              $toggleAction = $commented ? 'uncomment' : 'comment';
+      
+              echo "<tr>";
+              echo "<td>";
+              if ($entry['type'] == 'comment') {
+                  // Display commented lines as plain text with grey color
+                  echo "<span style='color: gray;'>{$content}</span>";
+              } else {
+                  // Display editable text input for content
+                  echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
+              }
+              echo "</td>";
+      
+              echo "<td class='action-column'>";
+              if ($entry['type'] != 'comment') {
+                  // Toggle comment button
+                  $toggleSymbol = $commented ? '[Uncomment]' : '[Comment]';
+                  echo "<a href='?action={$toggleAction}&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>{$toggleSymbol}</a>";
+              }
+              echo "</td>";
+      
+              echo "</tr>";
+          }
+      }
+      ?>
+      
     
     
     

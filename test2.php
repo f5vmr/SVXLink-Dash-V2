@@ -16,12 +16,20 @@ $config = parse_config($file_path, $file_name);
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_GET['action']) && $_GET['action'] === 'comment') {
-        $line_to_comment = $_GET['line'];
-        $config['config'][$line_to_comment]['content'] = '#' . ltrim($config['config'][$line_to_comment]['content'], "# \t");
-    } elseif (isset($_GET['action']) && $_GET['action'] === 'uncomment') {
-        $line_to_uncomment = $_GET['line'];
-        $config['config'][$line_to_uncomment]['content'] = ltrim($config['config'][$line_to_uncomment]['content'], "# \t");
+    if (isset($_GET['action']) && ($_GET['action'] === 'comment' || $_GET['action'] === 'uncomment')) {
+        $line_to_modify = $_GET['line'];
+        $current_content = $config['config'][$line_to_modify]['content'];
+        
+        // Toggle comment/uncomment based on current content
+        if ($_GET['action'] === 'comment') {
+            if (substr($current_content, 0, 1) !== '#') {
+                $config['config'][$line_to_modify]['content'] = '#' . $current_content;
+            }
+        } elseif ($_GET['action'] === 'uncomment') {
+            if (substr($current_content, 0, 1) === '#') {
+                $config['config'][$line_to_modify]['content'] = ltrim($current_content, "# \t");
+            }
+        }
     } else {
         foreach ($_POST['lines'] as $line_number => $line_content) {
             $config['config'][$line_number]['content'] = $line_content;
@@ -59,6 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 100%;
             box-sizing: border-box;
         }
+        .action-column {
+            width: 150px; /* Adjust the width as needed */
+        }
     </style>
 </head>
 <body>
@@ -68,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <table>
     <thead>
         <tr>
-            <th>Type</th>
             <th>Content</th>
             <th>Action</th>
         </tr>
