@@ -35,4 +35,4 @@ if (isset($_GET['action']) && ($_GET['action'] === 'comment' || $_GET['action'] 
     header('Location: ' . $_SERVER['PHP_SELF']);
     exit;
 }
-?>
+
