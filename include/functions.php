@@ -544,29 +544,34 @@ function file_replace($dir,$file_name){
 
 // Assuming this function is in your include/functions.php file
 
+
+// Modify your display_config function to fix the issues
+
 function display_config($config) {
     foreach ($config['config'] as $i => $entry) {
         $content = htmlspecialchars($entry['content']);
         $commented = (substr($content, 0, 1) === '#');
 
         echo "<tr>";
-        echo "<td>{$entry['type']}</td>"; // Type (section, comment, etc.)
 
+        // Display content in the appropriate column
         echo "<td>";
         if ($commented) {
             // Display commented line with leading '#'
-            echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
+            echo "<span style='color: gray;'>{$content}</span>";
         } else {
             // Display editable text input for content
             echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
         }
         echo "</td>";
 
-        echo "<td>";
-        // Display toggle button for commenting/uncommenting lines
+        // Display action column for commenting/uncommenting
+        echo "<td class='action-column'>";
         if ($commented) {
+            // Display [Uncomment] link
             echo "<a href='?action=uncomment&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Uncomment]</a>";
         } else {
+            // Display [Comment] link
             echo "<a href='?action=comment&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Comment]</a>";
         }
         echo "</td>";
@@ -574,6 +579,8 @@ function display_config($config) {
         echo "</tr>";
     }
 }
+
+
 
 
     
