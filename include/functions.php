@@ -542,16 +542,17 @@ function file_replace($dir,$file_name){
       }
       
       function display_config($config) {
-          foreach ($config['config'] as $i => $entry) {
-              if ($entry['type'] == 'section') {
-                  echo "\n" . $entry['content'] . "\n";
-              } elseif ($entry['type'] == 'comment') {
-                  echo sprintf("%03d: %s [Commented]\n", $i + 4, $entry['content']);
-              } else {
-                  echo sprintf("%03d: %s\n", $i + 4, $entry['content']);
-              }
-          }
-      }
+        foreach ($config['config'] as $i => $entry) {
+            if ($entry['type'] == 'section') {
+                echo "<div style='text-align: left; margin-left: 20px;'><b>" . htmlspecialchars($entry['content']) . "</b></div>";
+            } elseif ($entry['type'] == 'comment') {
+                echo "<div style='text-align: left; margin-left: 20px;'><span style='color: gray;'>[" . htmlspecialchars($entry['content']) . " - Commented]</span></div>";
+            } else {
+                echo "<div style='text-align: left; margin-left: 20px;'>" . htmlspecialchars($entry['content']) . "</div>";
+            }
+        }
+    }
+    
       
       function edit_config(&$config, $line_number, $new_content, $comment_out) {
           $line_number -= 4; // Adjust for the header lines
