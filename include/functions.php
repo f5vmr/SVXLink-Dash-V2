@@ -572,7 +572,7 @@ function display_config($config) {
         echo "</tr>";
     }
 }
-?>
+
 
     
     
