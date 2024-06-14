@@ -545,19 +545,26 @@ function file_replace($dir,$file_name){
         foreach ($config['config'] as $i => $entry) {
             $content = htmlspecialchars($entry['content']);
             $commented = (substr($content, 0, 1) === '#');
-            $toggleAction = $commented ? 'uncomment' : 'comment';
     
             echo "<tr>";
             echo "<td>{$i}</td>"; // Line number
             echo "<td>{$entry['type']}</td>"; // Type (section, comment, etc.)
     
             echo "<td>";
-            // Display input field with the content
-            echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
+            // Check if line is commented
+            if ($commented) {
+                // Remove leading '#' for display
+                $displayContent = ltrim($content, '#');
+                echo "<span>[Commented] {$displayContent}</span>";
+            } else {
+                // Display editable text input for content
+                echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
+            }
             echo "</td>";
     
             echo "<td>";
             // Display toggle button for commenting/uncommenting lines
+            $toggleAction = $commented ? 'uncomment' : 'comment';
             $toggleSymbol = $commented ? 'Uncomment' : 'Comment';
             echo "<a href='?action={$toggleAction}&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[{$toggleSymbol}]</a>";
             echo "</td>";
@@ -565,6 +572,7 @@ function file_replace($dir,$file_name){
             echo "</tr>";
         }
     }
+    
     
     
     
