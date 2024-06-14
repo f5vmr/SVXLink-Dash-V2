@@ -1,49 +1,64 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Include necessary files
-include 'include/config.inc.php';  // Assuming this file defines constants or configurations
-include 'include/functions.php';   // Include your functions file
-
-// Path to the configuration file
+// Initialize or load configuration
 $file_path = '/etc/svxlink/';
 $file_name = 'svxlink.conf';
-
-// Initialize $config array using parse_config function
 $config = parse_config($file_path, $file_name);
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_GET['action']) && ($_GET['action'] === 'comment' || $_GET['action'] === 'uncomment')) {
-        $line_to_modify = $_GET['line'];
-        $current_content = $config['config'][$line_to_modify]['content'];
-        
-        // Toggle comment/uncomment based on current content
-        if ($_GET['action'] === 'comment') {
-            if (substr($current_content, 0, 1) !== '#') {
-                $config['config'][$line_to_modify]['content'] = '#' . $current_content;
-            }
-        } elseif ($_GET['action'] === 'uncomment') {
-            if (substr($current_content, 0, 1) === '#') {
-                $config['config'][$line_to_modify]['content'] = ltrim($current_content, "# \t");
-            }
+// Handle commenting/uncommenting actions
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && ($_GET['action'] === 'comment' || $_GET['action'] === 'uncomment')) {
+    $line_to_modify = $_GET['line'];
+    $current_content = $config['config'][$line_to_modify]['content'];
+    
+    // Toggle comment/uncomment based on current content
+    if ($_GET['action'] === 'comment') {
+        if (substr($current_content, 0, 1) !== '#') {
+            $config['config'][$line_to_modify]['content'] = '#' . $current_content;
         }
-        $_POST['lines'][$line_to_modify] = $config['config'][$line_to_modify]['content'];
-    } else {
-        foreach ($_POST['lines'] as $line_number => $line_content) {
-            $config['config'][$line_number]['content'] = $line_content;
+    } elseif ($_GET['action'] === 'uncomment') {
+        if (substr($current_content, 0, 1) === '#') {
+            $config['config'][$line_to_modify]['content'] = ltrim($current_content, "# \t");
         }
-
-        // Write updated configuration back to file (if needed)
-        $new_config_lines = array_merge($config['header'], array_column($config['config'], 'content'));
-        file_put_contents($file_path . $file_name, implode("\n", $new_config_lines) . "\n");
     }
+
+    // Write updated configuration back to file
+    $new_config_lines = array_merge($config['header'], array_column($config['config'], 'content'));
+    file_put_contents($file_path . $file_name, implode("\n", $new_config_lines) . "\n");
 
     // Redirect to avoid resubmission on page refresh
     header('Location: ' . $_SERVER['PHP_SELF']);
     exit;
+}
+
+// Function to display configuration table
+function display_config($config) {
+    foreach ($config['config'] as $i => $entry) {
+        $content = htmlspecialchars($entry['content']);
+        $commented = (substr($content, 0, 1) === '#');
+        $toggleAction = $commented ? 'uncomment' : 'comment';
+
+        echo "<tr>";
+        echo "<td>{$content}</td>"; // Display content
+        echo "<td>";
+        if ($commented) {
+            // Display commented line with leading '#'
+            echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
+        } else {
+            // Display editable text input for content
+            echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
+        }
+        echo "</td>";
+
+        echo "<td>";
+        // Display toggle button for commenting/uncommenting lines
+        if ($commented) {
+            echo "<a href='?action=uncomment&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Uncomment]</a>";
+        } else {
+            echo "<a href='?action=comment&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Comment]</a>";
+        }
+        echo "</td>";
+
+        echo "</tr>";
+    }
 }
 ?>
 
