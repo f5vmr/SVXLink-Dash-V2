@@ -551,11 +551,9 @@ function file_replace($dir,$file_name){
             echo "<td>{$entry['type']}</td>"; // Type (section, comment, etc.)
     
             echo "<td>";
-            // Check if line is commented
             if ($commented) {
-                // Remove leading '#' for display
-                $displayContent = ltrim($content, '#');
-                echo "<span>[Commented] {$displayContent}</span>";
+                // Display commented line with leading '#'
+                echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
             } else {
                 // Display editable text input for content
                 echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
@@ -564,14 +562,17 @@ function file_replace($dir,$file_name){
     
             echo "<td>";
             // Display toggle button for commenting/uncommenting lines
-            $toggleAction = $commented ? 'uncomment' : 'comment';
-            $toggleSymbol = $commented ? 'Uncomment' : 'Comment';
-            echo "<a href='?action={$toggleAction}&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[{$toggleSymbol}]</a>";
+            if ($commented) {
+                echo "<a href='?action=uncomment&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Uncomment]</a>";
+            } else {
+                echo "<a href='?action=comment&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Comment]</a>";
+            }
             echo "</td>";
     
             echo "</tr>";
         }
     }
+    
     
     
     
