@@ -93,7 +93,7 @@ insert_config_with_header_into_db($parsed_config, $pdo);
 #### Display and edit the configuration file
 
 // Database connection
-$pdo = new PDO('sqlite:path/to/database.db');
+$pdo = new PDO('sqlite:DATABASES/svxlink.db');
 
 // Fetch configuration lines from the database
 $stmt = $pdo->query("SELECT line_number, type, content FROM config_lines ORDER BY line_number");
