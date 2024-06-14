@@ -3,10 +3,15 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Enable error reporting
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Define the DATABASES constant
 define("DATABASES", "/var/www/html/databases");
 
-// Include the functions
+// Use absolute paths for includes
 include '/var/www/html/include/config.php';
 include '/var/www/html/include/functions.php';
 
@@ -134,15 +139,19 @@ try {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($config_lines as $line): ?>
-                                <tr>
-                                    <td><?php echo htmlspecialchars($line['line_number']); ?></td>
-                                    <td><?php echo htmlspecialchars($line['type']); ?></td>
-                                    <td>
-                                        <input type="text" name="lines[<?php echo $line['line_number']; ?>]" value="<?php echo htmlspecialchars($line['content']); ?>" style="width: 100%;">
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                            <?php if (!empty($config_lines)) {
+                                foreach ($config_lines as $line): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($line['line_number']); ?></td>
+                                        <td><?php echo htmlspecialchars($line['type']); ?></td>
+                                        <td>
+                                            <input type="text" name="lines[<?php echo $line['line_number']; ?>]" value="<?php echo htmlspecialchars($line['content']); ?>" style="width: 100%;">
+                                        </td>
+                                    </tr>
+                                <?php endforeach;
+                            } else {
+                                echo '<tr><td colspan="3">No configuration lines found.</td></tr>';
+                            } ?>
                         </tbody>
                     </table>
                     <br>
