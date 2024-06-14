@@ -583,7 +583,61 @@ function file_replace($dir,$file_name){
       }
       
       
-
+      function parse_config_with_header($file_path) {
+        $lines = file($file_path, FILE_IGNORE_NEW_LINES);
+        $header = array_slice($lines, 0, 4);
+        $config_lines = array_slice($lines, 4);
+        
+        $parsed_config = [
+            'header' => $header,
+            'config' => []
+        ];
+    
+        foreach ($config_lines as $line_number => $line) {
+            $line = rtrim($line);
+            if (preg_match('/^\[.*\]$/', $line)) {
+                $parsed_config['config'][] = [
+                    'type' => 'section',
+                    'content' => $line,
+                    'line_number' => $line_number + 4
+                ];
+            } elseif (strpos($line, '#') === 0) {
+                $parsed_config['config'][] = [
+                    'type' => 'comment',
+                    'content' => $line,
+                    'line_number' => $line_number + 4
+                ];
+            } elseif (trim($line) !== '') {
+                $parsed_config['config'][] = [
+                    'type' => 'parameter',
+                    'content' => $line,
+                    'line_number' => $line_number + 4
+                ];
+            } else {
+                $parsed_config['config'][] = [
+                    'type' => 'empty',
+                    'content' => '',
+                    'line_number' => $line_number + 4
+                ];
+            }
+        }
+    
+        return $parsed_config;
+    }
+    function insert_config_with_header_into_db($parsed_config, $pdo) {
+        $stmt = $pdo->prepare("INSERT INTO config_lines (line_number, type, content) VALUES (:line_number, :type, :content)");
+    
+        foreach ($parsed_config['config'] as $line) {
+            $stmt->execute([
+                ':line_number' => $line['line_number'],
+                ':type' => $line['type'],
+                ':content' => $line['content']
+            ]);
+        }
+    
+        // You can store the header separately if needed
+        // For example, in a separate table or a special record in config_lines
+    }
 
 
    
