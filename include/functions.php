@@ -556,7 +556,7 @@ function file_replace($dir,$file_name){
                 echo "<span style='color: gray;'>[{$content} - Commented]</span>";
             } else {
                 // Display editable text input for content
-                echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
+                echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;' " . ($commented ? "disabled" : "") . ">";
             }
             echo "</td>";
     
@@ -571,6 +571,7 @@ function file_replace($dir,$file_name){
             echo "</tr>";
         }
     }
+    
     
     
     
