@@ -85,11 +85,31 @@ $config = parse_config($file_path, $file_name);
 
 // Display the configuration
 display_config($config);
+// Handle toggle actions
+if (isset($_GET['action']) && isset($_GET['line'])) {
+  $action = $_GET['action'];
+  $lineIndex = $_GET['line'];
+
+  if ($action === 'comment') {
+      // Comment the line (add #)
+      $config['config'][$lineIndex]['content'] = '#' . ltrim($config['config'][$lineIndex]['content']);
+  } elseif ($action === 'uncomment') {
+      // Uncomment the line (remove #)
+      $config['config'][$lineIndex]['content'] = ltrim($config['config'][$lineIndex]['content'], '#');
+  }
+
+  // Save the updated configuration if needed
+  // For example, update database or file here
+
+  // Redirect to avoid resubmission on refresh
+  header('Location: ' . $_SERVER['PHP_SELF']);
+  exit;
+}
 
 // Edit the configuration (Example: uncomment line 10)
-$line_number = 10;
-$new_content = ltrim($config[$line_number]['content'], '#');
-edit_config($config, $line_number, $new_content, false);
+//$line_number = 10;
+//$new_content = ltrim($config[$line_number]['content'], '#');
+//edit_config($config, $line_number, $new_content, false);
 
 // Save the edited configuration
 save_config($config, $file_path, $file_name);
