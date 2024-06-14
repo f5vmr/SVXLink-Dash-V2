@@ -72,6 +72,7 @@ define("SQL_DELAY","inSqlDelay");
 define("HID_DEVICE","inRxHidDevice");
 
 define("HOSTS","null");
+define("DATABASES","/var/www/html/databases");
 
 
 $svxConfigFile = '/etc/svxlink/svxlink.conf';

@@ -80,4 +80,5 @@ include 'include/functions.php';
 $file_path = '/etc/svxlink/';
 $file_name = 'svxlink.conf';
 
-$config=parse_config_with_headers($file_path, $file_name);
+$parsed_config=parse_config_with_header($file_path, $file_name);
+$pdo = new PDO('DATABASES/svxlink.db');

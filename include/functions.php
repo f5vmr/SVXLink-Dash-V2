@@ -583,8 +583,9 @@ function file_replace($dir,$file_name){
       }
       
       
-      function parse_config_with_header($file_path) {
-        $lines = file($file_path, FILE_IGNORE_NEW_LINES);
+      function parse_config_with_header($file_path,$file_name) {
+        $file_complete="$file_path"."$file_name";
+        $lines = file($file_complete, FILE_IGNORE_NEW_LINES);
         $header = array_slice($lines, 0, 4);
         $config_lines = array_slice($lines, 4);
         
