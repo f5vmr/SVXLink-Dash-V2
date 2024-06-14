@@ -1,11 +1,10 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 }
+
+// Define the DATABASES constant
+define("DATABASES", "/var/www/html/databases");
 
 // Include the functions
 include 'include/config.php';
@@ -15,35 +14,43 @@ include 'include/functions.php';
 $file_path = '/etc/svxlink/';
 $file_name = 'svxlink.conf';
 
-$parsed_config = parse_config_with_header($file_path, $file_name);
+try {
+    // Parse and insert the configuration file into the database
+    $parsed_config = parse_config_with_header($file_path, $file_name);
+    $pdo = new PDO('sqlite:' . DATABASES . '/svxlink.db');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->exec("CREATE TABLE IF NOT EXISTS config_lines (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        line_number INTEGER NOT NULL,
+        type TEXT NOT NULL,
+        content TEXT NOT NULL
+    )");
+    insert_config_with_header_into_db($parsed_config, $pdo);
 
-$pdo = new PDO('sqlite:' . DATABASES . '/svxlink.db');
-
-$pdo->exec("CREATE TABLE IF NOT EXISTS config_lines (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    line_number INTEGER NOT NULL,
-    type TEXT NOT NULL,
-    content TEXT NOT NULL
-)");
-insert_config_with_header_into_db($parsed_config, $pdo);
-
-// Handle form submission to update the configuration
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    foreach ($_POST['lines'] as $line_number => $line_content) {
-        $stmt = $pdo->prepare("UPDATE config_lines SET content = :content WHERE line_number = :line_number");
-        $stmt->execute([
-            ':content' => $line_content,
-            ':line_number' => $line_number
-        ]);
+    // Handle form submission to update the configuration
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        foreach ($_POST['lines'] as $line_number => $line_content) {
+            $stmt = $pdo->prepare("UPDATE config_lines SET content = :content WHERE line_number = :line_number");
+            $stmt->execute([
+                ':content' => $line_content,
+                ':line_number' => $line_number
+            ]);
+        }
+        // Redirect to avoid resubmission on page refresh
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
     }
-    // Redirect to avoid resubmission on page refresh
-    header('Location: ' . $_SERVER['PHP_SELF']);
+
+    // Fetch configuration lines from the database
+    $stmt = $pdo->query("SELECT line_number, type, content FROM config_lines ORDER BY line_number");
+    $config_lines = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Database error: " . $e->getMessage();
+    exit;
+} catch (Exception $e) {
+    echo "General error: " . $e->getMessage();
     exit;
 }
-
-// Fetch configuration lines from the database
-$stmt = $pdo->query("SELECT line_number, type, content FROM config_lines ORDER BY line_number");
-$config_lines = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
