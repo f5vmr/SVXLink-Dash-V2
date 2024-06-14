@@ -2,7 +2,8 @@
 if (session_status() === PHP_SESSION_NONE) {       
     session_start();
 }
-include 'include.config.php';
+include 'include/config.php';
+include 'include/config.inc.php';
 include 'include/functions.php';
 
 
