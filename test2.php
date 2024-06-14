@@ -2,7 +2,8 @@
 if (session_status() === PHP_SESSION_NONE) {       
     session_start();
 }
-
+include 'include.config.php';
+include 'include/functions.php';
 
 
 ?>
@@ -73,8 +74,7 @@ textarea {
 
 <?php
 // Include the functions
-include 'include.config.php';
-include 'include/functions.php';
+
 
 // Path to the configuration file
 $file_path = '/etc/svxlink/';
