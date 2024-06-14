@@ -547,6 +547,8 @@ function file_replace($dir,$file_name){
 
 // Modify your display_config function to fix the issues
 
+// Adjust your display_config function to ensure all lines are editable
+
 function display_config($config) {
     foreach ($config['config'] as $i => $entry) {
         $content = htmlspecialchars($entry['content']);
@@ -554,15 +556,9 @@ function display_config($config) {
 
         echo "<tr>";
 
-        // Display content in the appropriate column
+        // Display content in the first column
         echo "<td>";
-        if ($commented) {
-            // Display commented line with leading '#'
-            echo "<span style='color: gray;'>{$content}</span>";
-        } else {
-            // Display editable text input for content
-            echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
-        }
+        echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
         echo "</td>";
 
         // Display action column for commenting/uncommenting
@@ -579,6 +575,8 @@ function display_config($config) {
         echo "</tr>";
     }
 }
+
+
 
 
 
