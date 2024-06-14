@@ -1,6 +1,10 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 }
 
 // Include the functions
@@ -12,7 +16,9 @@ $file_path = '/etc/svxlink/';
 $file_name = 'svxlink.conf';
 
 $parsed_config = parse_config_with_header($file_path, $file_name);
-$pdo = new PDO('sqlite:DATABASES/svxlink.db');
+
+$pdo = new PDO('sqlite:' . DATABASES . '/svxlink.db');
+
 $pdo->exec("CREATE TABLE IF NOT EXISTS config_lines (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     line_number INTEGER NOT NULL,
