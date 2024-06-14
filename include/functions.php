@@ -543,15 +543,24 @@ function file_replace($dir,$file_name){
       
       function display_config($config) {
         foreach ($config['config'] as $i => $entry) {
+            $content = htmlspecialchars($entry['content']);
             if ($entry['type'] == 'section') {
-                echo "<div style='text-align: left; margin-left: 20px;'><b>" . htmlspecialchars($entry['content']) . "</b></div>";
+                echo "<div style='text-align: left; margin-left: 20px;'><b>{$content}</b></div>";
             } elseif ($entry['type'] == 'comment') {
-                echo "<div style='text-align: left; margin-left: 20px;'><span style='color: gray;'>[" . htmlspecialchars($entry['content']) . " - Commented]</span></div>";
+                echo "<div style='text-align: left; margin-left: 20px;'><span style='color: gray;'>[{$content} - Commented]</span></div>";
             } else {
-                echo "<div style='text-align: left; margin-left: 20px;'>" . htmlspecialchars($entry['content']) . "</div>";
+                $commented = (substr($content, 0, 1) === '#');
+                $toggleAction = $commented ? 'uncomment' : 'comment';
+                $toggleSymbol = $commented ? '<b style="color: gray;">[#]</b>' : '<b>[#]</b>';
+    
+                echo "<div style='text-align: left; margin-left: 20px;'>";
+                echo "{$toggleSymbol} {$content} ";
+                echo "<a href='?action={$toggleAction}&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Toggle]</a>";
+                echo "</div>";
             }
         }
     }
+    
     
       
       function edit_config(&$config, $line_number, $new_content, $comment_out) {
