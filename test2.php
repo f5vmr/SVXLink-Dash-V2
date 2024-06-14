@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $config['config'][$line_to_modify]['content'] = ltrim($current_content, "# \t");
             }
         }
+        $_POST['lines'][$line_to_modify] = $config['config'][$line_to_modify]['content'];
     } else {
         foreach ($_POST['lines'] as $line_number => $line_content) {
             $config['config'][$line_number]['content'] = $line_content;
