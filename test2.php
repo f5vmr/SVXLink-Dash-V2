@@ -91,7 +91,7 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS config_lines (
 insert_config_with_header_into_db($parsed_config, $pdo);
 
 #### Display and edit the configuration file
-<?php
+
 // Database connection
 $pdo = new PDO('sqlite:path/to/database.db');
 
