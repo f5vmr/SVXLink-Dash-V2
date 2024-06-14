@@ -541,7 +541,7 @@ function file_replace($dir,$file_name){
           return ['header' => $header, 'config' => $config];
       }
       
-<?php
+
 // Assuming this function is in your include/functions.php file
 
 function display_config($config) {
