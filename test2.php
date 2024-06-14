@@ -18,10 +18,10 @@ $config = parse_config($file_path, $file_name);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_GET['action']) && $_GET['action'] === 'comment') {
         $line_to_comment = $_GET['line'];
-        $config['config'][$line_to_comment]['content'] = '#' . $config['config'][$line_to_comment]['content'];
+        $config['config'][$line_to_comment]['content'] = '#' . ltrim($config['config'][$line_to_comment]['content'], "# \t");
     } elseif (isset($_GET['action']) && $_GET['action'] === 'uncomment') {
         $line_to_uncomment = $_GET['line'];
-        $config['config'][$line_to_uncomment]['content'] = ltrim($config['config'][$line_to_uncomment]['content'], '#');
+        $config['config'][$line_to_uncomment]['content'] = ltrim($config['config'][$line_to_uncomment]['content'], "# \t");
     } else {
         foreach ($_POST['lines'] as $line_number => $line_content) {
             $config['config'][$line_number]['content'] = $line_content;
@@ -68,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <table>
     <thead>
         <tr>
-            <th>Line Number</th>
             <th>Type</th>
             <th>Content</th>
             <th>Action</th>

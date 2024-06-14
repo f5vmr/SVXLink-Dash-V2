@@ -547,7 +547,6 @@ function file_replace($dir,$file_name){
             $commented = (substr($content, 0, 1) === '#');
     
             echo "<tr>";
-            echo "<td>{$i}</td>"; // Line number
             echo "<td>{$entry['type']}</td>"; // Type (section, comment, etc.)
     
             echo "<td>";
@@ -572,6 +571,7 @@ function file_replace($dir,$file_name){
             echo "</tr>";
         }
     }
+    
     
     
     
