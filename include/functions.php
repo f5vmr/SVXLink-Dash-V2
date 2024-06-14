@@ -544,22 +544,34 @@ function file_replace($dir,$file_name){
       function display_config($config) {
         foreach ($config['config'] as $i => $entry) {
             $content = htmlspecialchars($entry['content']);
-            if ($entry['type'] == 'section') {
-                echo "<div style='text-align: left; margin-left: 20px;'><b>{$content}</b></div>";
-            } elseif ($entry['type'] == 'comment') {
-                echo "<div style='text-align: left; margin-left: 20px;'><span style='color: gray;'>[{$content} - Commented]</span></div>";
-            } else {
-                $commented = (substr($content, 0, 1) === '#');
-                $toggleAction = $commented ? 'uncomment' : 'comment';
-                $toggleSymbol = $commented ? '<b style="color: gray;">[#]</b>' : '<b>[#]</b>';
+            $commented = (substr($content, 0, 1) === '#');
+            $toggleAction = $commented ? 'uncomment' : 'comment';
     
-                echo "<div style='text-align: left; margin-left: 20px;'>";
-                echo "{$toggleSymbol} {$content} ";
-                echo "<a href='?action={$toggleAction}&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Toggle]</a>";
-                echo "</div>";
+            echo "<tr>";
+            echo "<td>{$i}</td>"; // Line number
+            echo "<td>{$entry['type']}</td>"; // Type (section, comment, etc.)
+    
+            echo "<td>";
+            if ($entry['type'] == 'comment') {
+                echo "<span style='color: gray;'>[{$content} - Commented]</span>";
+            } else {
+                // Display editable text input for content
+                echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
             }
+            echo "</td>";
+    
+            echo "<td>";
+            if ($entry['type'] != 'comment') {
+                // Toggle comment button
+                $toggleSymbol = $commented ? '[Uncomment]' : '[Comment]';
+                echo "<a href='?action={$toggleAction}&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>{$toggleSymbol}</a>";
+            }
+            echo "</td>";
+    
+            echo "</tr>";
         }
     }
+    
     
     
       

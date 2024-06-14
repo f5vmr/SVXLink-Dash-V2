@@ -70,7 +70,29 @@ textarea {
 <div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
 <h1 id="svxlink" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">SVXLink Configurator</h1>
+<body>
 
+<h2>Edit Configuration</h2>
+<form method="post">
+    <table>
+        <thead>
+            <tr>
+                <th>Line Number</th>
+                <th>Type</th>
+                <th>Content</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php display_config($config_lines); ?>
+        </tbody>
+    </table>
+    <br>
+    <button type="submit">Save Changes</button>
+</form>
+
+</body>
+</html>
 <?php
 // Include the functions
 include 'include.config.php';
@@ -86,22 +108,16 @@ $config = parse_config($file_path, $file_name);
 // Display the configuration
 display_config($config);
 // Handle toggle actions
-if (isset($_GET['action']) && isset($_GET['line'])) {
-  $action = $_GET['action'];
-  $lineIndex = $_GET['line'];
-
-  if ($action === 'comment') {
-      // Comment the line (add #)
-      $config['config'][$lineIndex]['content'] = '#' . ltrim($config['config'][$lineIndex]['content']);
-  } elseif ($action === 'uncomment') {
-      // Uncomment the line (remove #)
-      $config['config'][$lineIndex]['content'] = ltrim($config['config'][$lineIndex]['content'], '#');
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  foreach ($_POST['lines'] as $line_number => $line_content) {
+      // Update the corresponding line in your configuration data or database
+      $stmt = $pdo->prepare("UPDATE config_lines SET content = :content WHERE line_number = :line_number");
+      $stmt->execute([
+          ':content' => $line_content,
+          ':line_number' => $line_number
+      ]);
   }
-
-  // Save the updated configuration if needed
-  // For example, update database or file here
-
-  // Redirect to avoid resubmission on refresh
+  // Redirect to avoid resubmission on page refresh
   header('Location: ' . $_SERVER['PHP_SELF']);
   exit;
 }
