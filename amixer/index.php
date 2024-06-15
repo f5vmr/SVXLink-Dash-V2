@@ -74,9 +74,9 @@ textarea {
 <!-- HTML Form to adjust ALSA settings -->
 
     
-<h3 style = "color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Loudspeaker - TX</h3>
-    <label for="loudspeaker">Set for 65 (0-100):</label>
-    <input type="number" id="loudspeaker" name="loudspeaker" min="0" max="100" required>
+<h3 style = "color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Headphone - TX</h3>
+    <label for="headphone">Set for 65 (0-100):</label>
+    <input type="number" id="headphone" name="headphone" min="0" max="100" required>
 </br>
 <h3 style = "color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Microphone - Not Used</h3>
 
@@ -101,10 +101,10 @@ textarea {
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['loudspeaker'])) {
-        $loudspeaker = intval($_POST['loudspeaker']);
-        if ($loudspeaker >= 0 && $loudspeaker <= 100) {
-            exec("sudo amixer set 'Loudspeaker' " . escapeshellarg($loudspeaker) . "%");
+    if (isset($_POST['headphone'])) {
+        $headphone = intval($_POST['headphone']);
+        if ($headphone >= 0 && $headphone <= 100) {
+            exec("sudo amixer set 'Headphone' " . escapeshellarg($headphone) . "%");
         }
     }
 
