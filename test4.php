@@ -5,7 +5,11 @@
     <title>Edit Configuration</title>
     <style>
         .config-line {
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .config-line label {
+            display: inline-block;
+            width: 100px;
         }
     </style>
 </head>
@@ -22,8 +26,9 @@
             // Escape HTML entities to prevent XSS attacks
             $escaped_line = htmlspecialchars($line);
             echo '<div class="config-line">';
-            echo "<label for='line{$index}'>Line {$index}:</label>";
-            echo "<input type='text' id='line{$index}' name='lines[]' value='{$escaped_line}' size='80'>";
+            // Removed the 'Line' column label
+            echo "<input type='hidden' name='line_index[]' value='{$index}'>";
+            echo "<input type='text' name='lines[]' value='{$escaped_line}' size='80'>";
             echo '</div>';
         }
         ?>
@@ -32,4 +37,3 @@
     </form>
 </body>
 </html>
-
