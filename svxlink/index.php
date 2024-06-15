@@ -119,7 +119,7 @@ echo '<button name="btnSave" type="submit" class="red" style = "height:100px; wi
 echo '</form>'; 
 if (isset($_POST['btnSave'])) {
         
-        save_svxconfig($configFile, $svxconfig);
+        save_svxconfig($configfile, $svxconfig);
     }
 
  
