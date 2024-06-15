@@ -77,8 +77,6 @@ textarea {
     <table>
         <thead>
             <tr>
-                <th>Line Number</th>
-                <th>Type</th>
                 <th>Content</th>
                 <th>Action</th>
             </tr>
