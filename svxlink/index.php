@@ -80,13 +80,11 @@ textarea {
         $svxConfigFile = 'svxlink.conf';
         file_backup($directory,$svxConfigFile);
         $config = $directory.$svxConfigFile;
-        $lines = file($config, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        //if (fopen($svxConfigFile,'r'))
-        //      {
-        //        $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
-        //        };
+        if (fopen($config, 'r')) {
+                $svxconfig = custom_parse_ini_file($config);
+            };
         //divide up the Paragraphs
-        $logics = explode(",",$lines['GLOBAL']['LOGICS']);
+        $logics = explode(",",$config['GLOBAL']['LOGICS']);
         foreach ($logics as $key) {
           //echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
          if ($key == "SimplexLogic") $isSimplex = true;
@@ -94,7 +92,7 @@ textarea {
           }
         
 
-        include_once('../include/parse_svxconf.php');
+        include_once('../include/functions.php');
         
         $system_type = $_SESSION['system_type'];
         if (isset($_POST['btnSave']))
