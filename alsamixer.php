@@ -82,7 +82,7 @@ include_once "include/buttons.php";
     echo '</td>'."\n";
 
     echo '<td valign="top"  style = "height:500px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';
-    echo '<iframe src="/alsamixer"  style = "width:615px; height:490px"></iframe>';
+    echo '<iframe src="/amixer"  style = "width:615px; height:490px"></iframe>';
     echo '</td>';
 ?>
 </tr></table>

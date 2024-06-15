@@ -96,8 +96,8 @@ include_once "include/buttons.php";
 if($_GET['id']=="svxlink") {
     $edit_file = "svxlink/index.php"; 
 }
-if($_GET['id']=="alsamixer") {
-    $edit_file = "alsamixer/index.php"; 
+if($_GET['id']=="amixer") {
+    $edit_file = "amixer/index.php"; 
 }
 elseif($_GET['id']=="echolink"){
     $edit_file = "echolink/index.php";

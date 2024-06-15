@@ -73,7 +73,7 @@ You can now listen to the recorded audio by clicking the button player under the
 
 Look at the indicator on the page, the audio should be set correctly between -15 and 10dB and only single peaks may appear at -10dB
 
-If the recorded audio does not show the recommended levels, run the program alsamixer and change the microphone input gain settings and do the audio recording procedure again. Repeat this until you get it
+If the recorded audio does not show the recommended levels, run the program amixer and change the microphone input gain settings and do the audio recording procedure again. Repeat this until you get it
 recommended audio settings.
 
 
