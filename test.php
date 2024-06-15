@@ -77,8 +77,8 @@ textarea {
     <table>
         <thead>
             <tr>
-                <th>Content</th>
-                <th>Action</th>
+                <th width="75%">Content</th>
+                <th width="25%">Action</th>
             </tr>
         </thead>
         <tbody>
