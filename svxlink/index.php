@@ -106,9 +106,9 @@ foreach ($svxconfig as $section => $entries) {
         
         // Display the checkbox, key (command), and value (editable input)
         echo "<tr>";
-        echo "<td>$key</td>";
-        echo "<td><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
-        echo "<td><input type='text' name='value[$section][$key]' value='{$data['value']}'></td>";
+        echo "<td style=width:35%> $key</td>";
+        echo "<td style=width:10%> input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
+        echo "<td style=width:45%> input type='text' name='value[$section][$key]' value='{$data['value']}'></td>";
         echo "</tr>\n";
     }
 }
