@@ -558,7 +558,7 @@ function display_config($config) {
 
         // Display content in the first column
         echo "<td>";
-        echo "<input type='text' name='lines[{$i}]' value='{$content}' style='width: 100%;'>";
+        echo "<input type='text' value='{$content}' style='width: 100%;'>";
         echo "</td>";
 
         // Display action column for commenting/uncommenting
