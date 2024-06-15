@@ -678,55 +678,51 @@ function display_config($config) {
         // For example, in a separate table or a special record in config_lines
     }
     function custom_parse_ini_file($filename) {
-        $ini_array = [];
-        $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    
-        if ($lines === false) {
-            die("Failed to read file: $filename");
-        }
-    
+        $config = [];
         $current_section = '';
+        $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        
         foreach ($lines as $line) {
-            $line = trim($line);
-    
-            if ($line === '') {
+            // Remove comments and trim whitespace
+            $line = trim(preg_replace('/\s*#.*$/', '', $line));
+            
+            // Skip empty lines after comment removal
+            if (empty($line)) {
                 continue;
             }
-    
-            if ($line[0] === ';' || $line[0] === '#') {
-                $active = false;
-                $line = ltrim($line, ';#');
-            } else {
-                $active = true;
+            
+            // Check for section headers
+            if (preg_match('/^\[(.+)\]$/', $line, $matches)) {
+                $current_section = trim($matches[1]);
+                continue;
             }
-    
-            if ($line[0] === '[' && $line[strlen($line) - 1] === ']') {
-                $current_section = substr($line, 1, -1);
-                $ini_array[$current_section] = [];
-            } else {
-                if ($current_section === '') {
-                    continue;
+            
+            // Handle key-value pairs
+            if (strpos($line, '=') !== false) {
+                list($key, $value) = array_map('trim', explode('=', $line, 2));
+                
+                // Determine if the line is active or commented out
+                $active = true; // Assume active unless proven otherwise
+                if (strpos($key, '#') === 0) {
+                    $active = false; // Line is commented out
+                    $key = ltrim($key, '# '); // Remove leading # and spaces
                 }
-    
-                if (strpos($line, '=') !== false) {
-                    $pos = strpos($line, '=');
-                    $key = trim(substr($line, 0, $pos));
-                    $value = trim(substr($line, $pos + 1));
-    
-                    if (strpos($value, ',') !== false) {
-                        $value = array_map('trim', explode(',', $value));
-                    }
-    
-                    $ini_array[$current_section][$key] = [
-                        'value' => $value,
-                        'active' => $active,
-                    ];
+                
+                // Store in config array
+                if (!isset($config[$current_section])) {
+                    $config[$current_section] = [];
                 }
+                
+                $config[$current_section][$key] = [
+                    'value' => $value,
+                    'active' => $active,
+                ];
             }
         }
-    
-        return $ini_array;
+        
+        return $config;
     }
+    
     
    
 

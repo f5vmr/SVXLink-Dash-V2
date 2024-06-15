@@ -93,42 +93,29 @@ if (file_exists($config)) {
     // var_dump($svxconfig);
     
     // Access and manipulate configuration
-    if (isset($svxconfig['GLOBAL']) && isset($svxconfig['GLOBAL']['LOGICS']['value'])) {
-        $logics = explode(',', $svxconfig['GLOBAL']['LOGICS']['value']); // Use explode to convert the string to an array
-        foreach ($logics as $logic) {
-            if ($logic == "SimplexLogic") {
-                $isSimplex = true;
-            }
-            if ($logic == "RepeaterLogic") {
-                $isRepeater = true;
-            }
-        }
-    } else {
-        echo "LOGICS section not found in GLOBAL configuration.";
+  // Display form with checkboxes and editable values
+echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+echo '<table>';
+echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
+
+foreach ($svxconfig as $section => $entries) {
+    echo "<tr><td colspan='3'><h3>[$section]</h3></td></tr>\n";
+    foreach ($entries as $key => $data) {
+        // Determine checkbox state based on 'active' flag
+        $checked = $data['active'] ? 'checked' : '';
+        
+        // Display the checkbox, key (command), and value (editable input)
+        echo "<tr>";
+        echo "<td>$key</td>";
+        echo "<td><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
+        echo "<td><input type='text' name='value[$section][$key]' value='{$data['value']}'></td>";
+        echo "</tr>\n";
     }
-    var_dump($svxconfig);
-    foreach ($svxconfig as $section => $entries) {
-        echo "<h3>[$section]</h3>\n";
-        foreach ($entries as $key => $data) {
-            $line_prefix = $data['active'] ? '' : '#';
-            $value = is_array($data['value']) ? implode(',', $data['value']) : $data['value'];
-            echo "{$line_prefix}{$key} = {$value}<br>\n";
-    
-            // Nest the logic processing within each section loop if needed
-            if ($section == 'GLOBAL' && $key == 'LOGICS') {
-                $logics = explode(',', $value); // Assuming $value is a string of comma-separated values
-                foreach ($logics as $logic) {
-                    if ($logic == "SimplexLogic") {
-                        $isSimplex = true;
-                    }
-                    if ($logic == "RepeaterLogic") {
-                        $isRepeater = true;
-                    }
-                }
-            }
-        }
-    }
-    
+}
+
+echo '</table>';
+echo '<input type="submit" name="submit" value="Submit">';
+echo '</form>'; 
             
             // Example of accessing and manipulating configuration
            
