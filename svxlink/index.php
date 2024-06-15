@@ -79,8 +79,8 @@ textarea {
         $directory="/etc/svxlink/";
         $svxConfigFile = 'svxlink.conf';
         $file = '/etc/svxlink/svxlink.conf';
-$owner = 'svxlink';
-$group = 'svxlink';
+        $owner = 'svxlink';
+        $group = 'svxlink';
 
 
 
@@ -120,8 +120,8 @@ echo '<table>';
 echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
 
 foreach ($svxconfig as $section => $entries) {
-    echo "<tr><td colspan='3'><h2>$section</h2></td></tr>\n";
-    
+        echo "<tr><td colspan='3'><h2 id=\"svxlink\" style=\"color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;\">$section</h2></td></tr>\n";
+
     foreach ($entries as $key => $data) {
         // Determine checkbox state based on 'active' flag
         $checked = $data['active'] ? 'checked' : '';
