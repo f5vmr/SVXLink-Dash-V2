@@ -128,17 +128,17 @@ echo '</form>';
         //  }
         
 
-          foreach ($svxconfig as $key => $data) {
-                if ($data['active']) {
-                    echo "Active line: $key = {$data['value']}\n";
-                    // If you want to make this line inactive, prepend #
-                    // $svxconfig[$key]['active'] = false;
-                } else {
-                    echo "Inactive line: #$key = {$data['value']}\n";
-                    // If you want to make this line active, remove #
-                    // $svxconfig[$key]['active'] = true;
-                }
-            }
+        //  foreach ($svxconfig as $key => $data) {
+        //        if ($data['active']) {
+        //            echo "Active line: $key = {$data['value']}\n";
+        //            // If you want to make this line inactive, prepend #
+        //            // $svxconfig[$key]['active'] = false;
+        //        } else {
+        //            echo "Inactive line: #$key = {$data['value']}\n";
+        //            // If you want to make this line active, remove #
+        //            // $svxconfig[$key]['active'] = true;
+        //        }
+        //    }
         
         $system_type = $_SESSION['system_type'];
         if (isset($_POST['btnSave']))
