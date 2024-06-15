@@ -142,6 +142,9 @@ echo '</form>';
 if (isset($_POST['btnSave'])) {
         
         save_svxconfig($config, $_POST);
+        $screen=null;
+        $retval=null;
+        exec('sudo systemctl restart svxlink 2>&1',$screen,$retval);
     }
 
  
