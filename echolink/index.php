@@ -1,3 +1,11 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {       
+    session_start();
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61,200 +69,82 @@ textarea {
 <fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<h1 id="echolink" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">EchoLink Configurator</h1>
+<h1 id="svxlink" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">EchoLink Configurator</h1>
+<h3 style = "color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">To comment '#' a line, clear the checkbox</h3>
 
 
 <?php
-include_once "include/functions.php";
 
-$elConfigFile = '/etc/svxlink/svxlink.d/ModuleEchoLink.conf';
-if (fopen($elConfigFile,'r'))
-      {
-          $elconfig = parse_ini_file($elConfigFile,true,INI_SCANNER_RAW);
-      };
-  $module = str_split($elconfig['ModuleEchoLink']);
-  foreach ($module as $key) {
-  if ($logics[0] == "[ModuleEchoLink]") $isEchoLink = true;
-  }
-
-if (isset($_POST['btnSave'])) {
-  $retval = null;
-  $screen = null;
-
-
-  $elconfig['ModuleEchoLink']['DEFAULT_LANG'] = $_POST['inElDefaultLang'];
-  $elconfig['ModuleEchoLink']['CALLSIGN'] = $_POST['inElCallsign'];
-  $elconfig['ModuleEchoLink']['PASSWORD'] = $_POST['inElPassword'];
-  $elconfig['ModuleEchoLink']['SYSOPNAME'] = $_POST['inElSysOpName'];
-  $elconfig['ModuleEchoLink']['LOCATION'] = $_POST['inElLocation'];
-
-  $elconfig['ModuleEchoLink']['SERVERS'] = $_POST['inElServers'];
-  $elconfig['ModuleEchoLink']['PROXY_SERVER'] = $_POST['inElProxyServer'];
-  $elconfig['ModuleEchoLink']['PROXY_PORT'] = $_POST['inElProxyPort'];
-  $elconfig['ModuleEchoLink']['PROXY_PASSWORD'] = $_POST['inElProxyPassword'];
-
-  $elconfig['ModuleEchoLink']['DESCRIPTION'] = $_POST['inElDescription'];
-
-
-  $elconfig['ModuleEchoLink']['MUTE_LOGIC_LINKING'] = $_POST['inElMuteLogicLinking'];
-
-  $ini = build_ini_string($elconfig);
-
-  //file_put_contents("/var/www/html/test.ini",$ini,FILE_USE_INCLUDE_PAT);
-  file_put_contents("/var/www/html/echolink/ModuleEchoLink.conf", $ini, FILE_USE_INCLUDE_PATH);
-
-  ///file manipulation section
-
-  $retval = null;
-  $screen = null;
-  //archive the current config
-  exec('sudo cp /etc/svxlink/svxlink.d/ModuleEchoLink.conf /etc/svxlink/svxlink.d/ModuleEchoLink.conf.' . date("YmdThis"), $screen, $retval);
-  //move generated file to current config
-  exec('sudo mv /var/www/html/echolink/ModuleEchoLink.conf /etc/svxlink/svxlink.d/ModuleEchoLink.conf', $screen, $retval);
-
-  //Service SVXlink restart
-  exec('sudo systemctl restart svxlink 2>&1', $screen, $retval);
+          
+        include_once "../include/functions.php";
+        $directory="/etc/svxlink/svxlink.d/";
+        $svxConfigFile = 'ModuleEchoLink.conf';
+        $file = '/etc/svxlink/svxlink.d/ModuleEchoLink.conf';
+        $owner = 'svxlink';
+        $group = 'svxlink';
 
 
 
-  //debug
-//      echo '<pre>';
-  //     print_r($ini);
-  //     echo '</pre>';
-//end of debug
+// Command to change ownership using sudo
+$command = "sudo chown $owner:$group " . escapeshellarg($file);
 
+// Execute the command
+$output = [];
+$return_var = 0;
+exec($command, $output, $return_var);
+
+// Check if the command executed successfully
+if ($return_var === 0) {
+ //   echo "Ownership of $file changed to $owner:$group successfully.";
+} else {
+//    echo "Failed to change ownership of $file. Error code: $return_var";
+ //   echo "<pre>" . implode("\n", $output) . "</pre>";
+}
+        file_backup($directory,$svxConfigFile);
+        $config = $directory.$svxConfigFile;
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+//
+if (file_exists($config)) {
+        $svxconfig = custom_parse_ini_file($config);
+    } else {
+        die("File not found: $config");
+    }
+    
+    // Debugging: Output parsed data
+    //var_dump($svxconfig);
+    
+    // Access and manipulate configuration
+  // Display form with checkboxes and editable values
+echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+echo '<table>';
+echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
+
+foreach ($svxconfig as $section => $entries) {
+        echo "<tr><td colspan='3'><h2 id=\"svxlink\" style=\"color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;\">$section</h2></td></tr>\n";
+
+    foreach ($entries as $key => $data) {
+        // Determine checkbox state based on 'active' flag
+        $checked = $data['active'] ? 'checked' : '';
+        
+        // Display the checkbox, key (command), and value (editable input)
+        echo "<tr>";
+        echo "<td style='width: 15%'>$key</td>";
+        echo "<td style='width: 10%'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
+        echo "<td style='width: 75%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
+        echo "</tr>\n";
+    }
 }
 
-
-if (fopen($svxConfigFile,'r'))
-//      {
-
-        $elconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
-//};
-
-//$svxConfigFile = '/etc/svxlink/svxlink.conf';
-//$svxConfigFile = '/var/www/html/svxlink.conf';    
-
-
-
-
-
-
-//if (fopen($elConfigFile,'r'))
-  //    { 
-
-//	$elconfig = parse_ini_file($elConfigFile,true,INI_SCANNER_RAW);
+echo '</table>';
+echo '<button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>';
+echo '</form>'; 
+if (isset($_POST['btnSave'])) {
         
-	      $inElDefaultLang = $elconfig['ModuleEchoLink']['DEFAULT_LANG'];
-        $inElCallsign = $elconfig['ModuleEchoLink']['CALLSIGN'];
-        $inElPassword = $elconfig['ModuleEchoLink']['PASSWORD'];
-        $inElSysOpName = $elconfig['ModuleEchoLink']['SYSOPNAME'];
-        $inElLocation = $elconfig['ModuleEchoLink']['LOCATION'];
-        $inElServers = $elconfig['ModuleEchoLink']['SERVERS'];
-        $inElProxyServer =  $elconfig['ModuleEchoLink']['PROXY_SERVER'];
-        $inElProxyPort = $elconfig['ModuleEchoLink']['PROXY_PORT'];
-        $inElProxyPassword = $elconfig['ModuleEchoLink']['PROXY_PASSWORD'];
-        $inElMuteLogicLinking = $elconfig['ModuleEchoLink']['MUTE_LOGIC_LINKING'];
+        save_svxconfig($config, $_POST);
+        $screen=null;
+        $retval=null;
+        exec('sudo systemctl restart svxlink 2>&1',$screen,$retval);
+    }
 
-//}
-//    else { $callsign="NOCALL";}
-
-
-
-//if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//  if (empty($_POST["ssid"])) {
-//     echo "Name is required";
-//  } else {
-//    $ssid = $_POST["ssid"]);
-//  }
-//}}
-
-
-// load the connlist
-$retval = null;
-$conns = null;
-// find the gateway
-//tbc - load the data from ini RF.
-
-?>
-
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
-
-<table>
-        <tr>
-        <th width = "380px">Echolink Input</th>
-        <th width = "100px">Action</th>
-        </tr>
-<tr>
-<td>
-        <table style = "border-collapse: collapse; border: none;">
-        <tr style = "border: none;">
-                <th width = "30%"></th>
-                <th width = "70%"></th>
-        </tr>
-        <tr style = "border: none;"> 
-        <td style = "border: none;">Default Language</td>
-        <td style = "border: none;"><input type="text" name="inElDefaultLang" style = "width:98%" value="<?php echo $inElDefaultLang;?>"></td>
-        </tr>
-        <tr style = "border: none;"> 
-        <td style = "border: none;">Callsign</td>
-        <td style = "border: none;"><input type="text" name="inElCallsign" style = "width:98%" value="<?php echo $inElCallsign;?>">
-        </td></tr>
-        <tr style = "border: none;"> 
-        <td style = "border: none;">Password</td>
-        <td style = "border: none;"><input type="text" name="inElPassword" style = "width:98%" value="<?php echo $inElPassword;?>">
-        </td></tr>
-        <tr style = "border: none;"> 
-        <td style = "border: none;">SysOp Name</td>
-        <td style = "border: none;"><input type="text" name="inElSysOpName" style = "width:98%" value="<?php echo $inElSysOpName;?>">
-        </td></tr>
-        <tr style = "border: none;"> 
-        <td style = "border: none;">Location</td>
-        <td style = "border: none;"><input type="text" name="inElLocation" style = "width:98%" value="<?php echo $inElLocation;?>">
-        </td></tr>
-        <!--<tr style = "border: none;"> 
-        <td style = "border: none;">Description</td>
-        <td style = "border: none;"><input type="text" name="inElDescription" style = "width:98%" value="<?php echo $inElDescription;?>">
-        </td></tr>-->
-        <tr style = "border: none;"> 
-        <td style = "border: none;">Servers</td>
-        <td style = "border: none;"><input type="text" name="inElServers" style = "width:98%" value="<?php echo $inElServers;?>">
-        </td></tr>
-        <tr style = "border: none;"> 
-        <td style = "border: none;">Proxy Server</td>
-        <td style = "border: none;"><input type="text" name="inElProxyServer" style = "width:98%" value="<?php echo $inElProxyServer;?>">
-        </td></tr>
-        <tr style = "border: none;"> 
-        <td style = "border: none;">Proxy Port</td>
-        <td style = "border: none;"><input type="text" name="inElProxyPort" style = "width:98%" value="<?php echo $inElProxyPort;?>">
-        </td></tr>
-        <tr style = "border: none;"> 
-        <td style = "border: none;">Proxy Password</td>
-        <td style = "border: none;"><input type="text" name="inElProxyPassword" style = "width:98%" value="<?php echo $inElProxyPassword;?>">
-        </td></tr>
-        <tr style = "border: none;"> 
-        <td style = "border: none;">Mute Logic Linking</td>
-        <td style = "border: none;"><input type="text" name="inElMuteLogicLinking" style = "width:98%" value="<?php echo $inElMuteLogicLinking;?>">
-        </td></tr>
-        </table>
-
-
-</TD>
-<td>
-        <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
-</td>
-
-</tr>
-</table>
-
-
-
-
-</form>
-
-<p style = "margin: 0 auto;"></p>
-<p style = "margin-bottom:-2px;"></p>
-
-</body>
-</html>
+ 
