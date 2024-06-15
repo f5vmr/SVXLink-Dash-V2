@@ -80,9 +80,9 @@ textarea {
         $svxConfigFile = 'svxlink.conf';
         file_backup($directory,$svxConfigFile);
         $config = $directory.$svxConfigFile;
-        error_reporting(E_ALL);
-        ini_set('display_errors', 1);
-
+        //error_reporting(E_ALL);
+        //ini_set('display_errors', 1);
+//
         if (file_exists($config)) {
                 $svxconfig = custom_parse_ini_file($config);
             } else {
@@ -100,7 +100,8 @@ textarea {
                 }
             } else {
                 echo "LOGICS section not found in GLOBAL configuration.";
-            }    
+            }
+            var_dump($svxconfig);    
             // Example of accessing and manipulating configuration
            
         //divide up the Paragraphs
