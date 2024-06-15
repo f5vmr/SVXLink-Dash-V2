@@ -101,7 +101,7 @@ textarea {
             } else {
                 echo "LOGICS section not found in GLOBAL configuration.";
             }
-            var_dump($svxconfig);    
+            
             // Example of accessing and manipulating configuration
            
         //divide up the Paragraphs

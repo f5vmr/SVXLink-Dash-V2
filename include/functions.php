@@ -727,7 +727,7 @@ function display_config($config) {
         }
     
         // Output debugging information
-        var_dump($ini_array);
+        
     
         return $ini_array;
     }
