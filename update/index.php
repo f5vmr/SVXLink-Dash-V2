@@ -75,13 +75,13 @@ ini_set("allow_url_fopen", 1);
 $isSimplex = false;
 $isRepeater = false;
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
-if (fopen($svxConfigFile,'r')) {$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); }
-$logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
+if (fopen($svxConfigFile,'r')) {$lines = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); }
+$logics = explode(",",$lines['GLOBAL']['LOGICS']);
 foreach ($logics as $key) {
   if ($key == "SimplexLogic") $isSimplex = true;
   if ($key == "RepeaterLogic") $isRepeater = true; 
 };
-//$tgUri = $svxconfig['ReflectorLogic']['TG_URI'];
+//$tgUri = $lines['ReflectorLogic']['TG_URI'];
 
 
 
