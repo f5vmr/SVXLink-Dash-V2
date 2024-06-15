@@ -724,7 +724,7 @@ function display_config($config) {
     }
     
     function save_svxconfig($configFile, $svxconfig) {
-        
+        var_dump($svxconfig);
         // Open the file for writing
         if (!$handle = fopen($configFile, 'w')) {
             die("Cannot open file ($configFile) for writing. Check file permissions.");
