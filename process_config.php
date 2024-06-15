@@ -19,10 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['config_file']['tmp_n
     $sections = [];
     $current_section = null;
 
-    // Process form inputs
-    $section_to_edit = isset($_POST['section_to_edit']) ? $_POST['section_to_edit'] : '';
-    $edit_comments = isset($_POST['edit_comments']) ? $_POST['edit_comments'] : '';
-
     // Iterate through each line in the file
     foreach ($lines as $line) {
         // Strip any leading/trailing whitespace
@@ -51,6 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['config_file']['tmp_n
             }
         }
     }
+
+    // Process form inputs
+    $section_to_edit = isset($_POST['section_to_edit']) ? $_POST['section_to_edit'] : '';
+    $edit_comments = isset($_POST['edit_comments']) ? $_POST['edit_comments'] : '';
 
     // Modify the configuration based on form inputs
     if (!empty($section_to_edit) && isset($sections[$section_to_edit])) {
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['config_file']['tmp_n
 
     echo "Modified configuration saved to {$new_config_file}";
 } else {
-    // Error handling if form is not submitted correctly
-    die('Error: Please upload a .txt file.');
+    // Display the HTML form if no file is uploaded
+    include('test4.html');
 }
 ?>
