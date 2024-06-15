@@ -88,16 +88,28 @@ textarea {
             } else {
                 die("File not found: $config");
             }
-            
+            if (isset($svxconfig['GLOBAL']) && isset($svxconfig['GLOBAL']['LOGICS'])) {
+                $logics = explode(",", $svxconfig['GLOBAL']['LOGICS']['value']);
+                foreach ($logics as $logic) {
+                    if ($logic == "SimplexLogic") {
+                        $isSimplex = true;
+                    }
+                    if ($logic == "RepeaterLogic") {
+                        $isRepeater = true;
+                    }
+                }
+            } else {
+                echo "LOGICS section not found in GLOBAL configuration.";
+            }    
             // Example of accessing and manipulating configuration
            
         //divide up the Paragraphs
-        $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
-        foreach ($logics as $key) {
-          //echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
-         if ($key == "SimplexLogic") $isSimplex = true;
-         if ($key == "RepeaterLogic") $isRepeater = true;
-          }
+        //$logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
+        //foreach ($logics as $key) {
+        //  //echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
+        // if ($key == "SimplexLogic") $isSimplex = true;
+        // if ($key == "RepeaterLogic") $isRepeater = true;
+        //  }
         
 
           foreach ($svxconfig as $key => $data) {
