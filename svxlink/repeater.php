@@ -1,20 +1,20 @@
 <?php
 
         
-        $inRepeaterDefaultLang = $lines['RepeaterLogic']['DEFAULT_LANG'];
-        $inRepeaterCallsign = $lines['RepeaterLogic']['CALLSIGN'];
-        $inRepeaterModules = $lines['RepeaterLogic']['MODULES'];
-        $inRepShortInterval = $lines['RepeaterLogic']['SHORT_IDENT_INTERVAL'];
-        $inRepLongInterval = $lines['RepeaterLogic']['LONG_IDENT_INTERVAL'];
-        $inIdleTime = $lines['RepeaterLogic']['IDLE_TIMEOUT'];
-        $in1750 = $lines['RepeaterLogic']['OPEN_ON_1750'];
-        $inCTCSS = $lines['RepeaterLogic']['OPEN_ON_CTCSS'];
-        $inSqlFlank = $lines['RepeaterLogic']['OPEN_SQL_FLANK'];
-        $inIdleIntervalTime = $lines['RepeaterLogic']['IDLE_SOUND_INTERVAL'];
-        $inOnLineCommand = $lines['RepeaterLogic']['ONLINE_CMD'];
-        $inOnLine = $lines['RepeaterLogic']['ONLINE'];
-        $inFxGainNormal = $lines['RepeaterLogic']['FX_GAIN_NORMAL'];
-        $inFxGainLow = $lines['RepeaterLogic']['FX_GAIN_LOW'];
+        $inRepeaterDefaultLang = $svxconfig['RepeaterLogic']['DEFAULT_LANG'];
+        $inRepeaterCallsign = $svxconfig['RepeaterLogic']['CALLSIGN'];
+        $inRepeaterModules = $svxconfig['RepeaterLogic']['MODULES'];
+        $inRepShortInterval = $svxconfig['RepeaterLogic']['SHORT_IDENT_INTERVAL'];
+        $inRepLongInterval = $svxconfig['RepeaterLogic']['LONG_IDENT_INTERVAL'];
+        $inIdleTime = $svxconfig['RepeaterLogic']['IDLE_TIMEOUT'];
+        $in1750 = $svxconfig['RepeaterLogic']['OPEN_ON_1750'];
+        $inCTCSS = $svxconfig['RepeaterLogic']['OPEN_ON_CTCSS'];
+        $inSqlFlank = $svxconfig['RepeaterLogic']['OPEN_SQL_FLANK'];
+        $inIdleIntervalTime = $svxconfig['RepeaterLogic']['IDLE_SOUND_INTERVAL'];
+        $inOnLineCommand = $svxconfig['RepeaterLogic']['ONLINE_CMD'];
+        $inOnLine = $svxconfig['RepeaterLogic']['ONLINE'];
+        $inFxGainNormal = $svxconfig['RepeaterLogic']['FX_GAIN_NORMAL'];
+        $inFxGainLow = $svxconfig['RepeaterLogic']['FX_GAIN_LOW'];
         
         
         ?>

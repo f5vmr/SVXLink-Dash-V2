@@ -76,7 +76,7 @@ $isSimplex = false;
 $isRepeater = false;
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
 if (fopen($svxConfigFile,'r')) {$lines = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); }
-$logics = explode(",",$lines['GLOBAL']['LOGICS']);
+$logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
 foreach ($logics as $key) {
   if ($key == "SimplexLogic") $isSimplex = true;
   if ($key == "RepeaterLogic") $isRepeater = true; 
