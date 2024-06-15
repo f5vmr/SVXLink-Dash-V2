@@ -90,7 +90,7 @@ if (file_exists($config)) {
     }
     
     // Debugging: Output parsed data
-    var_dump($svxconfig);
+    //var_dump($svxconfig);
     
     // Access and manipulate configuration
   // Display form with checkboxes and editable values
