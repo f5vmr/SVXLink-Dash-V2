@@ -745,7 +745,7 @@ function display_config($config) {
         fclose($handle);
     
         // Optionally, you can add success/failure handling here
-        echo "Configuration saved successfully to $configFile.";
+        echo "Configuration saved and restarted";
     }
     
 
