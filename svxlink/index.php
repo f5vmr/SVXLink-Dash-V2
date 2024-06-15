@@ -464,7 +464,7 @@ if (file_exists($config)) {
         
         <tr style = "border: none;">
         <td style = "border: none;">Logics</td>
-        <td style = "border: none;"><input type="text" name="inGlobalLogics" style = "width:98%" value="<?php echo $inGlobalLogics;?>"></td>
+        <td style = "border: none;"><input type="text" name="inGlobalLogics" style = "width:98%" value=""<?php echo htmlspecialchars($inGlobalLogics); ?>""></td>
         </tr>
         <tr style = "border: none;"> 
         <td style = "border: none;">Config Directory</td>
