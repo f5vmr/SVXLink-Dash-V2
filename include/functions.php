@@ -681,13 +681,26 @@ function display_config($config) {
         $ini_array = [];
         $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     
+        if ($lines === false) {
+            // Handle file read error
+            die("Failed to read file: $filename");
+        }
+    
         foreach ($lines as $line) {
             // Remove leading and trailing whitespace
             $line = trim($line);
     
-            // Skip empty lines and lines that start with #
-            if ($line === '' || $line[0] === '#') {
+            // Skip empty lines
+            if ($line === '') {
                 continue;
+            }
+    
+            // Check if line starts with # (inactive line)
+            $active = true;
+            if ($line[0] === '#') {
+                // Line is inactive, remove # and mark as inactive
+                $line = ltrim($line, '#');
+                $active = false;
             }
     
             // Check if line contains '=' and is not just a comment line
@@ -702,12 +715,19 @@ function display_config($config) {
                     $value = array_map('trim', explode(',', $value));
                 }
     
-                $ini_array[$key] = $value;
+                // Store as associative array with 'value' and 'active' flag
+                $ini_array[$key] = [
+                    'value' => $value,
+                    'active' => $active,
+                ];
             } else {
                 // Handle cases where the line may not contain '=', adjust as needed
                 // For example, log or skip these lines
             }
         }
+    
+        // Output debugging information
+        var_dump($ini_array);
     
         return $ini_array;
     }

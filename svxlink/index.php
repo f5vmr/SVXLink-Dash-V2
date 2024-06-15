@@ -80,9 +80,17 @@ textarea {
         $svxConfigFile = 'svxlink.conf';
         file_backup($directory,$svxConfigFile);
         $config = $directory.$svxConfigFile;
-        if (fopen($config, 'r')) {
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+
+        if (file_exists($config)) {
                 $svxconfig = custom_parse_ini_file($config);
-            };
+            } else {
+                die("File not found: $config");
+            }
+            
+            // Example of accessing and manipulating configuration
+           
         //divide up the Paragraphs
         $logics = explode(",",$config['GLOBAL']['LOGICS']);
         foreach ($logics as $key) {
@@ -92,7 +100,17 @@ textarea {
           }
         
 
-        include_once('../include/functions.php');
+          foreach ($svxconfig as $key => $data) {
+                if ($data['active']) {
+                    echo "Active line: $key = {$data['value']}\n";
+                    // If you want to make this line inactive, prepend #
+                    // $svxconfig[$key]['active'] = false;
+                } else {
+                    echo "Inactive line: #$key = {$data['value']}\n";
+                    // If you want to make this line active, remove #
+                    // $svxconfig[$key]['active'] = true;
+                }
+            }
         
         $system_type = $_SESSION['system_type'];
         if (isset($_POST['btnSave']))
