@@ -78,7 +78,7 @@ textarea {
           
         include_once "../include/functions.php";
         $directory="/etc/svxlink/svxlink.d/";
-        $svxConfigFile = 'ModuelMetarInfo.conf';
+        $svxConfigFile = 'ModuleMetarInfo.conf';
         $file = '/etc/svxlink/svxlink.d/ModuleMetarInfo.conf';
         $owner = 'svxlink';
         $group = 'svxlink';
@@ -148,4 +148,3 @@ if (isset($_POST['btnSave'])) {
     }
 
  
-    
