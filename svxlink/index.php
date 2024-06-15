@@ -83,24 +83,38 @@ textarea {
         //error_reporting(E_ALL);
         //ini_set('display_errors', 1);
 //
-        if (file_exists($config)) {
-                $svxconfig = custom_parse_ini_file($config);
-            } else {
-                die("File not found: $config");
+if (file_exists($config)) {
+        $svxconfig = custom_parse_ini_file($config);
+    } else {
+        die("File not found: $config");
+    }
+    
+    // Debugging: Output parsed data
+    // var_dump($svxconfig);
+    
+    // Access and manipulate configuration
+    if (isset($svxconfig['GLOBAL']) && isset($svxconfig['GLOBAL']['LOGICS']['value'])) {
+        $logics = $svxconfig['GLOBAL']['LOGICS']['value'];
+        foreach ($logics as $logic) {
+            if ($logic == "SimplexLogic") {
+                $isSimplex = true;
             }
-            if (isset($svxconfig['GLOBAL']) && isset($svxconfig['GLOBAL']['LOGICS'])) {
-                $logics = explode(",", $svxconfig['GLOBAL']['LOGICS']['value']);
-                foreach ($logics as $logic) {
-                    if ($logic == "SimplexLogic") {
-                        $isSimplex = true;
-                    }
-                    if ($logic == "RepeaterLogic") {
-                        $isRepeater = true;
-                    }
-                }
-            } else {
-                echo "LOGICS section not found in GLOBAL configuration.";
+            if ($logic == "RepeaterLogic") {
+                $isRepeater = true;
             }
+        }
+    } else {
+        echo "LOGICS section not found in GLOBAL configuration.";
+    }
+    
+    foreach ($svxconfig as $section => $entries) {
+        echo "<h3>[$section]</h3>\n";
+        foreach ($entries as $key => $data) {
+            $line_prefix = $data['active'] ? '' : '#';
+            $value = is_array($data['value']) ? implode(',', $data['value']) : $data['value'];
+            echo "{$line_prefix}{$key} = {$value}<br>\n";
+        }
+    }
             
             // Example of accessing and manipulating configuration
            

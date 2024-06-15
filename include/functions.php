@@ -682,52 +682,48 @@ function display_config($config) {
         $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     
         if ($lines === false) {
-            // Handle file read error
             die("Failed to read file: $filename");
         }
     
+        $current_section = '';
         foreach ($lines as $line) {
-            // Remove leading and trailing whitespace
             $line = trim($line);
     
-            // Skip empty lines
             if ($line === '') {
                 continue;
             }
     
-            // Check if line starts with # (inactive line)
-            $active = true;
-            if ($line[0] === '#') {
-                // Line is inactive, remove # and mark as inactive
-                $line = ltrim($line, '#');
+            if ($line[0] === ';' || $line[0] === '#') {
                 $active = false;
+                $line = ltrim($line, ';#');
+            } else {
+                $active = true;
             }
     
-            // Check if line contains '=' and is not just a comment line
-            if (strpos($line, '=') !== false) {
-                // Separate key and value by first '=' found
-                $pos = strpos($line, '=');
-                $key = trim(substr($line, 0, $pos));
-                $value = trim(substr($line, $pos + 1));
-    
-                // Handle array values if needed
-                if (strpos($value, ',') !== false) {
-                    $value = array_map('trim', explode(',', $value));
+            if ($line[0] === '[' && $line[strlen($line) - 1] === ']') {
+                $current_section = substr($line, 1, -1);
+                $ini_array[$current_section] = [];
+            } else {
+                if ($current_section === '') {
+                    continue;
                 }
     
-                // Store as associative array with 'value' and 'active' flag
-                $ini_array[$key] = [
-                    'value' => $value,
-                    'active' => $active,
-                ];
-            } else {
-                // Handle cases where the line may not contain '=', adjust as needed
-                // For example, log or skip these lines
+                if (strpos($line, '=') !== false) {
+                    $pos = strpos($line, '=');
+                    $key = trim(substr($line, 0, $pos));
+                    $value = trim(substr($line, $pos + 1));
+    
+                    if (strpos($value, ',') !== false) {
+                        $value = array_map('trim', explode(',', $value));
+                    }
+    
+                    $ini_array[$current_section][$key] = [
+                        'value' => $value,
+                        'active' => $active,
+                    ];
+                }
             }
         }
-    
-        // Output debugging information
-        
     
         return $ini_array;
     }
