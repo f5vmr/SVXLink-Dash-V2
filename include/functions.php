@@ -724,9 +724,11 @@ function display_config($config) {
     }
     
     function save_svxconfig($configFile, $svxconfig) {
+        $directory="/etc/svxlink/";
+        $save_configfile=$directory.$configFile;
         // Open the file for writing
-        if (!$handle = fopen($configFile, 'w')) {
-            die("Cannot open file ($configFile) for writing. Check file permissions.");
+        if (!$handle = fopen($save_configfile, 'w')) {
+            die("Cannot open file ($save_configfile) for writing. Check file permissions.");
         }
     
         // Iterate through $svxconfig and write lines to the file

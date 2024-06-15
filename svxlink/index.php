@@ -115,8 +115,7 @@ foreach ($svxconfig as $section => $entries) {
 }
 
 echo '</table>';
-echo '<button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
-';
+echo '<button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>';
 echo '</form>'; 
 if (isset($_POST['btnSave'])) {
         // Update $svxconfig based on $_POST data (already implemented)
@@ -125,7 +124,7 @@ if (isset($_POST['btnSave'])) {
         save_svxconfig($configFile, $svxconfig);
     }
 
-            // Example of accessing and manipulating configuration
+        // Example of accessing and manipulating configuration
            
         //divide up the Paragraphs
         //$logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
@@ -148,8 +147,8 @@ if (isset($_POST['btnSave'])) {
         //        }
         //    }
         
-        $system_type = $_SESSION['system_type'];
-        if (isset($_POST['btnSave']))
+//        $system_type = $_SESSION['system_type'];
+//        if (isset($_POST['btnSave']))
 //            {
 //        
 //        $retval = null;
@@ -453,7 +452,7 @@ if (isset($_POST['btnSave'])) {
         //tbc - load the data from ini RF.
         
 
-?>
+//?>
 
 <!--form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
