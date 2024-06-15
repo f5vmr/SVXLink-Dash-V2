@@ -117,7 +117,13 @@ foreach ($svxconfig as $section => $entries) {
 echo '</table>';
 echo '<input type="submit" name="submit" value="Submit">';
 echo '</form>'; 
-            
+if (isset($_POST['submit'])) {
+        // Update $svxconfig based on $_POST data (already implemented)
+        
+        // Save the modified configuration
+        save_svxconfig($configFile, $svxconfig);
+    }
+    
             // Example of accessing and manipulating configuration
            
         //divide up the Paragraphs

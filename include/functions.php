@@ -723,7 +723,30 @@ function display_config($config) {
         return $config;
     }
     
+    function save_svxconfig($configFile, $svxconfig) {
+        // Open the file for writing
+        if (!$handle = fopen($configFile, 'w')) {
+            die("Cannot open file ($configFile) for writing. Check file permissions.");
+        }
     
+        // Iterate through $svxconfig and write lines to the file
+        foreach ($svxconfig as $section => $entries) {
+            fwrite($handle, "[$section]\n");
+            foreach ($entries as $key => $data) {
+                if ($data['active']) {
+                    fwrite($handle, "$key = {$data['value']}\n");
+                } else {
+                    fwrite($handle, "#$key = {$data['value']}\n");
+                }
+            }
+            fwrite($handle, "\n"); // Blank line between sections (if desired)
+        }
+    
+        fclose($handle);
+    
+        // Optionally, you can add success/failure handling here
+        echo "Configuration saved successfully to $configFile.";
+    }
    
 
 
