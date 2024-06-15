@@ -96,6 +96,9 @@ include_once "include/buttons.php";
 if($_GET['id']=="svxlink") {
     $edit_file = "svxlink/index.php"; 
 }
+if($_GET['id']=="alsamixer") {
+    $edit_file = "alsamixer/index.php"; 
+}
 elseif($_GET['id']=="echolink"){
     $edit_file = "echolink/index.php";
 }
@@ -106,7 +109,9 @@ elseif($_GET['id']=="nodeInfo"){
     file_backup("/etc/svxlink/","node_info.json");
     $edit_file="nodeInfo/index.php";
 }
-
+if($_GET['id']=="logic") {
+    $edit_file = "logic/index.php"; 
+}
 // check if form has been submitted
 //$filename = by choice;
 
