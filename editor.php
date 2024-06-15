@@ -96,19 +96,19 @@ include_once "include/buttons.php";
 if($_GET['id']=="svxlink") {
     //checkAuth();
     //shell_exec("cd ");
-    file_backup("/etc/svxlink/","svxlink.conf");
+    //file_backup("/etc/svxlink/","svxlink.conf");
     $edit_file = "svxlink/index.php"; 
     //"/etc/svxlink/svxlink.conf";
 }
 elseif($_GET['id']=="echolink"){
     //shell_exec("cd ");
-    file_backup("/etc/svxlink/svxlink.d/","ModuleEchoLink.conf");
+    //file_backup("/etc/svxlink/svxlink.d/","ModuleEchoLink.conf");
     $edit_file = "echolink/index.php";
     //$edit_file = "/etc/svxlink/svxlink.d/ModuleEchoLink.conf";
 }
 elseif($_GET['id']=="metarinfo"){
     //shell_exec("cd ");
-    file_backup("/etc/svxlink/svxlink.d","ModuleMetarInfo.conf");
+    //file_backup("/etc/svxlink/svxlink.d","ModuleMetarInfo.conf");
     $edit_file = "metarinfo/index.php";
     //$edit_file = "/etc/svxlink/svxlink.d/ModuleMetarInfo.conf";
 }
