@@ -2,21 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuration File Editor</title>
+    <title>Modify Configuration</title>
 </head>
 <body>
-    <h1>Configuration File Editor</h1>
-    
-    <form action="process_config.php" method="post" enctype="multipart/form-data">
-        <label for="config_file">Upload Configuration File:</label>
-        <input type="file" id="config_file" name="config_file" accept=".txt">
+    <h2>Modify Configuration</h2>
+    <form action="process_config.php" method="post">
+        <label for="section_to_edit">Section to Edit:</label>
+        <input type="text" id="section_to_edit" name="section_to_edit" required>
         <br><br>
-        <label for="section_to_edit">Section to Edit (optional):</label>
-        <input type="text" id="section_to_edit" name="section_to_edit" placeholder="Enter section name">
-        <br><br>
-        <label for="edit_comments">Edit Comments:</label><br>
-        <textarea id="edit_comments" name="edit_comments" rows="4" cols="50" placeholder="Add/edit comments"></textarea>
+        <label for="edit_comments">Edit Comments:</label>
+        <textarea id="edit_comments" name="edit_comments" rows="4" cols="50"></textarea>
         <br><br>
         <input type="submit" value="Submit">
     </form>
