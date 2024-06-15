@@ -574,22 +574,7 @@ function display_config($config) {
 
         echo "</tr>";
     }
-}
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
+}    
       
       function edit_config(&$config, $line_number, $new_content, $comment_out) {
           $line_number -= 4; // Adjust for the header lines
