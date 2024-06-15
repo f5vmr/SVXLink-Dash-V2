@@ -49,6 +49,10 @@ define("RF_MODULE","");
         
         define("SVXCONFPATH", "/etc/svxlink/");
         define("SVXCONFIG", "svxlink.conf");
+        define("MODULEPATH", "/etc/svxlink/svxlink.d");
+        define("ECHOLINKCONFIG", "ModuleEchoLink.conf");
+        define("METARINFO", "ModuleMetarInfo.conf");
+        
         define("SVXLOGPATH", "/var/log/");
         define("SVXLOGPREFIX","svxlink.log");
         }
