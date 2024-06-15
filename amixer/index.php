@@ -78,17 +78,17 @@ textarea {
     <label for="loudspeaker">Set for 65 (0-100):</label>
     <input type="number" id="loudspeaker" name="loudspeaker" min="0" max="100" required>
 </br>
-<h3 style = "color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Loudspeaker - TX</h3>
+<h3 style = "color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Microphone - Not Used</h3>
 
     <label for="mic">(0-100): Set to 0</label>
     <input type="number" id="mic" name="mic" min="0" max="100" required>
 </br>
-<h3 style = "color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Microphone (Not used)</h3>
+<h3 style = "color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Capture - RX</h3>
 
     <label for="capture">(0-100) Set for 25:</label>
     <input type="number" id="capture" name="capture" min="0" max="100" required>
 </br>
-<h3 style = "color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Capture - RX</h3>
+<h3 style = "color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Auto Gain</h3>
 
     <label for="autogain">Set to Off for optimum control</label>
     <select id="autogain" name="autogain" required>
