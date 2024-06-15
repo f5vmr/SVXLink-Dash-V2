@@ -71,7 +71,7 @@ $svxConfigFile = '/etc/svxlink/svxlink.conf';
               {
                 $lines = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
                 };
-                $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
+                $logics = explode(",",$lines['GLOBAL']['LOGICS']);
                 foreach ($logics as $key) {
                   //echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
                  if ($key == "SimplexLogic") $isSimplex = true;
