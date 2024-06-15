@@ -94,7 +94,7 @@ if (file_exists($config)) {
     
     // Access and manipulate configuration
     if (isset($svxconfig['GLOBAL']) && isset($svxconfig['GLOBAL']['LOGICS']['value'])) {
-        $logics = $svxconfig['GLOBAL']['LOGICS']['value'];
+        $logics = explode(',', $svxconfig['GLOBAL']['LOGICS']['value']); // Use explode to convert the string to an array
         foreach ($logics as $logic) {
             if ($logic == "SimplexLogic") {
                 $isSimplex = true;
@@ -113,8 +113,22 @@ if (file_exists($config)) {
             $line_prefix = $data['active'] ? '' : '#';
             $value = is_array($data['value']) ? implode(',', $data['value']) : $data['value'];
             echo "{$line_prefix}{$key} = {$value}<br>\n";
+    
+            // Nest the logic processing within each section loop if needed
+            if ($section == 'GLOBAL' && $key == 'LOGICS') {
+                $logics = explode(',', $value); // Assuming $value is a string of comma-separated values
+                foreach ($logics as $logic) {
+                    if ($logic == "SimplexLogic") {
+                        $isSimplex = true;
+                    }
+                    if ($logic == "RepeaterLogic") {
+                        $isRepeater = true;
+                    }
+                }
+            }
         }
     }
+    
             
             // Example of accessing and manipulating configuration
            
