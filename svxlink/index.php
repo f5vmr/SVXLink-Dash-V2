@@ -78,6 +78,25 @@ textarea {
         include_once "../include/functions.php";
         $directory="/etc/svxlink/";
         $svxConfigFile = 'svxlink.conf';
+        $file = '/etc/svxlink/svxlink.conf';
+$owner = 'www-data';
+$group = 'www-data';
+
+// Check if the file exists
+$file = '/etc/svxlink/svxlink.conf';
+$owner = 'svxlink';
+$group = 'svxlink';
+
+// Check if the file exists
+if (file_exists($file)) {
+    // Attempt to change file ownership
+    if (!chown($file, $owner) || !chgrp($file, $group)) {
+        die("Failed to change ownership of $file. Check file permissions and script execution context.");
+    }
+    echo "Ownership of $file changed to $owner:$group successfully.";
+} else {
+    die("File $file not found.");
+}
         file_backup($directory,$svxConfigFile);
         $config = $directory.$svxConfigFile;
         error_reporting(E_ALL);
