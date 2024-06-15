@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration File Editor</title>
+</head>
+<body>
+    <h1>Configuration File Editor</h1>
+    
+    <form action="process_config.php" method="post" enctype="multipart/form-data">
+        <label for="config_file">Upload Configuration File:</label>
+        <input type="file" id="config_file" name="config_file" accept=".txt">
+        <br><br>
+        <label for="section_to_edit">Section to Edit (optional):</label>
+        <input type="text" id="section_to_edit" name="section_to_edit" placeholder="Enter section name">
+        <br><br>
+        <label for="edit_comments">Edit Comments:</label><br>
+        <textarea id="edit_comments" name="edit_comments" rows="4" cols="50" placeholder="Add/edit comments"></textarea>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
