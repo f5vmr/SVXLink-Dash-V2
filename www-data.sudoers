@@ -1,9 +1,9 @@
-svxlink ALL=NOPASSWD: /bin/systemctl
-svxlink ALL=NOPASSWD: /bin/mv
+svxlink ALL=NOPASSWD: /usr/sbin/service
 svxlink ALL=NOPASSWD: /bin/cp
-svxlink ALL=NOPASSWD: /bin/tail
-svxlink ALL=NOPASSWD: /sbin/service
 svxlink ALL=NOPASSWD: /bin/chown
 svxlink ALL=NOPASSWD: /bin/chmod
-svxlink ALL=NOPASSWD: /sbin/reboot
-svxlink ALL=NOPASSWD: /sbin/shutdown
+svxlink ALL=NOPASSWD: /usr/bin/systemctl
+svxlink ALL=NOPASSWD: /bin/reboot
+svxlink ALL=NOPASSWD: /bin/shutdown
+svxlink ALL=NOPASSWD: /usr/bin/mv
+svxlink ALL=NOPASSWD: /usr/bin/nmcli

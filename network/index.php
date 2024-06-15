@@ -85,7 +85,7 @@ textarea {
 // load the connlist
 $retval = null;
 $conns = null;
-exec('nmcli  -t -f NAME  con show',$conns,$retval);
+exec('sudo nmcli  -t -f NAME  con show',$conns,$retval);
 
 // find the gateway
 $ipgw = null;
@@ -111,7 +111,7 @@ if (isset($_POST['btnPingGw']))
 	$sAconn = $_POST['sAconn'];
 	$ipgw = null;
 	//$ipgw_str =implode("\n",$ipgw);
-	exec("nmcli -g ipv4.gateway con show \"" .$sAconn. "\" 2>&1",$ipgw,$retval);
+	exec("sudo nmcli -g ipv4.gateway con show \"" .$sAconn. "\" 2>&1",$ipgw,$retval);
 	$ipgw_str =implode("\n",$ipgw);
 	exec("ping ". $ipgw_str ." -c 1 2>&1",$screen,$retval);
 }
@@ -151,9 +151,9 @@ if (isset($_POST['btnAuto']))
 	//exec('nmcli dev wifi rescan');
         //$command = "nmcli radio  2>&1";
 	
-	$command = "nmcli con mod \"" .$sAconn. "\" ipv4.method auto 2>&1";
+	$command = "sudo nmcli con mod \"" .$sAconn. "\" ipv4.method auto 2>&1";
         exec($command,$screen,$retval);
-	$command = "nmcli -p -f ipv4,general con show \"" .$sAconn. "\" 2>&1";
+	$command = "sudo nmcli -p -f ipv4,general con show \"" .$sAconn. "\" 2>&1";
         exec($command,$screen,$retval);
 
 
