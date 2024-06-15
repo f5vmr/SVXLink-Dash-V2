@@ -677,27 +677,35 @@ function display_config($config) {
         // You can store the header separately if needed
         // For example, in a separate table or a special record in config_lines
     }
-    function custom_parse_ini_file($filename, $comment_char = '#') {
+    function custom_parse_ini_file($filename) {
         $ini_array = [];
         $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     
         foreach ($lines as $line) {
-            // Skip lines that start with a comment character
-            if (strpos(trim($line), $comment_char) !== 0) {
-                // Parse the line as an INI configuration line
-                list($key, $value) = explode('=', $line, 2) + [null, null];
-                $key = trim($key);
-                $value = trim($value);
+            // Remove leading and trailing whitespace
+            $line = trim($line);
+    
+            // Skip empty lines and lines that start with #
+            if ($line === '' || $line[0] === '#') {
+                continue;
+            }
+    
+            // Check if line contains '=' and is not just a comment line
+            if (strpos($line, '=') !== false) {
+                // Separate key and value by first '=' found
+                $pos = strpos($line, '=');
+                $key = trim(substr($line, 0, $pos));
+                $value = trim(substr($line, $pos + 1));
     
                 // Handle array values if needed
                 if (strpos($value, ',') !== false) {
                     $value = array_map('trim', explode(',', $value));
                 }
     
-                // Assign to the result array
-                if ($key !== null) {
-                    $ini_array[$key] = $value;
-                }
+                $ini_array[$key] = $value;
+            } else {
+                // Handle cases where the line may not contain '=', adjust as needed
+                // For example, log or skip these lines
             }
         }
     
