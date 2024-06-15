@@ -79,23 +79,25 @@ textarea {
         $directory="/etc/svxlink/";
         $svxConfigFile = 'svxlink.conf';
         $file = '/etc/svxlink/svxlink.conf';
-$owner = 'www-data';
-$group = 'www-data';
-
-// Check if the file exists
-$file = '/etc/svxlink/svxlink.conf';
 $owner = 'svxlink';
 $group = 'svxlink';
 
-// Check if the file exists
-if (file_exists($file)) {
-    // Attempt to change file ownership
-    if (!chown($file, $owner) || !chgrp($file, $group)) {
-        die("Failed to change ownership of $file. Check file permissions and script execution context.");
-    }
+
+
+// Command to change ownership using sudo
+$command = "sudo chown $owner:$group " . escapeshellarg($file);
+
+// Execute the command
+$output = [];
+$return_var = 0;
+exec($command, $output, $return_var);
+
+// Check if the command executed successfully
+if ($return_var === 0) {
     echo "Ownership of $file changed to $owner:$group successfully.";
 } else {
-    die("File $file not found.");
+    echo "Failed to change ownership of $file. Error code: $return_var";
+    echo "<pre>" . implode("\n", $output) . "</pre>";
 }
         file_backup($directory,$svxConfigFile);
         $config = $directory.$svxConfigFile;
