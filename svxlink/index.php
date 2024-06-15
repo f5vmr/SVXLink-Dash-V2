@@ -99,7 +99,8 @@ echo '<table>';
 echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
 
 foreach ($svxconfig as $section => $entries) {
-    echo "<tr><td colspan='3'><h3>[$section]</h3></td></tr>\n";
+    echo "<tr><td colspan='3'><h2>$section</h2></td></tr>\n";
+    
     foreach ($entries as $key => $data) {
         // Determine checkbox state based on 'active' flag
         $checked = $data['active'] ? 'checked' : '';
@@ -447,7 +448,7 @@ echo '</form>';
 
 ?>
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<!--form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
 
 <table>
@@ -550,12 +551,13 @@ echo '</form>';
         <tr style = "border: none;"> 
         <td style = "border: none;">TG select Timeout</td>
         <td style = "border: none;"><input type="text" name="inTgSelectTimeout" style = "width:98%" value="<?php echo $inTgSelectTimeout;?>">
-        </td></tr>
+        </td></tr> -->
         
   <!--      <tr style = "border: none;"> 
         <td style = "border: none;">Reflector TgUri</td>
         <td style = "border: none;"><input type="text" name="inReflectorTgUri" style = "width:98%" value="<?php echo $inReflectorTgUri;?>">
-        </td></tr>-->
+        </td></tr>
+        
 </table>
 
 
@@ -563,9 +565,9 @@ echo '</form>';
 <td> 
 	<button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br> 
         <br> & <br><br> ReLoad</button>
-</td>
+</t>
 </tr>
-</table>
+</table> -->
 
 
 <?php 
