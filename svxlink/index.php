@@ -94,10 +94,10 @@ exec($command, $output, $return_var);
 
 // Check if the command executed successfully
 if ($return_var === 0) {
-    echo "Ownership of $file changed to $owner:$group successfully.";
+ //   echo "Ownership of $file changed to $owner:$group successfully.";
 } else {
-    echo "Failed to change ownership of $file. Error code: $return_var";
-    echo "<pre>" . implode("\n", $output) . "</pre>";
+//    echo "Failed to change ownership of $file. Error code: $return_var";
+ //   echo "<pre>" . implode("\n", $output) . "</pre>";
 }
         file_backup($directory,$svxConfigFile);
         $config = $directory.$svxConfigFile;
@@ -140,7 +140,7 @@ echo '<button name="btnSave" type="submit" class="red" style = "height:100px; wi
 echo '</form>'; 
 if (isset($_POST['btnSave'])) {
         
-        save_svxconfig($config, $svxconfig);
+        save_svxconfig($config, $_POST);
     }
 
  
