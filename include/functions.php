@@ -684,7 +684,7 @@ function display_config($config) {
         
         foreach ($lines as $line) {
             // Remove comments and trim whitespace
-            $line = trim(preg_replace('/\s*#.*$/', '', $line));
+            $line = trim($line);
             
             // Skip empty lines after comment removal
             if (empty($line)) {
