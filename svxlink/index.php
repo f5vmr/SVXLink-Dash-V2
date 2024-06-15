@@ -576,7 +576,7 @@ if (isset($_POST['btnSave'])) {
 </table> -->
 
 
-//<?php 
+<?php 
 //if ($system_type=="IS_SIMPLEX"){ include "simplex.php" ;};
 //if ($system_type=="IS_DUPLEX") { include "repeater.php";};
 //
