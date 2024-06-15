@@ -106,7 +106,7 @@ if (file_exists($config)) {
     } else {
         echo "LOGICS section not found in GLOBAL configuration.";
     }
-    
+    var_dump($svxconfig);
     foreach ($svxconfig as $section => $entries) {
         echo "<h3>[$section]</h3>\n";
         foreach ($entries as $key => $data) {
