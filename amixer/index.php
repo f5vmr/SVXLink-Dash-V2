@@ -1,45 +1,49 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {       
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Function to get current amixer settings
-function getCurrentSettings() {
-    $settings = [];
-
-    // Get Headphone setting
-    exec("amixer sget 'Headphone' | grep -oP '\d+%' | head -1", $output);
-    if (!empty($output)) {
-        $settings['headphone'] = intval($output[0]);
-    }
-
-    // Get Mic setting (volume and capture)
-    exec("amixer sget 'Mic' | grep -oP '\d+%' | head -1", $outputMic);
-    if (!empty($outputMic)) {
-        $settings['mic'] = intval($outputMic[0]);
-    }
-
-    // Get Capture setting
-    exec("amixer sget 'Mic' cap | grep -oP '\d+%' | head -1", $outputCap);
-    if (!empty($outputCap)) {
-        $settings['capture'] = intval($outputCap[0]);
-    }
-
-    // Get Auto Gain Control setting
-    exec("amixer sget 'Auto Gain Control' | grep -oP '\[on\]|\[off\]' | head -1", $outputAGC);
-    if (!empty($outputAGC)) {
-        $settings['autogain'] = ($outputAGC[0] === '[on]') ? 'on' : 'off';
-    }
-
-    return $settings;
+// Function to execute amixer command and retrieve output
+function execute_amixer($command) {
+    $output = [];
+    exec($command, $output);
+    return $output;
 }
 
-// Initialize current settings
-$currentSettings = getCurrentSettings();
+// Retrieve current values using amixer cget
+$headphone_output = execute_amixer("sudo amixer cget numid=6");
+$mic_output = execute_amixer("sudo amixer cget numid=4");
+$capture_output = execute_amixer("sudo amixer cget numid=8");
+$autogain_output = execute_amixer("sudo amixer sget numid=9");
+
+// Parse current values from output
+function parse_amixer_value($output) {
+    foreach ($output as $line) {
+        if (strpos($line, ": values=") !== false) {
+            $value = trim(str_replace(": values=", "", $line));
+            return $value;
+        }
+    }
+    return null;
+}
+
+$current_headphone = parse_amixer_value($headphone_output);
+$current_mic = parse_amixer_value($mic_output);
+$current_capture = parse_amixer_value($capture_output);
+$current_autogain = null;
+if ($autogain_output) {
+    foreach ($autogain_output as $line) {
+        if (strpos($line, ": values=") !== false) {
+            $current_autogain = trim(str_replace(": values=", "", $line));
+            break;
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link href="/css/css.php" type="text/css" rel="stylesheet" />
@@ -55,12 +59,17 @@ $currentSettings = getCurrentSettings();
             color: #444;
             padding: 0 0.5em;
         }
-        h1, h2, h3 {
+
+        h1,
+        h2,
+        h3 {
             line-height: 1.2;
         }
+
         a {
             color: #607d8b;
         }
+
         .highlighter-rouge {
             background-color: #fff;
             border: 1px solid #ccc;
@@ -69,27 +78,31 @@ $currentSettings = getCurrentSettings();
             overflow-x: auto;
             padding: .2em .4em;
         }
+
         pre {
             margin: 0;
             padding: .6em;
             overflow-x: auto;
         }
+
         #player {
-            position:relative;
-            width:205px;
+            position: relative;
+            width: 205px;
             overflow: hidden;
             direction: ltl;
         }
+
         textarea {
             background-color: #111;
             border: 1px solid #000;
             color: #ffffff;
             padding: 1px;
             font-family: courier new;
-            font-size:10px;
+            font-size: 10px;
         }
     </style>
 </head>
+
 <body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
     <center>
         <fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
@@ -97,26 +110,26 @@ $currentSettings = getCurrentSettings();
                 <center>
                     <h1 id="svxlink" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Configurator</h1>
                     <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">AMixer settings</h3>
-                    
+
                     <!-- HTML Form to adjust ALSA settings -->
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Headphone - TX</h3>
                         <label for="headphone">Set for 65 (0-100):</label>
-                        <input type="number" id="headphone" name="headphone" min="0" max="100" value="<?php echo isset($currentSettings['headphone']) ? $currentSettings['headphone'] : ''; ?>" required>
+                        <input type="number" id="headphone" name="headphone" min="0" max="100" value="<?php echo htmlspecialchars($current_headphone); ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Microphone - Not Used</h3>
                         <label for="mic">(0-100): Set to 0</label>
-                        <input type="number" id="mic" name="mic" min="0" max="100" value="<?php echo isset($currentSettings['mic']) ? $currentSettings['mic'] : '0'; ?>" required>
+                        <input type="number" id="mic" name="mic" min="0" max="100" value="<?php echo htmlspecialchars($current_mic); ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Capture - RX</h3>
                         <label for="capture">(0-100) Set for 25:</label>
-                        <input type="number" id="capture" name="capture" min="0" max="100" value="<?php echo isset($currentSettings['capture']) ? $currentSettings['capture'] : '25'; ?>" required>
+                        <input type="number" id="capture" name="capture" min="0" max="100" value="<?php echo htmlspecialchars($current_capture); ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Auto Gain</h3>
                         <label for="autogain">Set to Off for optimum control</label>
                         <select id="autogain" name="autogain" required>
-                            <option value="off" <?php echo isset($currentSettings['autogain']) && $currentSettings['autogain'] === 'off' ? 'selected' : ''; ?>>Off</option>
-                            <option value="on" <?php echo isset($currentSettings['autogain']) && $currentSettings['autogain'] === 'on' ? 'selected' : ''; ?>>On</option>
+                            <option value="off" <?php if ($current_autogain === 'off') echo 'selected'; ?>>Off</option>
+                            <option value="on" <?php if ($current_autogain === 'on') echo 'selected'; ?>>On</option>
                         </select>
                         <br>
                         <button type="submit">Apply Settings</button>
@@ -131,33 +144,30 @@ $currentSettings = getCurrentSettings();
         if (isset($_POST['headphone'])) {
             $headphone = intval($_POST['headphone']);
             if ($headphone >= 0 && $headphone <= 100) {
-                exec("sudo amixer sset 'Headphone' " . escapeshellarg($headphone) . "%");
+                exec("sudo amixer cset numid=6 " . escapeshellarg($headphone) . "%");
             }
         }
 
         if (isset($_POST['mic'])) {
             $mic = intval($_POST['mic']);
             if ($mic >= 0 && $mic <= 100) {
-                exec("sudo amixer sset 'Mic' " . escapeshellarg($mic) . "%");
-                exec("sudo amixer sset 'Mic' cap " . escapeshellarg($mic) . "%");
+                exec("sudo amixer cset numid=4 " . escapeshellarg($mic) . "%");
             }
         }
 
         if (isset($_POST['capture'])) {
             $capture = intval($_POST['capture']);
             if ($capture >= 0 && $capture <= 100) {
-                exec("sudo amixer sset 'Mic' cap " . escapeshellarg($capture) . "%");
+                exec("sudo amixer cset numid=8 " . escapeshellarg($capture) . "%");
             }
         }
 
         if (isset($_POST['autogain'])) {
             $autogain = $_POST['autogain'] === 'on' ? 'on' : 'off';
-            exec("sudo amixer sset 'Auto Gain Control' " . escapeshellarg($autogain));
+            exec("sudo amixer sset numid=9 " . escapeshellarg($autogain));
         }
     }
     ?>
 </body>
+
 </html>
-
-
-
