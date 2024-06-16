@@ -10,6 +10,11 @@ function execute_amixer($command) {
     return $output;
 }
 
+// Function to parse and calculate percentage of maximum value
+function calculate_percentage($value, $max) {
+    return round(($value / $max) * 100);
+}
+
 // Retrieve current values using amixer cget
 $headphone_output = execute_amixer("sudo amixer cget numid=6");
 $mic_output = execute_amixer("sudo amixer cget numid=4");
@@ -27,9 +32,26 @@ function parse_amixer_value($output) {
     return null;
 }
 
+// Function to determine the maximum value for a control
+function parse_amixer_max($output) {
+    foreach ($output as $line) {
+        if (strpos($line, ": max=") !== false) {
+            preg_match('/max=([0-9]+)/', $line, $matches);
+            return intval($matches[1]);
+        }
+    }
+    return null;
+}
+
 $current_headphone = parse_amixer_value($headphone_output);
+$max_headphone = parse_amixer_max($headphone_output);
+
 $current_mic = parse_amixer_value($mic_output);
+$max_mic = parse_amixer_max($mic_output);
+
 $current_capture = parse_amixer_value($capture_output);
+$max_capture = parse_amixer_max($capture_output);
+
 $current_autogain = null;
 if ($autogain_output) {
     foreach ($autogain_output as $line) {
@@ -114,16 +136,16 @@ if ($autogain_output) {
                     <!-- HTML Form to adjust ALSA settings -->
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Headphone - TX</h3>
-                        <label for="headphone">Set for 65 (0-100):</label>
-                        <input type="number" id="headphone" name="headphone" min="0" max="100" value="<?php echo htmlspecialchars($current_headphone); ?>" required>
+                        <label for="headphone">Set for <?php echo $max_headphone; ?> (0-<?php echo $max_headphone; ?>):</label>
+                        <input type="number" id="headphone" name="headphone" min="0" max="<?php echo $max_headphone; ?>" value="<?php echo htmlspecialchars(calculate_percentage($current_headphone, $max_headphone)); ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Microphone - Not Used</h3>
-                        <label for="mic">(0-100): Set to 0</label>
-                        <input type="number" id="mic" name="mic" min="0" max="100" value="<?php echo htmlspecialchars($current_mic); ?>" required>
+                        <label for="mic">(0-<?php echo $max_mic; ?>): Set to 0</label>
+                        <input type="number" id="mic" name="mic" min="0" max="<?php echo $max_mic; ?>" value="<?php echo htmlspecialchars(calculate_percentage($current_mic, $max_mic)); ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Capture - RX</h3>
-                        <label for="capture">(0-100) Set for 25:</label>
-                        <input type="number" id="capture" name="capture" min="0" max="100" value="<?php echo htmlspecialchars($current_capture); ?>" required>
+                        <label for="capture">(0-<?php echo $max_capture; ?>) Set for 25:</label>
+                        <input type="number" id="capture" name="capture" min="0" max="<?php echo $max_capture; ?>" value="<?php echo htmlspecialchars(calculate_percentage($current_capture, $max_capture)); ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Auto Gain</h3>
                         <label for="autogain">Set to Off for optimum control</label>
@@ -142,32 +164,22 @@ if ($autogain_output) {
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['headphone'])) {
-            $headphone = intval($_POST['headphone']);
-            if ($headphone >= 0 && $headphone <= 100) {
-                exec("sudo amixer cset numid=6 " . escapeshellarg($headphone) . "%");
-            }
+            $headphone_percentage = intval($_POST['headphone']);
+            $headphone_value = round(($headphone_percentage / 100) * $max_headphone);
+            exec("sudo amixer cset numid=6 " . escapeshellarg($headphone_value));
         }
 
         if (isset($_POST['mic'])) {
-            $mic = intval($_POST['mic']);
-            if ($mic >= 0 && $mic <= 100) {
-                exec("sudo amixer cset numid=4 " . escapeshellarg($mic) . "%");
-            }
+            $mic_percentage = intval($_POST['mic']);
+            $mic_value = round(($mic_percentage / 100) * $max_mic);
+            exec("sudo amixer cset numid=4 " . escapeshellarg($mic_value));
         }
 
         if (isset($_POST['capture'])) {
-            $capture = intval($_POST['capture']);
-            if ($capture >= 0 && $capture <= 100) {
-                exec("sudo amixer cset numid=8 " . escapeshellarg($capture) . "%");
-            }
+            $capture_percentage = intval($_POST['capture']);
+            $capture_value = round(($capture_percentage / 100) * $max_capture);
+            exec("sudo amixer cset numid=8 " . escapeshellarg($capture_value));
         }
 
         if (isset($_POST['autogain'])) {
-            $autogain = $_POST['autogain'] === 'on' ? 'on' : 'off';
-            exec("sudo amixer sset numid=9 " . escapeshellarg($autogain));
-        }
-    }
-    ?>
-</body>
-
-</html>
+            $autogain = $_POST['autogain'] === 'on' ? 'on' : '
