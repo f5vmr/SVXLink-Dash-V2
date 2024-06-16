@@ -15,7 +15,7 @@ Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has ye
 <p><b>sudo git clone https://github.com/f5vmr/SVXLink-Dash-V2 html</b></p>
 <p><b> cd html</b></p>
 
-<p>If you are installing it for the first time, then you need to follow the next few instructions, otherwise skip to the next section.</p>
+<p>If you are installing it for the first time, then you need to follow the next few instructions, otherwise skip to the next section Setting Up The Dashboard.</p>
 <p>Next <b>sudo nano /etc/apache2/envvars</b> file and make the following changes</p>
 <p>export APACHE_RUN_USER=www-data</p>
 <p>export APACHE_RUN_GROUP=www-data</p>
