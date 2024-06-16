@@ -47,8 +47,8 @@ Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has ye
 <p>3. EchoLink Configurator. Set this up before adding ModuleEchoLink into the SimplexLogic or RepeaterLogic in the Svxlink Editor.</p>
 <p>4. Metar Configurator. This is fairly easy to modify, but again look for the man page for ModuleMetarInfo.</p>
 <p>5. NodeInfo Configurator. This is the file required for the proper operation of the SvxReflector if it is associated with your device. because it is a .json file, different editing techniques are required.</p>
-<p> In each case, the 'save' action restarts the svxlink service, so there is no need to restart svxlink manually.</p>
-However if at any time there appears to be a 'stall' in the operation of your node or repeater, then the POWER menu can be used to restarts the service, restart the raspberry completely, or even shutdown the device completely.</p>
+<p> In each case, the 'save' button action restarts the svxlink service, so there is no need to restart svxlink manually.</p>
+However if at any time there appears to be a 'stall' in the operation of your node or repeater, then the POWER menu can be used to restart the service, restart the raspberry completely, or even shutdown the device.</p>
 
 <p>On the DTMF menu you will see a dtmf Keypad arrangement. This needs more work and editing of that page. Whatch for further development.</p>
 <p>Below the footer menu you will see a dtmf control facility. The D buttons are not yet programmed, and will need to correspond with the Macros in svxlink.conf so you will need to self-edit the dtmf.php file in your dashboard configuration and the macros in svxlink.conf.</p>
