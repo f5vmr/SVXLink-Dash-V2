@@ -10,7 +10,7 @@ Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has ye
 <p>If you are installing it manually, then you will need to read the instructions thoroughly:</p>
 
 <p>No installation script is required, simply open a terminal with ssh or putty and cd to /var/www and REMOVE any existing html folder.</p>
-<p>If you are upgrading an existing earlier SVXLink-Dash-V2 installation, then you may be still better simply the existing html folder.</p>
+<p>If you are upgrading an existing earlier SVXLink-Dash-V2 installation, then you may be still better simply removing the existing html folder. you will lose nothing by it.</p>
 <p>So in /var/www/ run the following command line. </p>
 <p><b>sudo git clone https://github.com/f5vmr/SVXLink-Dash-V2 html</b></p>
 <p><b> cd html</b></p>
