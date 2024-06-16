@@ -104,27 +104,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['headphone'])) {
         $headphone = intval($_POST['headphone']);
         if ($headphone >= 0 && $headphone <= 100) {
-            exec("sudo amixer set 'Headphone' " . escapeshellarg($headphone) . "%");
+            exec("sudo amixer sset 'Headphone' " . escapeshellarg($headphone) . "%");
         }
     }
 
     if (isset($_POST['mic'])) {
         $mic = intval($_POST['mic']);
         if ($mic >= 0 && $mic <= 100) {
-            exec("sudo amixer set 'Mic' " . escapeshellarg($mic) . "%");
+            exec("sudo amixer sset 'Mic' " . escapeshellarg($mic) . "%");
         }
     }
 
     if (isset($_POST['capture'])) {
         $capture = intval($_POST['capture']);
         if ($capture >= 0 && $capture <= 100) {
-            exec("sudo amixer set 'Capture' " . escapeshellarg($capture) . "%");
+            exec("sudo amixer sset 'Mic' cap " . escapeshellarg($capture) . "%");
         }
     }
 
     if (isset($_POST['autogain'])) {
         $autogain = $_POST['autogain'] === 'on' ? 'on' : 'off';
-        exec("sudo amixer set 'Auto Gain Control' " . escapeshellarg($autogain));
+        exec("sudo amixer sset 'Auto Gain Control' " . escapeshellarg($autogain));
     }
 }
 ?>
