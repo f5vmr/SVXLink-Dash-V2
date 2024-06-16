@@ -1,29 +1,22 @@
 # SVXLink-Dashboard-V2
-SVXLink Node dashboard repository inspired by pi star dashboard
-Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.
-Brought up to date by Chris Jackson G4NAB with new code. Thanks to Craig Gardiner Z21LX for assistance in the area of permissions used in the web server.
+<h1>SVXLink Node dashboard repository inspired by a pi-star dashboard</h1>
+<h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.
+Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has yet to be modified to work.</h2>
 
-This installation requires that svxlink has been compiled on Debian 11 (raspberry pi OS bullseye), and php version 8.0 or greater, and Apache 2. Debian 12 will require PHP 8.2. After that follow the instructions below.
+<b>This installation requires that svxlink has been compiled on at least Debian 11 (raspberry pi OS bullseye), and php version 8.0 or greater, and Apache 2. It will work with Debian 12 with PHP 8.2 installed. </b>
 
-For the moment it is still slightly incomplete, a work in progress.
+<p>If it has been installed with svxlinkbuilder, then very little needs to be changed.</p>
 
+<p>If you are installing it manually, then you will need to read the instructions thoroughly:</p>
 
-No installation script required, simply cd to /var/www and remove any existing html folder.
-<p>
- sudo git clone https://github.com/f5vmr/SVXLink-Dash-V2 html</p>
-<p> cd html</p>
-<p>However there are some changes required to both the filing system and the web management as follows:</p>
-<p>sudo visudo and add the following lines to the bottom of the current file.</p>
-<p>svxlink ALL=NOPASSWD: /sbin/service</p>
-<p>svxlink ALL=NOPASSWD: /bin/cp</p>
-<p>svxlink ALL=NOPASSWD: /bin/chown</p>
-<p>svxlink ALL=NOPASSWD: /bin/chmod</p>
-<p>svxlink ALL=NOPASSWD: /bin/systemctl</p>
-<p>svxlink ALL=NOPASSWD: /sbin/reboot</p>
-<p>svxlink ALL=NOPASSWD: /sbin/shutdown</p>
+<p>No installation script is required, simply open a terminal with ssh or putty and cd to /var/www and REMOVE any existing html folder.</p>
+<p>If you are upgrading an existing earlier SVXLink-Dash-V2 installation, then you may be still better simply the existing html folder.</p>
+<p>So in /var/www/ run the following command line. </p>
+<p><b>sudo git clone https://github.com/f5vmr/SVXLink-Dash-V2 html</b></p>
+<p><b> cd html</b></p>
 
-<p>Save the file. No further action need be taken as sudo will automatically take these changes into account.</p>
-<p>Next sudo nano /etc/apache2/envvars file and make the following changes</p>
+<p>If you are installing it for the first time, then you need to follow the next few instructions, otherwise skip to the next section.</p>
+<p>Next <b>sudo nano /etc/apache2/envvars</b> file and make the following changes</p>
 <p>export APACHE_RUN_USER=www-data</p>
 <p>export APACHE_RUN_GROUP=www-data</p>
 <p>to</p>
@@ -36,24 +29,25 @@ No installation script required, simply cd to /var/www and remove any existing h
 <p>You may edit it in situ or copy it to /etc/systemd/system/</p>
 <p>Locate 'PrivateTmp=true' and change this to 'PrivateTmp=false' and save the file.</p>
 <p>sudo systemctl daemon-reload && sudo systemctl restart apache2 to restart the webserver.</p>
-<p>For a RepeaterLogic enabled setup,while we are in the terminal, sudo nano /etc/svxlink/svxlink.conf and locate in [RepeaterLogic] the line DTMF_CTRL_PTY, and edit the file information to read /tmp/dtmf_svx and save the file and sudo systemctl restart svxlink .</p>
+<h2>Setting up the Dashboard</h2>
+<p>While still in the <b>/var/www/html</b> folder run the following command:</p>
+<p><b>sudo ./upgrade.sh</b></p>
+<p>This file allows you the Dashboard Owner to run certain commands when authorised. It also adds some maintenance provisions, removing old backup files so that the system remains unburdened of old data.</p>
+<p>Finally go to the browser of your choice and enter the ip address of your raspberry pi.</p>
+<p>You will be presented with the dashboard of your device. You will need to log in under your username and password, set up during the upgrade.sh process.</p>
+<p>The dashboard is now ready to use. However it is recommended that you thoroughly read the man page for svxlink.conf. <i>man svxlink.conf on google </i>will find a copy, although you will find one inside your device through the terminal</p>
 
-<p>Now go to a browser and type in the URL of your svxlink node. Hopefully you will see a fully functional dashboard.</p>
 
-<img width="617" alt="Screenshot 2024-02-05 at 17 36 24" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/4eabb239-af89-4ad4-8a14-d232888fbb62">
+<p>Your edited files will be saved in /var/www/html/backups with a date/time.</p> 
 
-
-
-
-<p>The Editing function function now works, but due to the obvious public access this is now username and password protected. The sysop only will be able to edit the following file in the html folder. Navigate to the 'include' directory and sudo nano config.inc.php. Scroll to the bottom of the file where you will see some define commands. Replace "svxlink" with your chosen username within the quotation marks, and replace "password" with your chosen "password".</p>
-
-<img width="617" alt="Screenshot 2024-02-05 at 17 28 44" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/09c9c182-3309-4719-895c-1db4810bc125">
-
-<p>You may edit your configuration files. Copies are saved in the /etc/svxlink/ with a date/time suffix, if you do make a mistake.
-</p>
-<p>With Username and Password in place, you will have access to the 'Log', 'Power' and 'Edit' menus, allowing you as the sysop to expose the dashboard to public view, without someone corrupting your node. As soon as you click on the blue menus, the authorisation is rescinded. Naturally as this is a web page, all the changes take place within your local browser. Without authorisation, the 'Log', 'Power' and Edit menus are blocked, so no one can turn off your repeater, or mess with the logic configuration.</p>
-
-<img width="617" alt="Screenshot 2024-02-05 at 17 29 14" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/53a42480-99b6-4869-b937-cecad62034a4">
+<p>Only With Username and Password in place, will you have access to the 'Log', 'Power' and 'Edit' menus, allowing you as the sysop to expose the dashboard to public view, without someone corrupting your node. As soon as you click on the blue menus, the authorisation is rescinded. Naturally as this is a web page, all the changes take place within your local browser and not on-line. Without authorisation, the 'Log', 'Power' and Edit menus are blocked, so no one can turn off your repeater, or mess with the logic configuration.</p>
+<p>1. Svxlink Configurator - This will only operate with an existing svxlink.conf, you cannot add lines to it with the configurator. If you need to add lines or sections, then you will have to ssh into the device.</p>
+<p>2. Amixer configurator removes the need to resort to sudo alsamixer, it can all be done from the dashboard.</p>
+<p>3. EchoLink Configurator. Set this up before adding ModuleEchoLink into the SimplexLogic or RepeaterLogic in the Svxlink Editor.</p>
+<p>4. Metar Configurator. This is fairly easy to modify, but again look for the man page for ModuleMetarInfo.</p>
+<p>5. NodeInfo Configurator. This is the file required for the proper operation of the SvxReflector if it is associated with you device. because it is a .json file, different editing techniques are required.</p>
+<p> In each case, the 'save' action restarts the svxlink service, so there is no need to restart svxlink manually.</p>
+However if at any time there appears to be a 'stall' in the operation of your node or repeater, then the POWER menu can be used to restarts the service, restart the raspberry completely, or even shutdown the device completely.</p>
 
 
 
