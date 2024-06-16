@@ -42,21 +42,13 @@ Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has ye
 
 <p>Only With Username and Password in place, will you have access to the 'Log', 'Power' and 'Edit' menus, allowing you as the sysop to expose the dashboard to public view, without someone corrupting your node. As soon as you click on the blue menus, the authorisation is rescinded. Naturally as this is a web page, all the changes take place within your local browser and not on-line. Without authorisation, the 'Log', 'Power' and Edit menus are blocked, so no one can turn off your repeater, or mess with the logic configuration.</p>
 <p>1. Svxlink Configurator - This will only operate with an existing svxlink.conf, you cannot add lines to it with the configurator. If you need to add lines or sections, then you will have to ssh into the device.</p>
+<p>In all of the .conf files are lines that are inactive or commented out with '#'. However in the configurator, you will see check-boxes that if ticked, are active lines. If they are unchecked they are inactive and therefore would appear in the file with # as the first character.</p>
 <p>2. Amixer configurator removes the need to resort to sudo alsamixer, it can all be done from the dashboard.</p>
 <p>3. EchoLink Configurator. Set this up before adding ModuleEchoLink into the SimplexLogic or RepeaterLogic in the Svxlink Editor.</p>
 <p>4. Metar Configurator. This is fairly easy to modify, but again look for the man page for ModuleMetarInfo.</p>
 <p>5. NodeInfo Configurator. This is the file required for the proper operation of the SvxReflector if it is associated with you device. because it is a .json file, different editing techniques are required.</p>
 <p> In each case, the 'save' action restarts the svxlink service, so there is no need to restart svxlink manually.</p>
 However if at any time there appears to be a 'stall' in the operation of your node or repeater, then the POWER menu can be used to restarts the service, restart the raspberry completely, or even shutdown the device completely.</p>
-
-
-
-
-
-
-
-
-<p>You will see no changes take place until you select the 'Power' menu and restart svxlink. You do not need a reboot.</p>
 
 <p>On the DTMF menu you will see a dtmf Keypad arrangement. This needs more work and editing of that page. Whatch for further development.</p>
 <p>Below the footer menu you will see a dtmf control facility. The D buttons are not yet programmed, and will need to correspond with the Macros in svxlink.conf so you will need to self-edit the dtmf.php file in your dashboard configuration and the macros in svxlink.conf.</p>
