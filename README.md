@@ -46,7 +46,7 @@ Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has ye
 <p>2. Amixer configurator removes the need to resort to sudo alsamixer, it can all be done from the dashboard.</p>
 <p>3. EchoLink Configurator. Set this up before adding ModuleEchoLink into the SimplexLogic or RepeaterLogic in the Svxlink Editor.</p>
 <p>4. Metar Configurator. This is fairly easy to modify, but again look for the man page for ModuleMetarInfo.</p>
-<p>5. NodeInfo Configurator. This is the file required for the proper operation of the SvxReflector if it is associated with you device. because it is a .json file, different editing techniques are required.</p>
+<p>5. NodeInfo Configurator. This is the file required for the proper operation of the SvxReflector if it is associated with your device. because it is a .json file, different editing techniques are required.</p>
 <p> In each case, the 'save' action restarts the svxlink service, so there is no need to restart svxlink manually.</p>
 However if at any time there appears to be a 'stall' in the operation of your node or repeater, then the POWER menu can be used to restarts the service, restart the raspberry completely, or even shutdown the device completely.</p>
 
