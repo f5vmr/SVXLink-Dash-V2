@@ -5,7 +5,7 @@ Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has ye
 
 <b>This installation requires that svxlink has been compiled on at least Debian 11 (raspberry pi OS bullseye), and php version 8.0 or greater, and Apache 2. It will work with Debian 12 with PHP 8.2 installed. </b>
 
-<p>If it has been installed with svxlinkbuilder, then very little needs to be changed.</p>
+<p>If it has been installed with svxlinkbuilder that uses Bookworm (Debian12), then very little needs to be changed.</p>
 
 <p>If you are installing it manually, then you will need to read the instructions thoroughly:</p>
 
