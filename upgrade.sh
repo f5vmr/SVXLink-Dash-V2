@@ -1,17 +1,32 @@
 #!/bin/bash
 # This script is used to upgrade the system for the Permissions required for file handling.
 
-
-
-# Define the sudoers file, the source file, and the script file
+# Define the sudoers file, the source file, the script file, and the config file
 SUDOERS_FILE="/etc/sudoers.d/svxlink"
 SOURCE_FILE="www-data.sudoers"
 SCRIPT_FILE=$(basename "$0")
+CONFIG_FILE="include/config.inc.php"
 
 # Function to display an info message using whiptail
 show_info() {
   whiptail --title "Information" --msgbox "$1" 8 78
 }
+
+# Prompt the user for their dashboard username
+DASHBOARD_USER=$(whiptail --title "Dashboard Username" --inputbox "Please enter your dashboard username:" 8 78 svxlink 3>&1 1>&2 2>&3)
+
+# Prompt the user for their dashboard password
+DASHBOARD_PASSWORD=$(whiptail --title "Dashboard Password" --passwordbox "Please enter your dashboard password:" 8 78 3>&1 1>&2 2>&3)
+
+# Update the config file with the provided username and password
+if [ -f "$CONFIG_FILE" ]; then
+  sed -i "s/define(\"PHP_AUTH_USER\", \".*\");/define(\"PHP_AUTH_USER\", \"$DASHBOARD_USER\");/" "$CONFIG_FILE"
+  sed -i "s/define(\"PHP_AUTH_PW\", \".*\");/define(\"PHP_AUTH_PW\", \"$DASHBOARD_PASSWORD\");/" "$CONFIG_FILE"
+  show_info "The config file $CONFIG_FILE has been updated with the new username and password."
+else
+  whiptail --title "Error" --msgbox "Config file $CONFIG_FILE does not exist. Exiting." 8 78
+  exit 1
+fi
 
 # Check if the source file exists
 if [ ! -f "$SOURCE_FILE" ]; then
