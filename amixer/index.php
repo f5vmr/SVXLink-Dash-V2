@@ -2,6 +2,40 @@
 if (session_status() === PHP_SESSION_NONE) {       
     session_start();
 }
+
+// Function to get current amixer settings
+function getCurrentSettings() {
+    $settings = [];
+
+    // Get Headphone setting
+    exec("amixer sget 'Headphone' | grep -oP '\d+%' | head -1", $output);
+    if (!empty($output)) {
+        $settings['headphone'] = intval($output[0]);
+    }
+
+    // Get Mic setting (volume and capture)
+    exec("amixer sget 'Mic' | grep -oP '\d+%' | head -1", $outputMic);
+    if (!empty($outputMic)) {
+        $settings['mic'] = intval($outputMic[0]);
+    }
+
+    // Get Capture setting
+    exec("amixer sget 'Mic' cap | grep -oP '\d+%' | head -1", $outputCap);
+    if (!empty($outputCap)) {
+        $settings['capture'] = intval($outputCap[0]);
+    }
+
+    // Get Auto Gain Control setting
+    exec("amixer sget 'Auto Gain Control' | grep -oP '\[on\]|\[off\]' | head -1", $outputAGC);
+    if (!empty($outputAGC)) {
+        $settings['autogain'] = ($outputAGC[0] === '[on]') ? 'on' : 'off';
+    }
+
+    return $settings;
+}
+
+// Initialize current settings
+$currentSettings = getCurrentSettings();
 ?>
 
 <!DOCTYPE html>
@@ -68,21 +102,21 @@ if (session_status() === PHP_SESSION_NONE) {
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Headphone - TX</h3>
                         <label for="headphone">Set for 65 (0-100):</label>
-                        <input type="number" id="headphone" name="headphone" min="0" max="100" required>
+                        <input type="number" id="headphone" name="headphone" min="0" max="100" value="<?php echo isset($currentSettings['headphone']) ? $currentSettings['headphone'] : ''; ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Microphone - Not Used</h3>
                         <label for="mic">(0-100): Set to 0</label>
-                        <input type="number" id="mic" name="mic" min="0" max="100" value="0" required>
+                        <input type="number" id="mic" name="mic" min="0" max="100" value="<?php echo isset($currentSettings['mic']) ? $currentSettings['mic'] : '0'; ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Capture - RX</h3>
                         <label for="capture">(0-100) Set for 25:</label>
-                        <input type="number" id="capture" name="capture" min="0" max="100" value="25" required>
+                        <input type="number" id="capture" name="capture" min="0" max="100" value="<?php echo isset($currentSettings['capture']) ? $currentSettings['capture'] : '25'; ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Auto Gain</h3>
                         <label for="autogain">Set to Off for optimum control</label>
                         <select id="autogain" name="autogain" required>
-                            <option value="off">Off</option>
-                            <option value="on">On</option>
+                            <option value="off" <?php echo isset($currentSettings['autogain']) && $currentSettings['autogain'] === 'off' ? 'selected' : ''; ?>>Off</option>
+                            <option value="on" <?php echo isset($currentSettings['autogain']) && $currentSettings['autogain'] === 'on' ? 'selected' : ''; ?>>On</option>
                         </select>
                         <br>
                         <button type="submit">Apply Settings</button>
@@ -124,5 +158,6 @@ if (session_status() === PHP_SESSION_NONE) {
     ?>
 </body>
 </html>
+
 
 
