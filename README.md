@@ -35,7 +35,9 @@ Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has ye
 <p>This file allows you the Dashboard Owner to run certain commands when authorised. It also adds some maintenance provisions, removing old backup files so that the system remains unburdened of old data.</p>
 <p>Finally go to the browser of your choice and enter the ip address of your raspberry pi.</p>
 <p>You will be presented with the dashboard of your device. You will need to log in under your username and password, set up during the upgrade.sh process.</p>
+
 <p>The dashboard is now ready to use. However it is recommended that you thoroughly read the man page for svxlink.conf. <i>man svxlink.conf on google </i>will find a copy, although you will find one inside your device through the terminal</p>
+<img width="945" alt="Screenshot 2024-06-16 at 16 15 01" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/ee286988-5035-4f01-8173-f3f294e77e65">
 
 
 <p>Your edited files will be saved in /var/www/html/backups with a date/time.</p> 
