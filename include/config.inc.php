@@ -1,13 +1,18 @@
 <?php
+//Access to the Webserver for editing the config files
+define("PHP_AUTH_USER", "svxlink");
+define("PHP_AUTH_PW", "password");
+
 // header lines for information
 define("HEADER_CAT","FM-Repeater");
-define("HEADER_QTH","");
-define("HEADER_QRG","");
+define("HEADER_QTH","null");
+define("HEADER_QRG","null");
 define("HEADER_SYSOP","");
 define("FMNETWORK_EXTRA","");
-define("EL_NODE_NR","");
+define("EL_NODE_NR","null");
 define("FULLACCESS_OUTSIDE", 0);
 define("ADD_BUTTONS", 1);
+///Variables for the webpages
 //
 // Button keys define: description button, DTMF command or command, color of button
 //
@@ -39,15 +44,47 @@ define("SVXCONFPATH", "/etc/svxlink/");
 define("SVXCONFIG", "svxlink.conf");
 define("SVXLOGPATH", "/var/log/");
 define("SVXLOGPREFIX","svxlink.log");
-define("CALLSIGN","");
-define("LOGICS","");
-define("REPORT_CTCSS","");
-define("DTMF_CTRL_PTY","");
-define("API","");
-define("FMNET","");
-define("TG_URI","");
-define("NODE_INFO_FILE","");
-define("RF_MODULE","");
-define("PHP_AUTH_USER", "svxlink");
-define("PHP_AUTH_PW", "password");
-?>
+define("CALLSIGN","null");
+define("LOGICS","null");
+define("REPORT_CTCSS","null");
+define("DTMF_CTRL_PTY","null");
+define("API","null");
+define("FMNET","null");
+define("TG_URI","null");
+define("NODE_INFO_FILE","/etc/svxlink/node_info.json");
+define("RF_MODULE","null");
+define("QTH","null");
+define("FREQ","null");
+define("LOCATION","null");
+define("CW_AMP","inCwAmp");
+define("CW_PITCH","inCwPitch");
+define("CW_CPM","inCwCpm");
+define("LINKS","null");
+define("AUTH_KEY","password");
+define("FMNETWORK","inFmnetwork");
+define("DEFAULT_LANG","inReflectorDefaultLang");
+define("RGR_DELAY","inRgrDelay");
+define("IDLE_INTERVAL_TIME","inIdleIntervalTime");
+define("FX_GAIN_NORMAL","inFxGainNormal");
+define("FX_GAIN_LOW","inFxGainLow");
+define("AUDIO_CHANNEL","inRxAudioChannel");
+define("SQL_DELAY","inSqlDelay");
+define("HID_DEVICE","inRxHidDevice");
+
+define("HOSTS","null");
+define("DATABASES","/var/www/html/databases");
+
+
+$svxConfigFile = '/etc/svxlink/svxlink.conf';
+if (fopen($svxConfigFile, 'r')) {
+    $svxconfig = parse_ini_file($svxConfigFile, true, INI_SCANNER_RAW);
+    $refApi = isset($svxconfig['ReflectorLogic']['API']) ? $svxconfig['ReflectorLogic']['API'] : '';
+    $fmnetwork = isset($svxconfig['ReflectorLogic']['HOSTS']) ? $svxconfig['ReflectorLogic']['HOSTS'] : '';
+    $qth = isset($svxconfig['LocationInfo']['QTH']) ? $svxconfig['LocationInfo']['QTH'] : '';
+    $freq = isset($svxconfig['Rx1']['FREQ']) ? $svxconfig['Rx1']['FREQ'] : '';
+    $EL_node = isset($svxconfig['LocationInfo']['LOCATION']) ? $svxconfig['LocationInfo']['LOCATION'] : '';
+} else {
+    $callsign = "NOCALL";
+    $fmnetwork = "not registered";
+    $EL_node = "unknown";
+}

@@ -481,21 +481,23 @@ function createjson($filename)
 
         return (json_encode($json_array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 }
-function file_name($file_name) {
+function file_name($dir,$file_name) {
 //        $command = "sudo cp /etc/svxlink/".$file_name." /etc/svxlink/".$file_name."bak";
 //        echo exec($command);
-        $file_and_path = "/etc/svxlink/".$file_name;
+        $file_and_path = $dir . $file_name;
         return($file_and_path);
 }
 // should filename include path?
 
-function file_backup($file_name){
-        $command = "sudo cp /etc/svxlink/".$file_name." /etc/svxlink/".$file_name.".".date('d-m-Y_hia');
+function file_backup($dir,$file_name){
+        $backup_filename = $file_name . "." . date("YmdHis");
+        $command = "sudo cp -f " . $dir . $file_name . " /var/www/html/backups/" . $backup_filename;
         echo exec($command);
         return;
-}
-function file_replace($file_name){
-        $command = "sudo cp -r /var/www/htmp/php_work/".$file_name." /etc/svxlink/".$file_name;
+    }
+    
+function file_replace($dir,$file_name){
+        $command = "sudo cp -r /var/www/html/svxlink/".$file_name." /etc/svxlink/".$file_name;
         echo exec($command);
 }
       // Refresh iframe on save
@@ -515,18 +517,224 @@ function file_replace($file_name){
         echo '<textarea name="content">'.$content.'</textarea>';
 
       }
+      
 
-     //function checkAuth($username, $password) {
-     //  // Check if received values match PHP_AUTH_USER and PHP_AUTH_PW
-     //  if ($username == PHP_AUTH_USER && $password == PHP_AUTH_PW) {
-     //          // Success
-     //          return 'AUTHORISED';            
-     //      
-     //          } else {
-     //          
-     //          return "UNAUTHORISED";
-     //   
-     //  }
-     // }
+      
+
+      function parse_config($file_path,$file_name) {
+           $file_edit = "$file_path"."$file_name";
+          $lines = file($file_edit, FILE_IGNORE_NEW_LINES);
+          $config = [];
+          $header = array_slice($lines, 0, 4);
+      
+          foreach (array_slice($lines, 4) as $line) {
+              $line = rtrim($line);
+              if (strpos($line, '#') === 0) {
+                  $config[] = ['type' => 'comment', 'content' => $line];
+              } elseif (preg_match('/^\[.*\]$/', $line)) {
+                  $config[] = ['type' => 'section', 'content' => $line];
+              } else {
+                  $config[] = ['type' => 'parameter', 'content' => $line];
+              }
+          }
+      
+          return ['header' => $header, 'config' => $config];
+      }
+      
+
+// Assuming this function is in your include/functions.php file
+
+
+// Modify your display_config function to fix the issues
+
+// Adjust your display_config function to ensure all lines are editable
+
+function display_config($config) {
+    foreach ($config['config'] as $i => $entry) {
+        $content = htmlspecialchars($entry['content']);
+        $commented = (substr($content, 0, 1) === '#');
+
+        echo "<tr>";
+
+        // Display content in the first column
+        echo "<td>";
+        echo "<input type='text' value='{$content}' style='width: 100%;'>";
+        echo "</td>";
+
+        // Display action column for commenting/uncommenting
+        echo "<td class='action-column'>";
+        if ($commented) {
+            // Display [Uncomment] link
+            echo "<a href='?action=uncomment&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Uncomment]</a>";
+        } else {
+            // Display [Comment] link
+            echo "<a href='?action=comment&line={$i}' style='text-decoration: none; color: #00aee8; font-weight: bold;'>[Comment]</a>";
+        }
+        echo "</td>";
+
+        echo "</tr>";
+    }
+}    
+      
+      function edit_config(&$config, $line_number, $new_content, $comment_out) {
+          $line_number -= 4; // Adjust for the header lines
+          if ($line_number < 0 || $line_number >= count($config['config'])) {
+              echo "Invalid line number\n";
+              return;
+          }
+      
+          if ($config['config'][$line_number]['type'] == 'section') {
+              echo "Cannot edit section headers\n";
+              return;
+          }
+      
+          if ($comment_out) {
+              $config['config'][$line_number] = ['type' => 'comment', 'content' => '#' . $new_content];
+          } else {
+              $config['config'][$line_number] = ['type' => 'parameter', 'content' => $new_content];
+          }
+      }
+      
+      function save_config($config, $file_path,$file_name) {
+          $file_save="$file_path"."$file_name";
+          $file_content = implode("\n", $config['header']) . "\n";
+          foreach ($config['config'] as $entry) {
+              $file_content .= $entry['content'] . "\n";
+          }
+      
+          file_put_contents($file_save, $file_content);
+      }
+      
+      
+      function parse_config_with_header($file_path,$file_name) {
+        $file_complete="$file_path"."$file_name";
+        $lines = file($file_complete, FILE_IGNORE_NEW_LINES);
+        $header = array_slice($lines, 0, 4);
+        $config_lines = array_slice($lines, 4);
+        
+        $parsed_config = [
+            'header' => $header,
+            'config' => []
+        ];
+    
+        foreach ($config_lines as $line_number => $line) {
+            $line = rtrim($line);
+            if (preg_match('/^\[.*\]$/', $line)) {
+                $parsed_config['config'][] = [
+                    'type' => 'section',
+                    'content' => $line,
+                    'line_number' => $line_number + 4
+                ];
+            } elseif (strpos($line, '#') === 0) {
+                $parsed_config['config'][] = [
+                    'type' => 'comment',
+                    'content' => $line,
+                    'line_number' => $line_number + 4
+                ];
+            } elseif (trim($line) !== '') {
+                $parsed_config['config'][] = [
+                    'type' => 'parameter',
+                    'content' => $line,
+                    'line_number' => $line_number + 4
+                ];
+            } else {
+                $parsed_config['config'][] = [
+                    'type' => 'empty',
+                    'content' => '',
+                    'line_number' => $line_number + 4
+                ];
+            }
+        }
+    
+        return $parsed_config;
+    }
+    function insert_config_with_header_into_db($parsed_config, $pdo) {
+        $stmt = $pdo->prepare("INSERT INTO config_lines (line_number, type, content) VALUES (:line_number, :type, :content)");
+    
+        foreach ($parsed_config['config'] as $line) {
+            $stmt->execute([
+                ':line_number' => $line['line_number'],
+                ':type' => $line['type'],
+                ':content' => $line['content']
+            ]);
+        }
+    
+        // You can store the header separately if needed
+        // For example, in a separate table or a special record in config_lines
+    }
+    function custom_parse_ini_file($filename) {
+        $config = [];
+        $current_section = '';
+        $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        
+        foreach ($lines as $line) {
+            // Remove comments and trim whitespace
+            $line = trim($line);
+            
+            // Skip empty lines after comment removal
+            if (empty($line)) {
+                continue;
+            }
+            
+            // Check for section headers
+            if (preg_match('/^\[(.+)\]$/', $line, $matches)) {
+                $current_section = trim($matches[1]);
+                continue;
+            }
+            
+            // Handle key-value pairs
+            if (strpos($line, '=') !== false) {
+                list($key, $value) = array_map('trim', explode('=', $line, 2));
+                
+                // Determine if the line is active or commented out
+                $active = true; // Assume active unless proven otherwise
+                if (strpos($key, '#') === 0) {
+                    $active = false; // Line is commented out
+                    $key = ltrim($key, '# '); // Remove leading # and spaces
+                }
+                
+                // Store in config array
+                if (!isset($config[$current_section])) {
+                    $config[$current_section] = [];
+                }
+                
+                $config[$current_section][$key] = [
+                    'value' => $value,
+                    'active' => $active,
+                ];
+            }
+        }
+        
+        return $config;
+    }
+    
+    function save_svxconfig($configFile, $svxconfig_post) {
+        // Open the file for writing
+        if (!$handle = fopen($configFile, 'w')) {
+            die("Cannot open file ($configFile) for writing. Check file permissions.");
+        }
+    
+        // Iterate through $svxconfig_post and write lines to the file
+        foreach ($svxconfig_post['value'] as $section => $entries) {
+            fwrite($handle, "[$section]\n");
+            foreach ($entries as $key => $value) {
+                if (isset($svxconfig_post['active'][$section][$key])) {
+                    fwrite($handle, "$key = {$value}\n");
+                } else {
+                    fwrite($handle, "#$key = {$value}\n");
+                }
+            }
+            fwrite($handle, "\n"); // Blank line between sections (if desired)
+        }
+    
+        fclose($handle);
+    
+        // Optionally, you can add success/failure handling here
+        echo "Configuration saved and restarted";
+    }
+    
+
+
+   
     
 

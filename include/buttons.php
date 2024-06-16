@@ -89,9 +89,9 @@ if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE || $net5 ==
 
 
    
-<fieldset style="box-shadow:5px 5px 20px #999;background-color:#e8e8e8e8; width:855px;margin-top:5px;margin-bottom:14px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:100%;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;white-space:normal;">
-<p style="margin-bottom:0px;"></p>
+<fieldset style = "box-shadow:5px 5px 20px #999;background-color:#e8e8e8e8; width:855px;margin-top:5px;margin-bottom:14px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "padding:0px;width:100%;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;white-space:normal;">
+<p style = "margin-bottom:0px;"></p>
 <form method="post">
     <center>
         <input type="submit" name="button1"
@@ -131,10 +131,10 @@ if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE || $net5 ==
 ?>
  </center>
     </form>
-<p style="margin: 0 auto;"></p>
-<form action="" method="POST" style="margin-top:4px;">
+<p style = "margin: 0 auto;"></p>
+<form action="" method="POST" style = "margin-top:4px;">
   <center>
-  <label style="text-shadow: 1px 1px 1px Lightgrey, 0 0 0.5em LightGrey, 0 0 1em whitesmoke;font-weight:bold;color:#464646;" for="dtmfsvx">DTMF command (must end with #):</label>  
+  <label style = "text-shadow: 1px 1px 1px Lightgrey, 0 0 0.5em LightGrey, 0 0 1em whitesmoke;font-weight:bold;color:#464646;" for="dtmfsvx">DTMF command (must end with #):</label>  
   <input type="text" id="dtmfsvx" name="dtmfsvx">
   <input type="submit" value="Send DTMF code" class="green"><br>
   </center>
@@ -163,7 +163,7 @@ if (isset($_POST["jmptoM"])) {
 
 
 ?>
-<p style="margin-bottom:-2px;"></p>
+<p style = "margin-bottom:-2px;"></p>
 </div>
 </fieldset>
 <?php

@@ -61,12 +61,12 @@ textarea {
 
 </style>
 </head>
-<body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
+<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <center>
-<fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
+<fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<h1 id="web-audio-peak-meters" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Updater</h1>
+<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Updater</h1>
 
 
 <?php 
@@ -75,13 +75,13 @@ ini_set("allow_url_fopen", 1);
 $isSimplex = false;
 $isRepeater = false;
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
-if (fopen($svxConfigFile,'r')) {$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); }
+if (fopen($svxConfigFile,'r')) {$lines = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); }
 $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
 foreach ($logics as $key) {
   if ($key == "SimplexLogic") $isSimplex = true;
   if ($key == "RepeaterLogic") $isRepeater = true; 
 };
-//$tgUri = $svxconfig['ReflectorLogic']['TG_URI'];
+//$tgUri = $lines['ReflectorLogic']['TG_URI'];
 
 
 
@@ -310,13 +310,13 @@ if (isset($_POST['btnUpdateSvxlink']))
 ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-<DIV style="height:340px">
+<DIV style = "height:340px">
 <table>
 	<tr>
 	<th>Screen</th> 
 	</tr>
 <tr>
-<Td>
+<td>
 	<textarea name="scan" rows="15" cols="80"><?php 
 			echo implode("\n",$screen); ?></textarea>
 
@@ -328,12 +328,12 @@ if (isset($_POST['btnUpdateSvxlink']))
         <th>Check versions</th>
         </tr>
 <tr>
-<Td>
-        <button name="btnChkOs" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">OS</button>
-        <button name="btnChkSounds" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">Sounds</button>
-	<button name="btnChkConfig" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">Config</button>
-	<button name="btnChkSvxlink" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">SVXLink</button>
-	<button name="btnChkDashboard" type="submit" class="red" style="height:30px; width:90px; font-size:12px;">Dashboard</button>
+<td>
+        <button name="btnChkOs" type="submit" class="red" style = "height:30px; width:80px; font-size:12px;">OS</button>
+        <button name="btnChkSounds" type="submit" class="red" style = "height:30px; width:80px; font-size:12px;">Sounds</button>
+	<button name="btnChkConfig" type="submit" class="red" style = "height:30px; width:80px; font-size:12px;">Config</button>
+	<button name="btnChkSvxlink" type="submit" class="red" style = "height:30px; width:80px; font-size:12px;">SVXLink</button>
+	<button name="btnChkDashboard" type="submit" class="red" style = "height:30px; width:90px; font-size:12px;">Dashboard</button>
 
 </td>
 </tr>
@@ -343,13 +343,13 @@ if (isset($_POST['btnUpdateSvxlink']))
         <th>Upgrade</th>
         </tr>
 <tr>
-<Td>
+<td>
         
-	<button name="btnUpdateOs" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">OS</button>
-        <button name="btnUpdateSounds" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">Sounds</button>
-        <button name="btnUpdateConfig" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">Config</button>
-        <button name="btnUpdateSvxlink" type="submit" class="red" style="height:30px; width:80px; font-size:12px;">SVXLink</button>
-	<button name="btnUpdateDashboard" type="submit" class="red" style="height:30px; width:90px; font-size:12px;">Dashboard</button>
+	<button name="btnUpdateOs" type="submit" class="red" style = "height:30px; width:80px; font-size:12px;">OS</button>
+        <button name="btnUpdateSounds" type="submit" class="red" style = "height:30px; width:80px; font-size:12px;">Sounds</button>
+        <button name="btnUpdateConfig" type="submit" class="red" style = "height:30px; width:80px; font-size:12px;">Config</button>
+        <button name="btnUpdateSvxlink" type="submit" class="red" style = "height:30px; width:80px; font-size:12px;">SVXLink</button>
+	<button name="btnUpdateDashboard" type="submit" class="red" style = "height:30px; width:90px; font-size:12px;">Dashboard</button>
 </td>
 </tr>
 </table>
@@ -357,8 +357,8 @@ if (isset($_POST['btnUpdateSvxlink']))
 </DIV>
 </form>
 
-<p style="margin: 0 auto;"></p>
-<p style="margin-bottom:-2px;"></p>
+<p style = "margin: 0 auto;"></p>
+<p style = "margin-bottom:-2px;"></p>
 
 </body>
 </html>

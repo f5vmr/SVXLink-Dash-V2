@@ -8,8 +8,8 @@ include_once "functions.php";
 
 
 ?>
-<div style="width:180px;"><span style="font-weight: bold;font-size:14px;">SVXLink Info</span></div>
-<fieldset style="width:175px;background-color:#e8e8e8e8;margin-top:6px;;margin-bottom:0px;margin-left:0px;margin-right:3px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "width:180px;"><span style = "font-weight: bold;font-size:14px;">SVXLink Info</span></div>
+<fieldset style = "width:175px;background-color:#e8e8e8e8;margin-top:6px;;margin-bottom:0px;margin-left:0px;margin-right:3px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <?php
 
 if (isProcessRunning('svxlink')) {
@@ -178,7 +178,7 @@ $net4= cidr_match($ip,"192.168.1.0/8");
 
 if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE || $FULLACCESS_OUTSIDE == 1) {
    echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#ff0000;font-weight: bold;\">";
-   echo "DB Access Level:<BR>Full/Intranet/VPN";
+   echo "DB Access Level:<br>Full/Intranet/VPN";
    echo "</div></td></tr>";
    }
    echo "</table>\n";

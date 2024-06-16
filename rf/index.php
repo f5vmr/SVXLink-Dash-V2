@@ -61,13 +61,13 @@ textarea {
 
 </style>
 </head>
-<body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
+<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <script src="web-audio-peak-meter.js"></script>
 <center>
-<fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
+<fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<h1 id="web-audio-peak-meters" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">RF Module Configurator</h1>
+<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">RF Module Configurator</h1>
 
 
 <?php 
@@ -122,7 +122,7 @@ if (isset($_POST['btnDetect']))
 	exec($command_top,$screen_top,$retval);
 	
 	//print_r($screen_top); 
-	//print_r("<BR>");
+	//print_r("<br>");
 	$retval = null;
 	
 	$i = 0;
@@ -273,13 +273,13 @@ if ($volume === "" || is_null($volume)) $volume = "8";
 ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-<DIV style="height:77px">
+<DIV style = "height:77px">
 <table>
 	<tr>
 	<th>Screen</th> 
 	</tr>
 <tr>
-<Td>
+<td>
 	<textarea name="scan" rows="4" cols="80"><?php 
 			echo implode("\n",$screen); ?></textarea>
 
@@ -297,12 +297,12 @@ if ($volume === "" || is_null($volume)) $volume = "8";
 	<th width = "100px">Action</th>
         </tr>
 <tr>
-<Td> 
-   <button name="btnDetect" type="submit" class="red"style="height:30px; width:105px; font-size:12px;">Detect</button> 
-	Port: <input type "text" name="port" style="width: 150px" value="<?php echo $port;?>"
+<td> 
+   <button name="btnDetect" type="submit" class="red"style = "height:30px; width:105px; font-size:12px;">Detect</button> 
+	Port: <input type "text" name="port" style = "width: 150px" value="<?php echo $port;?>"
 </TD>
 <td>
-<button name="btnVersion" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Get Version</button>
+<button name="btnVersion" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Get Version</button>
 </TD>
 </tr>
 </table>
@@ -313,15 +313,15 @@ if ($volume === "" || is_null($volume)) $volume = "8";
         <th width = "100px">Action</th>
         </tr>
 <tr>
-<Td>
-   	Freq: <input type "text" name="freq" style="width: 180px" value="<?php echo $freq;?>">
-	Shift: <input type "text" name="offset" style="width: 50px" value="<?php echo $offset;?>"> <br>
-   	Ctcss: <input type "text" name="ctcss" style="width: 50px" value="<?php echo $ctcss;?>">
-	Squelch: <input type "text" name="squelch" style="width: 50px" value="<?php echo $squelch;?>">
-	Tail: <input type "text" name="tail" style="width: 50px" value="<?php echo $tail;?>">
+<td>
+   	Freq: <input type "text" name="freq" style = "width: 180px" value="<?php echo $freq;?>">
+	Shift: <input type "text" name="offset" style = "width: 50px" value="<?php echo $offset;?>"> <br>
+   	Ctcss: <input type "text" name="ctcss" style = "width: 50px" value="<?php echo $ctcss;?>">
+	Squelch: <input type "text" name="squelch" style = "width: 50px" value="<?php echo $squelch;?>">
+	Tail: <input type "text" name="tail" style = "width: 50px" value="<?php echo $tail;?>">
 </TD>
 <td>
-<button name="btnRadio" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Set Radio</button>
+<button name="btnRadio" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Radio</button>
 </TD>
 </tr>
 </table>
@@ -332,14 +332,14 @@ if ($volume === "" || is_null($volume)) $volume = "8";
         <th width = "100px">Action</th>
         </tr>
 <tr>
-<Td>
-   Emphasis: <input type "text" name="fEmph" style="width: 50px" value="<?php echo $fEmph;?>">
-   Low: <input type "text" name="fLow" style="width: 50px" value="<?php echo $fLow;?>">
-   High: <input type "text" name="fHigh" style="width: 50px" value="<?php echo $fHigh;?>">
+<td>
+   Emphasis: <input type "text" name="fEmph" style = "width: 50px" value="<?php echo $fEmph;?>">
+   Low: <input type "text" name="fLow" style = "width: 50px" value="<?php echo $fLow;?>">
+   High: <input type "text" name="fHigh" style = "width: 50px" value="<?php echo $fHigh;?>">
 
 </TD>
 <td>
-<button name="btnFilters" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Set Filters</button>
+<button name="btnFilters" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Filters</button>
 </TD>
 </tr>
 </table>
@@ -350,19 +350,19 @@ if ($volume === "" || is_null($volume)) $volume = "8";
         <th width = "100px">Action</th>
         </tr>
 <tr>
-<Td>
-   Volume: <input type "text" name="volume" style="width: 50px" value="<?php echo $volume;?>">
+<td>
+   Volume: <input type "text" name="volume" style = "width: 50px" value="<?php echo $volume;?>">
 </TD>
 <td>
-<button name="btnVol" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Set Vol</button>
+<button name="btnVol" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Vol</button>
 </TD>
 </tr>
 </table>
 
 </form>
 
-<p style="margin: 0 auto;"></p>
-<p style="margin-bottom:-2px;"></p>
+<p style = "margin: 0 auto;"></p>
+<p style = "margin-bottom:-2px;"></p>
 
 </body>
 </html>
