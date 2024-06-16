@@ -124,7 +124,7 @@ $max_capture = 16; // numid=8
 
                     <!-- HTML Form to adjust ALSA settings -->
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Headphone - TX</h3>
+                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Headphone - TX Levels</h3>
                         <label for="headphone">Set for 65 (0-100):</label>
                         <input type="number" id="headphone" name="headphone" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_headphone, $max_headphone)); ?>" required>
                         <br>
@@ -132,12 +132,12 @@ $max_capture = 16; // numid=8
                         <label for="mic">(0-100): Set to 0</label>
                         <input type="number" id="mic" name="mic" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_mic, $max_mic)); ?>" required>
                         <br>
-                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Capture - RX</h3>
+                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Capture - RX Levels</h3>
                         <label for="capture">(0-100) Set for 25:</label>
                         <input type="number" id="capture" name="capture" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_capture, $max_capture)); ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Auto Gain</h3>
-                        <label for="autogain">Set to Off for optimum control</label>
+                        <label for="autogain">Set to OFF for optimum control</label>
                         <select id="autogain" name="autogain" required>
                             <option value="off" <?php if ($current_autogain === 'off') echo 'selected'; ?>>Off</option>
                             <option value="on" <?php if ($current_autogain === 'on') echo 'selected'; ?>>On</option>
