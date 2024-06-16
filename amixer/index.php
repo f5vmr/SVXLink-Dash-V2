@@ -27,9 +27,9 @@ function parse_amixer_value($output) {
     return null;
 }
 
-// Function to calculate percentage relative to maximum permitted value
+// Function to calculate percentage relative to maximum permitted value and return as whole number
 function calculate_percentage($current_value, $max_value) {
-    return ($current_value / $max_value) * 100;
+    return round(($current_value / $max_value) * 100);
 }
 
 // Parse and calculate percentages
@@ -179,3 +179,4 @@ $max_capture = 16; // numid=8
 </body>
 
 </html>
+
