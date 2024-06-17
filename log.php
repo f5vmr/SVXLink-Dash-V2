@@ -2,20 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
-include_once "include/config.php";
-include_once "include/tools.php";
-
-// migrate to external class tbc
-
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
-    if (fopen($svxConfigFile,'r'))
-       { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
-         $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
-         $fmnetwork =$svxconfig['ReflectorLogic']['HOSTS'];   }
-else { $callsign="NOCALL"; 
-       $fmnetwork="no registered";
-	}
+include "include/settings.php";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -29,7 +16,7 @@ else { $callsign="NOCALL";
     <meta name="generator" content="SVXLink" />
     <meta name="Author" content="G4NAB, SP2ONG, SP0DZ" />
     <meta name="Description" content="Dashboard for SVXLink by G4NAB, SP2ONG, SP0DZ" />
-    <meta name="KeyWords" content="SVXLink, G4NAB, SP2ONG, SP0DZ" />
+    <meta name="KeyWords" content="SVXLink,G4NAB, SP2ONG, SP0DZ" />
     <meta http-equiv="cache-control" content="max-age=0" />
     <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="expires" content="0" />
@@ -58,13 +45,6 @@ else { $callsign="NOCALL";
     <div class="img" style = "padding-left:30px"><img src="images/svxlink.ico" /></div>
     <div class="text"style = "padding-right:230px">
 <center><p style = "margin-top:5px;margin-bottom:0px;">
-<?php
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
-    if (fopen($svxConfigFile,'r')) 
-       { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); 
-         $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];}
-    else { $callsign="NOCALL";}
-?>
 <span style = "font-size: 32px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $callsign; ?></span>
 <p style = "margin-top:0px;margin-bottom:0px;">
 <span style = "font-size: 18px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $fmnetwork; ?></span>
@@ -84,6 +64,7 @@ include_once "include/buttons.php";
 }
 ?>
 <?php
+
     echo '<table style = "margin-bottom:0px;border:0; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#f1f1f1;"><tr style = "border:none;background-color:#f1f1f1;">';
     echo '<td width="200px" valign="top" class="hide" style = "height:auto;border:0;background-color:#f1f1f1;">';
     echo '<div class="nav" style = "margin-bottom:1px;margin-top:1px;">'."\n";
@@ -100,10 +81,11 @@ include_once "include/buttons.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
-
-    echo '<td valign="top"  style = "height:500px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';
-    echo '<iframe src="/log"  style = "width:615px; height:490px"></iframe>';
+    
+    echo '<td valign="top"  style = "height:700px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';
+    echo '<iframe src="/log"  style = "width:615px; height:650px"></iframe>';
     echo '</td>';
+   
 ?>
 </tr></table>
 <?php
