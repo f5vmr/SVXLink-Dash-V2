@@ -65,17 +65,15 @@ textarea {
 <center>
 <fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
-<center>
-<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Log viewer</h1>
 <style>
         pre {
             white-space: pre-wrap; /* Ensures that long lines wrap */
             word-wrap: break-word; /* Ensures that long words wrap */
         }
     </style>
-    <script>
+       <script>
         function fetchLog() {
-            fetch('read_log.php')
+            fetch('log/index.php?action=fetch_log')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('log').innerHTML = data;
@@ -85,71 +83,24 @@ textarea {
 
         // Fetch log every 5 seconds
         setInterval(fetchLog, 5000);
+
         // Initial fetch
         window.onload = fetchLog;
     </script>
+<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Log viewer</h1>
+<pre id="log">Loading log...</pre>
 <?php
-// Possible log file names
-$logFiles = ['/var/log/svxlink.log', '/var/log/svxlink'];
-
-// Initialize log content variable
-$logContent = '';
-
-// Iterate over possible log files and read the first one that exists
-foreach ($logFiles as $logFile) {
-    if (file_exists($logFile)) {
-        $logContent = file_get_contents($logFile);
-        break;
+    // Check if the action parameter is set to fetch_log
+    if (isset($_GET['action']) && $_GET['action'] === 'fetch_log') {
+        // Output the log content and exit to avoid rendering the rest of the page
+        echo getLogContent();
+        exit();
     }
-}
+    ?>
 
-// Display log content or an error message
-//if ($logContent !== '') {
-//    echo nl2br($logContent); // nl2br() converts newlines to <br> for HTML
-//} else {
-//    echo "Log file not found.";
-//}
-?>
 
-<?php 
 
-//if ($_SESSION['auth'] == 'AUTHORISED'){
-//  echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="495px" title="EDIT"></iframe>';
-//
-//  echo '</td>';
-// }   else {
-//      echo '<h1 id="power" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not yet authorised.</h1>';
-//      echo '</td>';    
-//  }
-  ?>
-  <?php
-//$retval = null;
-//$conns = null;
-////exec('nmcli  -t -f NAME  con show',$conns,$retval);
-//
-//// find the gateway
-//$ipgw = null;
-//
-//$screen[0] = "Welcome to Svxlink log viewer tool.";
-//$screen[1] = "";
-//$screen[2] = "Click on the button to get the last 30 lines of the log.";
-//$screen[3] = "";
 
-//tbc - load the data from ini RF.
-
-//if (isset($_POST['btnLog']))
-//    {
-//
-//        $retval = null;
-//        $screen = null;
-//        //$sAconn = $_POST['sAconn'];
-//        //$password = $_POST['password'];
-//        //exec('nmcli dev wifi rescan');
-//       $command = "tail -n 30 /var/log/svxlink.log";
-//       exec($command,$screen,$retval);
-//}
-
-?>
 
 
 
