@@ -99,4 +99,3 @@ if (isset($_GET['action']) && $_GET['action'] === 'fetch_log') {
 <p style="margin-bottom:-2px;"></p>
 </body>
 </html>
-
