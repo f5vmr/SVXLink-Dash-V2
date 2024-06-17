@@ -15,7 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
 	<a href="/network.php" style = "color: #0000ff;">Network</a> |-->
 	<a href="/nodeInfo.php" style = "color: #0000ff;">Node Info</a> |
 	
-	<a href="/log.php" style = "color: #0000ff;">Log</a> |
+	<a href="editor.php?id=log." style = "color: crimson;" id="log">Log</a> |
 	<a href="/authorise.php" style = "color: crimson;">Authorise</a></p>
 	</div>
 	<div id="full-edit-links">
