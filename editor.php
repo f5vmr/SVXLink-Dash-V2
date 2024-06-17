@@ -92,7 +92,9 @@ include_once "include/buttons.php";
 
 ?>
 <?php
-
+if($_GET['id']=="log") {
+    $edit_file = "log/index.php";
+}
 if($_GET['id']=="svxlink") {
     $edit_file = "svxlink/index.php"; 
 }
@@ -111,6 +113,9 @@ elseif($_GET['id']=="nodeInfo"){
 }
 if($_GET['id']=="logic") {
     $edit_file = "logic/index.php"; 
+}
+if($_GET['id']=="power") {
+    $edit_file = "power/index.php";
 }
 // check if form has been submitted
 //$filename = by choice;
