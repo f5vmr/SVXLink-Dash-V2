@@ -36,35 +36,39 @@ function getSVXLog() {
 	$logLines = array_slice($logLines, -500);
 	return $logLines;
 }
-//function getLogContent() {
-//    // Possible log file names
-//    $logFiles = ['/var/log/svxlink.log', '/var/log/svxlink'];//
-
-//    // Initialize log content variable
-//    $logContent = '';//
-
-//    // Iterate over possible log files and read the first one that exists
-//    foreach ($logFiles as $logFile) {
-//        if (file_exists($logFile)) {
-//            $logContent = file_get_contents($logFile);
-//            return nl2br($logContent);
-//        }
-//    }//
-
-//    // If no log file is found
-//    return "Log file not found.";
-//}
 function getLogContent() {
-    $logFile = '/var/log/svxlink.log';
+    // Possible log file names
+    $logFiles = ['/var/log/svxlink.log', '/var/log/svxlink'];
 
-    // Check if the log file exists
-    if (file_exists($logFile)) {
-        $logContent = file_get_contents($logFile);
-        return nl2br($logContent);
-    } else {
-        return "Log file '/var/log/svxlink.log' not found.";
+    // Initialize log content variable
+    $logContent = '';
+
+    // Iterate over possible log files and read the first one that exists
+    foreach ($logFiles as $logFile) {
+        if (file_exists($logFile)) {
+            // Read the entire log file into an array of lines
+            $lines = file($logFile);
+
+            // Calculate the number of lines in the log file
+            $numLines = count($lines);
+
+            // Determine where to start showing the last 10 lines
+            $startLine = max(0, $numLines - 10);
+
+            // Slice the array to get the last 10 lines
+            $last10Lines = array_slice($lines, $startLine);
+
+            // Join the lines into a single string with line breaks
+            $logContent = implode('<br>', $last10Lines);
+            break;
+        }
     }
+
+    // Return log content or an error message
+    return $logContent !== '' ? nl2br($logContent) : "Log file not found.";
 }
+
+
 
 function getSVXStatusLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
