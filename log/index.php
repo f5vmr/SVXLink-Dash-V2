@@ -67,7 +67,28 @@ textarea {
 <div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
 <h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Log viewer</h1>
+<style>
+        pre {
+            white-space: pre-wrap; /* Ensures that long lines wrap */
+            word-wrap: break-word; /* Ensures that long words wrap */
+        }
+    </style>
+    <script>
+        function fetchLog() {
+            fetch('read_log.php')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('log').innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching log:', error));
+        }
 
+        // Fetch log every 5 seconds
+        setInterval(fetchLog, 5000);
+
+        // Initial fetch
+        window.onload = fetchLog;
+    </script>
 <?php
 // Possible log file names
 $logFiles = ['/var/log/svxlink.log', '/var/log/svxlink'];
@@ -135,28 +156,7 @@ foreach ($logFiles as $logFile) {
 
 <p style = "margin: 0 auto;"></p>
 <p style = "margin-bottom:-2px;"></p>
-<style>
-        pre {
-            white-space: pre-wrap; /* Ensures that long lines wrap */
-            word-wrap: break-word; /* Ensures that long words wrap */
-        }
-    </style>
-    <script>
-        function fetchLog() {
-            fetch('read_log.php')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('log').innerHTML = data;
-                })
-                .catch(error => console.error('Error fetching log:', error));
-        }
 
-        // Fetch log every 5 seconds
-        setInterval(fetchLog, 5000);
-
-        // Initial fetch
-        window.onload = fetchLog;
-    </script>
 
 </body>
 </html>
