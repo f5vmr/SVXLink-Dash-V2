@@ -62,7 +62,7 @@ define("KEY20", array(' D20 ','*D20#','red'));
         define("METARINFO", "ModuleMetarInfo.conf");
         
         define("SVXLOGPATH", "/var/log/");
-        define("SVXLOGPREFIX","svxlink.log,svxlink");
+        define("SVXLOGPREFIX","svxlink.log");
         }
         include_once "parse_svxconf.php";
         
