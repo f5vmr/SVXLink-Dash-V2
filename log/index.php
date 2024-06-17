@@ -84,11 +84,11 @@ foreach ($logFiles as $logFile) {
 }
 
 // Display log content or an error message
-if ($logContent !== '') {
-    echo nl2br($logContent); // nl2br() converts newlines to <br> for HTML
-} else {
-    echo "Log file not found.";
-}
+//if ($logContent !== '') {
+//    echo nl2br($logContent); // nl2br() converts newlines to <br> for HTML
+//} else {
+//    echo "Log file not found.";
+//}
 ?>
 
 <?php 
