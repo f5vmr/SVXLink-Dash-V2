@@ -47,13 +47,14 @@ function getLogContent() {
     foreach ($logFiles as $logFile) {
         if (file_exists($logFile)) {
             $logContent = file_get_contents($logFile);
-            break;
+            return nl2br($logContent);
         }
     }
 
-    // Return log content or an error message
-    return $logContent !== '' ? nl2br($logContent) : "Log file not found.";
+    // If no log file is found
+    return "Log file not found.";
 }
+
 function getSVXStatusLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logLines = array();

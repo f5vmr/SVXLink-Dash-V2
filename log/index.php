@@ -5,17 +5,11 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Include the functions file
 include 'include/functions.php';
-echo "Fetching log content...<br>";
-$logContent = getLogContent();
-echo "Log content retrieved:<br>";
-echo $logContent; // Ensure this outputs the log content correctly
-exit();
 
 // Check if the action parameter is set to fetch_log
 if (isset($_GET['action']) && $_GET['action'] === 'fetch_log') {
     // Output the log content and exit to avoid rendering the rest of the page
-    $logContent = getLogContent();
-    echo $logContent;
+    echo getLogContent();
     exit();
 }
 ?>
@@ -75,23 +69,22 @@ if (isset($_GET['action']) && $_GET['action'] === 'fetch_log') {
             word-wrap: break-word; /* Ensures that long words wrap */
         }
     </style>
-<script>
-    function fetchLog() {
-        fetch('index.php?action=fetch_log')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('log').innerHTML = data;
-            })
-            .catch(error => console.error('Error fetching log:', error));
-    }
+    <script>
+        function fetchLog() {
+            fetch('index.php?action=fetch_log')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('log').innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching log:', error));
+        }
 
-    // Fetch log every 5 seconds
-    setInterval(fetchLog, 5000);
+        // Fetch log every 5 seconds
+        setInterval(fetchLog, 5000);
 
-    // Initial fetch
-    window.onload = fetchLog;
-</script>
-
+        // Initial fetch
+        window.onload = fetchLog;
+    </script>
 </head>
 <body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <center>
