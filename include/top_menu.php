@@ -12,8 +12,8 @@ if (session_status() === PHP_SESSION_NONE) {
 	<!--<a href="/dtmf.php" style = "color: #0000ff;">Dtmf</a> | --> 
 	<a href="/audio.php" style = "color: #0000ff;">Audio</a> | 
 	<!--<a href="/wifi.php" style = "color: #0000ff;">Wifi</a> | 
-	<a href="/network.php" style = "color: #0000ff;">Network</a> |-->
-	<a href="/nodeInfo.php" style = "color: #0000ff;">Node Info</a> |
+	<a href="/network.php" style = "color: #0000ff;">Network</a> |
+	<a href="/nodeInfo.php" style = "color: #0000ff;">Node Info</a> |-->
 	
 	<a href="editor.php?id=log" style = "color: crimson;" id="log">Log</a> |
 	<a href="/authorise.php" style = "color: crimson;">Authorise</a></p>
