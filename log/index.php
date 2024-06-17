@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Include the functions file
-include 'include/functions.php';
+include '../include/functions.php';
 
 // Check if the action parameter is set to fetch_log
 if (isset($_GET['action']) && $_GET['action'] === 'fetch_log') {
