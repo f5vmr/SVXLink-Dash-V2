@@ -135,6 +135,28 @@ foreach ($logFiles as $logFile) {
 
 <p style = "margin: 0 auto;"></p>
 <p style = "margin-bottom:-2px;"></p>
+<style>
+        pre {
+            white-space: pre-wrap; /* Ensures that long lines wrap */
+            word-wrap: break-word; /* Ensures that long words wrap */
+        }
+    </style>
+    <script>
+        function fetchLog() {
+            fetch('read_log.php')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('log').innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching log:', error));
+        }
+
+        // Fetch log every 5 seconds
+        setInterval(fetchLog, 5000);
+
+        // Initial fetch
+        window.onload = fetchLog;
+    </script>
 
 </body>
 </html>
