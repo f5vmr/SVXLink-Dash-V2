@@ -58,8 +58,8 @@ function getLogContent() {
             // Slice the array to get the last 10 lines
             $last10Lines = array_slice($lines, $startLine);
 
-            // Join the lines into a single string with line breaks
-            $logContent = implode('<br>', $last10Lines);
+            // Join the lines into a single string without adding extra line breaks
+            $logContent = implode('', $last10Lines);
             break;
         }
     }
@@ -67,6 +67,7 @@ function getLogContent() {
     // Return log content or an error message
     return $logContent !== '' ? nl2br($logContent) : "Log file not found.";
 }
+
 
 
 
