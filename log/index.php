@@ -85,7 +85,6 @@ textarea {
 
         // Fetch log every 5 seconds
         setInterval(fetchLog, 5000);
-
         // Initial fetch
         window.onload = fetchLog;
     </script>

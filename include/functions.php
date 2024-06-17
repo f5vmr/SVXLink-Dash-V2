@@ -36,7 +36,24 @@ function getSVXLog() {
 	$logLines = array_slice($logLines, -500);
 	return $logLines;
 }
+function getLogContent() {
+    // Possible log file names
+    $logFiles = ['/var/log/svxlink.log', '/var/log/svxlink'];
 
+    // Initialize log content variable
+    $logContent = '';
+
+    // Iterate over possible log files and read the first one that exists
+    foreach ($logFiles as $logFile) {
+        if (file_exists($logFile)) {
+            $logContent = file_get_contents($logFile);
+            break;
+        }
+    }
+
+    // Return log content or an error message
+    return $logContent !== '' ? nl2br($logContent) : "Log file not found.";
+}
 function getSVXStatusLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logLines = array();
