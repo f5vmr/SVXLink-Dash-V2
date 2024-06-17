@@ -131,40 +131,6 @@ if ($logContent !== '') {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVXLink Log Viewer</title>
-    <style>
-        pre {
-            white-space: pre-wrap; /* Ensures that long lines wrap */
-            word-wrap: break-word; /* Ensures that long words wrap */
-        }
-    </style>
-    <script>
-        function fetchLog() {
-            fetch('read_log.php')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('log').innerHTML = data;
-                })
-                .catch(error => console.error('Error fetching log:', error));
-        }
-
-        // Fetch log every 5 seconds
-        setInterval(fetchLog, 5000);
-
-        // Initial fetch
-        window.onload = fetchLog;
-    </script>
-</head>
-<body>
-    <h1>SVXLink Log Viewer</h1>
-    <pre id="log">Loading log...</pre>
-</body>
-</html>
 
 
 <p style = "margin: 0 auto;"></p>
