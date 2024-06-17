@@ -92,7 +92,9 @@ include_once "include/buttons.php";
 
 ?>
 <?php
-
+if($_GET['id']=="Log") {
+    $edit_file = "log/index.php";
+}
 if($_GET['id']=="svxlink") {
     $edit_file = "svxlink/index.php"; 
 }
