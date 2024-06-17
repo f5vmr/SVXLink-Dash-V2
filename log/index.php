@@ -68,65 +68,104 @@ textarea {
 <center>
 <h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Log viewer</h1>
 
-<t?php
+<?php
+// Possible log file names
+$logFiles = ['/var/log/svxlink.log', '/var/log/svxlink'];
+
+// Initialize log content variable
+$logContent = '';
+
+// Iterate over possible log files and read the first one that exists
+foreach ($logFiles as $logFile) {
+    if (file_exists($logFile)) {
+        $logContent = file_get_contents($logFile);
+        break;
+    }
+}
+
+// Display log content or an error message
+if ($logContent !== '') {
+    echo nl2br($logContent); // nl2br() converts newlines to <br> for HTML
+} else {
+    echo "Log file not found.";
+}
 ?>
+
 <?php 
 
-if ($_SESSION['auth'] == 'AUTHORISED'){
-  echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="495px" title="EDIT"></iframe>';
-
-  echo '</td>';
- }   else {
-      echo '<h1 id="power" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not yet authorised.</h1>';
-      echo '</td>';    
-  }
+//if ($_SESSION['auth'] == 'AUTHORISED'){
+//  echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="495px" title="EDIT"></iframe>';
+//
+//  echo '</td>';
+// }   else {
+//      echo '<h1 id="power" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not yet authorised.</h1>';
+//      echo '</td>';    
+//  }
   ?>
   <?php
-$retval = null;
-$conns = null;
-//exec('nmcli  -t -f NAME  con show',$conns,$retval);
-
-// find the gateway
-$ipgw = null;
-
-$screen[0] = "Welcome to Svxlink log viewer tool.";
-$screen[1] = "";
-$screen[2] = "Click on the button to get the last 30 lines of the log.";
-$screen[3] = "";
+//$retval = null;
+//$conns = null;
+////exec('nmcli  -t -f NAME  con show',$conns,$retval);
+//
+//// find the gateway
+//$ipgw = null;
+//
+//$screen[0] = "Welcome to Svxlink log viewer tool.";
+//$screen[1] = "";
+//$screen[2] = "Click on the button to get the last 30 lines of the log.";
+//$screen[3] = "";
 
 //tbc - load the data from ini RF.
 
-if (isset($_POST['btnLog']))
-    {
-
-        $retval = null;
-        $screen = null;
-        //$sAconn = $_POST['sAconn'];
-        //$password = $_POST['password'];
-        //exec('nmcli dev wifi rescan');
-       $command = "tail -n 30 /var/log/svxlink.log";
-       exec($command,$screen,$retval);
-}
+//if (isset($_POST['btnLog']))
+//    {
+//
+//        $retval = null;
+//        $screen = null;
+//        //$sAconn = $_POST['sAconn'];
+//        //$password = $_POST['password'];
+//        //exec('nmcli dev wifi rescan');
+//       $command = "tail -n 30 /var/log/svxlink.log";
+//       exec($command,$screen,$retval);
+//}
 
 ?>
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-<DIV style = "height:300px">
-<table>
-	<tr>
-	<th>Screen</th> 
-	</tr>
-<tr>
-<td>
-	<textarea name="scan" rows="23" cols="80"><?php 
-			echo implode("\n",$screen); ?></textarea>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVXLink Log Viewer</title>
+    <style>
+        pre {
+            white-space: pre-wrap; /* Ensures that long lines wrap */
+            word-wrap: break-word; /* Ensures that long words wrap */
+        }
+    </style>
+    <script>
+        function fetchLog() {
+            fetch('read_log.php')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('log').innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching log:', error));
+        }
 
-</td>
-</tr>  
-</table> 
-</DIV>
-	<button name="btnLog" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">show Log</button>
-</form>
+        // Fetch log every 5 seconds
+        setInterval(fetchLog, 5000);
+
+        // Initial fetch
+        window.onload = fetchLog;
+    </script>
+</head>
+<body>
+    <h1>SVXLink Log Viewer</h1>
+    <pre id="log">Loading log...</pre>
+</body>
+</html>
+
 
 <p style = "margin: 0 auto;"></p>
 <p style = "margin-bottom:-2px;"></p>
