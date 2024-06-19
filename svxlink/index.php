@@ -56,7 +56,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </style>
     <script type="text/javascript">
         function reloadPage() {
-            window.location.reload();
+            window.location.href = window.location.pathname + "?reloaded=true";
         }
     </script>
 </head>
@@ -128,20 +128,22 @@ if (session_status() === PHP_SESSION_NONE) {
             // Handle form submission
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnSave'])) {
                 save_svxconfig($file, $_POST);
+                sleep(1); // Short delay to prevent rapid restart attempts
                 exec('sudo systemctl restart svxlink 2>&1', $screen, $retval);
 
                 if ($retval === 0) {
                     echo "<script type='text/javascript'>
-                        var reloadedField = document.getElementById('reloaded');
-                        if (reloadedField.value === '0') {
-                            reloadedField.value = '1';
-                            reloadPage();
-                        }
+                        reloadPage();
                     </script>";
                 } else {
                     echo "Failed to restart SVXLink. Error code: $retval";
                     echo "<pre>" . implode("\n", $screen) . "</pre>";
                 }
+            }
+
+            // Check for page reload
+            if (isset($_GET['reloaded']) && $_GET['reloaded'] == 'true') {
+                echo "<p>Configuration updated and service restarted successfully.</p>";
             }
             ?>
         </div>
