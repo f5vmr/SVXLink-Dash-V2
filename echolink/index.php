@@ -137,7 +137,7 @@ foreach ($svxconfig as $section => $entries) {
 }
 
 echo '</table>';
-echo '<button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>';
+echo '<button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
 echo '</form>'; 
 if (isset($_POST['btnSave'])) {
         

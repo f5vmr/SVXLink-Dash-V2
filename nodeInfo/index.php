@@ -187,7 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </table>
         </td>
         <td>
-            <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+            <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>
 </td>
         </td>
     </tr>
@@ -217,7 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </table>
         </td>
         <td>
-            <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+            <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>
 </td>
         </td>
     </tr>
@@ -247,7 +247,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </table>
         </td>
         <td>
-            <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br><br> & <br><br> ReLoad</button>
+            <button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>
 </td>
         </td>
     </tr>
