@@ -54,6 +54,11 @@ if (session_status() === PHP_SESSION_NONE) {
             font-size:10px;
         }
     </style>
+    <script type="text/javascript">
+        function reloadPage() {
+            window.location.reload();
+        }
+    </script>
 </head>
 <body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
     <center>
@@ -124,7 +129,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 save_svxconfig($file, $_POST);
                 exec('sudo systemctl restart svxlink 2>&1', $screen, $retval);
                 if ($retval === 0) {
-                    echo "SVXLink restarted successfully.";
+                    echo "<script type='text/javascript'>reloadPage();</script>";
                 } else {
                     echo "Failed to restart SVXLink. Error code: $retval";
                 }
