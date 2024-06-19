@@ -101,6 +101,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
             // Display form with checkboxes and editable values
             echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+            echo '<input type="hidden" name="reloaded" value="0" id="reloaded">';
             echo '<table>';
             echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
 
@@ -128,10 +129,18 @@ if (session_status() === PHP_SESSION_NONE) {
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnSave'])) {
                 save_svxconfig($file, $_POST);
                 exec('sudo systemctl restart svxlink 2>&1', $screen, $retval);
+
                 if ($retval === 0) {
-                    echo "<script type='text/javascript'>reloadPage();</script>";
+                    echo "<script type='text/javascript'>
+                        var reloadedField = document.getElementById('reloaded');
+                        if (reloadedField.value === '0') {
+                            reloadedField.value = '1';
+                            reloadPage();
+                        }
+                    </script>";
                 } else {
                     echo "Failed to restart SVXLink. Error code: $retval";
+                    echo "<pre>" . implode("\n", $screen) . "</pre>";
                 }
             }
             ?>
@@ -140,6 +149,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </center>
 </body>
 </html>
+
 
 //<?php
 //if (session_status() === PHP_SESSION_NONE) {       
