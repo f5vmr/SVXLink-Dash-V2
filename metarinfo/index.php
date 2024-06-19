@@ -130,8 +130,8 @@ if (session_status() === PHP_SESSION_NONE) {
             }
 
             if (isset($_GET['reloaded']) && $_GET['reloaded'] == 'true') {
-                echo "<p>Configuration updated and service restarted successfully.</p>";
-            }
+                ;
+             }
             ?>
         </div>
     </fieldset>
