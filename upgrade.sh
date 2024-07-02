@@ -62,7 +62,9 @@ fi
 # Change ownership of all files in /var/www/html except the script itself
 find /var/www/html ! -name "$SCRIPT_FILE" -exec sudo chown svxlink:svxlink {} +
 # Change ownership of all files in /etc/svxlink and sub directories.
-find /etc/svxlink -type f -name '*.conf' -exec sudo chown svxlink:svxlink {} +
+find /etc/svxlink -type f -exec sudo chown svxlink:svxlink {} +
+
+
 
 
 # Inform the user that the ownership change was successful
