@@ -116,7 +116,7 @@ $max_capture = 16; // numid=8
         function refreshPage() {
             setTimeout(function() {
                 window.location.reload();
-            }, 1000); // Adjust the delay as needed
+            }, 500); // Adjust the delay as needed
         }
     </script>
 </head>
@@ -151,6 +151,7 @@ $max_capture = 16; // numid=8
                         </select>
                         <br>
                         <button type="submit">Apply Settings</button>
+                        <input type="hidden" name="form_submitted" value="1">
                     </form>
                 </center>
             </div>
@@ -158,31 +159,34 @@ $max_capture = 16; // numid=8
     </center>
 
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_submitted'])) {
         if (isset($_POST['headphone'])) {
             $headphone_percentage = intval($_POST['headphone']);
             $headphone_value = ($headphone_percentage / 100) * $max_headphone;
-            exec("sudo amixer cset numid=6 " . escapeshellarg($headphone_value) . "");
+            exec("sudo amixer cset numid=6 " . escapeshellarg($headphone_value));
         }
 
         if (isset($_POST['mic'])) {
             $mic_percentage = intval($_POST['mic']);
             $mic_value = ($mic_percentage / 100) * $max_mic;
-            exec("sudo amixer cset numid=4 " . escapeshellarg($mic_value) . "");
+            exec("sudo amixer cset numid=4 " . escapeshellarg($mic_value));
         }
 
         if (isset($_POST['capture'])) {
             $capture_percentage = intval($_POST['capture']);
             $capture_value = ($capture_percentage / 100) * $max_capture;
-            exec("sudo amixer cset numid=8 " . escapeshellarg($capture_value) . "");
+            exec("sudo amixer cset numid=8 " . escapeshellarg($capture_value));
         }
 
         if (isset($_POST['autogain'])) {
             $autogain = $_POST['autogain'] === 'on' ? 'on' : 'off';
             exec("sudo amixer sset numid=9 " . escapeshellarg($autogain));
         }
+
+        echo '<script type="text/javascript">refreshPage();</script>';
     }
     ?>
 </body>
 
 </html>
+
