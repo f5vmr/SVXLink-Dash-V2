@@ -1,11 +1,12 @@
 # SVXLink-Dashboard-V2
 <h1>SVXLink Node dashboard repository inspired by a pi-star dashboard</h1>
 <h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.
+
 Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has yet to be modified to work.</h2>
 
-<b>This installation requires that svxlink has been compiled on at least Debian 11 (raspberry pi OS bullseye), and php version 8.0 or greater, and Apache 2. It will work with Debian 12 with PHP 8.2 installed. </b>
+<b>This installation requires that svxlink has been compiled on Debian 12 with PHP 8.2 installed. </b>
 
-<p>If it has been installed with svxlinkbuilder that uses Bookworm (Debian12), then very little needs to be changed.</p>
+<p>If it has been installed with svxlinkbuilder then very little needs to be changed.</p>
 
 <p>If you are installing it manually, then you will need to read the instructions thoroughly:</p>
 
@@ -32,7 +33,7 @@ Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has ye
 <h2>Setting up the Dashboard</h2>
 <p>While still in the <b>/var/www/html</b> folder run the following command:</p>
 <p><b>sudo ./upgrade.sh</b></p>
-<p>This file allows you the Dashboard Owner to run certain commands when authorised. It also adds some maintenance provisions, removing old backup files so that the system remains unburdened of old data.</p>
+<p>This file allows you, the Dashboard Owner, to run certain commands when authorised. It also adds some maintenance provisions, removing old backup files so that the system remains unburdened of old data.</p>
 <p>Finally go to the browser of your choice and enter the ip address of your raspberry pi.</p>
 <p>You will be presented with the dashboard of your device. You will need to log in under your username and password, set up during the upgrade.sh process.</p>
 
@@ -50,10 +51,9 @@ Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has ye
 <p>4. Metar Configurator. This is fairly easy to modify, but again look for the man page for ModuleMetarInfo.</p>
 <p>5. NodeInfo Configurator. This is the file required for the proper operation of the SvxReflector if it is associated with your device. because it is a .json file, different editing techniques are required.</p>
 <p> In each case, the 'save' button action restarts the svxlink service, so there is no need to restart svxlink manually.</p>
-However if at any time there appears to be a 'stall' in the operation of your node or repeater, then the POWER menu can be used to restart the service, restart the raspberry completely, or even shutdown the device.</p>
-
-<p>On the DTMF menu you will see a dtmf Keypad arrangement. This needs more work and editing of that page. Whatch for further development.</p>
-<p>Below the footer menu you will see a dtmf control facility. The D buttons are not yet programmed, and will need to correspond with the Macros in svxlink.conf so you will need to self-edit the dtmf.php file in your dashboard configuration and the macros in svxlink.conf.</p>
+<p>However if at any time there appears to be a 'stall' in the operation of your node or repeater, then the POWER menu can be used to restart the service, restart the raspberry completely, or even shutdown the device.</p>
+<p>In the case of the amixer configurator, the changes will be immediately applied and viewed without restarting svxlink</p>
+<p>Below the footer menu you will see a dtmf control facility. The D buttons are not yet programmed, and will need to correspond with the Macros in svxlink.conf so you will need to self-edit the macros in svxlink.conf.</p>
 <p>I will eventually examine the possibility of making improvements and additions in the future.</p>
 
 
