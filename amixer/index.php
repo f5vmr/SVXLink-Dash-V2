@@ -10,13 +10,7 @@ function execute_amixer($command) {
     return $output;
 }
 
-// Retrieve current values using amixer cget
-$headphone_output = execute_amixer("sudo amixer cget numid=6");
-$mic_output = execute_amixer("sudo amixer cget numid=4");
-$capture_output = execute_amixer("sudo amixer cget numid=8");
-$autogain_output = execute_amixer("sudo amixer sget numid=9");
-
-// Parse current values from output
+// Function to parse current values from amixer output
 function parse_amixer_value($output) {
     foreach ($output as $line) {
         if (strpos($line, ": values=") !== false) {
@@ -32,24 +26,42 @@ function calculate_percentage($current_value, $max_value) {
     return round(($current_value / $max_value) * 100);
 }
 
-// Parse and calculate percentages
-$current_headphone = parse_amixer_value($headphone_output);
-$current_mic = parse_amixer_value($mic_output);
-$current_capture = parse_amixer_value($capture_output);
-$current_autogain = null;
-if ($autogain_output) {
-    foreach ($autogain_output as $line) {
-        if (strpos($line, ": values=") !== false) {
-            $current_autogain = trim(str_replace(": values=", "", $line));
-            break;
+// Retrieve and parse current values using amixer cget
+function get_current_amixer_values() {
+    $headphone_output = execute_amixer("sudo amixer cget numid=6");
+    $mic_output = execute_amixer("sudo amixer cget numid=4");
+    $capture_output = execute_amixer("sudo amixer cget numid=8");
+    $autogain_output = execute_amixer("sudo amixer sget numid=9");
+
+    $current_values = [
+        'headphone' => parse_amixer_value($headphone_output),
+        'mic' => parse_amixer_value($mic_output),
+        'capture' => parse_amixer_value($capture_output),
+        'autogain' => null
+    ];
+
+    if ($autogain_output) {
+        foreach ($autogain_output as $line) {
+            if (strpos($line, ": values=") !== false) {
+                $current_values['autogain'] = trim(str_replace(": values=", "", $line));
+                break;
+            }
         }
     }
+
+    return $current_values;
 }
 
 // Maximum permitted values based on numid
-$max_headphone = 151; // numid=6
-$max_mic = 32; // numid=4
-$max_capture = 16; // numid=8
+$max_values = [
+    'headphone' => 151, // numid=6
+    'mic' => 32, // numid=4
+    'capture' => 16 // numid=8
+];
+
+// Get current values from amixer
+$current_values = get_current_amixer_values();
+
 ?>
 
 <!DOCTYPE html>
@@ -133,21 +145,21 @@ $max_capture = 16; // numid=8
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="refreshPage()">
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Headphone - TX Levels</h3>
                         <label for="headphone">Set for 65 (0-100):</label>
-                        <input type="number" id="headphone" name="headphone" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_headphone, $max_headphone)); ?>" required>
+                        <input type="number" id="headphone" name="headphone" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_values['headphone'], $max_values['headphone'])); ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Microphone - Not Used</h3>
                         <label for="mic">(0-100): Set to 0</label>
-                        <input type="number" id="mic" name="mic" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_mic, $max_mic)); ?>" required>
+                        <input type="number" id="mic" name="mic" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_values['mic'], $max_values['mic'])); ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Capture - RX Levels</h3>
                         <label for="capture">(0-100) Set for 25:</label>
-                        <input type="number" id="capture" name="capture" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_capture, $max_capture)); ?>" required>
+                        <input type="number" id="capture" name="capture" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_values['capture'], $max_values['capture'])); ?>" required>
                         <br>
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Auto Gain</h3>
                         <label for="autogain">Set to OFF for optimum control</label>
                         <select id="autogain" name="autogain" required>
-                            <option value="off" <?php if ($current_autogain === 'off') echo 'selected'; ?>>Off</option>
-                            <option value="on" <?php if ($current_autogain === 'on') echo 'selected'; ?>>On</option>
+                            <option value="off" <?php if ($current_values['autogain'] === 'off') echo 'selected'; ?>>Off</option>
+                            <option value="on" <?php if ($current_values['autogain'] === 'on') echo 'selected'; ?>>On</option>
                         </select>
                         <br>
                         <button type="submit">Apply Settings</button>
@@ -162,19 +174,19 @@ $max_capture = 16; // numid=8
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_submitted'])) {
         if (isset($_POST['headphone'])) {
             $headphone_percentage = intval($_POST['headphone']);
-            $headphone_value = ($headphone_percentage / 100) * $max_headphone;
+            $headphone_value = ($headphone_percentage / 100) * $max_values['headphone'];
             exec("sudo amixer cset numid=6 " . escapeshellarg($headphone_value));
         }
 
         if (isset($_POST['mic'])) {
             $mic_percentage = intval($_POST['mic']);
-            $mic_value = ($mic_percentage / 100) * $max_mic;
+            $mic_value = ($mic_percentage / 100) * $max_values['mic'];
             exec("sudo amixer cset numid=4 " . escapeshellarg($mic_value));
         }
 
         if (isset($_POST['capture'])) {
             $capture_percentage = intval($_POST['capture']);
-            $capture_value = ($capture_percentage / 100) * $max_capture;
+            $capture_value = ($capture_percentage / 100) * $max_values['capture'];
             exec("sudo amixer cset numid=8 " . escapeshellarg($capture_value));
         }
 
@@ -183,6 +195,7 @@ $max_capture = 16; // numid=8
             exec("sudo amixer sset numid=9 " . escapeshellarg($autogain));
         }
 
+        // Refresh the page to show updated values
         echo '<script type="text/javascript">refreshPage();</script>';
     }
     ?>
