@@ -112,13 +112,6 @@ $max_capture = 16; // numid=8
             font-size: 10px;
         }
     </style>
-    <script type="text/javascript">
-        function refreshPage() {
-            setTimeout(function() {
-                window.location.reload();
-            }, 1000); // Adjust the delay as needed
-        }
-    </script>
 </head>
 
 <body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
@@ -130,7 +123,7 @@ $max_capture = 16; // numid=8
                     <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">AMixer settings</h3>
 
                     <!-- HTML Form to adjust ALSA settings -->
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="refreshPage()">
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Headphone - TX Levels</h3>
                         <label for="headphone">Set for 65 (0-100):</label>
                         <input type="number" id="headphone" name="headphone" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_headphone, $max_headphone)); ?>" required>
@@ -186,3 +179,4 @@ $max_capture = 16; // numid=8
 </body>
 
 </html>
+
