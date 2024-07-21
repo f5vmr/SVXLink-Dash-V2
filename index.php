@@ -70,7 +70,6 @@ include_once "include/buttons.php";
 }
 ?>
 <?php
-    var_dump($_SESSION['auth']);
 
     echo '<table style = "margin-bottom:0px;border:0; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#f1f1f1;"><tr style = "border:none;background-color:#f1f1f1;">';
     echo '<td width="200px" valign="top" class="hide" style = "height:auto;border:0;background-color:#f1f1f1;">';
