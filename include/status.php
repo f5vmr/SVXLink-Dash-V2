@@ -159,7 +159,7 @@ if ($check_logics[0] == "SimplexLogic") {
    echo "<table style=\"margin-top:4px;margin-bottom:13px;\"><tr><th colspan=2 >Editing</th></tr><tr>";
    //echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#000000;font-weight: bold;\">"; 
    //echo "Last Reboot<br>",exec('uptime -s');
-   echo "</div></td></tr>";
+   //echo "</div></td></tr>";
 if ($_SESSION['auth'] === "UNAUTHORISED") {
   echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#ff0000;font-weight: bold;\">";
   echo "Not Authorised";
