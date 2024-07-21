@@ -143,7 +143,7 @@ if($_GET['id']=="power") {
     echo '<td valign="top"  style = "height:595px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';	
 
 
-if($_SESSION['auth'] == 'AUTHORISED') {
+if($_SESSION['auth'] === 'AUTHORISED') {
 echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="495px" title="EDIT"></iframe>';
 
     echo '</td>';
