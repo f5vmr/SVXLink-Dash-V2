@@ -125,8 +125,10 @@ $current_values = get_current_amixer_values();
         }
     </style>
     <script type="text/javascript">
-        function reloadPage() {
-            window.location.reload();
+        function refreshPage() {
+            setTimeout(function() {
+                window.location.reload();
+            }, 500); // Adjust the delay as needed
         }
     </script>
 </head>
@@ -140,7 +142,7 @@ $current_values = get_current_amixer_values();
                     <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">AMixer settings</h3>
 
                     <!-- HTML Form to adjust ALSA settings -->
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="reloadPage()">
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="refreshPage()">
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Headphone - TX Levels</h3>
                         <label for="headphone">Set for 65 (0-100):</label>
                         <input type="number" id="headphone" name="headphone" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_values['headphone'], $max_values['headphone'])); ?>" required>
@@ -194,9 +196,10 @@ $current_values = get_current_amixer_values();
         }
 
         // Refresh the page to show updated values
-        echo '<script type="text/javascript">reloadPage();</script>';
+        echo '<script type="text/javascript">refreshPage();</script>';
     }
     ?>
 </body>
 
 </html>
+
