@@ -192,6 +192,8 @@ define("PATH", "");
 define("BEACON_INTERVAL", "");
 define("TONE", "");
 define("COMMENT", "");
+define('AUTHORISED', 'AUTHORISED');
+define('UNAUTHORISED', 'UNAUTHORISED');
 
 
 //
