@@ -124,9 +124,9 @@ $current_values = get_current_amixer_values();
             font-size: 10px;
         }
     </style>
-    <script type="text/javascript">
+ <script type="text/javascript">
         function reloadPage() {
-            window.location.reload();
+            window.location.href = window.location.pathname + "?reloaded=true";
         }
     </script>
 </head>
@@ -194,8 +194,9 @@ $current_values = get_current_amixer_values();
         }
 
         // Refresh the page to show updated values
-        echo '<script type="text/javascript">reloadPage();</script>';
-    }
+        echo "<script type='text/javascript'>
+        reloadPage();
+    </script>";    }
     ?>
 </body>
 
