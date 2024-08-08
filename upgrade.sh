@@ -42,7 +42,7 @@ else
 fi
 
 # Ensure the sudoers file has the correct permissions
-chmod 0440 "$SUDOERS_FILE"
+
 
 # Read the content from the source file into the sudoers file
 cat "$SOURCE_FILE" > "$SUDOERS_FILE"
