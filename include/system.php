@@ -35,7 +35,8 @@ if (file_exists('/sys/class/thermal/thermal_zone0/temp')) {
 // Voltage check
 $throttled = trim(shell_exec('vcgencmd get_throttled'));
 $voltageStatus = (strpos($throttled, '0x50000') !== false) ? 'Low' : 'OK';
-$voltageHTML = "<td style=\"background: white;\">$voltageStatus</td>\n";
+$voltageColor = ($voltageStatus == 'Low') ? '#fa0' : '#1d1';
+$voltageHTML = "<td style=\"background: $voltageColor;\">$voltageStatus</td>\n";
 
 // Operating System Info
 $os_info = shell_exec('lsb_release -d | awk -F"\t" \'{print $2}\'');
@@ -50,8 +51,8 @@ $os_info = shell_exec('lsb_release -d | awk -F"\t" \'{print $2}\'');
     <th colspan="2">Operating System<br><span style="font-weight: bold;color:#effd5f;font-size:12px;">Uptime: <?php echo $uptime; ?></span></th>
     <th><span>&nbsp;<b>Disk&nbsp;<br> used</b></span></th>
     <th><span>&nbsp;<b>Memory&nbsp;<br> used</b></span></th>
-    <th><span><b>Voltage</b></span></th>
     <th><span><b>CPU Usage</b></span></th>
+    <th><span><b>Voltage</b></span></th>
     <?php if (file_exists('/sys/class/thermal/thermal_zone0/temp')) {
         echo "<th><span><b>CPU Temp</b></span></th>"; 
     } ?>
@@ -62,8 +63,8 @@ $os_info = shell_exec('lsb_release -d | awk -F"\t" \'{print $2}\'');
     <td colspan="2"><?php echo $os_info;?></td>
     <td><?php echo $disk_used;?></td>
     <td><?php echo $free_mem;?></td>
-    <?php echo $voltageHTML; ?>
     <?php echo $cpuLoadHTML; ?>
+    <?php echo $voltageHTML; ?>
     <?php if (file_exists('/sys/class/thermal/thermal_zone0/temp')) { echo $cpuTempHTML; } ?>
   </tr>
 </table>
