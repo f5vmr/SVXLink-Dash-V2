@@ -156,8 +156,8 @@ $current_values = get_current_amixer_values();
                         <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Auto Gain</h3>
                         <label for="autogain">Set to OFF for optimum control</label>
                         <select id="autogain" name="autogain" required>
-                            <option value="off" <?php if ($current_values['autogain'] === 'off') echo 'selected'; ?>>Off</option>
-                            <option value="on" <?php if ($current_values['autogain'] === 'on') echo 'selected'; ?>>On</option>
+                            <option value="0" <?php if ($current_autogain === '0' || $current_autogain === 'off') echo 'selected'; ?>>Off</option>
+                            <option value="1" <?php if ($current_autogain === '1' || $current_autogain === 'on') echo 'selected'; ?>>On</option>
                         </select>
                         <br>
                         <button type="submit">Apply Settings</button>
@@ -189,7 +189,7 @@ $current_values = get_current_amixer_values();
         }
 
         if (isset($_POST['autogain'])) {
-            $autogain = $_POST['autogain'] === 'on' ? 'on' : 'off';
+            $autogain = $_POST['autogain'] === '1' ? '1' : '0';
             exec("sudo amixer sset numid=9 " . escapeshellarg($autogain));
         }
 
