@@ -9,6 +9,7 @@ $tgdb_array = [
     '235'   => 'FM United Kingdom',
     '2350'   => 'FM UK Chat 0',
     '2351'   => 'FM UK Chat 1',
+    '23450' => 'FM Yorkshire Net',
     '23500' => 'FM UK South West',
     '23510' => 'FM UK South East',
     '23520' => 'FM UK North East',
