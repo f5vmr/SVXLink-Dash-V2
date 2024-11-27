@@ -171,7 +171,7 @@ $max_capture = 16; // numid=8
         }
 
         if (isset($_POST['autogain'])) {
-            $autogain = $_POST['autogain'] === 'on' ? 'on' : 'off';
+            $autogain = $_POST['autogain'] === '1' ? '1' : '0';
             exec("sudo amixer sset numid=9 " . escapeshellarg($autogain));
         }
     }
