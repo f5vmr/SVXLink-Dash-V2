@@ -121,7 +121,7 @@ if (isset($_POST['btnPingGoogle']))
         
 	$retval = null;
 	$screen = null;
-	//exec('nmcli dev wifi rescan');
+	//exec('sudo nmcli dev wifi rescan');
         exec('ping 8.8.8.8 -c 1 2>&1',$screen,$retval);
 }
 
@@ -134,7 +134,7 @@ if (isset($_POST['btnPingRef']))
         $retval = null;
         $screen = null;
         //$ssid = $_POST['ssid'];
-	//exec('nmcli dev wifi rescan');
+	//exec('sudo nmcli dev wifi rescan');
         $command = 'nmap svxlink.pl -p 5295 2>&1'; 
 	exec($command,$screen,$retval);
 }
@@ -148,8 +148,8 @@ if (isset($_POST['btnAuto']))
 	$sAconn = $_POST['sAconn'];
         //$ssid = $_POST['ssid'];
         //$password = $_POST['password'];
-	//exec('nmcli dev wifi rescan');
-        //$command = "nmcli radio  2>&1";
+	//exec('sudo nmcli dev wifi rescan');
+        //$command = "sudo nmcli radio  2>&1";
 	
 	$command = "sudo nmcli con mod \"" .$sAconn. "\" ipv4.method auto 2>&1";
         exec($command,$screen,$retval);
@@ -174,19 +174,19 @@ if (isset($_POST['btnStatic']))
 
 
 
-	$command = "nmcli con mod \"" .$sAconn. "\" ipv4.addresses " .$myIp. "\/" .$cidr. " 2>&1";
+	$command = "sudo nmcli con mod \"" .$sAconn. "\" ipv4.addresses " .$myIp. "\/" .$cidr. " 2>&1";
         if (!$retval) exec($command,$screen,$retval);
 
-	$command = "nmcli con mod \"" .$sAconn. "\" ipv4.gateway " .$gw. " 2>&1";
+	$command = "sudo nmcli con mod \"" .$sAconn. "\" ipv4.gateway " .$gw. " 2>&1";
         if (!$retval) exec($command,$screen,$retval);
 
-	$command = "nmcli con mod \"" .$sAconn. "\" ipv4.dns \"" .$dns. "\" 2>&1";
+	$command = "sudo nmcli con mod \"" .$sAconn. "\" ipv4.dns \"" .$dns. "\" 2>&1";
         if (!$retval) exec($command,$screen,$retval);
 
-        $command = "nmcli con mod \"" .$sAconn."\" ipv4.method manual 2>&1";
+        $command = "sudo nmcli con mod \"" .$sAconn."\" ipv4.method manual 2>&1";
         if (!$retval) exec($command,$screen,$retval);
 
-        $command = "nmcli -p -f ipv4,general con show \"" .$sAconn. "\" 2>&1";
+        $command = "sudo nmcli -p -f ipv4,general con show \"" .$sAconn. "\" 2>&1";
 	if (!$retval) exec($command,$screen,$retval);
 
 }
@@ -200,8 +200,8 @@ if (isset($_POST['btnDetails']))
         $screen = null;
         $sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('nmcli dev wifi rescan');
-        $command = "nmcli -p -f ipv4,general con show \"" .$sAconn. "\" 2>&1";
+        //exec('sudo nmcli dev wifi rescan');
+        $command = "sudo nmcli -p -f ipv4,general con show \"" .$sAconn. "\" 2>&1";
         exec($command,$screen,$retval);
 }
 
@@ -212,8 +212,8 @@ if (isset($_POST['btnUp']))
         $screen = null;
         $sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('nmcli dev wifi rescan');
-        $command = "nmcli con up \"" .$sAconn. "\" 2>&1";
+        //exec('sudo nmcli dev wifi rescan');
+        $command = "sudo nmcli con up \"" .$sAconn. "\" 2>&1";
         exec($command,$screen,$retval);
 }
 if (isset($_POST['btnDown']))
@@ -223,8 +223,8 @@ if (isset($_POST['btnDown']))
         $screen = null;
         $sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('nmcli dev wifi rescan');
-        $command = "nmcli con down \"" .$sAconn. "\" 2>&1";
+        //exec('sudo nmcli dev wifi rescan');
+        $command = "sudo nmcli con down \"" .$sAconn. "\" 2>&1";
         exec($command,$screen,$retval);
 }
 

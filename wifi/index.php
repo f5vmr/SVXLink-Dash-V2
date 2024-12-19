@@ -87,8 +87,8 @@ if (isset($_POST['btnScan']))
     {
         $retval = null;
 	$screen = null;
-	exec('nmcli dev wifi rescan');
-	exec('nmcli dev wifi list 2>&1',$screen,$retval);
+	exec('sudo nmcli dev wifi rescan');
+	exec('sudo nmcli dev wifi list 2>&1',$screen,$retval);
 	//$screen[$screen.length]="\n";
 	$screen[$screen.$length]="Keep in mind the non-standard WIFI antenna.";
 }
@@ -98,8 +98,8 @@ if (isset($_POST['btnConnList']))
         
 	$retval = null;
 	$screen = null;
-	//exec('nmcli dev wifi rescan');
-        exec('nmcli con show --order type 2>&1',$screen,$retval);
+	//exec('sudo nmcli dev wifi rescan');
+        exec('sudo nmcli con show --order type 2>&1',$screen,$retval);
 }
 
 if (isset($_POST['btnSwitch']))
@@ -108,8 +108,8 @@ if (isset($_POST['btnSwitch']))
         $retval = null;
         $screen = null;
         $ssid = $_POST['ssid'];
-	//exec('nmcli dev wifi rescan');
-        $command = "nmcli dev wifi connect \"" .$ssid. "\" 2>&1"; 
+	//exec('sudo nmcli dev wifi rescan');
+        $command = "sudo nmcli dev wifi connect \"" .$ssid. "\" 2>&1"; 
 	exec($command,$screen,$retval);
 }
 
@@ -119,8 +119,8 @@ if (isset($_POST['btnDelete']))
         $retval = null;
         $screen = null;
         $ssid = $_POST['ssid'];
-        //exec('nmcli dev wifi rescan');
-        $command = "nmcli con delete \"" .$ssid. "\" 2>&1";
+        //exec('sudo nmcli dev wifi rescan');
+        $command = "sudo nmcli con delete \"" .$ssid. "\" 2>&1";
         exec($command,$screen,$retval);
 }
 
@@ -131,8 +131,8 @@ if (isset($_POST['btnAdd']))
         $screen = null;
         $ssid = $_POST['ssid'];
         $password = $_POST['password'];
-	//exec('nmcli dev wifi rescan');
-        $command = "nmcli dev wifi connect \"" .$ssid. "\" password  \"" . $password . "\"  2>&1";
+	//exec('sudo nmcli dev wifi rescan');
+        $command = "sudo nmcli dev wifi connect \"" .$ssid. "\" password  \"" . $password . "\"  2>&1";
         exec($command,$screen,$retval);
 }
 
@@ -143,8 +143,8 @@ if (isset($_POST['btnWifiStatus']))
         $screen = null;
         //$ssid = $_POST['ssid'];
         //$password = $_POST['password'];
-        //exec('nmcli dev wifi rescan');
-        $command = 'nmcli radio 2>&1';
+        //exec('sudo nmcli dev wifi rescan');
+        $command = 'sudo nmcli radio 2>&1';
         exec($command,$screen,$retval);
 }
 
@@ -156,10 +156,10 @@ if (isset($_POST['btnWifiOn']))
         $screen = null;
         //$ssid = $_POST['ssid'];
         //$password = $_POST['password'];
-        //exec('nmcli dev wifi rescan');
-        $command = 'nmcli radio wifi on 2>&1';
+        //exec('sudo nmcli dev wifi rescan');
+        $command = 'sudo nmcli radio wifi on 2>&1';
         exec($command,$screen,$retval);
-	$command = 'nmcli radio wifi 2>&1';
+	$command = 'sudo nmcli radio wifi 2>&1';
         exec($command,$screen,$retval);
 
 

@@ -23,7 +23,7 @@ if (isset($_POST['btnUpdateTgs']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('nmcli dev wifi rescan');
+        //exec('sudo nmcli dev wifi rescan');
         $command = "sudo wget ".$tgUri." 2>&1";
         exec($command,$screen,$retval);
 	//if ($retval) {
