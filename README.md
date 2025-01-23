@@ -40,7 +40,7 @@ Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has ye
 <p>The dashboard is now ready to use. However it is recommended that you thoroughly read the man page for svxlink.conf. <i>man svxlink.conf on google </i>will find a copy, although you will find one inside your device through the terminal</p>
 <img width="945" alt="Screenshot 2024-06-16 at 16 15 01" src="https://github.com/f5vmr/SVXLink-Dash-V2/assets/8429684/ee286988-5035-4f01-8173-f3f294e77e65">
 
-
+<b>This version will work on Independent Conf files. Changes required to file structure in svxlink.d </b>
 <p>Your edited files will be saved in /var/www/html/backups with a date/time.</p> 
 
 <p>Only With Username and Password in place, will you have access to the 'Log', 'Power' and 'Edit' menus, allowing you as the sysop to expose the dashboard to public view, without someone corrupting your node. As soon as you click on the blue menus, the authorisation is rescinded. Naturally as this is a web page, all the changes take place within your local browser and not on-line. Without authorisation, the 'Log', 'Power' and Edit menus are blocked, so no one can turn off your repeater, or mess with the logic configuration.</p>
