@@ -99,8 +99,12 @@ if (session_status() === PHP_SESSION_NONE) {
             echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
 
             foreach ($svxconfig as $section => $entries) {
-                echo "<tr><td colspan='3'><h2 id=\"svxlink\" style=\"color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;\">$section</h2></td></tr>\n";
-
+                echo "<tr>";
+                echo "<th width='380px' colspan='3'>$section</th>";
+                echo "<th width='100px'>Action</th>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td colspan='3'>";
                 foreach ($entries as $key => $data) {
                     $checked = $data['active'] ? 'checked' : '';
                     echo "<tr>";
@@ -109,11 +113,12 @@ if (session_status() === PHP_SESSION_NONE) {
                     echo "<td style='width: 75%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
                     echo "</tr>\n";
                 }
-                echo "<tr><td colspan='3' style='text-align: center;'>";
-                echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px; margin: 10px;">Save <br> & <br> ReLoad</button>';
-                echo "</td></tr>";
-                echo "<tr><td colspan='3'><hr></td></tr>"; 
-            }
+                    echo "</td>";
+                    echo "<td>";
+                    echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
+                    echo "</td>";
+                    echo "</tr>";
+}
 
             //echo '</table>';
             //echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
