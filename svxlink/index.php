@@ -125,13 +125,6 @@ foreach ($svxconfig as $section => $entries) {
 }
 echo '</table>';
 
-    echo "</td>";
-    echo "<td style='width: 20%; vertical-align: top;'>";
-    echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
-    echo "</td>";
-    echo "</tr>";
-}
-echo '</table>';
 
             //echo '</table>';
             //echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
