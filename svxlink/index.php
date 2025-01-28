@@ -99,13 +99,8 @@ if (session_status() === PHP_SESSION_NONE) {
             echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
 
             foreach ($svxconfig as $section => $entries) {
-    echo "<tr>";
-    echo "<th width='380px'>$section</th>";
-    echo "<th width='100px'>Action</th>";
-    echo "</tr>";
-    echo "<tr>";
-    echo "<td>";
-    echo "<table style='border-collapse: collapse; border: none;'>";
+                echo "<tr><td colspan='3'><h2 id=\"svxlink\" style=\"color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;\">$section</h2></td></tr>\n";
+
                 foreach ($entries as $key => $data) {
                     $checked = $data['active'] ? 'checked' : '';
                     echo "<tr>";
