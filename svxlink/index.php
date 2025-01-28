@@ -97,27 +97,30 @@ if (session_status() === PHP_SESSION_NONE) {
             echo '<input type="hidden" name="reloaded" value="0" id="reloaded">';
             echo '<table>';
             echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
-            echo '<table style="width: 100%">';
-            foreach ($svxconfig as $section => $entries) {
-                echo "<tr><th width='455px'>$section</th><th width='100px'>Action</th></tr>\n";
-                echo "<tr>";
-                echo "<td style='width: 455px'>";
-                foreach ($entries as $key => $data) {
-                    $checked = $data['active'] ? 'checked' : '';
-                    echo "<tr>";
-                    echo "<td style='width: 15%; text-align: left;'>$key</td>";
-                    echo "<td style='width: 10%'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
-                    echo "<td style='width: 75%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
-                    echo "</tr>\n";
-                }
-                echo "</td>";
-                echo "<td style='width: 100px; text-align: right; vertical-align: top;'>";
-                echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
-                echo "</td>";
-                echo "</tr>";
-            }
-            echo '</table>';
-
+            echo '<table style="width: 555px">';
+foreach ($svxconfig as $section => $entries) {
+    echo "<tr>";
+    echo "<td style='width: 80%'>";
+    echo "<table style='width: 100%'>";
+    echo "<tr><th colspan='3'>$section</th></tr>";
+    
+    foreach ($entries as $key => $data) {
+        $checked = $data['active'] ? 'checked' : '';
+        echo "<tr>";
+        echo "<td style='width: 15%; text-align: left;'>$key</td>";
+        echo "<td style='width: 10%'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
+        echo "<td style='width: 75%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
+        echo "</tr>\n";
+    }
+    
+    echo "</table>";
+    echo "</td>";
+    echo "<td style='width: 20%; vertical-align: top;'>";
+    echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
+    echo "</td>";
+    echo "</tr>";
+}
+echo '</table>';
             //echo '</table>';
             //echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
             //echo '</form>';
