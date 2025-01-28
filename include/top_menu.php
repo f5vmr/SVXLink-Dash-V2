@@ -19,15 +19,28 @@ if (session_status() === PHP_SESSION_NONE) {
 	<a href="/authorise.php" style = "color: crimson;">Authorise</a></p>
 	</div>
 	<div id="full-edit-links">
-	<p style = "padding-right: 5px; text-align: right; color: #000000;" <a style = "color: black;">Full Edit</a> |
-	<a href="/editor.php?id=svxlink" style = "color: crimson;" id="svxlink">SVXLink</a> |
-	<a href="/editor.php?id=amixer" style = "color: crimson;" id="echolink">Amixer</a> |
-	<a href="/editor.php?id=echolink" style = "color: crimson;" id="echolink">EchoLink</a> |
-	<a href="/editor.php?id=tclvoicemail" style = "color: crimson;" id="tclvoicemail">TclVoiceMail</a> |
-	<a href="/editor.php?id=metarinfo" style = "color: crimson;" id="metarinfo">MetarInfo</a> |
-	<a href="/editor.php?id=nodeInfo" style = "color: crimson;" id="nodeInfo">NodeInfo</a> |
-	<a href="/editor.php?id=power" style = "color: green;">Power</a></p>
-    </div>
+<p style = "padding-right: 5px; text-align: right; color: #000000;" <a style = "color: black;">Full Edit</a> |
+<a href="/editor.php?id=global" style = "color: crimson;" id="global">Global</a> |
+<?php
+if (isset($svxconfig['SimplexLogic'])) {
+    echo '<a href="/editor.php?id=simplexlogic" style = "color: crimson;" id="simplexlogic">SimplexLogic</a> |';
+}
+if (isset($svxconfig['RepeaterLogic'])) {
+    echo '<a href="/editor.php?id=repeaterlogic" style = "color: crimson;" id="repeaterlogic">RepeaterLogic</a> |';
+}
+if (isset($svxconfig['ReflectorLogic'])) {
+    echo '<a href="/editor.php?id=reflectorlogic" style = "color: crimson;" id="reflectorlogic">ReflectorLogic</a> |';
+}
+?>
+<a href="/editor.php?id=amixer" style = "color: crimson;" id="amixer">Amixer</a> |
+<a href="/editor.php?id=echolink" style = "color: crimson;" id="echolink">EchoLink</a> |
+<a href="/editor.php?id=tclvoicemail" style = "color: crimson;" id="tclvoicemail">TclVoiceMail</a> |
+<a href="/editor.php?id=metarinfo" style = "color: crimson;" id="metarinfo">MetarInfo</a> |
+<a href="/editor.php?id=nodeInfo" style = "color: crimson;" id="nodeInfo">NodeInfo</a> |
+<a href="/editor.php?id=macros" style = "color: crimson;" id="macros">Macros</a> |
+<a href="/editor.php?id=power" style = "color: green;">Power</a></p>
+</div>
+
 
 	 
 
