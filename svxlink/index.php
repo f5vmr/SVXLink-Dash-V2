@@ -114,7 +114,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     echo "</tr>\n";
                 }
                     echo "</td>";
-                    echo "<td>";
+                    echo "<td style='text-align: right; vertical-align: top;'>";
                     echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
                     echo "</td>";
                     echo "</tr>";
