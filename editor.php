@@ -95,8 +95,20 @@ include_once "include/buttons.php";
 if($_GET['id']=="log") {
     $edit_file = "log/index.php";
 }
-if($_GET['id']=="svxlink") {
+if($_GET['id']=="global") {
     $edit_file = "svxlink/index.php"; 
+}
+if($_GET['id']=="simplexlogic") {
+    $edit_file = "simplexlogic/index.php";
+}
+if($_GET['id']=="repeaterlogic") {
+    $edit_file = "repeaterlogic/index.php";
+}
+if($_GET['id']=="reflectorlogic") {
+    $edit_file = "reflectorlogic/index.php";
+}
+if($_GET['id']=="macros") {
+    $edit_file = "macros/index.php";
 }
 if($_GET['id']=="amixer") {
     $edit_file = "amixer/index.php"; 
