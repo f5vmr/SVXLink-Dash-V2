@@ -96,29 +96,35 @@ if (session_status() === PHP_SESSION_NONE) {
             echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
             echo '<input type="hidden" name="reloaded" value="0" id="reloaded">';
             echo '<table style="width: 555px; border-spacing: 0;">';
-foreach ($svxconfig as $section => $entries) {
-    echo "<tr>";
-    echo "<td style='width: 445px'>";
-    echo "<table style='width: 100%; border-spacing: 0;'>";
-    echo "<tr><th colspan='3' style='text-align: left; padding: 5px;'>$section</th></tr>";
-    
-    foreach ($entries as $key => $data) {
-        $checked = $data['active'] ? 'checked' : '';
-        echo "<tr>";
-        echo "<td style='width: 120px; padding: 2px;'>$key</td>";
-        echo "<td style='width: 50px; text-align: center; padding: 2px;'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
-        echo "<td style='padding: 2px;'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
-        echo "</tr>\n";
-    }
-    
-    echo "</table>";
-    echo "</td>";
-    echo "<td style='width: 110px; vertical-align: top;'>";
-    echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
-    echo "</td>";
-    echo "</tr>";
-}
-echo '</table>';
+            foreach ($svxconfig as $section => $entries) {
+                echo "<tr>";
+                echo "<td style='width: 445px'>";
+                echo "<table style='width: 100%; border-spacing: 0;'>";
+                echo "<tr><th colspan='3' style='text-align: left; padding: 5px;'>$section</th></tr>";
+                echo "<tr>";
+                echo "<td style='width: 120px; padding: 2px;'><strong>Command</strong></td>";
+                echo "<td style='width: 60px; text-align: center; padding: 2px;'><strong>Active</strong></td>";
+                echo "<td style='padding: 2px;'><strong>Value</strong></td>";
+                echo "</tr>";
+                
+                foreach ($entries as $key => $data) {
+                    $checked = $data['active'] ? 'checked' : '';
+                    echo "<tr>";
+                    echo "<td style='width: 120px; padding: 2px;'>$key</td>";
+                    echo "<td style='width: 60px; text-align: center; padding: 2px;'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
+                    echo "<td style='padding: 2px;'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
+                    echo "</tr>\n";
+                }
+                
+                echo "</table>";
+                echo "</td>";
+                echo "<td style='width: 110px; vertical-align: top;'>";
+                echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
+                echo "</td>";
+                echo "</tr>";
+            }
+            echo '</table>';
+            
 
 
 
