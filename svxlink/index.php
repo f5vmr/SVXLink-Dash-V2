@@ -100,8 +100,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
             foreach ($svxconfig as $section => $entries) {
                 echo "<tr>";
-                echo "<th width='380px' colspan='3'>$section</th>";
-                echo "<th width='100px'>Action</th>";
+                echo "<th width='280px' colspan='3'>$section</th>";
+                echo "<th width='200px'>Action</th>";
                 echo "</tr>";
                 echo "<tr>";
                 echo "<td colspan='3'>";
