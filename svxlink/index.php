@@ -100,17 +100,17 @@ if (session_status() === PHP_SESSION_NONE) {
 
             foreach ($svxconfig as $section => $entries) {
                 echo "<tr>";
-                echo "<th width='280px' colspan='3'>$section</th>";
-                echo "<th width='200px'>Action</th>";
+                echo "<th width='180px' colspan='3'>$section</th>";
+                echo "<th width='300px'>Action</th>";
                 echo "</tr>";
                 echo "<tr>";
                 echo "<td colspan='3'>";
                 foreach ($entries as $key => $data) {
                     $checked = $data['active'] ? 'checked' : '';
                     echo "<tr>";
-                    echo "<td style='width: 10%; text-align: left;'>$key</td>";
+                    echo "<td style='width: 15%; text-align: left;'>$key</td>";
                     echo "<td style='width: 10%'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
-                    echo "<td style='width: 50%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
+                    echo "<td style='width: 75%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
                     echo "</tr>\n";
                 }
                     echo "</td>";
