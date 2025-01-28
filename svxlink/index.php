@@ -95,9 +95,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
             echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
             echo '<input type="hidden" name="reloaded" value="0" id="reloaded">';
-            echo '<table>';
-            echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
-            //New Table here
             echo '<table style="width: 555px">';
 foreach ($svxconfig as $section => $entries) {
     echo "<tr>";
@@ -120,6 +117,14 @@ foreach ($svxconfig as $section => $entries) {
     }
     
     echo "</table>";
+    echo "</td>";
+    echo "<td style='width: 20%; vertical-align: top;'>";
+    echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
+    echo "</td>";
+    echo "</tr>";
+}
+echo '</table>';
+
     echo "</td>";
     echo "<td style='width: 20%; vertical-align: top;'>";
     echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
