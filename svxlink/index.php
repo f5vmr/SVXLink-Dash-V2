@@ -97,19 +97,25 @@ if (session_status() === PHP_SESSION_NONE) {
             echo '<input type="hidden" name="reloaded" value="0" id="reloaded">';
             echo '<table>';
             echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
+            //New Table here
             echo '<table style="width: 555px">';
 foreach ($svxconfig as $section => $entries) {
     echo "<tr>";
     echo "<td style='width: 80%'>";
     echo "<table style='width: 100%'>";
-    echo "<tr><th colspan='3'>$section</th></tr>";
+    echo "<tr><th colspan='3' style='text-align: left'>$section</th></tr>";
+    echo "<tr>";
+    echo "<td style='width: 150px'>Command</td>";
+    echo "<td style='width: 60px'>Active</td>";
+    echo "<td>Value</td>";
+    echo "</tr>";
     
     foreach ($entries as $key => $data) {
         $checked = $data['active'] ? 'checked' : '';
         echo "<tr>";
-        echo "<td style='width: 15%; text-align: left;'>$key</td>";
-        echo "<td style='width: 10%'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
-        echo "<td style='width: 75%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
+        echo "<td style='width: 150px'>$key</td>";
+        echo "<td style='width: 60px'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
+        echo "<td><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
         echo "</tr>\n";
     }
     
@@ -121,6 +127,7 @@ foreach ($svxconfig as $section => $entries) {
     echo "</tr>";
 }
 echo '</table>';
+
             //echo '</table>';
             //echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
             //echo '</form>';
