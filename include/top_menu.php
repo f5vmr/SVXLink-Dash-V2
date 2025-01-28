@@ -22,16 +22,15 @@ if (session_status() === PHP_SESSION_NONE) {
 <p style = "padding-right: 5px; text-align: right; color: #000000;" <a style = "color: black;">Full Edit</a> |
 <a href="/editor.php?id=global" style = "color: crimson;" id="global">Global</a> |
 <?php
-if (isset($svxconfig['SimplexLogic'])) {
-    echo '<a href="/editor.php?id=simplexlogic" style = "color: crimson;" id="simplexlogic">SimplexLogic</a> |';
-}
-if (isset($svxconfig['RepeaterLogic'])) {
-    echo '<a href="/editor.php?id=repeaterlogic" style = "color: crimson;" id="repeaterlogic">RepeaterLogic</a> |';
-}
-if (isset($svxconfig['ReflectorLogic'])) {
-    echo '<a href="/editor.php?id=reflectorlogic" style = "color: crimson;" id="reflectorlogic">ReflectorLogic</a> |';
+$logics = getAvailableLogics();
+foreach ($logics as $logic) {
+    if (isset($svxconfig[$logic])) {
+        $logicId = strtolower($logic);
+        echo '<a href="/editor.php?id=' . $logicId . '" style="color: crimson;" id="' . $logicId . '">' . $logic . '</a> |';
+    }
 }
 ?>
+
 <a href="/editor.php?id=amixer" style = "color: crimson;" id="amixer">Amixer</a> |
 <a href="/editor.php?id=echolink" style = "color: crimson;" id="echolink">EchoLink</a> |
 <a href="/editor.php?id=tclvoicemail" style = "color: crimson;" id="tclvoicemail">TclVoiceMail</a> |

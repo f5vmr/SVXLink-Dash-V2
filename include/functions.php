@@ -575,7 +575,20 @@ function file_replace($dir,$file_name){
           return ['header' => $header, 'config' => $config];
       }
       
-
+      function getAvailableLogics() {
+        global $svxconfig;
+        $availableLogics = array();
+        
+        if (isset($svxconfig['GLOBAL']['LOGICS'])) {
+            $logics = explode(",", $svxconfig['GLOBAL']['LOGICS']);
+            foreach ($logics as $logic) {
+                if (isset($svxconfig[$logic])) {
+                    $availableLogics[] = $logic;
+                }
+            }
+        }
+        return $availableLogics;
+    }
 // Assuming this function is in your include/functions.php file
 
 
