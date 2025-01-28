@@ -23,6 +23,11 @@ if (session_status() === PHP_SESSION_NONE) {
 <a href="/editor.php?id=global" style = "color: crimson;" id="global">Global</a> |
 <?php
 $logics = getAvailableLogics();
+// Add this before the menu HTML to debug
+var_dump($svxconfig['GLOBAL']['LOGICS']); 
+var_dump(isset($svxconfig['SimplexLogic']));
+var_dump(isset($svxconfig['ReflectorLogic']));
+
 foreach ($logics as $logic) {
     if (isset($svxconfig[$logic])) {
         $logicId = strtolower($logic);
