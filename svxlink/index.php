@@ -108,9 +108,9 @@ if (session_status() === PHP_SESSION_NONE) {
                 foreach ($entries as $key => $data) {
                     $checked = $data['active'] ? 'checked' : '';
                     echo "<tr>";
-                    echo "<td style='width: 15%; text-align: left;'>$key</td>";
+                    echo "<td style='width: 10%; text-align: left;'>$key</td>";
                     echo "<td style='width: 10%'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
-                    echo "<td style='width: 75%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
+                    echo "<td style='width: 50%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
                     echo "</tr>\n";
                 }
                     echo "</td>";
