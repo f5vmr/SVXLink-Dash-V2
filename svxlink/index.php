@@ -102,7 +102,7 @@ foreach ($svxconfig as $section => $entries) {
     echo "<table style='width: 100%; border-spacing: 0;'>";
     echo "<tr><th colspan='3' style='text-align: left; padding: 5px;'>$section</th></tr>";
     echo "<tr>";
-    echo "<td style='width: 120px; padding: 2px; text-align: left;'><strong>Command</strong></td>";
+    echo "<td style='width: 240px; padding: 2px; text-align: left;'><strong>Command</strong></td>";
     echo "<td style='width: 60px; text-align: center; padding: 2px;'><strong>Active</strong></td>";
     echo "<td style='padding: 2px;'><strong>Value</strong></td>";
     echo "</tr>";
@@ -110,7 +110,7 @@ foreach ($svxconfig as $section => $entries) {
     foreach ($entries as $key => $data) {
         $checked = $data['active'] ? 'checked' : '';
         echo "<tr>";
-        echo "<td style='width: 120px; padding: 2px; text-align: left;'>$key</td>";
+        echo "<td style='width: 240px; padding: 2px; text-align: left;'>$key</td>";
         echo "<td style='width: 60px; text-align: center; padding: 2px;'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
         echo "<td style='padding: 2px;'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
         echo "</tr>\n";
@@ -124,6 +124,7 @@ foreach ($svxconfig as $section => $entries) {
     echo "</tr>";
 }
 echo '</table>';
+
 
             
 
