@@ -11,31 +11,25 @@ else {$svxConfigFile = trim(substr(shell_exec("grep CFGFILE /etc/default/svxlink
     if (fopen($svxConfigFile,'r'))
        $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
 $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
-
-// Process logics and their configs
+// check if we are a repeater or a simplex system
 $check_logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
-$logicConfigs = array();
-
 foreach ($check_logics as $logic_key) {
-    // Original system type and CTCSS detection
     if ($check_logics[0]=="RepeaterLogic") {
+        // if we work with CTCSS please set REPORT_CTCSS with correct value in svxlink.conf
         $ctcss = $svxconfig['RepeaterLogic']['REPORT_CTCSS'];
-        $system_type="IS_DUPLEX";
-        $dtmfctrl = $svxconfig['RepeaterLogic']['DTMF_CTRL_PTY'];
+        $system_type="IS_DUPLEX"; // if repeater
+        $dtmfctrl = $svxconfig['RepeaterLogic']['DTMF_CTRL_PTY']; 
     }
-    if ($check_logics[0]=="SimplexLogic") {
+    if ($check_logics[0] =="SimplexLogic") {
+        // if we work with CTCSS please set REPORT_CTCSS with correct value in svxlink.conf
         $ctcss = $svxconfig['SimplexLogic']['REPORT_CTCSS'];
-        $system_type = "IS_SIMPLEX";
+        $system_type = "IS_SIMPLEX"; // if simplex
         $dtmfctrl = $svxconfig['SimplexLogic']['DTMF_CTRL_PTY'];
     }
     
-    // Add logic config file mapping
-    $configFile = MODULEPATH . "/$logic_key.conf";
-    if (file_exists($configFile)) {
-        $logicConfigs[$logic_key] = $configFile;
-    }
 }
 $_SESSION['system_type'] = $system_type;
+
 
 // additional variables need to define in svxlink.conf in stanza [ReflectorLogic]: API, FMNET, TG_URI
 // FMNET - Name of FM-Network
