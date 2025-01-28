@@ -16,14 +16,52 @@ if (isProcessRunning('svxlink')) {
 
 echo "<table style=\"margin-top:4px;margin-bottom:13px;\">\n";
 echo "<tr><th><span style=\"font-size:12px;\">Active Logics</span></th></tr>\n";
-  if ((defined('SVXCONFIG')) && (defined('SVXCONFPATH'))) {
-    $svxConfigFile = SVXCONFPATH . "/" . SVXCONFIG;}
-else {$svxConfigFile = SVXCONFPATH."/".SVXCONFIG;
+
+
+if ((defined('SVXCONFIG')) && (defined('SVXCONFPATH'))) {
+  // First determine which logic is active
+  if ($check_logics[0] == "SimplexLogic") {
+      $svxConfigFile = SVXCONFPATH . "/svxlink.d/SimplexLogic.conf";
+  } elseif ($check_logics[0] == "RepeaterLogic") {
+      $svxConfigFile = SVXCONFPATH . "/svxlink.d/RepeaterLogic.conf";
+  } elseif ($check_logics[0] == "ReflectorLogic") {
+      $svxConfigFile = SVXCONFPATH . "/svxlink.d/ReflectorLogic.conf";
+  } else {
+      $svxConfigFile = SVXCONFPATH . "/" . SVXCONFIG;
   }
-  if (fopen($svxConfigFile,'r')) 
-    {$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); }
-    $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];     
-    $check_logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
+}
+else {$svxConfigFile = SVXCONFPATH."/".SVXCONFIG;
+
+
+
+}
+if (fopen($svxConfigFile,'r')) {
+  $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
+  
+  // Parse specific logic configurations
+  switch($check_logics[0]) {
+      case "SimplexLogic":
+          $modules = isset($svxconfig['SimplexLogic']['MODULES']) ? 
+                    explode(",",str_replace('Module','',$svxconfig['SimplexLogic']['MODULES'])) : [];
+          break;
+          
+      case "RepeaterLogic":
+          $modules = isset($svxconfig['RepeaterLogic']['MODULES']) ? 
+                    explode(",",str_replace('Module','',$svxconfig['RepeaterLogic']['MODULES'])) : [];
+          break;
+          
+      case "ReflectorLogic":
+          $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
+          $inReflectorDefaultLang = explode(",", $svxconfig['ReflectorLogic']['DEFAULT_LANG']);
+          break;
+  }
+}
+
+  //if (fopen($svxConfigFile,'r')) 
+  //{$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); }    
+  //
+  //  $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];     
+  //  $check_logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
     
     
  // $inReflectorDefaultLang = explode(",", $svxconfig['ReflectorLogic']['DEFAULT_LANG']);
