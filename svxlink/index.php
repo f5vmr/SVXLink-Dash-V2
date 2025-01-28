@@ -109,11 +109,15 @@ if (session_status() === PHP_SESSION_NONE) {
                     echo "<td style='width: 75%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
                     echo "</tr>\n";
                 }
+                echo "<tr><td colspan='3' style='text-align: center;'>";
+                echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px; margin: 10px;">Save <br> & <br> ReLoad</button>';
+                echo "</td></tr>";
+                echo "<tr><td colspan='3'><hr></td></tr>"; 
             }
 
-            echo '</table>';
-            echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
-            echo '</form>';
+            //echo '</table>';
+            //echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
+            //echo '</form>';
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnSave'])) {
                 save_svxconfig($file, $_POST);
