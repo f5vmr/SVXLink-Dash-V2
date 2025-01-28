@@ -96,6 +96,14 @@ $admodules = getActiveModules();
   echo "<tr><td style=\"background: #ffffed;\" ><span style=\"color:#b0b0b0;\"><b>No Modules</b></span></td></tr>";
 }
 echo "</table>\n";
+if ($check_logics[0] == "ReflectorLogic") {
+  $svxConfigFile = SVXCONFPATH . "/svxlink.d/ReflectorLogic.conf";
+  if (fopen($svxConfigFile,'r')) {
+      $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
+      $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
+      $inReflectorDefaultLang = explode(",", $svxconfig['ReflectorLogic']['DEFAULT_LANG']);
+  }
+}
 
 $tgtmp = trim(getSVXTGTMP());
 echo "<table colspan=2 style=\"margin-top:4px;margin-bottom:13px;\">\n";
