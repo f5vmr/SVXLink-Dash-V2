@@ -97,14 +97,11 @@ if (session_status() === PHP_SESSION_NONE) {
             echo '<input type="hidden" name="reloaded" value="0" id="reloaded">';
             echo '<table>';
             echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
-
+            echo '<table style="width: 100%">';
             foreach ($svxconfig as $section => $entries) {
+                echo "<tr><th width='455px'>$section</th><th width='100px'>Action</th></tr>\n";
                 echo "<tr>";
-                echo "<th width='180px' colspan='3'>$section</th>";
-                echo "<th width='300px'>Action</th>";
-                echo "</tr>";
-                echo "<tr>";
-                echo "<td colspan='3'>";
+                echo "<td style='width: 455px'>";
                 foreach ($entries as $key => $data) {
                     $checked = $data['active'] ? 'checked' : '';
                     echo "<tr>";
@@ -113,12 +110,13 @@ if (session_status() === PHP_SESSION_NONE) {
                     echo "<td style='width: 75%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
                     echo "</tr>\n";
                 }
-                    echo "</td>";
-                    echo "<td style='text-align: right; vertical-align: top;'>";
-                    echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
-                    echo "</td>";
-                    echo "</tr>";
-}
+                echo "</td>";
+                echo "<td style='width: 100px; text-align: right; vertical-align: top;'>";
+                echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
+                echo "</td>";
+                echo "</tr>";
+            }
+            echo '</table>';
 
             //echo '</table>';
             //echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
