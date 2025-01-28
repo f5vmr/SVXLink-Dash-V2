@@ -1,6 +1,6 @@
 <?php
 include_once('parse_svxconf.php');
-var_dump($svxconfig);
+//var_dump($svxconfig);
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -24,28 +24,21 @@ if (session_status() === PHP_SESSION_NONE) {
 <p style = "padding-right: 5px; text-align: right; color: #000000;" <a style = "color: black;">Full Edit</a> |
 <a href="/editor.php?id=global" style = "color: crimson;" id="global">Global</a> |
 <?php
-$logics = getAvailableLogics();
-// Add this before the menu HTML to debug
-var_dump($svxconfig['GLOBAL']['LOGICS']); 
-var_dump(isset($svxconfig['SimplexLogic']));
-var_dump(isset($svxconfig['ReflectorLogic']));
-
+$logics = explode(",", $svxconfig['GLOBAL']['LOGICS']);
 foreach ($logics as $logic) {
-    if (isset($svxconfig[$logic])) {
-        $logicId = strtolower($logic);
-        echo '<a href="/editor.php?id=' . $logicId . '" style="color: crimson;" id="' . $logicId . '">' . $logic . '</a> |';
-    }
+    $logic = trim($logic);
+    echo '<a href="/editor.php?id=' . strtolower($logic) . '" style="color: crimson;" id="' . strtolower($logic) . '">' . $logic . '</a> |';
 }
 ?>
-
 <a href="/editor.php?id=amixer" style = "color: crimson;" id="amixer">Amixer</a> |
 <a href="/editor.php?id=echolink" style = "color: crimson;" id="echolink">EchoLink</a> |
 <a href="/editor.php?id=tclvoicemail" style = "color: crimson;" id="tclvoicemail">TclVoiceMail</a> |
 <a href="/editor.php?id=macros" style = "color: crimson;" id="macros">Macros</a> |
 <a href="/editor.php?id=metarinfo" style = "color: crimson;" id="metarinfo">MetarInfo</a> |
 <a href="/editor.php?id=nodeInfo" style = "color: crimson;" id="nodeInfo">NodeInfo</a> |
- <a href="/editor.php?id=power" style = "color: green;">Power</a></p>
+<a href="/editor.php?id=power" style = "color: green;">Power</a></p>
 </div>
+
 
 
 	 
