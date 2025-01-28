@@ -99,21 +99,30 @@ if (session_status() === PHP_SESSION_NONE) {
             echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
 
             foreach ($svxconfig as $section => $entries) {
-                echo "<tr><td colspan='3'><h2 id=\"svxlink\" style=\"color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;\">$section</h2></td></tr>\n";
-
+                echo "<tr>";
+                echo "<th width='380px'>$section</th>";
+                echo "<th width='100px'>Action</th>";
+                echo "</tr>";
+                echo "<tr>";
+                echo "<td>";
+                echo "<table style='border-collapse: collapse; border: none;'>";
                 foreach ($entries as $key => $data) {
                     $checked = $data['active'] ? 'checked' : '';
-                    echo "<tr>";
-                    echo "<td style='width: 15%; text-align: left;'>$key</td>";
-                    echo "<td style='width: 10%'><input type='checkbox' name='active[$section][$key]' value='1' $checked></td>";
-                    echo "<td style='width: 75%'><input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'></td>";
+                    echo "<tr style='border: none;'>";
+                    echo "<td style='border: none; width: 30%'>$key</td>";
+                    echo "<td style='border: none; width: 70%'>";
+                    echo "<input type='checkbox' name='active[$section][$key]' value='1' $checked>";
+                    echo "<input type='text' name='value[$section][$key]' style='width: 98%' value='{$data['value']}'>";
+                    echo "</td>";
                     echo "</tr>\n";
                 }
-                echo "<tr><td colspan='3' style='text-align: center;'>";
-                echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px; margin: 10px;">Save <br> & <br> ReLoad</button>';
-                echo "</td></tr>";
-                echo "<tr><td colspan='3'><hr></td></tr>"; 
-            }
+                    echo "</table>";
+                    echo "</td>";
+                    echo "<td>";
+                    echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
+                    echo "</td>";
+                    echo "</tr>";
+}
 
             //echo '</table>';
             //echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
