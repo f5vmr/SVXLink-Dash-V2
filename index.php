@@ -8,8 +8,9 @@ include "include/config.php";
 
 
 ?>
-<!DOCTYPE html >
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" lang="en">
 <head>
     <meta name="robots" content="index" />
     <meta name="robots" content="follow" />
@@ -36,7 +37,7 @@ include "include/config.php";
     </script>
     <link href="css/featherlight.css" type="text/css" rel="stylesheet" />
     <script src="scripts/featherlight.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 <body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
