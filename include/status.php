@@ -7,12 +7,10 @@ include_once "tools.php";
 include_once "functions.php";
 require_once "include/ConfigHandler.php";
 
-
 ?>
 <div style = "width:180px;"><span style = "font-weight: bold;font-size:14px;">SVXLink Info</span></div>
 <fieldset style = "width:175px;background-color:#e8e8e8e8;margin-top:6px;;margin-bottom:0px;margin-left:0px;margin-right:3px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <?php
-
 if (isProcessRunning('svxlink')) {
 
 echo "<table style=\"margin-top:4px;margin-bottom:13px;\">\n";
