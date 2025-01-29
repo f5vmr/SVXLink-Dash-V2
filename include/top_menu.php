@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
    <div id="display-links">
 	<p style = "padding-right: 5px; text-align: right; color: #000000;">
 	<a style = "color: black;">Display</a> |
-	<a href="/index.php" style = "color: #0000ff;">Dashboard</a> | 
+	<a href="/index.php" style="color: #0000ff;" onclick="<?php $_SESSION['auth']='UNAUTHORISED'; ?>">Dashboard</a> | 
 	<a href="/node.php" style = "color: #0000ff;">Nodes</a> | 
 	<a href="/tg.php" style = "color: #0000ff;">Talk Groups</a> | 
 	<!--<a href="/dtmf.php" style = "color: #0000ff;">Dtmf</a> | --> 
