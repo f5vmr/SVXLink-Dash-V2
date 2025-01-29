@@ -94,14 +94,6 @@ function getSVXStatusLog() {
 	return $logLines;
 }
 
-// SVXReflector connections
-//2021-07-22 18:57:03: RefLogic: Heartbeat timeout
-//2021-07-22 18:57:03: RefLogic: Disconnected from 127.0.0.1:5300: Locally ordered disconnect
-//2021-07-22 18:59:18: RefLogic: Disconnected from 127.0.0.1:5300: Connection timed out
-//2021-07-25 16:30:35: RefLogic: Disconnected from 127.0.0.1:5300: Connection refused
-//2021-07-25 16:31:46: RefLogic: Disconnected from 127.0.0.1:5300: No route to host
-//2021-07-22 19:07:03: RefLogic: Connection established to 127.0.0.1:5300
-//2021-07-22 19:07:03: RefLogic: Authentication OK
 
 function getSVXRstatus() {
 	if (file_exists(SVXLOGPATH.SVXLOGPREFIX)) {
