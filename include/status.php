@@ -13,8 +13,6 @@ require_once "include/ConfigHandler.php";
 <?php
 if (isProcessRunning('svxlink')) {
 
-echo "<table style=\"margin-top:4px;margin-bottom:13px;\">\n";
-echo "<tr><th><span style=\"font-size:12px;\">Active Logics</span></th></tr>\n";
 $config = ConfigHandler::getInstance();
 $logics = explode(",", $config->getLogicModules());
 
