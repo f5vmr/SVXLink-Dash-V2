@@ -206,13 +206,13 @@ function getSVXTGTMP() {
         return $tgselect;
 }
 
-function initModuleArray() {
-    $modules = Array();
-    foreach (SVXMODULES as $enabled) {
-                $modules[$enabled] = 'Off';
-        }
-    return $modules;
-}
+//function initModuleArray() {
+//    $modules = Array();
+//    foreach (SVXMODULES as $enabled) {
+//                $modules[$enabled] = 'Off';
+//        }
+//    return $modules;
+//}
 
 function getActiveModules() {
     $config = ConfigHandler::getInstance();

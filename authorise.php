@@ -120,18 +120,13 @@ include_once "include/buttons.php"; }
 <br>
 </body>
 </html>
-
+<?php
 if (isset($_POST['user']) && isset($_POST['password'])) {
-    $user = $_POST['user'];
-    $password = $_POST['password'];
-    
-    $config = ConfigHandler::getInstance();
-    $valid_user = $config->getCallsign();
-    $valid_password = $config->getAuthKey(); // Add this method to ConfigHandler
-    
-    if ($user === $valid_user && $password === $valid_password) {
+    if ($_POST['user'] === PHP_AUTH_USER && $_POST['password'] === PHP_AUTH_PW) {
         $_SESSION['auth'] = 'AUTHORISED';
         header("Location: index.php");
         exit();
+    } else {
+        $_SESSION['auth'] = 'UNAUTHORISED';
     }
 }
