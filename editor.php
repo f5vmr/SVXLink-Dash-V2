@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
-include_once "include/settings.php";
+//include_once "include/settings.php";
 include_once "include/config.php";
 include_once "include/config.inc.php";
 include_once "include/tools.php";
