@@ -47,12 +47,15 @@ class ConfigHandler {
     public function getLogicModules() {
         return $this->mainConfig['GLOBAL']['LOGICS'] ?? '';
     }
-
     public function getActiveModules($logic) {
         $modules = [];
         if (isset($this->mainConfig[$logic]['MODULES'])) {
             $modules = explode(",", str_replace('Module', '', $this->mainConfig[$logic]['MODULES']));
         }
         return $modules;
+    }
+
+    public function getAuthKey() {
+        return $this->reflectorConfig['ReflectorLogic']['AUTH_KEY'] ?? '';
     }
 }

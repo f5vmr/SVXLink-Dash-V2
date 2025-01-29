@@ -215,44 +215,31 @@ function initModuleArray() {
 }
 
 function getActiveModules() {
-    $logLines = array();
-    $logPath = SVXLOGPATH.SVXLOGPREFIX;
-    $logLines = explode("\n",`tail -10000 $logPath | egrep -a -h "Activating module|Deactivating module" `);
-    $logLines = array_slice($logLines, -250);
-    $modules = initModuleArray();
-        foreach ($logLines as $logLine) {
-                if(strpos($logLine,"Activating module")) {
-                        $lineParts = explode(" ", $logLine);
-	    $modul = substr($lineParts[5],0,-3);
-                        if (!array_search($modul, $modules)) {
-                                $modules[$modul] = 'On';
-                        }
-	    if (array_search($modul, $modules)) {
-		$modules[$modul] = 'On';
-	    }
-                }
-                if(strpos($logLine,"Deactivating module")) {
-                        $lineParts = explode(" ", $logLine);
-	    $modul = substr($lineParts[5],0,-3);
-	    $modules[$modul] = 'Off';
-                }
-
+    $config = ConfigHandler::getInstance();
+    $logics = explode(",", $config->getLogicModules());
+    $enabled = array();
+    
+    // Initialize module array from config
+    foreach ($logics as $logic) {
+        $modules = $config->getActiveModules($logic);
+        foreach ($modules as $module) {
+            $enabled[$module] = "Off";
         }
-        return $modules;
+    }
+    
+    // Check log files for active status
+    $logLines = trim(shell_exec("tail -n 1 /var/log/svxlink"));
+    if (strpos($logLines, "Activating module") !== false) {
+        $moduleName = substr($logLines, strpos($logLines, "module") + 7);
+        $enabled[$moduleName] = "On";
+    }
+    
+    return $enabled;
 }
 
 
 
-//SVXLink log line
-//14.06.2021 16:00:00: Tx1: Turning the transmitter ON
-//14.06.2021 16:00:44: Tx1: Turning the transmitter OFF
-//14.06.2021 16:57:27: RefLogic: Talker start on TG #7: DMR-Bridge
-//14.06.2021 16:57:27: RefLogic: Selecting TG #7
-//14.06.2021 16:57:27: Transmission starts (TG# 0)
-//14.06.2021 16:57:28: Tx1: Turning the transmitter ON
-//14.06.2021 16:57:33: Transmission stops (TG# 0)
-//14.06.2021 16:57:33: RefLogic: Talker stop on TG #7: DMR-Bridge
-//14.06.2021 16:57:33: Tx1: Turning the transmitter OFF
+
 
 function getHeardList($logLines) {
 	//array_multisort($logLines,SORT_DESC);
