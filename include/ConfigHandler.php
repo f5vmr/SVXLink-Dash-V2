@@ -32,8 +32,12 @@ class ConfigHandler {
     }
     
     public function getActiveModules($logic) {
-        if (isset($this->mainConfig[$logic]['MODULES'])) {
-            return explode(",", str_replace('Module', '', $this->mainConfig[$logic]['MODULES']));
+        $logicFile = '/etc/svxlink/svxlink.d/' . $logic . '.conf';
+        if (file_exists($logicFile)) {
+            $logicConfig = parse_ini_file($logicFile, true, INI_SCANNER_RAW);
+            if (isset($logicConfig[$logic]['MODULES'])) {
+                return explode(",", str_replace('Module', '', $logicConfig[$logic]['MODULES']));
+            }
         }
         return [];
     }
