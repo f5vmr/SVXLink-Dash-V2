@@ -17,23 +17,9 @@ class ConfigHandler {
     
     private function loadConfigs() {
         $reflectorFile = '/etc/svxlink/svxlink.d/ReflectorLogic.conf';
-        $mainFile = '/etc/svxlink/svxlink.conf';
-        
         if (file_exists($reflectorFile)) {
             $this->reflectorConfig = parse_ini_file($reflectorFile, true, INI_SCANNER_RAW);
         }
-        
-        if (file_exists($mainFile)) {
-            $this->mainConfig = parse_ini_file($mainFile, true, INI_SCANNER_RAW);
-        }
-    }
-    
-    public function getReflectorConfig() {
-        return $this->reflectorConfig;
-    }
-    
-    public function getMainConfig() {
-        return $this->mainConfig;
     }
     
     public function getCallsign() {
