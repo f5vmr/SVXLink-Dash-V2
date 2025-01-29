@@ -14,6 +14,10 @@ $_SESSION['fmnetwork'] = $config->getFmNetwork();
 
 $callsign = $_SESSION['callsign'];
 $fmnetwork = $_SESSION['fmnetwork'];
+// Maintain auth state
+if (!isset($_SESSION['auth'])) {
+    $_SESSION['auth'] = 'UNAUTHORISED';
+}
 
 // Read main svxlink config for logic modules
 $mainConfigFile = '/etc/svxlink/svxlink.conf';
