@@ -120,13 +120,13 @@ include_once "include/buttons.php"; }
 <br>
 </body>
 </html>
-<?php
-if (isset($_POST['user']) && isset($_POST['password'])) {
-    if ($_POST['user'] === PHP_AUTH_USER && $_POST['password'] === PHP_AUTH_PW) {
-        $_SESSION['auth'] = 'AUTHORISED';
-        header("Location: index.php");
-        exit();
-    } else {
-        $_SESSION['auth'] = 'UNAUTHORISED';
-    }
-}
+//<?php
+//if (isset($_POST['user']) && isset($_POST['password'])) {
+//    if ($_POST['user'] === PHP_AUTH_USER && $_POST['password'] === PHP_AUTH_PW) {
+//        $_SESSION['auth'] = 'AUTHORISED';
+//        header("Location: index.php");
+//        exit();
+//    } else {
+//        $_SESSION['auth'] = 'UNAUTHORISED';
+//    }
+//}
