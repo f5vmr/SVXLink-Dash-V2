@@ -126,10 +126,7 @@ echo "</table>";
 if ($svxconfig["Rx1"]["PEAK_METER"] =="1") 
 $ispeak = true ;
 
-//echo "<table  style=\"margin-bottom:13px;\"><tr><th>Radio Status</th></tr><tr>";
-//echo getTXInfo();
-//if ($ispeak==true) echo getRXPeak();
-//echo "</table>\n";
+//Radio Status
 if (($check_logics[0]=="RepeaterLogic") && ($svxconfig['RepeaterLogic']['TX'] !== "NONE")) {
   echo "<table  style=\"margin-bottom:13px;\"><tr><th>Repeater Status</th></tr><tr>";
   echo getTXInfo();
@@ -138,20 +135,21 @@ if (($check_logics[0]=="SimplexLogic") && ($svxconfig['SimplexLogic']['TX'] !== 
   echo "<table  style=\"margin-bottom:13px;\"><tr><th>Radio Status</th></tr><tr>";
   echo getTXInfo();
   echo "</table>\n"; }
+  //Network Status
 
-echo "<table  style=\"margin-bottom:13px;\"><tr><th>".$fmnetwork."</th></tr><tr>";
-  $svxrstatus = getSVXRstatus();
-  echo "<tr>";
-  if ($svxrstatus=="Connected") {
+echo "<table style=\"margin-bottom:13px;\"><tr><th>".$_SESSION['fmnetwork']."</th></tr><tr>";
+$svxrstatus = getSVXRstatus();
+echo "<tr>";
+if ($svxrstatus=="Connected") {
    echo "<td style=\"background:#c3e5cc;\"><div style=\"margin-top:2px;margin-bottom:2px;white-space:normal;color:#b44010;font-weight:bold;\">";
    echo $svxrstatus."</div>";}
-  if ($svxrstatus=="Not connected") {
+if ($svxrstatus=="Not connected") {
    echo "<td style=\"background:#ff9;\"><div style=\"margin-top:2px;margin-bottom:2px;color:#454545;font-weight:bold;\">";
    echo $svxrstatus."</div>";}
-  if ($svxrstatus=="No status") {
+if ($svxrstatus=="No status") {
    echo "<td style=\"background:#ffffed;\"><div style=\"margin-top:2px;margin-bottom:2px;color:#b0b0b0;font-weight:bold;\">"; 
    echo $svxrstatus."</div>";}
-   echo "</td></tr>";
+echo "</td></tr>";
 echo "</table>\n";
 
 if ($modecho=="True") {
