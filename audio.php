@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 include "include/settings.php";
 
-include_once "include/tools.php";
+
 
 
 
