@@ -17,75 +17,30 @@ if (isProcessRunning('svxlink')) {
 
 echo "<table style=\"margin-top:4px;margin-bottom:13px;\">\n";
 echo "<tr><th><span style=\"font-size:12px;\">Active Logics</span></th></tr>\n";
-
-
 $config = ConfigHandler::getInstance();
-$svxconfig = $config->getMainConfig();
 $logics = explode(",", $config->getLogicModules());
+
+echo "<table style=\"margin-top:4px;margin-bottom:13px;\">\n";
+echo "<tr><th><span style=\"font-size:12px;\">Active Logics</span></th></tr>\n";
+
+foreach ($logics as $logic) {
+    echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$logic."</span></td></tr>";
+}
+echo "</table>\n";
+
+// Module display
+echo "<table style=\"margin-top:2px;margin-bottom:13px;\">\n";
 foreach ($logics as $logic) {
     $modules = $config->getActiveModules($logic);
-}
-
-
-if (fopen($svxConfigFile,'r')) {
-  $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
-  
-  // Parse specific logic configurations
-  switch($check_logics[0]) {
-      case "SimplexLogic":
-          $modules = isset($svxconfig['SimplexLogic']['MODULES']) ? 
-                    explode(",",str_replace('Module','',$svxconfig['SimplexLogic']['MODULES'])) : [];
-          break;
-          
-      case "RepeaterLogic":
-          $modules = isset($svxconfig['RepeaterLogic']['MODULES']) ? 
-                    explode(",",str_replace('Module','',$svxconfig['RepeaterLogic']['MODULES'])) : [];
-          break;
-          
-      case "ReflectorLogic":
-          $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
-          $inReflectorDefaultLang = explode(",", $svxconfig['ReflectorLogic']['DEFAULT_LANG']);
-          break;
-  }
-}
-
-  //if (fopen($svxConfigFile,'r')) 
-  //{$svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); }    
-  //
-  //  $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];     
-  //  $check_logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
-    
-    
- // $inReflectorDefaultLang = explode(",", $svxconfig['ReflectorLogic']['DEFAULT_LANG']);
-foreach ($check_logics as $key) {
-echo "<tr><td style=\"background:#ffffed;\"><span style=\"color:#b5651d;font-weight: bold;\">".$key."</span></td></tr>";
- }
-echo "</table>\n";
-echo "<table style=\"margin-top:2px;margin-bottom:13px;\">\n";
-if (($check_logics[0]=="RepeaterLogic") && (isset($svxconfig['RepeaterLogic']['MODULES'])))
-{ $modules = explode(",",str_replace('Module','',$svxconfig['RepeaterLogic']['MODULES'])); }
-if (($check_logics[0]=="SimplexLogic") && (isset($svxconfig['SimplexLogic']['MODULES'])))
-{ $modules = explode(",",str_replace('Module','',$svxconfig['SimplexLogic']['MODULES'])); }
-else
-//$modules=""; 
-$modecho = "False";
-$inReflectorDefaultLang = explode(",", $svxconfig['ReflectorLogic']['DEFAULT_LANG']);
-
-if ($modules!="") {
-define("SVXMODULES",$modules);
-$admodules = getActiveModules();
- echo "<tr><th><span style=\"font-size:12px;\">Modules Loaded</span></th></tr>\n";
- foreach ($modules as $key) {
-     if ($admodules[$key]=="On"){
-    $activemod="<td style=\"background:MediumSeaGreen;color:#464646;font-weight: bold;\">";} else {
-    $activemod="<td style=\"background:#ffffed;;color:#b5651d;font-weight: bold;\">";}
-
-   echo "<tr>".$activemod."".$key."</td></tr>";
-
-   if ($key=="EchoLink") {$modecho ="True";}}
-
-} else {
-  echo "<tr><td style=\"background: #ffffed;\" ><span style=\"color:#b0b0b0;\"><b>No Modules</b></span></td></tr>";
+    if (!empty($modules)) {
+        echo "<tr><th><span style=\"font-size:12px;\">Modules Loaded</span></th></tr>\n";
+        foreach ($modules as $module) {
+            $activemod = (getActiveModules()[$module] == "On") 
+                ? "<td style=\"background:MediumSeaGreen;color:#464646;font-weight: bold;\">"
+                : "<td style=\"background:#ffffed;color:#b5651d;font-weight: bold;\">";
+            echo "<tr>".$activemod."".$module."</td></tr>";
+        }
+    }
 }
 echo "</table>\n";
 if ($check_logics[0] == "ReflectorLogic") {
@@ -129,19 +84,20 @@ if (($check_logics[0]=="SimplexLogic") && ($svxconfig['SimplexLogic']['TX'] !== 
   echo "</table>\n"; }
   //Network Status
 
+// Network Status Section
+$config = ConfigHandler::getInstance();
 echo "<table style=\"margin-bottom:13px;\"><tr><th>".$_SESSION['fmnetwork']."</th></tr><tr>";
 $svxrstatus = getSVXRstatus();
-echo "<tr>";
-if ($svxrstatus=="Connected") {
-   echo "<td style=\"background:#c3e5cc;\"><div style=\"margin-top:2px;margin-bottom:2px;white-space:normal;color:#b44010;font-weight:bold;\">";
-   echo $svxrstatus."</div>";}
-if ($svxrstatus=="Not connected") {
-   echo "<td style=\"background:#ff9;\"><div style=\"margin-top:2px;margin-bottom:2px;color:#454545;font-weight:bold;\">";
-   echo $svxrstatus."</div>";}
-if ($svxrstatus=="No status") {
-   echo "<td style=\"background:#ffffed;\"><div style=\"margin-top:2px;margin-bottom:2px;color:#b0b0b0;font-weight:bold;\">"; 
-   echo $svxrstatus."</div>";}
-echo "</td></tr>";
+
+$statusStyles = [
+   'Connected' => ['bg' => '#c3e5cc', 'color' => '#b44010'],
+   'Not connected' => ['bg' => '#ff9', 'color' => '#454545'],
+   'Passive Link' => ['bg' => '#ffffed', 'color' => '#b0b0b0']
+];
+
+$style = $statusStyles[$svxrstatus] ?? $statusStyles['Passive Link'];
+echo "<td style=\"background:{$style['bg']}\"><div style=\"margin-top:2px;margin-bottom:2px;white-space:normal;color:{$style['color']};font-weight:bold;\">";
+echo $svxrstatus."</div></td></tr>";
 echo "</table>\n";
 
 if ($modecho=="True") {
