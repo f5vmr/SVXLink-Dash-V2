@@ -179,4 +179,4 @@ echo "<span style=\"color:red;font-size:13.5px;font-weight: bold;\">SvxLink is n
 ?>
 </fieldset>
 
-require_once "include/ConfigHandler.php";
+
