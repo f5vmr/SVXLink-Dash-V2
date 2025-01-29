@@ -5,6 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 include_once "config.php";         
 include_once "tools.php";        
 include_once "functions.php";
+require_once "include/ConfigHandler.php";
 
 
 ?>
@@ -18,23 +19,14 @@ echo "<table style=\"margin-top:4px;margin-bottom:13px;\">\n";
 echo "<tr><th><span style=\"font-size:12px;\">Active Logics</span></th></tr>\n";
 
 
-if ((defined('SVXCONFIG')) && (defined('SVXCONFPATH'))) {
-  // First determine which logic is active
-  if ($check_logics[0] == "SimplexLogic") {
-      $svxConfigFile = SVXCONFPATH . "/svxlink.d/SimplexLogic.conf";
-  } elseif ($check_logics[0] == "RepeaterLogic") {
-      $svxConfigFile = SVXCONFPATH . "/svxlink.d/RepeaterLogic.conf";
-  } elseif ($check_logics[0] == "ReflectorLogic") {
-      $svxConfigFile = SVXCONFPATH . "/svxlink.d/ReflectorLogic.conf";
-  } else {
-      $svxConfigFile = SVXCONFPATH . "/" . SVXCONFIG;
-  }
+$config = ConfigHandler::getInstance();
+$svxconfig = $config->getMainConfig();
+$logics = explode(",", $config->getLogicModules());
+foreach ($logics as $logic) {
+    $modules = $config->getActiveModules($logic);
 }
-else {$svxConfigFile = SVXCONFPATH."/".SVXCONFIG;
 
 
-
-}
 if (fopen($svxConfigFile,'r')) {
   $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
   
@@ -232,3 +224,5 @@ echo "<span style=\"color:red;font-size:13.5px;font-weight: bold;\">SvxLink is n
 }
 ?>
 </fieldset>
+
+require_once "include/ConfigHandler.php";
