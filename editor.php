@@ -3,11 +3,12 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
-include_once "include/config.php";
-include_once "include/config.inc.php";
-include_once "include/tools.php";
-include_once "include/functions.php";
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
+include_once "include/settings.php";
+//include_once "include/config.php";
+//include_once "include/config.inc.php";
+//include_once "include/tools.php";
+//include_once "include/functions.php";
+$svxConfigFile = '/etc/svxlink/svxlink.d/ReflectorLogic.conf';
 
 if (fopen($svxConfigFile, 'r')) {
     $svxconfig = parse_ini_file($svxConfigFile, true, INI_SCANNER_RAW);
