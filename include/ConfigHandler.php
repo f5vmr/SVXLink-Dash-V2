@@ -56,3 +56,7 @@ class ConfigHandler {
         return $modules;
     }
 }
+
+public function getAuthKey() {
+    return $this->reflectorConfig['ReflectorLogic']['AUTH_KEY'] ?? '';
+}
