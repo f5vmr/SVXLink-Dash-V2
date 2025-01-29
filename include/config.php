@@ -87,16 +87,20 @@ define("URLSVXRAPI", $refApi);
 define("CPU_TEMP_OFFSET","0");
 //
 // Path and file name of confguration
-define("SVXCONFPATH", "/etc/svxlink/");
-define("SVXCONFIG", "svxlink.conf");
+define('SVXCONFPATH', "/etc/svxlink/");
+define('SVXCONFIG', "svxlink.conf");
+define('SVXREFCONF',"ReflectorLogic.conf");
+define('SVXSIMLOGIC', "SimplexLogic.conf");
+define('SVXREPLOGIC',"RepeaterLogic.conf");
+
 //
 // Path and file name of log
-define("SVXLOGPATH", "/var/log/");
-define("SVXLOGPREFIX", "svxlink.log");
+define('SVXLOGPATH', "/var/log/");
+define('SVXLOGPREFIX', "svxlink.log");
 //
 //
 // Define where is located menu wit buttons TOP or BOTTOM
-define("MENUBUTTON", "BOTTOM");
+define('MENUBUTTON', "BOTTOM");
 //
 // Button keys define: description button, DTMF command or command, color of button
 //
