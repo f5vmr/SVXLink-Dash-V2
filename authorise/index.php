@@ -84,24 +84,37 @@ include_once "../include/config.php";
 
               
 
+
+
+
+
+
+
                 function checkAuth($username, $password) {
                     if (session_status() === PHP_SESSION_NONE) {
                         session_start();
                     }
                     // Check if received values match PHP_AUTH_USER and PHP_AUTH_PW
+
+
                     if ($username === PHP_AUTH_USER && $password === PHP_AUTH_PW) {
                         $_SESSION['auth'] = "AUTHORISED";
                     } else {
                         $_SESSION['auth'] = "UNAUTHORISED";
                     }
+
                 }
 
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
                     // Process form submission
                     $username = isset($_POST['username']) ? $_POST['username'] : '';
                     $password = isset($_POST['password']) ? $_POST['password'] : '';
+
     
                     checkAuth($username, $password);
+
+
                     header("Location: ../index.php");
                     exit();
                 }                ?>
