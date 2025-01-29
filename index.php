@@ -4,7 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 $_SESSION['auth'] = 'UNAUTHORISED';
 include "include/settings.php";
-include "include/config.php";
 
 
 ?>
