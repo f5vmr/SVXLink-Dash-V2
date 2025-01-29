@@ -4,10 +4,10 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 include_once "include/settings.php";
-//include_once "include/config.php";
-//include_once "include/config.inc.php";
-//include_once "include/tools.php";
-//include_once "include/functions.php";
+include_once "include/config.php";
+include_once "include/config.inc.php";
+include_once "include/tools.php";
+include_once "include/functions.php";
 $svxConfigFile = '/etc/svxlink/svxlink.d/ReflectorLogic.conf';
 
 if (fopen($svxConfigFile, 'r')) {
