@@ -7,7 +7,7 @@ include_once "config.php";
 include_once "tools.php";
 include_once "functions.php";
 
-$svxConfigFile = '/etc/svxlink/svxlink.d/ReflectorLogic.conf';
+$svxConfigFile = '/etc/svxlink/svxlink.conf';
 if (fopen($svxConfigFile, 'r')) {
     $svxconfig = parse_ini_file($svxConfigFile, true, INI_SCANNER_RAW);
     $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
