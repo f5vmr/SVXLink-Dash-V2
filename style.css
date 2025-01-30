@@ -1,0 +1,51 @@
+body {
+    background-color: #e1e1e1;
+    font: 11pt Arial, sans-serif;
+}
+
+fieldset {
+    box-shadow: 5px 5px 20px #999;
+    background-color: #f1f1f1;
+    width: auto;
+    margin: 15px 5px 0 0;
+    font-size: 13px;
+    border-radius: 10px;
+}
+
+.img {
+    padding-left: 30px;
+}
+
+.text {
+    padding-right: 230px;
+}
+
+.callsign {
+    font-size: 32px;
+    letter-spacing: 4px;
+    font-family: sans-serif, sans-serif;
+    font-weight: 500;
+    color: PaleBlue;
+}
+
+.fmnetwork {
+    font-size: 18px;
+    letter-spacing: 4px;
+    font-family: sans-serif, sans-serif;
+    font-weight: 500;
+    color: PaleBlue;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button img {
+    vertical-align: middle;
+}

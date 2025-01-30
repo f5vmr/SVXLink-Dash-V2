@@ -766,7 +766,15 @@ function display_config($config) {
         // Optionally, you can add success/failure handling here
         echo "Configuration saved and restarted";
     }
-    
+    <?php
+function renderPage($title, $contentFile) {
+    include "include/header.php"; 
+    echo "<div class='content'>";
+    include $contentFile;  // Include the specific content for this page
+    echo "</div>";
+    include "include/footer.php";
+}
+?>
 
 
    
