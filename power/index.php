@@ -90,7 +90,7 @@ if (isset($_POST['btnPower']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo nmcli dev wifi rescan');
+        //exec('sudo -n nmcli dev wifi rescan');
         $command = "sudo shutdown -h now 2>&1";
         exec($command,$screen,$retval);
 }
@@ -102,7 +102,7 @@ if (isset($_POST['btnPower']))
 //        $screen = null;
 //        //$sAconn = $_POST['sAconn'];
 //        //$password = $_POST['password'];
-//        //exec('sudo nmcli dev wifi rescan');
+//        //exec('sudo -n nmcli dev wifi rescan');
 //        $command = "sudo systemctl restart oled2svx  2>&1";
 //        exec($command,$screen,$retval);
 //}
@@ -114,7 +114,7 @@ if (isset($_POST['btnSvxlink']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo nmcli dev wifi rescan');
+        //exec('sudo -n nmcli dev wifi rescan');
         $command = "sudo systemctl restart svxlink 2>&1";
         exec($command,$screen,$retval);
 }
@@ -126,7 +126,7 @@ if (isset($_POST['btnRestart']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo nmcli dev wifi rescan');
+        //exec('sudo -n nmcli dev wifi rescan');
         $command = "sudo shutdown -r now 2>&1";
         exec($command,$screen,$retval);
 }

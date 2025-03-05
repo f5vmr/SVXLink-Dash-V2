@@ -97,7 +97,7 @@ foreach ($logics as $key) {
 // load the connlist
 $retval = null;
 $conns = null;
-//exec('sudo nmcli  -t -f NAME  con show',$conns,$retval);
+//exec('sudo -n nmcli  -t -f NAME  con show',$conns,$retval);
 
 // find the gateway
 $ipgw = null;
@@ -135,7 +135,7 @@ if (isset($_POST['btnChkOs']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo nmcli dev wifi rescan');
+        //exec('sudo -n nmcli dev wifi rescan');
         $command = "sudo nice -n 19 sh check.os.sh > /var/www/html/update/screen.log 2>&1 &";
         exec($command,$screen,$retval);
 	
@@ -156,7 +156,7 @@ if (isset($_POST['btnUpdateOs']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo nmcli dev wifi rescan');
+        //exec('sudo -n nmcli dev wifi rescan');
         $command = "sudo nice -n 19 sh update.os.sh > /var/www/html/update/screen.log 2>&1 &";
         exec($command,$screen,$retval);
 
@@ -175,7 +175,7 @@ if (isset($_POST['btnChkSounds']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo nmcli dev wifi rescan');
+        //exec('sudo -n nmcli dev wifi rescan');
         $command = "sudo nice -n 19 sh check.sounds.sh > /var/www/html/update/screen.log 2>&1 &";
         exec($command,$screen,$retval);
 
@@ -195,7 +195,7 @@ if (isset($_POST['btnUpdateSounds']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo nmcli dev wifi rescan');
+        //exec('sudo -n nmcli dev wifi rescan');
         $command = "sudo nice -n 19 sh update.sounds.sh > /var/www/html/update/screen.log 2>&1 &";
         exec($command,$screen,$retval);
 
@@ -213,7 +213,7 @@ if (isset($_POST['btnChkConfig']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo nmcli dev wifi rescan');
+        //exec('sudo -n nmcli dev wifi rescan');
         $command = "sudo nice -n 19 sh check.config.sh > /var/www/html/update/screen.log 2>&1 &";
         exec($command,$screen,$retval);
 
@@ -233,7 +233,7 @@ if (isset($_POST['btnUpdateConfig']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo nmcli dev wifi rescan');
+        //exec('sudo -n nmcli dev wifi rescan');
         $command = "sudo nice -n 19 sh update.config.sh > /var/www/html/update/screen.log 2>&1 &";
         exec($command,$screen,$retval);
 
@@ -267,7 +267,7 @@ if (isset($_POST['btnUpdateDashboard']))
 	exec($command,$screen,$retval);
 	$command = "sudo nice -n 19 sh /opt/update.dashboard.sh > /var/www/html/update/screen.log 2>&1 &";
         exec($command,$screen,$retval);
-        //exec('sudo nmcli dev wifi rescan');
+        //exec('sudo -n nmcli dev wifi rescan');
         //$command3 = "sudo wget ".$tgUri." >> /var/www/html/update/screen.log 2>&1";
         //exec($command3,$screen,$retval);
 	//if ($retval) {
