@@ -146,7 +146,7 @@ pre {
 </head>
 
 <body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
-<center>
+    <center>
 <fieldset style="border:#3083b8 2px groove;box-shadow:0 0 10px #999; background-color:#f1f1f1; width:500px;margin-top:15px;margin-left:0px;margin-right$<div style="padding:0px;width:495px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px$<center>
 <h1 id="web-audio-peak-meters" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">DTMF Keyboard</h1>
 <!-- <p style="font-size:8px;color:#454545;font-weight:bold;">Please don't use too many buttons at once.</span></p>
@@ -179,67 +179,54 @@ if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE) {
 
 // Defined buttons:
 
-    if (isset($_POST['button1']))
-    {
+    if (isset($_POST['button1'])) {
         shell_exec('echo "*91260#" > /tmp/dtmf_svx');
     }
 
-   if (isset($_POST['button2']))
-    {
+   if (isset($_POST['button2'])) {
         shell_exec('echo "*912600#" > /tmp/dtmf_svx');
     }
 
- if (isset($_POST['button3']))
-    {
+ if (isset($_POST['button3'])) {
         shell_exec('echo "*9126078#" > /tmp/dtmf_svx');
     }
 
- if (isset($_POST['button4']))
-    {
+ if (isset($_POST['button4'])) {
         shell_exec('echo "*91999#" > /tmp/dtmf_svx');
     }
 
- if (isset($_POST['button5']))
-    {
+ if (isset($_POST['button5'])) {
         shell_exec('echo "9191#" > /tmp/dtmf_svx');
     }
 
- if (isset($_POST['button6']))
-    {
+ if (isset($_POST['button6'])) {
         shell_exec('echo "9126021#" > /tmp/dtmf_svx');
     }
 
- if (isset($_POST['button7']))
-    {
+ if (isset($_POST['button7'])) {
         shell_exec('echo "9126062#" > /tmp/dtmf_svx');
     }
 
- if (isset($_POST['button8']))
-    {
+ if (isset($_POST['button8'])) {
         shell_exec('echo "910#" > /tmp/dtmf_svx');
     }
 
-if (isset($_POST['button9']))
-    {
+if (isset($_POST['button9'])) {
         shell_exec('echo "*#" > /tmp/dtmf_svx');
     }
 
- if (isset($_POST['button10']))
-    {
+ if (isset($_POST['button10'])) {
         shell_exec('echo "*1#" > /tmp/dtmf_svx');
     }
 
- if (isset($_POST['button11']))
-    {
+ if (isset($_POST['button11'])) {
         shell_exec('echo "*2# 453582#" > /tmp/dtmf_svx');
     }
 
- if (isset($_POST['button12']))
-    {
+ if (isset($_POST['button12'])) {
         shell_exec('echo "2# 871657## " > /tmp/dtmf_svx');
     }
- if (isset($_POST['button13']))
-    {
+ if (isset($_POST['button13'])) {
         shell_exec('echo "2# 871657#" > /tmp/dtmf_svx');
     }
 

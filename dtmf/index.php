@@ -160,7 +160,17 @@
                     <h1 id="dtmf_info" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">DTMF Dialer</h1>
 
                     <?php
-
+function cidr_match($ip, $cidr) {
+    $outcome = false;
+    $pattern = '/^(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])\/(\d{1}|[0-2]{1}\d{1}|3[0-2])$/';
+    if (preg_match($pattern, $cidr)){
+        list($subnet, $mask) = explode('/', $cidr);
+        if (ip2long($ip) >> (32 - $mask) == ip2long($subnet) >> (32 - $mask)) {
+            $outcome = true;
+        }
+    }
+    return $outcome;
+}
 $url = $_SERVER['REQUEST_URI'] . "/include";
 //    header("Refresh: 10; URL=$url");
 
@@ -223,105 +233,124 @@ if (isset($_POST['button13'])) {
 
 
 // Keyboard
-if (isset($_POST['button20'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 0');
-    //echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 0</h1></p></pre>';
+if (isset($_POST['button20']))
+{
+    shell_exec('echo "0" > /tmp/dtmf_svx');
+  //  echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 0</center></h1></p></pre>';
 }
 
-if (isset($_POST['button21'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 1');
-    //  echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 1</center></h1></p></pre>';
+if (isset($_POST['button21']))
+{
+    shell_exec('echo "1" > /tmp/dtmf_svx');
+ //  echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 1</center></h1></p></pre>';
 }
 
-if (isset($_POST['button22'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 2');
-    //  echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 2</center></h1></p></pre>';
+if (isset($_POST['button22']))
+{
+    shell_exec('echo "2" > /tmp/dtmf_svx');
+  //  echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 2</center></h1></p></pre>';
 }
 
-if (isset($_POST['button23'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 3');
-    // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 3</center></h1></p></pre>';
+if (isset($_POST['button23']))
+{
+    shell_exec('echo "3" > /tmp/dtmf_svx');
+   // echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 3</center></h1></p></pre>';
 }
 
-if (isset($_POST['button24'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 4');
-    // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 4</center></h1></p></pre>';
+if (isset($_POST['button24']))
+{
+    shell_exec('echo "4" > /tmp/dtmf_svx');
+   // echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 4</center></h1></p></pre>';
 }
 
-if (isset($_POST['button25'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 5');
-    // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 5</center></h1></p></pre>';
+if (isset($_POST['button25']))
+{
+    shell_exec('echo "5" > /tmp/dtmf_svx');
+   // echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 5</center></h1></p></pre>';
 }
 
-if (isset($_POST['button26'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 6');
-    // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 6</center></h1></p></pre>';
+if (isset($_POST['button26']))
+{
+    shell_exec('echo "6" > /tmp/dtmf_svx');
+   // echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 6</center></h1></p></pre>';
 }
 
-if (isset($_POST['button27'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 7');
-    //  echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 7</center></h1></p></pre>';
+if (isset($_POST['button27']))
+{
+    shell_exec('echo "7" > /tmp/dtmf_svx');
+  //  echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 7</center></h1></p></pre>';
 }
 
-if (isset($_POST['button28'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 8');
-    //    echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 8</center></h1></p></pre>';
+if (isset($_POST['button28']))
+{
+    shell_exec('echo "8" > /tmp/dtmf_svx');
+//    echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 8</center></h1></p></pre>';
 }
 
-if (isset($_POST['button29'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 9');
-    //    echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 9</center></h1></p></pre>';
+if (isset($_POST['button29']))
+{
+    shell_exec('echo "9" > /tmp/dtmf_svx');
+//    echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 9</center></h1></p></pre>';
 }
 
-if (isset($_POST['button30'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf "*"');
-    // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: *</center></h1></p></pre>';
+if (isset($_POST['button30']))
+{
+    shell_exec('echo "*" > /tmp/dtmf_svx');
+   // echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: *</center></h1></p></pre>';
 }
 
-if (isset($_POST['button31'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf "#"');
-    //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre>';
+if (isset($_POST['button31']))
+{
+    shell_exec('echo "#" > /tmp/dtmf_svx');
+ //   echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: #</center></h1></p></pre>';
 }
 
-if (isset($_POST['buttonAA'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf A');
-    //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
+if (isset($_POST['buttonAA']))
+{
+    shell_exec('echo "A" > /tmp/dtmf_svx');
+ //   echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
-if (isset($_POST['buttonBB'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf B');
-    //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
-}
-
-if (isset($_POST['buttonCC'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf C');
-    //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
+if (isset($_POST['buttonBB']))
+{
+    shell_exec('echo "B" > /tmp/dtmf_svx');
+ //   echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 
-if (isset($_POST['buttonDD'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf D');
-    //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
+if (isset($_POST['buttonCC']))
+{
+    shell_exec('echo "C" > /tmp/dtmf_svx');
+ //   echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
+}
+
+if (isset($_POST['buttonDD']))
+{
+    shell_exec('echo "D" > /tmp/dtmf_svx');
+ //   echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 
 // POWER OFF
-if (isset($_POST['button99'])) {
+if (isset($_POST['button99']))
+{
     shell_exec('sudo poweroff');
-    //     echo '<pre><h1><center><p style = "color: #454545; ">POWER OFF</center></h1></p></pre>';
+//     echo '<pre><h1><center><p style="color: #454545; ">POWER OFF</center></h1></p></pre>';
 }
 ?>
-                    <form method="post">
-                        <p>
-                            <center>
-                                <button style = "height: 60px; width: 100px;font-size:25px;" button name="button1">TG235</button>
-                                <center><button style = "height: 60px; width: 100px;font-size:25px;" button name="button21">1</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button22">2</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button23">3</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="buttonA">A</button></center>
-                                <center><button style = "height: 60px; width: 100px;font-size:25px;" button name="button24">4</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button25">5</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button26">6</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="buttonBB">B</button></center>
-                                <center><button style = "height: 60px; width: 100px;font-size:25px;" button name="button27">7</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button28">8</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button29">9</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="buttonCC">C</button></center>
-                                <center><button style = "height: 60px; width: 100px;font-size:25px;" button name="button30">*</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button20">0</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button31">#</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="buttonDD">D</button></center>
-                        </p>
-                    </form>
+<form method="post">
+    <p>
+         <center><button style="height: 60px; width: 100px;font-size:25px;" button name="button21">1</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button22">2</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button23">3</button><button style="height: 60px; width: 100px;font-size:25px;" button name="buttonA">A</button></center>
+         <center><button style="height: 60px; width: 100px;font-size:25px;" button name="button24">4</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button25">5</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button26">6</button><button style="height: 60px; width: 100px;font-size:25px;" button name="buttonBB">B</button></center>
+         <center><button style="height: 60px; width: 100px;font-size:25px;" button name="button27">7</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button28">8</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button29">9</button><button style="height: 60px; width: 100px;font-size:25px;" button name="buttonCC">C</button></center>
+         <center><button style="height: 60px; width: 100px;font-size:25px;" button name="button30">*</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button20">0</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button31">#</button><button style="height: 60px; width: 100px;font-size:25px;" button name="buttonDD">D</button></center>
+    </p>
+    </form>
 
 
                     <?php
-                    ?>
+} else {
+
+    //header("Location: http://svxlink.pl:888");
+    //exit();
+    }                    ?>
         </fieldset>
 </body>
 </html>
