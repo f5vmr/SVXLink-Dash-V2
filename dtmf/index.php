@@ -65,7 +65,6 @@
         .buttonh {
             background-image: linear-gradient(to bottom, #337ab7 0%, #265a88 100%);
             color: #454545;
-            color: #454545;
         }
 
             .buttonh:hover {
@@ -171,39 +170,39 @@ $url = $_SERVER['REQUEST_URI'] . "/include";
 // Defined buttons:
 
 if (isset($_POST['button1'])) {
-    shell_exec('echo "*9140#" > /tmp/dtmf_svx');
+    shell_exec('echo "*91235#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button2'])) {
-    shell_exec('echo "*912600#" > /tmp/dtmf_svx');
+    shell_exec('echo "*9123561#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button3'])) {
-    shell_exec('echo "*9126078#" > /tmp/dtmf_svx');
+    shell_exec('echo "*9123530#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button4'])) {
-    shell_exec('echo "*91999#" > /tmp/dtmf_svx');
+    shell_exec('echo "*9123450#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button5'])) {
-    shell_exec('echo "9191#" > /tmp/dtmf_svx');
+    shell_exec('echo "*9123525#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button6'])) {
-    shell_exec('echo "9126021#" > /tmp/dtmf_svx');
+    shell_exec('echo "9123565#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button7'])) {
-    shell_exec('echo "9126062#" > /tmp/dtmf_svx');
+    shell_exec('echo "9123561#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button8'])) {
-    shell_exec('echo "910#" > /tmp/dtmf_svx');
+    shell_exec('echo "9123556#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button9'])) {
-    shell_exec('echo "*#" > /tmp/dtmf_svx');
+    shell_exec('echo "*910#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button10'])) {
