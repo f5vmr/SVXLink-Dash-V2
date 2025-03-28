@@ -159,22 +159,22 @@
                     <h1 id="dtmf_info" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">DTMF Dialer</h1>
 
                     <?php
-
+$debug_message = "";
+$pressed_button = "";
 $url = $_SERVER['REQUEST_URI'] . "/include";
 //    header("Refresh: 10; URL=$url");
 
-$debug_message = "";
-$pressed_button = "";
+
 
 
 
 // Defined buttons:
 
 if (isset($_POST['button1'])) {
-    $pressed_button = "1";
+    
     $dtmf_code = "*91235#";
     shell_exec('echo "*91235#" > /tmp/dtmf_svx');
-    $debug_message = "Button 1 pressed: $pressed_button, DTMF code: $dtmf_code";
+  
 }
 
 if (isset($_POST['button2'])) {
@@ -316,7 +316,6 @@ if (isset($_POST['button99'])) {
                     <form method="post">
                         <p>
                             <center>
-                                <button style = "height: 60px; width: 100px;font-size:25px;" button name="button1">TG235</button>
                                 <center><button style = "height: 60px; width: 100px;font-size:25px;" button name="button21">1</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button22">2</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button23">3</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="buttonA">A</button></center>
                                 <center><button style = "height: 60px; width: 100px;font-size:25px;" button name="button24">4</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button25">5</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button26">6</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="buttonBB">B</button></center>
                                 <center><button style = "height: 60px; width: 100px;font-size:25px;" button name="button27">7</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button28">8</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="button29">9</button><button style = "height: 60px; width: 100px;font-size:25px;" button name="buttonCC">C</button></center>
