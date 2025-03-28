@@ -163,14 +163,18 @@
 $url = $_SERVER['REQUEST_URI'] . "/include";
 //    header("Refresh: 10; URL=$url");
 
-
+$debug_message = "";
+$pressed_button = "";
 
 
 
 // Defined buttons:
 
 if (isset($_POST['button1'])) {
+    $pressed_button = "1";
+    $dtmf_code = "*91235#";
     shell_exec('echo "*91235#" > /tmp/dtmf_svx');
+    $debug_message = "Button 1 pressed: $pressed_button, DTMF code: $dtmf_code";
 }
 
 if (isset($_POST['button2'])) {
@@ -304,7 +308,7 @@ if (isset($_POST['buttonDD'])) {
 // POWER OFF
 if (isset($_POST['button99'])) {
     shell_exec('sudo shutdown now
-    
+
     ');
     //     echo '<pre><h1><center><p style = "color: #454545; ">POWER OFF</center></h1></p></pre>';
 }
