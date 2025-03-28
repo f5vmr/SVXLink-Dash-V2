@@ -98,6 +98,22 @@ fi" > "$CLEANUP_SCRIPT"
     sudo chmod +x "$CLEANUP_SCRIPT"
     show_info "Created and made $CLEANUP_SCRIPT executable."
 fi
+# Create and set permissions for the DTMF file
+DTMF_FILE="/tmp/dtmf_svx"
+
+# Create the DTMF file if it doesn't exist
+if [ ! -f "$DTMF_FILE" ]; then
+    touch "$DTMF_FILE"
+#    show_info "Created DTMF file $DTMF_FILE"
+else
+#    show_info "DTMF file $DTMF_FILE already exists."
+fi
+
+# Set ownership to svxlink:svxlink
+sudo chown svxlink:svxlink "$DTMF_FILE"
+
+# Set permissions to allow writing
+sudo chmod 666 "$DTMF_FILE"
 
 # Check and add the cleanup.sh script to the sudo crontab if not already present
 CRON_JOB="01 00 * * * /home/pi/scripts/cleanup.sh"
