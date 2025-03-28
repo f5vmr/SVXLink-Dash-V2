@@ -223,87 +223,89 @@ if (isset($_POST['button13'])) {
 
 // Keyboard
 if (isset($_POST['button20'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 0');
+    shell_exec('echo "0" > /tmp/dtmf_svx');
     //echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 0</h1></p></pre>';
 }
 
 if (isset($_POST['button21'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 1');
+    shell_exec('echo "1" > /tmp/dtmf_svx');
     //  echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 1</center></h1></p></pre>';
 }
 
 if (isset($_POST['button22'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 2');
+    shell_exec('echo "2" > /tmp/dtmf_svx');
     //  echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 2</center></h1></p></pre>';
 }
 
 if (isset($_POST['button23'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 3');
+    shell_exec('echo "3" > /tmp/dtmf_svx');
     // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 3</center></h1></p></pre>';
 }
 
 if (isset($_POST['button24'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 4');
+    shell_exec('echo "4" > /tmp/dtmf_svx');
     // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 4</center></h1></p></pre>';
 }
 
 if (isset($_POST['button25'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 5');
+    shell_exec('echo "5" > /tmp/dtmf_svx');
     // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 5</center></h1></p></pre>';
 }
 
 if (isset($_POST['button26'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 6');
+    shell_exec('echo "6" > /tmp/dtmf_svx');
     // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 6</center></h1></p></pre>';
 }
 
 if (isset($_POST['button27'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 7');
+    shell_exec('echo "7" > /tmp/dtmf_svx');
     //  echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 7</center></h1></p></pre>';
 }
 
 if (isset($_POST['button28'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 8');
+    shell_exec('echo "8" > /tmp/dtmf_svx');
     //    echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 8</center></h1></p></pre>';
 }
 
 if (isset($_POST['button29'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf 9');
+    shell_exec('echo "9" > /tmp/dtmf_svx');
     //    echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 9</center></h1></p></pre>';
 }
 
 if (isset($_POST['button30'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf "*"');
+    shell_exec('echo "*" > /tmp/dtmf_svx');
     // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: *</center></h1></p></pre>';
 }
 
 if (isset($_POST['button31'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf "#"');
+    shell_exec('echo "#" > /tmp/dtmf_svx');
     //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre>';
 }
 
 if (isset($_POST['buttonAA'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf A');
+    shell_exec('echo "A" > /tmp/dtmf_svx');
     //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 if (isset($_POST['buttonBB'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf B');
+    shell_exec('echo "B" > /tmp/dtmf_svx');
     //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 
 if (isset($_POST['buttonCC'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf C');
+    shell_exec('echo "C" > /tmp/dtmf_svx');
     //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 
 if (isset($_POST['buttonDD'])) {
-    shell_exec('/usr/sbin/hotspot_dtmf D');
+    shell_exec('echo "D" > /tmp/dtmf_svx');
     //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 
 // POWER OFF
 if (isset($_POST['button99'])) {
-    shell_exec('sudo poweroff');
+    shell_exec('sudo shutdown now
+    
+    ');
     //     echo '<pre><h1><center><p style = "color: #454545; ">POWER OFF</center></h1></p></pre>';
 }
 ?>
