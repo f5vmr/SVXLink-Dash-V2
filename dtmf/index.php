@@ -1,3 +1,6 @@
+<?php
+include "../include/tools.php";
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -160,17 +163,17 @@
                     <h1 id="dtmf_info" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">DTMF Dialer</h1>
 
                     <?php
-function cidr_match($ip, $cidr) {
-    $outcome = false;
-    $pattern = '/^(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])\/(\d{1}|[0-2]{1}\d{1}|3[0-2])$/';
-    if (preg_match($pattern, $cidr)){
-        list($subnet, $mask) = explode('/', $cidr);
-        if (ip2long($ip) >> (32 - $mask) == ip2long($subnet) >> (32 - $mask)) {
-            $outcome = true;
-        }
-    }
-    return $outcome;
-}
+//function cidr_match($ip, $cidr) {
+//    $outcome = false;
+//    $pattern = '/^(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])\/(\d{1}|[0-2]{1}\d{1}|3[0-2])$/';
+//    if (preg_match($pattern, $cidr)){
+//        list($subnet, $mask) = explode('/', $cidr);
+//        if (ip2long($ip) >> (32 - $mask) == ip2long($subnet) >> (32 - $mask)) {
+//            $outcome = true;
+//        }
+//    }
+//    return $outcome;
+//}
 $url = $_SERVER['REQUEST_URI'] . "/include";
 //    header("Refresh: 10; URL=$url");
 
