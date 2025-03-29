@@ -12,10 +12,13 @@ $net5 = cidr_match($ip, "192.168.1.254/24");
 
 
 if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE || $net5 == TRUE) {
+    debug_log("Network Check Passed");
 
  if(array_key_exists('button1', $_POST)) {
         $exec= "echo '" . KEY1[1] . "' > /tmp/dtmf_svx";
+        debug_log("Button 1 Executed");
             exec($exec,$output);
+        debug_log("output: " . print_r($output,true));
             echo "<meta http-equiv='refresh' content='0'>";
         }
  if(array_key_exists('button2', $_POST)) {
@@ -146,7 +149,10 @@ if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE || $net5 ==
 <?php
   if (isset($_POST["dtmfsvx"])){
    $exec= "echo '" . $_POST['dtmfsvx'] . "' > /tmp/dtmf_svx";
+   debug_log("DTMF command: " . $_POST['dtmfsvx']);
+   debug_log("Command:  $exec");
    exec($exec,$output);
+   debug_log("Output: " . print_r($output,true));
    echo "<meta http-equiv='refresh' content='0'>";
     }
   if (isset($_POST["jmpto"])) {
