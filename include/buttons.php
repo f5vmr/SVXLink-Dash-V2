@@ -2,10 +2,11 @@
 <?php
 $ip = $_SERVER['REMOTE_ADDR']; 
 $net1= cidr_match($ip,"192.168.0.0/24");
-$net2= cidr_match($ip,"192.175.43.91/24");
+$net2= cidr_match($ip,"10.0.0.0/8");
 $net3= cidr_match($ip,"127.0.0.0/24");
 $net4= cidr_match($ip,"192.168.1.0/24");
 $net5 = cidr_match($ip, "192.168.1.254/24");
+
 
 if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE || $net5 == TRUE) {
 
