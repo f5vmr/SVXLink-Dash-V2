@@ -1,3 +1,6 @@
+
+<?php include_once "../include/tools.php"; 
+?>
 <div class="content">
 <?php
 $ip = $_SERVER['REMOTE_ADDR']; 
