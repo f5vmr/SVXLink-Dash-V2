@@ -252,7 +252,7 @@ $volume = $RfData['volume'];
 
 // default section
 // port
-if ($port === "" || is_null($port)) $port = "/dev/ttyS1";
+if ($port === "" || is_null($port)) $port = "/dev/ttyAMA0";
 
 //radio
 if ($freq === "" || is_null($freq)) $freq = "433.5375";
