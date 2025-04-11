@@ -134,6 +134,10 @@ if (isset($_POST['text']))
 ?>
 </tr></table>
 <?php
+if (MENUBUTTON=="BOTTOM") {
+include_once "include/buttons.php"; }
+?>
+<?php
     echo '<div class="content2">'."\n";
     echo '<script type="text/javascript">'."\n";
     echo 'function reloadSysInfo(){'."\n";
@@ -146,10 +150,6 @@ if (isset($_POST['text']))
     include "include/system.php";
     echo '</div>'."\n";
     echo '</div>'."\n";
-?>
-<?php
-if (MENUBUTTON=="BOTTOM") {
-include_once "include/buttons.php"; }
 ?>
 <center><span title="Dashboard" style = "font: 7pt arial, sans-serif;">SvxLink Dashboard Ver 2.1 ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate; ?>
 </div>
