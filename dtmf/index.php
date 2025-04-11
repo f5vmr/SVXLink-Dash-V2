@@ -204,11 +204,11 @@ if (isset($_POST['button5'])) {
 }
 
 if (isset($_POST['button6'])) {
-    shell_exec('echo "9126021#" > /tmp/dtmf_svx');
+    shell_exec('echo "91#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button7'])) {
-    shell_exec('echo "9126062#" > /tmp/dtmf_svx');
+    shell_exec('echo "91#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button8'])) {
@@ -220,11 +220,11 @@ if (isset($_POST['button9'])) {
 }
 
 if (isset($_POST['button10'])) {
-    shell_exec('echo "*1#" > /tmp/dtmf_svx');
+    shell_exec('echo "1#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button11'])) {
-    shell_exec('echo "*2# 453582#" > /tmp/dtmf_svx');
+    shell_exec('echo "2# 453582#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button12'])) {
