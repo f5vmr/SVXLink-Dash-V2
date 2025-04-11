@@ -118,7 +118,7 @@ if (isset($_POST['btnDetect']))
 	
         $port = $_POST['port'];
 
-	$command_top = "ls -1 /dev/ttyS* /dev/ttyUSB* 2>&1";
+	$command_top = "ls -1 /dev/ttyA* /dev/ttyUSB* /dev/ttyS* 2>&1";
 	exec($command_top,$screen_top,$retval);
 	
 	//print_r($screen_top); 
