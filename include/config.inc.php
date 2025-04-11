@@ -202,10 +202,10 @@ define('UNAUTHORISED', 'UNAUTHORISED');
 // DTMF keys
 // syntax: 'KEY number,'Description','DTMF code','color button'.
 //
-define("KEY1", array(' D1 ','*D1#','green'));
-define("KEY2", array(' D2 ','*D2#','orange'));
-define("KEY3", array(' D3 ','*D3#','orange'));
-define("KEY4", array(' D4 ','*D4#','orange'));
+define("KEY1", array(' TG235 ','91235#','green'));
+define("KEY2", array(' TG2350 ','912350#','green'));
+define("KEY3", array(' TG23561 ','9123561#','green'));
+define("KEY4", array(' Disconnect ','910#','red'));
 define("KEY5", array(' D5', '*D5#','purple'));
 define("KEY6", array(' D6 ','*D6#','purple'));
 define("KEY7", array(' D7 ','*D7#','purple'));

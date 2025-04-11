@@ -1,5 +1,7 @@
 
-<?php include_once "../include/tools.php"; 
+<?php 
+include_once "../include/tools.php"; 
+include_once "../dtmf.php";
 ?>
 <div class="content">
 <?php
