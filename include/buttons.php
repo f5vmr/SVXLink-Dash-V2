@@ -19,55 +19,55 @@ include_once "../dtmf.php";
  if(array_key_exists('button1', $_POST)) {
         $exec= "echo '" . KEY1[1] . "' > /tmp/dtmf_svx";
         debug_log("Button 1 Executed");
-            shell_exec($exec,$output);
+        exec($exec,$output);
         debug_log("output: " . print_r($output,true));
             echo "<meta http-equiv='refresh' content='0'>";
         }
  if(array_key_exists('button2', $_POST)) {
         $exec= "echo '" . KEY2[1] . "' > /tmp/dtmf_svx";
-            shell_exec($exec,$output);
+            exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
  if(array_key_exists('button3', $_POST)) {
         $exec= "echo '" . KEY3[1] . "' > /tmp/dtmf_svx";
-            shell_exec($exec,$output);
+            exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
  if(array_key_exists('button4', $_POST)) {
         $exec= "echo '" . KEY4[1] . "' > /tmp/dtmf_svx";
-            shell_exec($exec,$output);
+            exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
  if(array_key_exists('button5', $_POST)) {
         $exec= "echo '" . KEY5[1] . "' > /tmp/dtmf_svx";
-            shell_exec($exec,$output);
+            exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
  if(array_key_exists('button6', $_POST)) {
         $exec= "echo '" . KEY6[1] . "' > /tmp/dtmf_svx";
-            shell_exec($exec,$output);
+            exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
  if(array_key_exists('button7', $_POST)) {
         $exec= "echo '" . KEY7[1] . "' > /tmp/dtmf_svx";
-            shell_exec($exec,$output);
+            exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
 
  if(array_key_exists('button8', $_POST)) {
         $exec= "echo '" . KEY8[1] . "' > /tmp/dtmf_svx";
-            shell_exec($exec,$output);
+            exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
 
  if(array_key_exists('button9', $_POST)) {
         $exec= "echo '" . KEY9[1] . "' > /tmp/dtmf_svx";
-            shell_exec($exec,$output);
+            exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
  if(array_key_exists('button10', $_POST)) {
         $exec= "echo '" . KEY10[1] . "' > /tmp/dtmf_svx";
-            shell_exec($exec,$output);
+            exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
 /*
