@@ -1,3 +1,25 @@
+# SVXLink-Dashboard-V2.5 Enhancements by DL3EL
+<h1>SVXLink Node dashboard repository inspired by a pi-star dashboard</h1>
+<h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.
+Updated the code from Chris slightly and added some enhancements
+<b>all requirements listed below in the original readme are still valid and need to be executed</b>
+<b>Changes</b>
+<p>The major change is that the dashboard now runs in every directory below /var/www/html. So you can have two dashboards parallel, for test reasons or whatever. 
+<p>So in /var/www/ run the following command line. </p>
+<p><b>sudo git clone https://github.com/f5vmr/SVXLink-Dash-V2 html/SVXLink-Dash-V2.5</b></p>
+<p><b> cd html/SVXLink-Dash-V2.5</b></p>
+<p>You can choose any other name than "SVXLink-Dash-V2.5"</p>
+<p>Some minor changes clearing double definitions and eliminating path names in the code when definitions are available. So the only file, that has to be changed for an individual configuration should be ./include/config.php</p>
+<b>Enhancements</b><br>
+<p>The topic <b>Echolink</b> asks for a call or a part of if and, after hitting "Query" it shows all active Echolink stations, matching the query. A click on the station starts Echolink and tries to connect the station. Same happen, if "Echotest" is clicked. This page is not refreshed automatically.</p>
+<p>The topic <b>FM Relais</b> requires an APRS Call or a QTH locator to show all active repeaters from FM-Funknetz and/or with an active Echolink connection. Clicking the TG / Nodenumber tries to connect the Echolink Node or activates the FM-Funknetz TG locally. This page is not refreshed automatically.</p>
+<p><b>MonitorCalls</b> shows all calls which are monitoring the TGs you have selected as monitoring or active TGs. Additionally it shows at the top who is currently talking (if any, at the time of this call) and below the list aof active TGS enhanced by the number of active users. A click joines the selected TG loacally. This page is not refreshed automatically.</p>
+<p><b>Expert / Normal</b> user. You can choose, what type you are. The normal user will see the change masks for svxlink, echolink, etc as already known. The expert user will have a full screen editor with *no* syntax checking.</p>
+<p><b>Radio:</b> if it is defined in ./include/config.php, that the connected radio is a "Shari", then there will be this addiitional topi visible. When clicking you will be able to to all configurations of the radio directly in the dashbard. At the first time all fields should be adjusted to the actual value. Currently I do not read data from the radio to fill the fields. The data are stored in ./dl3el/sa818/sa818.json</p>
+<p><b>NoAuth:</b> if choose not to authenticate the usage in ./include/config.php, it could be that at some points the autorization is still requested. Then click on "Dashboard" once and you are authorized.
+
+<p>Have fun and feedback is welcome<br> Thomas, DL3EL</p>
+
 # SVXLink-Dashboard-V2
 <h1>SVXLink Node dashboard repository inspired by a pi-star dashboard</h1>
 <h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.
