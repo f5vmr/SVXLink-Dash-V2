@@ -28,14 +28,11 @@ if ((!file_exists('include/buttos.php')) && (file_exists('include/buttons.php.ex
     sleep(3); 
 }
 
-//$_SESSION['auth'] = 'AUTHORISED';
-
+include "include/settings.php";
 if ((defined('DL3EL_NOAUTH')) && (strncmp(DL3EL_NOAUTH, "yes", 3) === 0)) {
 // always stay logged on
     $_SESSION['auth'] = "AUTHORISED";
 }
-include "include/settings.php";
-//echo "wichtige DEF:" . DL3EL_BASE . "<br>" . DL3EL;
 ?>
 <!DOCTYPE html >
 <html>
