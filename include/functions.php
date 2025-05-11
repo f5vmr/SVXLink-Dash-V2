@@ -38,31 +38,29 @@ function getSVXLog() {
 }
 function getLogContent() {
     // Possible log file names
-    $logFiles = ['/var/log/svxlink.log', '/var/log/svxlink'];
+    $logFile = SVXLOGPATH . SVXLOGPREFIX;
 
     // Initialize log content variable
     $logContent = '';
 
-    // Iterate over possible log files and read the first one that exists
-    foreach ($logFiles as $logFile) {
-        if (file_exists($logFile)) {
-            // Read the entire log file into an array of lines
-            $lines = file($logFile);
+  if (file_exists($logFile)) {
+      // Read the entire log file into an array of lines
+      $lines = file($logFile);
 
-            // Calculate the number of lines in the log file
-            $numLines = count($lines);
+      // Calculate the number of lines in the log file
+      $numLines = count($lines);
 
-            // Determine where to start showing the last 10 lines
-            $startLine = max(0, $numLines - 10);
+      // Determine where to start showing the last 10 lines
+      $startLine = max(0, $numLines - 10);
 
-            // Slice the array to get the last 10 lines
-            $last10Lines = array_slice($lines, $startLine);
+      // Slice the array to get the last 10 lines
+      $last10Lines = array_slice($lines, $startLine);
 
-            // Join the lines into a single string without adding extra line breaks
-            $logContent = implode('', $last10Lines);
-            break;
-        }
-    }
+      // Join the lines into a single string without adding extra line breaks
+      $logContent = implode('', $last10Lines);
+      } else {
+        $logContent = "File: " . $logFile . " not found";
+      }
 
     // Return log content or an error message
     return $logContent !== '' ? nl2br($logContent) : "Log file not found.";
@@ -158,21 +156,25 @@ function getEchoLog() {
 
 function getConnectedEcholink($echolog) {
         $users = Array();
+        $nn = 5;
         foreach ($echolog as $ElogLine) {
                 //if(strpos($ElogLine,"EchoLink QSO")){
                         //$users = Array();
                 //}
-                if(strpos($ElogLine,"state changed to CONNECTED")) {
-                        $lineParts = explode(" ", $ElogLine);
-              if (!in_array(substr($lineParts[2],0,-1), $users)) {
-                                array_push($users,trim(substr($lineParts[2],0,-1)));
-                        }
+                if ($lineParts[2] == "") {
+                   $nn = 6;
+                }  
+                if (strpos($ElogLine,"state changed to CONNECTED")) {
+                   $lineParts = explode(" ", $ElogLine);
+                   if (!in_array(substr($lineParts[$nn],0,-1), $users)) {
+                      array_push($users,trim(substr($lineParts[$nn],0,-1)));
+                   }
                 }
                 if(strpos($ElogLine,"state changed to DISCONNECTED")) {
-                    $lineParts = explode(" ", $ElogLine);
-    		    $call=substr($lineParts[2],0,-1);
-        	    $pos = array_search($call, $users);
-                    array_splice($users, $pos, 1);
+                   $lineParts = explode(" ", $ElogLine);
+                   $call=substr($lineParts[$nn],0,-1);
+                   $pos = array_search($call, $users);
+                   array_splice($users, $pos, 1);
                 }
         }
         return $users;
@@ -525,13 +527,17 @@ function file_name($dir,$file_name) {
 
 function file_backup($dir,$file_name){
         $backup_filename = $file_name . "." . date("YmdHis");
-        $command = "sudo cp -f " . $dir . $file_name . " /var/www/html/backups/" . $backup_filename;
+//        $command = "sudo cp -f " . $dir . $file_name . " /var/www/html/backups/" . $backup_filename;
+        $command = "sudo cp -f " . $dir . $file_name . " " . DL3EL_BASE . "backups/" . $backup_filename;
+
         echo exec($command);
         return;
     }
     
 function file_replace($dir,$file_name){
-        $command = "sudo cp -r /var/www/html/svxlink/".$file_name." /etc/svxlink/".$file_name;
+//        $command = "sudo cp -r /var/www/html/svxlink/".$file_name." /etc/svxlink/".$file_name;
+
+        $command = "sudo cp -r " . DL3EL_BASE . "svxlink/".$file_name. " " . SVXCONFPATH . $file_name;
         echo exec($command);
 }
       // Refresh iframe on save

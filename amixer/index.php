@@ -69,7 +69,7 @@ $current_values = get_current_amixer_values();
 
 <head>
     <meta charset="UTF-8">
-    <link href="/css/css.php" type="text/css" rel="stylesheet" />
+    <link href="../css/css.php" type="text/css" rel="stylesheet" />
     <style type="text/css">
         body {
             background-color: #eee;

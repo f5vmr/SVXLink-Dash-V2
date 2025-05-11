@@ -2,22 +2,9 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 include_once "include/config.php";
 include_once "include/tools.php";
 include_once "include/editor.php";
-
-// migrate to external class tbc
-
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
-    if (fopen($svxConfigFile,'r'))
-       { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
-         $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
-         $fmnetwork =$svxconfig['ReflectorLogic']['HOSTS'];   }
-else { $callsign="NOCALL"; 
-       $fmnetwork="no registered";
-	}
-
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -102,7 +89,7 @@ include_once "include/buttons.php";
 
    // echo '<td valign="center" style = "height:455px;width:550px; border:none;  background-color:#f1f1f1;">';
     echo '<td valign="center" style = "height:455px;width:550px; border:none; background-color:#f1f1f1;">';
-    echo '<iframe src="/wifi"  width="615px" height="450px" style = "background-color:#f1f1f1;"></iframe>';
+    echo '<iframe src="./wifi"  width="615px" height="450px" style = "background-color:#f1f1f1;"></iframe>';
     echo '</td>';
  
 ?>

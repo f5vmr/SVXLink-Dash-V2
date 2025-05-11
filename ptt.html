@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button mit Timer und Skriptausführung</title>
+    <script type="text/javascript">
+        let isCommandExecuted = false;
+        let interval;
+
+        function startTimer(duration, button) {
+            let timer = duration, minutes, seconds;
+            interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                button.textContent = "PTT on (" + minutes + ":" + seconds + ")";
+                button.style.fontWeight = "bold";
+                button.style.backgroundColor = "red";
+                button.style.color = "white";
+                if (--timer < 0) {
+                    clearInterval(interval); 
+                    button.textContent = "PTT Time!";
+                    button.style.fontWeight = "bold";
+                    button.style.backgroundColor = "yellow";
+                    button.style.color = "black";
+                    //alert("Zeit abgelaufen!");
+                }
+            }, 1000);
+        }
+
+        function executeCommand() {
+            let button = document.getElementById('myButton');
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "executePTT.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            if (!isCommandExecuted) {
+                xhr.send("command=first");
+                startTimer(180, button); // 10 Sekunden Timer
+                isCommandExecuted = true;
+            } else {
+                xhr.send("command=second");
+                clearInterval(interval);
+                button.textContent = "PTT off";
+                button.style.fontWeight = "bold";
+                button.style.backgroundColor = "blue";
+                button.style.color = "white";
+                isCommandExecuted = false;
+            }
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    //alert(xhr.responseText);
+                }
+            };
+        }
+    </script>
+</head>
+<body>
+    <div>
+            <button id="myButton" onclick="executeCommand()" style = "color:white; background-color:green; border-color:transparent; border-radius:8px; height:40px; width:200px; font-size:14px;"><b>PTT off</b></button>
+
+    </div>
+</body>
+</html>

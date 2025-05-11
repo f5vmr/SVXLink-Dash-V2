@@ -7,18 +7,6 @@ include_once "include/config.php";
 include_once "include/config.inc.php";
 include_once "include/tools.php";
 include_once "include/functions.php";
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
-
-if (fopen($svxConfigFile, 'r')) {
-    $svxconfig = parse_ini_file($svxConfigFile, true, INI_SCANNER_RAW);
-    $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
-    $fmnetwork = $svxconfig['ReflectorLogic']['HOSTS'];
-    //$tgUri = $svxconfig['ReflectorLogic']['TG_URI'];
-    $node_password = $svxconfig['ReflectorLogic']['AUTH_KEY'];
-    $node_user = $callsign;}
-else { $callsign="NOCALL"; 
-       $fmnetwork="not registered";
-	}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"

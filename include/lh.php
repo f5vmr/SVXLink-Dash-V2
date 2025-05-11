@@ -57,13 +57,12 @@ for ($i = 0;  ($i <= 20); $i++) { //Last 20 calls
                //$name=$tgdb_array[$tgnumber];
 
                if ( $name==""){ $name ="------";}
-               if ( $tgnumber>=1239900 and $tgnumber<= 1239999){ $name ="AUTO QSY";}
+               if ( $tgnumber>=400 and $tgnumber<= 499){ $name ="AUTO QSY";}
 		echo "<td style=\"font-weight:bold;color:#464646;\">&nbsp;<b>".$name."</b></td>";
 		echo"</tr>\n";
 		}
 	}
 }
-
 ?>
   </table></form>
 </fieldset>

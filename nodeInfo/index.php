@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/css/css.php" type="text/css" rel="stylesheet" />
+    <link href="../css/css.php" type="text/css" rel="stylesheet" />
     <style type="text/css">
         body {
             background-color: #eee;
@@ -69,8 +69,9 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <?php
             include_once "include/functions.php";
-            $filename = '/etc/svxlink/node_info.json';
-            $backup_dir = '/var/www/html/backups/';
+//            $filename = '/etc/svxlink/node_info.json';
+            $filename = SVXCONFPATH . "node_info.json";
+            $backup_dir = DL3EL_BASE . 'backups/';
 
             // Ensure backup directory exists
             if (!file_exists($backup_dir)) {

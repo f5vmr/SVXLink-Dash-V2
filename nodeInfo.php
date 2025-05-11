@@ -70,26 +70,27 @@ include_once "include/buttons.php";
 ?>
 <?php
 if($_GET['id']=="log")  {
-    $edit_file = "/var/log/svxlink.log";
+    $edit_file = SVXLOGPATH . SVXLOGPREFIX;
 }
 if($_GET['id']=="svxlink") {
     //shell_exec("cd ");
-    $edit_file = "/etc/svxlink/svxlink.conf";
+    $edit_file = SVXCONFPATH . SVXCONFIG;
+//    $edit_file = "/etc/svxlink/svxlink.conf";
 }
 elseif($_GET['id']=="gpio") {
     //shell_exec("cd ");
-    $edit_file = "/etc/svxlink/gpio.conf";
+    $edit_file = SVXCONFPATH ."gpio.conf";
 }
 elseif($_GET['id']=="echolink"){
     //shell_exec("cd ");
-    $edit_file = "/etc/svxlink/svxlink.d/ModuleEchoLink.conf";
+    $edit_file = SVXCONFPATH ."svxlink.d/ModuleEchoLink.conf";
 }
 elseif($_GET['id']=="metarinfo"){
     //shell_exec("cd ");
-    $edit_file = "/etc/svxlink/svxlink.d/ModuleMetarInfo.conf";
+    $edit_file = SVXCONFPATH . "svxlink.d/ModuleMetarInfo.conf";
 }
 elseif($_GET['id']=="nodeInfo"){
-    $edit_file = "/etc/svxlink/node_info.json";
+    $edit_file = SVXCONFPATH . "node_info.json";
 }
 
 // check if form has been submitted

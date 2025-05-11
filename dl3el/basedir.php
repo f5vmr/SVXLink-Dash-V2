@@ -1,0 +1,1 @@
+<?php\n define("DL3EL_BASE", "/var/www/html/SVXLink-Dash-V2.5");\n?>\n

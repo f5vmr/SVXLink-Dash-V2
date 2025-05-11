@@ -76,7 +76,56 @@ $tgselect = trim(getSVXTGSelect());
 if ( $tgselect=="0"){$tgselect="";}
 echo "<tr><th width=50%>TG Active</th><td style=\"background: #ffffed;color:#0065ff;font-weight: bold;\">".$tgselect."</td></tr>\n";
 echo "</table>";
+if ((defined('DL3EL_VERSION')) && (strncmp(DL3EL_VERSION, "develop", 7) === 0)) {
+// ab hier für die automatische Anwahl eines zweiten Reflectors
+// damit das funktioniert, müssen in der include/config.php folgende Einträge (ggf. angepasster Pfadname) gemacht werden:
+//define("DL3EL", "/var/www/html/dl3el");
+// must be a number, must not be a string
+//define("DL3EL_SPEC_TG", 49);
+// DL3EL definiert das Verzeichnis mit meinen Erweiterungen (hier nur die Datei mit dem TG Status), svxlink muss Schreibrechte auf das Verzeichnis haben
+// DL3EL_SPEC_TG benennt die TG auf einen anderen Reflektor, bei der automatisch, wenn sie empfangen wird, der Reflektor verbunden wird
+// derzeit muss die Reflektorlogik auf das Kommand 8 reaieren
+   if (defined('DL3EL')) {
+      $svxStatusFile = DL3EL . "/tg_status";
+      $svxdata = shell_exec('cat ' . $svxStatusFile);
+      if (defined('DL3EL_SPEC_TG')) {
+         $svx_spec_tg = DL3EL_SPEC_TG;
+      } else {   
+         $svx_spec_tg = 0;
+      }   
 
+//echo "TGsel:$tgselect / SVX:$svxdata <br>";
+      if (($tgselect == $svx_spec_tg) && ($svxdata != $svx_spec_tg)){
+         $newtg= $tgselect . " >" . $svxStatusFile;
+         shell_exec("echo $newtg");
+// wichtig ist, dass die Logik für Ref-F49 mit dem KOmmando 8 verknüpft ist (svxlink.con)
+         $newtg = "*9#*81" . $tgselect . "#";
+         $exec= "echo '$newtg' > /tmp/dtmf_svx";
+         exec($exec,$output);
+         echo "<meta http-equiv='refresh' content='0'>";
+         $exec= "echo '" . $_POST['dtmfsvx'] . "' > /tmp/dtmf_svx";
+         exec($exec,$output);
+         echo "<meta http-equiv='refresh' content='0'>";
+      }
+      $svxdata = shell_exec('cat ' . $svxStatusFile);
+      if (($tgselect != $svx_spec_tg) && ($svxdata == $svx_spec_tg)) {
+         $newtg= $tgselect . " >" . $svxStatusFile;
+         shell_exec("echo $newtg");
+         $newtg = "*8#*91" . $tgselect . "#";
+         $exec= "echo '$newtg' > /tmp/dtmf_svx";
+         exec($exec,$output);
+         echo "<meta http-equiv='refresh' content='0'>";
+         $exec= "echo '" . $_POST['dtmfsvx'] . "' > /tmp/dtmf_svx";
+         exec($exec,$output);
+         echo "<meta http-equiv='refresh' content='0'>";
+      }
+      if ($tgselect != $svxdata) {
+         $newtg= $tgselect . " >" . $svxStatusFile;
+         shell_exec("echo $newtg");
+      }
+   }
+// bis hier für die automatische Anwahl eines zweiten Reflectors
+}	
 if ($svxconfig["Rx1"]["PEAK_METER"] =="1") 
 $ispeak = true ;
 
@@ -153,9 +202,17 @@ if ($check_logics[0] == "RepeaterLogic") {
    }
 if ($check_logics[0] == "SimplexLogic") {
    echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#0a7d29;font-weight: bold;\">";
-   echo "Mode: simplex";
-   echo "</div></td></tr>";
-   }
+   if (defined('DL3EL_RADIO')) {
+      $svxRadio = DL3EL_RADIO;
+      if ($svxRadio == "Shari") {
+         echo "Mode: simplex";
+         echo "<br>QRG: ",exec('perl /home/svxlink/get_shari_hf_data.pl', $output, $retval);
+      } else {
+         echo " Radio: " . DL3EL_RADIO;
+      }   
+   }   
+   echo "</div></td></tr>";    echo "</div></td></tr>";
+}
 echo "<table style=\"margin-top:4px;margin-bottom:13px;\"><tr><th colspan=2 >Editing</th></tr><tr>";
    //echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#000000;font-weight: bold;\">"; 
    //echo "Last Reboot<br>",exec('uptime -s');
@@ -175,6 +232,9 @@ $net1= cidr_match($ip,"192.168.0.126/16");
 $net2= cidr_match($ip,"192.175.43.91/8");
 $net3= cidr_match($ip,"127.0.0.0/8");
 $net4= cidr_match($ip,"192.168.1.0/8");
+if ((defined('DL3EL_VERSION')) && (strncmp(DL3EL_VERSION, "develop", 7) === 0)) {
+      $FULLACCESS_OUTSIDE = 1;
+}	
 
 if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE || $FULLACCESS_OUTSIDE == 1) {
    echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#ff0000;font-weight: bold;\">";

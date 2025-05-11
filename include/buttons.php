@@ -1,26 +1,10 @@
 
-<?php 
-include_once "../include/tools.php"; 
-include_once "../dtmf.php";
-?>
 <div class="content">
 <?php
-//$ip = $_SERVER['REMOTE_ADDR']; 
-//$net1= cidr_match($ip,"192.168.0.0/24");
-//$net2= cidr_match($ip,"10.0.0.0/8");
-//$net3= cidr_match($ip,"127.0.0.0/24");
-//$net4= cidr_match($ip,"192.168.1.0/24");
-//$net5 = cidr_match($ip, "192.168.1.254/24");
-//
-//
-//if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE || $net5 == TRUE) {
-//    debug_log("Network Check Passed");
 
  if(array_key_exists('button1', $_POST)) {
         $exec= "echo '" . KEY1[1] . "' > /tmp/dtmf_svx";
-        debug_log("Button 1 Executed");
         exec($exec,$output);
-        debug_log("output: " . print_r($output,true));
             echo "<meta http-equiv='refresh' content='0'>";
         }
  if(array_key_exists('button2', $_POST)) {
@@ -67,6 +51,36 @@ include_once "../dtmf.php";
         }
  if(array_key_exists('button10', $_POST)) {
         $exec= "echo '" . KEY10[1] . "' > /tmp/dtmf_svx";
+            exec($exec,$output);
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+if(array_key_exists('button11', $_POST)) {
+        $exec= "echo '" . KEY11[1] . "' > /tmp/dtmf_svx";
+            exec($exec,$output);
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+ if(array_key_exists('button12', $_POST)) {
+        $exec= "echo '" . KEY12[1] . "' > /tmp/dtmf_svx";
+            exec($exec,$output);
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+ if(array_key_exists('button13', $_POST)) {
+        $exec= "echo '" . KEY13[1] . "' > /tmp/dtmf_svx";
+            exec($exec,$output);
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+ if(array_key_exists('button14', $_POST)) {
+        $exec= "echo '" . KEY14[1] . "' > /tmp/dtmf_svx";
+            exec($exec,$output);
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+ if(array_key_exists('button15', $_POST)) {
+        $exec= "echo '" . KEY15[1] . "' > /tmp/dtmf_svx";
+            exec($exec,$output);
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+ if(array_key_exists('button16', $_POST)) {
+        $exec= "echo '" . KEY16[1] . "' > /tmp/dtmf_svx";
             exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
@@ -123,6 +137,18 @@ include_once "../dtmf.php";
             class=<?php echo KEY9[2] ?> value='<?php echo KEY9[0] ?>' />
 	<input type="submit" name="button10"
             class=<?php echo KEY10[2] ?> value='<?php echo KEY10[0] ?>' />
+	<input type="submit" name="button11"
+            class=<?php echo KEY11[2] ?> value='<?php echo KEY11[0] ?>' />
+	<input type="submit" name="button12"
+            class=<?php echo KEY12[2] ?> value='<?php echo KEY12[0] ?>' />
+	<input type="submit" name="button13"
+            class=<?php echo KEY13[2] ?> value='<?php echo KEY13[0] ?>' />
+	<input type="submit" name="button14"
+            class=<?php echo KEY14[2] ?> value='<?php echo KEY14[0] ?>' />
+	<input type="submit" name="button15"
+            class=<?php echo KEY15[2] ?> value='<?php echo KEY15[0] ?>' />
+	<input type="submit" name="button16"
+            class=<?php echo KEY16[2] ?> value='<?php echo KEY16[0] ?>' />
 
 <?php	
 //    if (KEY6[0]!="") {
@@ -151,10 +177,7 @@ include_once "../dtmf.php";
 <?php
   if (isset($_POST["dtmfsvx"])){
    $exec= "echo '" . $_POST['dtmfsvx'] . "' > /tmp/dtmf_svx";
-   debug_log("DTMF command: " . $_POST['dtmfsvx']);
-   debug_log("Command:  $exec");
    exec($exec,$output);
-   debug_log("Output: " . print_r($output,true));
    echo "<meta http-equiv='refresh' content='0'>";
     }
   if (isset($_POST["jmpto"])) {
