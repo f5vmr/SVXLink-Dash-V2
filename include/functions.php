@@ -156,28 +156,28 @@ function getEchoLog() {
 
 function getConnectedEcholink($echolog) {
         $users = Array();
-        $nn = 5;
         foreach ($echolog as $ElogLine) {
-                //if(strpos($ElogLine,"EchoLink QSO")){
-                        //$users = Array();
-                //}
-                if ($lineParts[2] == "") {
-                   $nn = 6;
-                }  
-                if (strpos($ElogLine,"state changed to CONNECTED")) {
-                   $lineParts = explode(" ", $ElogLine);
-                   if (!in_array(substr($lineParts[$nn],0,-1), $users)) {
-                      array_push($users,trim(substr($lineParts[$nn],0,-1)));
-                   }
-                }
-                if(strpos($ElogLine,"state changed to DISCONNECTED")) {
-                   $lineParts = explode(" ", $ElogLine);
-                   $call=substr($lineParts[$nn],0,-1);
-                   $pos = array_search($call, $users);
-                   array_splice($users, $pos, 1);
-                }
+            if (!strlen($lineParts[2])) {
+              $nn = 5;
+            } else {
+              $nn = 6;
+            }
+            if (strpos($ElogLine,"state changed to CONNECTED")) {
+                $lineParts = explode(" ", $ElogLine);
+// echo "E1:" . $lineParts[1]  . "<br>E2:(" . $lineParts[2] . ")<br>E3:"  . $lineParts[3]. "<br>";
+// echo "E4:" . $lineParts[4]  . "<br>E5:" . $lineParts[5] . "<br>E6:"  . $lineParts[6]. "/" . $nn . "/" .strlen($lineParts[2]) . "<br>";
+              if (!in_array(substr($lineParts[$nn],0,-1), $users)) {
+                  array_push($users,trim(substr($lineParts[$nn],0,-1)));
+              }
+            }
+            if(strpos($ElogLine,"state changed to DISCONNECTED")) {
+                $lineParts = explode(" ", $ElogLine);
+                $call=substr($lineParts[$nn],0,-1);
+                $pos = array_search($call, $users);
+                array_splice($users, $pos, 1);
+            }
         }
-        return $users;
+      return $users;
 }
 
 // check callsign EchoLink talker TXing form log line
