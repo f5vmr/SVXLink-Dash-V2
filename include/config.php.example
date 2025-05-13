@@ -104,8 +104,8 @@ define("MENUBUTTON", "BOTTOM");
 // In most cases you can switch to FALSE
 define("SHOWPTT","FALSE");
 //
-define("DL3EL_BASE", "/var/www/html/SVXLink-Dash-V2.5/");
-define("DL3EL", "/var/www/html/SVXLink-Dash-V2.5/dl3el");
+//define("DL3EL_BASE", "/var/www/html/SVXLink-Dash-V2.5/");
+//define("DL3EL", "/var/www/html/SVXLink-Dash-V2.5/dl3el");
 define("DL3EL_EXPERT", "no");
 //define("DL3EL_EXPERT", "yes");
 define("DL3EL_NOAUTH", "no");
@@ -122,6 +122,11 @@ define("DL3EL_DMRTG", "26269");
 define("DL3EL_VERSION", "public");
 //define("DL3EL_VERSION", "develop");
 define("DL3EL_DB_VERSION", "2.5");
+// if you are unable to configure the system with *only* one soundcard for svxlink, the inde4x to the card could be different after a reboot
+// setting DL3EL_SC_CHANGE to "yes" enables the dashboard to select the correct soundcard and restart svxlink on the first run after reboot.
+define("DL3EL_SC_CHANGE", "no");
+// this string has to macht the name of the card in the linux system
+define("DL3EL_SC_STRING", "Audio Device");
 //
 
 $svxConfigFile = SVXCONFPATH . SVXCONFIG;

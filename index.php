@@ -33,6 +33,42 @@ if ((defined('DL3EL_NOAUTH')) && (strncmp(DL3EL_NOAUTH, "yes", 3) === 0)) {
 // always stay logged on
     $_SESSION['auth'] = "AUTHORISED";
 }
+if ((defined('DL3EL_SC_CHANGE')) && (DL3EL_SC_CHANGE === "yes")) {
+    $svxConfigFile = SVXCONFPATH."/".SVXCONFIG;
+    if (fopen($svxConfigFile,'r')) {
+        $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); 
+        if (defined('DL3EL_SC_STRING')) {
+            $sc_port_cmp = DL3EL_SC_STRING;
+        } else {    
+            $sc_port_cmp = "Audio Device";
+        }
+        $sc_port_linux = 'aplay -l | grep "' . $sc_port_cmp . '"';
+        $sc = 'aplay -l | grep "Audio Device"';
+        $sc = substr(shell_exec($sc),5,1);
+         $sc_port_name = $svxconfig['SimplexLogic']['RX']; 
+         $sc_port = substr($svxconfig[$sc_port_name]['AUDIO_DEV'],12,5); 
+         if ($sc != $sc_port) {
+            echo "<b>Soundcard&nbsp;mismatch:<br>Card:" . $sc . "/" . substr($svxconfig[$sc_port_name]['AUDIO_DEV'],5,8) . "</b>, will be changed";
+            $sc_port_raw = $svxconfig[$sc_port_name]['AUDIO_DEV']; 
+            echo "Data old: " . $sc_port_raw;
+            $sc_port_new = substr($svxconfig[$sc_port_name]['AUDIO_DEV'],0,12) . $sc; 
+            echo "will be changed to Data new: " . $sc_port_new . "<br>";
+            $content = file_get_contents($svxConfigFile);
+            $backup_filename = $svxConfigFile . "." . date("YmdHis");
+            exec('sudo cp -p ' . $svxConfigFile . ' ' . $backup_filename);
+            $content = str_replace($sc_port_raw,$sc_port_new,$content); 
+            file_put_contents($svxConfigFile, $content);
+            echo "done, now restarting svxlink..<br>";
+            sleep(1);
+            exec('sudo systemctl restart svxlink 2>&1', $screen, $retval);
+            if ($retval === 0) {
+                echo "SVXLink sucessfull restartet, please reload page";
+            } else {
+                echo "SVXLink restart failure, check log";
+            }
+         }   
+    }
+}
 ?>
 <!DOCTYPE html >
 <html>

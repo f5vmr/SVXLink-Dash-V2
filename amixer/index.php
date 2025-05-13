@@ -3,6 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+include "../include/settings.php";
+
 // Function to execute amixer command and retrieve output
 function execute_amixer($command) {
     $output = [];
@@ -28,11 +30,12 @@ function calculate_percentage($current_value, $max_value) {
 
 // Retrieve and parse current values using amixer cget
 function get_current_amixer_values() {
-    $headphone_output = execute_amixer("sudo amixer cget numid=6");
-    $mic_output = execute_amixer("sudo amixer cget numid=4");
-    $capture_output = execute_amixer("sudo amixer cget numid=8");
-    $autogain_output = execute_amixer("sudo amixer sget numid=9");
-
+    $sc = 'aplay -l | grep "Audio Device"';
+    $sc = substr(shell_exec($sc),5,1);
+    $headphone_output = execute_amixer("sudo amixer -c" . $sc . " cget numid=6");
+    $mic_output = execute_amixer("sudo amixer -c" . $sc . " cget numid=4");
+    $capture_output = execute_amixer("sudo amixer -c" . $sc . " cget numid=8");
+    $autogain_output = execute_amixer("sudo amixer -c" . $sc . " sget numid=9");
     $current_values = [
         'headphone' => parse_amixer_value($headphone_output),
         'mic' => parse_amixer_value($mic_output),
@@ -60,8 +63,9 @@ $max_values = [
 ];
 
 // Get current values from amixer
+$sc = 'aplay -l | grep "Audio Device"';
+$sc = substr(shell_exec($sc),5,1);
 $current_values = get_current_amixer_values();
-
 ?>
 
 <!DOCTYPE html>
@@ -159,6 +163,24 @@ $current_values = get_current_amixer_values();
                             <option value="0" <?php if ($current_autogain === '0' || $current_autogain === 'off') echo 'selected'; ?>>Off</option>
                             <option value="1" <?php if ($current_autogain === '1' || $current_autogain === 'on') echo 'selected'; ?>>On</option>
                         </select>
+                        <?php 
+                            $svxConfigFile = SVXCONFPATH."/".SVXCONFIG;
+                            if (fopen($svxConfigFile,'r')) {
+                                $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); 
+                                $sc_port_name = $svxconfig['SimplexLogic']['RX']; 
+                                $sc_port_raw = $svxconfig[$sc_port_name]['AUDIO_DEV']; 
+                                if (defined('DL3EL_SC_STRING')) {
+                                    $sc_port_cmp = DL3EL_SC_STRING;
+                                } else{    
+                                    $sc_port_cmp = "Audio Device";
+                                }
+                                $sc_port_linux = 'aplay -l | grep "' . $sc_port_cmp . '"';
+                                echo "SC: " . $sc_port_linux;
+                                $sc_port_linux = shell_exec($sc_port_linux);
+                                echo "<br>Soundcard configuration: <b>" . $sc_port_raw . "</b> (svxlink.conf" . ")<br>";
+                                echo "<b>" . $sc_port_linux . " (Linux)<br>";
+                            }    
+                        ?>
                         <br>
                         <button type="submit">Apply Settings</button>
                         <input type="hidden" name="form_submitted" value="1">
@@ -169,28 +191,29 @@ $current_values = get_current_amixer_values();
     </center>
 
     <?php
+
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_submitted'])) {
         if (isset($_POST['headphone'])) {
             $headphone_percentage = intval($_POST['headphone']);
             $headphone_value = ($headphone_percentage / 100) * $max_values['headphone'];
-            exec("sudo amixer cset numid=6 " . escapeshellarg($headphone_value));
+            exec("sudo amixer -c" . $sc . " cset numid=6 " . escapeshellarg($headphone_value));
         }
 
         if (isset($_POST['mic'])) {
             $mic_percentage = intval($_POST['mic']);
             $mic_value = ($mic_percentage / 100) * $max_values['mic'];
-            exec("sudo amixer cset numid=4 " . escapeshellarg($mic_value));
+            exec("sudo amixer -c" . $sc . " cset numid=4 " . escapeshellarg($mic_value));
         }
 
         if (isset($_POST['capture'])) {
             $capture_percentage = intval($_POST['capture']);
             $capture_value = ($capture_percentage / 100) * $max_values['capture'];
-            exec("sudo amixer cset numid=8 " . escapeshellarg($capture_value));
+            exec("sudo amixer -c" . $sc . " cset numid=8 " . escapeshellarg($capture_value));
         }
 
         if (isset($_POST['autogain'])) {
             $autogain = $_POST['autogain'] === '1' ? '1' : '0';
-            exec("sudo amixer sset numid=9 " . escapeshellarg($autogain));
+            exec("sudo amixer -c" . $sc . " sset numid=9 " . escapeshellarg($autogain));
         }
 
         // Refresh the page to show updated values

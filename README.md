@@ -18,9 +18,11 @@ To make it more  obvious, the button definition has moved from ./include/config.
 <p><b>Expert / Normal</b> user. You can choose, what type you are. The normal user will see the change masks for svxlink, echolink, etc as already known. The expert user will have a full screen editor with *no* syntax checking. The selection will be restored on a new start.</p>
 <p><b>Radio:</b> if it is defined in ./include/config.php, that the connected radio is a "Shari", then there will be this addiitional topi visible. When clicking you will be able to to all configurations of the radio directly in the dashbard. At the first time all fields should be adjusted to the actual value. Currently I do not read data from the radio to fill the fields. The data are stored in ./dl3el/sa818/sa818.json</p>
 <p><b>NoAuth:</b> if choose not to authenticate the usage in ./include/config.php, it could be that at some points the autorization is still requested. Then click on "Dashboard" once and you are authorized. </p>
-
-<p>Have fun and feedback is welcome<br> Thomas, DL3EL</p>
-
+<p>if you are unable to configure the system with *only* one soundcard for svxlink, the inde4x to the card could be different after a reboot <br>
+Setting <b>DL3EL_SC_CHANGE</b> to "yes" enables the dashboard to select the correct soundcard and restart svxlink on the first run after reboot.<br>
+The string "DL3EL_SC_STRING" has to match the name of the card in the linux system.<br>
+<br>
+<p>Have fun and feedback is welcome<br> Thomas, DL3EL</p><br>
 # SVXLink-Dashboard-V2
 <h1>SVXLink Node dashboard repository inspired by a pi-star dashboard</h1>
 <h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.
