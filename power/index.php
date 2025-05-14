@@ -154,6 +154,35 @@ if (isset($_POST['btnrstshari']))
         exec($command,$screen,$retval);
 }
 
+if (isset($_POST['btnDashUpdate']))
+    {
+        $file = DL3EL_BASE .'git_pull.sh';
+        $log = DL3EL_BASE .'git_pull.log';
+        $gitdir = substr(DL3EL_BASE,0,strlen(DL3EL_BASE)-1);
+        $owner = 'svxlink';
+        $group = 'svxlink';
+
+        $command = "sudo chown $owner:$group " . escapeshellarg($file) . " >>" . $log;
+        $output = [];
+        $return_var = 0;
+        echo "C1:" . $command;
+        exec($command, $output, $return_var);
+        echo "O1:";
+        print_r($output);
+        $retval = null;
+        $screen = null;
+        $command = "sudo chmod g+x " . $file . " >>" . $log;
+        echo "C2:" . $command;
+        exec($command,$output,$retval);
+        echo "O2:" . $output;
+        print_r($output);
+        $command = "sudo " . $file . " " . $gitdir . " >>" . $log;
+        echo "C3:" . $command;
+        exec($command,$output,$retval);
+        echo "O3:" . $output;
+        print_r($output);
+}
+
 if (isset($_POST['btnrstc710']))
     {
         $retval = null;
@@ -191,6 +220,11 @@ if (isset($_POST['btnrstc710']))
         echo '<button name="btnrstc710" type="submit" class="green" style = "height:30px; width:400px; font-size:12px;">Reset Sound C710</button>';
       }    
    }   
+  if ((defined('DL3EL_BASE')) && (file_exists(DL3EL_BASE.'git_pull.sh')) && (DL3EL_VERSION === "develop")) {
+      echo '<br><br><br>';
+      echo '<button name="btnDashUpdate" type="submit" class="green" style = "height:30px; width:400px; font-size:12px;">Dashboard Update (GitHub)</button>';
+  }
+
 ?>   
 </form>
 
