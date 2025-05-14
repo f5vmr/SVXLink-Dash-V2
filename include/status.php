@@ -232,13 +232,7 @@ if (isProcessRunning('svxlink')) {
       echo "</div></td></tr>";    echo "</div></td></tr>";
    }  
 
-   if ($_SESSION['auth'] === "UNAUTHORISED") {
-      echo "<table style=\"margin-top:4px;margin-bottom:13px;\"><tr><th colspan=2 >Editing</th></tr><tr>";
-      echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#ff0000;font-weight: bold;\">";
-      echo "Not Authorised";
-      echo "</div></td></tr>";
-   }
-   
+ 
 
    if ((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "no")) {
       echo "<table style=\"margin-top:4px;margin-bottom:13px;\"><tr><th colspan=2 >Editing</th></tr><tr>";
@@ -259,6 +253,13 @@ if (isProcessRunning('svxlink')) {
       if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE || $FULLACCESS_OUTSIDE == 1) {
          echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#ff0000;font-weight: bold;\">";
          echo "DB Access Level:<br>Full/Intranet/VPN";
+         echo "</div></td></tr>";
+      }
+   } else {
+      if ($_SESSION['auth'] === "UNAUTHORISED") {
+         echo "<table style=\"margin-top:4px;margin-bottom:13px;\"><tr><th colspan=2 >Editing</th></tr><tr>";
+         echo "<td colspan=2 style=\"background:#ffffed;\"><div style=\"margin-top:4px;margin-bottom:4px;white-space:normal;color:#ff0000;font-weight: bold;\">";
+         echo "Not Authorised";
          echo "</div></td></tr>";
       }
    }

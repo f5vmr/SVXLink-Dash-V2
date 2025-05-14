@@ -14,6 +14,11 @@ include_once "include/tools.php";
     <meta name="robots" content="index" />
     <meta name="robots" content="follow" />
     <meta name="language" content="English" />
+<?php
+    if ((defined('DL3EL_MONREFRESH')) && (DL3EL_MONREFRESH > "4")) {
+        echo '<meta http-equiv="refresh" content="' . DL3EL_MONREFRESH . '">';
+    }
+?>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="SVXLink" />
     <meta name="Author" content="G4NAB, SP2ONG, SP0DZ" />

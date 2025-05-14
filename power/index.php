@@ -68,11 +68,12 @@ textarea {
 <center>
 <h1 id="power" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Power</h1>
 
-
 <?php
 
 
-if ($_SESSION['auth'] === 'AUTHORISED'){
+if ((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "no") || ($_SESSION['auth'] === 'AUTHORISED')) {
+
+include_once  '../include/config.php';
 include_once  '../include/functions.php';
 
 
@@ -89,7 +90,7 @@ if (isset($_POST['btnPower']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo -n nmcli dev wifi rescan');
+        //exec('sudo nmcli dev wifi rescan');
         $command = "sudo shutdown -h now 2>&1";
         exec($command,$screen,$retval);
 }
@@ -101,7 +102,7 @@ if (isset($_POST['btnPower']))
 //        $screen = null;
 //        //$sAconn = $_POST['sAconn'];
 //        //$password = $_POST['password'];
-//        //exec('sudo -n nmcli dev wifi rescan');
+//        //exec('sudo nmcli dev wifi rescan');
 //        $command = "sudo systemctl restart oled2svx  2>&1";
 //        exec($command,$screen,$retval);
 //}
@@ -113,8 +114,20 @@ if (isset($_POST['btnSvxlink']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo -n nmcli dev wifi rescan');
+        //exec('sudo nmcli dev wifi rescan');
         $command = "sudo systemctl restart svxlink 2>&1";
+        exec($command,$screen,$retval);
+}
+
+if (isset($_POST['btnSvxlinkoff']))
+    {
+
+        $retval = null;
+        $screen = null;
+        //$sAconn = $_POST['sAconn'];
+        //$password = $_POST['password'];
+        //exec('sudo nmcli dev wifi rescan');
+        $command = "sudo systemctl stop svxlink 2>&1";
         exec($command,$screen,$retval);
 }
 
@@ -125,10 +138,30 @@ if (isset($_POST['btnRestart']))
         $screen = null;
         //$sAconn = $_POST['sAconn'];
         //$password = $_POST['password'];
-        //exec('sudo -n nmcli dev wifi rescan');
+        //exec('sudo nmcli dev wifi rescan');
         $command = "sudo shutdown -r now 2>&1";
         exec($command,$screen,$retval);
 }
+
+if (isset($_POST['btnrstshari']))
+    {
+// wichttig: damit das funktioniert, muss mit visudo folgendes eingetragen werden
+// svxlink        ALL=(ALL) NOPASSWD: /usr/sbin/alsactl
+
+        $retval = null;
+        $screen = null;
+        $command = "/home/svxlink/dl3el/shari-arestore.sh  2>&1";
+        exec($command,$screen,$retval);
+}
+
+if (isset($_POST['btnrstc710']))
+    {
+        $retval = null;
+        $screen = null;
+        $command = "/home/svxlink/dl3el/c710-arestore.sh  2>&1";
+        exec($command,$screen,$retval);
+}
+
 } else {
   echo '<h1 id="power" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">You are not authorised to make changes here.</h1>';
  
@@ -137,19 +170,28 @@ if (isset($_POST['btnRestart']))
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 	
+	<button name="btnSvxlinkoff" type="submit" class="red" style = "height:30px; width:400px; font-size:12px;">Stop SVXlink Service</button>
+	<br>
 	<button name="btnSvxlink" type="submit" class="red" style = "height:30px; width:400px; font-size:12px;">Restart SVXlink Service</button>
 	<br>
 	<!--button name="btnLcd" type="submit" class="red" style = "height:30px; width:400px; font-size:12px;">Restart Lcd Service</button>
 	<BR-->
 	<button name="btnRestart" type="submit" class="red" style = "height:30px; width:400px; font-size:12px;">Restart Device</button>
         <br>
-	
 	<button name="btnPower" type="submit" class="red" style = "height:30px; width:400px; font-size:12px;">Power OFF</button>
-
-
-
-
-
+<?php
+   if (defined('DL3EL_RADIO') && (strncmp(DL3EL_VERSION, "develop", 7) === 0)) {
+      $svxRadio = DL3EL_RADIO;
+      if ($svxRadio == "Shari") {
+        echo '<br><br><br>';
+        echo '<button name="btnrstshari" type="submit" class="green" style = "height:30px; width:400px; font-size:12px;">Reset Sound Shari</button>';
+      }    
+      if ($svxRadio == "C710") {
+        echo '<br><br><br>';
+        echo '<button name="btnrstc710" type="submit" class="green" style = "height:30px; width:400px; font-size:12px;">Reset Sound C710</button>';
+      }    
+   }   
+?>   
 </form>
 
 <p style = "margin: 0 auto;"></p>
