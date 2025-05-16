@@ -157,18 +157,18 @@ function getEchoLog() {
 function getConnectedEcholink($echolog) {
         $users = Array();
         foreach ($echolog as $ElogLine) {
-            if (!strlen($lineParts[2])) {
-              $nn = 5;
-            } else {
-              $nn = 6;
-            }
             if (strpos($ElogLine,"state changed to CONNECTED")) {
                 $lineParts = explode(" ", $ElogLine);
+                if (!strlen($lineParts[2])) {
+                  $nn = 4;
+                } else {
+                  $nn = 5;
+                }
 // echo "E1:" . $lineParts[1]  . "<br>E2:(" . $lineParts[2] . ")<br>E3:"  . $lineParts[3]. "<br>";
 // echo "E4:" . $lineParts[4]  . "<br>E5:" . $lineParts[5] . "<br>E6:"  . $lineParts[6]. "/" . $nn . "/" .strlen($lineParts[2]) . "<br>";
-              if (!in_array(substr($lineParts[$nn],0,-1), $users)) {
+                if (!in_array(substr($lineParts[$nn],0,-1), $users)) {
                   array_push($users,trim(substr($lineParts[$nn],0,-1)));
-              }
+                }
             }
             if(strpos($ElogLine,"state changed to DISCONNECTED")) {
                 $lineParts = explode(" ", $ElogLine);
