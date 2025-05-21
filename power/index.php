@@ -176,7 +176,7 @@ if (isset($_POST['btnDashUpdate']))
         exec($command,$output,$retval);
         echo "O2:" . $output;
         print_r($output);
-        $command = "sudo " . $file . " " . $gitdir . " >>" . $log;
+        $command = $file . " " . $gitdir . " >>" . $log;
         echo "C3:" . $command;
         exec($command,$output,$retval);
         echo "O3:" . $output;
