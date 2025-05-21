@@ -93,7 +93,7 @@ include_once "include/buttons.php";
 ?>
    <p style = "padding-left: 5px; text-align: left;"> &nbsp;
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="reloadPage()">
-        <label for="prefix">APRS Call</label>
+        <label for="prefix">Call</label>
         <input type="text" id="prefix" name="prefix" value=<?php echo $fmquery;?>>  
         <label for="locator"> oder Locator</label>
         <input type="text" id="locator" name="locator" value=<?php echo $fmlquery;?>>  

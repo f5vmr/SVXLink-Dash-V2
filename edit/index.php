@@ -16,12 +16,37 @@ include_once "../include/config.php";
 <center>
 <h1 id="conf-editor" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Configurator Editor (Expert)
 <?php
+if ((defined('DL3EL_NOAUTH')) && (strncmp(DL3EL_NOAUTH, "yes", 3) === 0)) {
+//if ((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "no") || ($_SESSION['auth'] === 'AUTHORISED')) {
+  // ok, go ahead, set to authorized :-)
+  $_SESSION['auth'] = "AUTHORISED";
+} else {
+    return;
+}  
 
 // Get filename from query parameter
 $file = $_GET['file']; 
 if ($file == "log") {
   $file = SVXLOGPATH . SVXLOGPREFIX;
   $log = 1;
+  if (!filesize($file)) {
+    $zipfile = SVXLOGPATH . SVXLOGPREFIX . ".1.gz";
+    if (file_exists($zipfile)) {
+// to getthis working, you have to add 
+// svxlink ALL=NOPASSWD: /usr/bin/gunzip
+// in the file www-data.sudoers in the dashboards root directory, copy that file to /etc/sudoers.d/svxlink and restart the apache
+      exec('sudo gunzip ' . $zipfile,$output,$retval);
+      if ($retval === 0) {
+        echo "unzip sucessfull:";
+        $file = SVXLOGPATH . SVXLOGPREFIX . ".1";
+        echo $file;
+      } else {
+        echo "unzip failure";
+      }
+    } else {
+        $file = SVXLOGPATH . SVXLOGPREFIX . ".1";
+    }
+  }
 } else {
 //  $file = SVXCONFPATH . $file; 
   $log = 0;
@@ -33,12 +58,6 @@ echo '<script type="text/javascript">
             window.location.href = window.location.pathname + "?reloaded=true&file=' . $file .'";
         }
     </script>';
-
-if ((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "no") || ($_SESSION['auth'] === 'AUTHORISED')) {
-  // ok, go ahead
-} else {
-    return;
-}  
 
 include_once "../include/functions.php";
 include_once "../include/config.php";

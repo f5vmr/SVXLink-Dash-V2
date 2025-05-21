@@ -1,9 +1,8 @@
 <?php
 /* talkgroup / number alias database */
-/* last update: 08.05.2025 from https://fm-funknetz.de/Download/tgdb_site.php */
+/* last update: 20.05.2025 from https://fm-funknetz.de/Download/tgdb_site.php */
 /* (C) 2022 by Heiko, DL1BZ */
 $tgdb_array = [ 
-'2704' => 'FunkTag Kassel 2024',
 '1' => 'MultiRegio (DL-Repeater exklusiv)',
 '2' => 'CQ CQ All > No QSO > PSE QSY',
 '7' => 'LausitzLink',
@@ -123,6 +122,7 @@ $tgdb_array = [
 '26257' => 'Siegerland',
 '26264' => 'Region Odenwald',
 '26265' => 'Region Taunus',
+'26266' => 'Notfunk Vogelsbergkreis',
 '26267' => 'Südhessen',
 '26268' => 'SHRG',
 '26269' => 'Hessen/RLP',
