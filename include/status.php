@@ -224,7 +224,9 @@ if (isProcessRunning('svxlink')) {
          $svxRadio = DL3EL_RADIO;
          if ($svxRadio == "Shari") {
             echo "Mode: simplex";
-            echo "<br>QRG: ",exec('perl /home/svxlink/get_shari_hf_data.pl', $output, $retval);
+            $command = "perl " . DL3EL . "/sa818/get_shari_hf_data.pl";
+            echo "<br>QRG: ",exec($command, $output, $retval);
+//            echo "<br>QRG: ",exec('perl /home/svxlink/get_shari_hf_data.pl', $output, $retval);
          } else {
             echo " Radio: " . DL3EL_RADIO;
          }   
