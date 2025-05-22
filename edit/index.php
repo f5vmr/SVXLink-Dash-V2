@@ -16,8 +16,8 @@ include_once "../include/config.php";
 <center>
 <h1 id="conf-editor" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Configurator Editor (Expert)
 <?php
-if ((defined('DL3EL_NOAUTH')) && (strncmp(DL3EL_NOAUTH, "yes", 3) === 0)) {
-//if ((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "no") || ($_SESSION['auth'] === 'AUTHORISED')) {
+//if ((defined('DL3EL_NOAUTH')) && (strncmp(DL3EL_NOAUTH, "yes", 3) === 0)) {
+if (((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "no")) || ($_SESSION['auth'] === 'AUTHORISED')) {
   // ok, go ahead, set to authorized :-)
   $_SESSION['auth'] = "AUTHORISED";
 } else {
