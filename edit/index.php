@@ -67,7 +67,7 @@ $content = file_get_contents($file);
 
 // Display in textarea & edit
 echo '<form method="post">';
-echo '<textarea name="content" rows="35" cols="120">' . htmlspecialchars($content) . '</textarea><br>';
+echo '<textarea name="content" rows="35" cols="72">' . htmlspecialchars($content) . '</textarea><br>';
 
 if (!$log) {
   echo '<div style = "text-align:center">Make your changes here</div>';  

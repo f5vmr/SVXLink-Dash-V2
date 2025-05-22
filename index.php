@@ -29,7 +29,10 @@ if ((!file_exists('include/buttos.php')) && (file_exists('include/buttons.php.ex
 }
 
 include "include/settings.php";
-if ((defined('DL3EL_NOAUTH')) && (strncmp(DL3EL_NOAUTH, "yes", 3) === 0)) {
+$DMRTGFile = DL3EL . "/dbversion";
+$dbversion = shell_exec('cat ' . $DMRTGFile);
+
+if ((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "yes")) {
 // always stay logged on
     $_SESSION['auth'] = "AUTHORISED";
 }
@@ -115,13 +118,19 @@ if ((defined('DL3EL_SC_CHANGE')) && (DL3EL_SC_CHANGE === "yes")) {
 <div class="header">
 <div class="parent">
     <div class="img" style = "padding-left:30px"><img src="images/svxlink.ico" /></div>
+
+<!---
     <div class="text"style = "padding-right:230px">
+--->    
 <center><p style = "margin-top:5px;margin-bottom:0px;">
 <span style = "font-size: 32px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $callsign;?></span>
 <p style = "margin-top:0px;margin-bottom:0px;">
 <span style = "font-size: 18px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $fmnetwork; ?></span>
+<span style = "font-size: 12px;letter-spacing:2px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $dbversion; ?></span>
+
 </p></center>
 </div></div>
+    <div class="text"style = "padding-right:230px">
 </div>
 <?php include_once "include/top_menu.php"; ?>
 

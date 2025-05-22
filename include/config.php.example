@@ -121,12 +121,14 @@ define("DL3EL_RADIO", "Shari");
 define("DL3EL_DMRTG", "26269");
 define("DL3EL_VERSION", "public");
 //define("DL3EL_VERSION", "develop");
-define("DL3EL_DB_VERSION", "2.5");
 // if you are unable to configure the system with *only* one soundcard for svxlink, the inde4x to the card could be different after a reboot
 // setting DL3EL_SC_CHANGE to "yes" enables the dashboard to select the correct soundcard and restart svxlink on the first run after reboot.
 define("DL3EL_SC_CHANGE", "no");
 // this string has to match the name of the card in the linux system
 define("DL3EL_SC_STRING", "Audio Device");
+// allow update "git pull" via this dashboard (can be found in the power menu, if enabled
+// therefore for the command "git" had to be added in the file "www-data.sudoers", to activate this command, the script "upd_sudoer" has to be executed (as root)
+define("DL3EL_GIT_UPDATE", "no");
 //
 
 $svxConfigFile = SVXCONFPATH . SVXCONFIG;
