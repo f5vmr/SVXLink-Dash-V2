@@ -8,58 +8,6 @@ if (session_status() === PHP_SESSION_NONE) {
   <head>
     <meta charset="UTF-8">
     <link href="../css/css.php" type="text/css" rel="stylesheet" />
-<style type="text/css">
-body {
-  background-color: #eee;
-  font-size: 18px;
-  font-family: Arial;
-  font-weight: 300;
-  margin: 2em auto;
-  max-width: 40em;
-  line-height: 1.5;
-  color: #444;
-  padding: 0 0.5em;
-}
-h1, h2, h3 {
-  line-height: 1.2;
-}
-a {
-  color: #607d8b;
-}
-.highlighter-rouge {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: .2em;
-  font-size: .8em;
-  overflow-x: auto;
-  padding: .2em .4em;
-}
-pre {
-  margin: 0;
-  padding: .6em;
-  overflow-x: auto;
-}
-
-#player {
-    position:relative;
-    width:205px;
-    overflow: hidden;
-    direction: ltl;
-}
-
-textarea {
-    background-color: #111;
-    border: 1px solid #000;
-    color: #ffffff;
-    padding: 1px;
-    font-family: courier new;
-    font-size:10px;
-}
-
-
-
-
-</style>
 </head>
 <body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <center>
@@ -71,7 +19,7 @@ textarea {
 <?php
 
 
-if ((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "no") || ($_SESSION['auth'] === 'AUTHORISED')) {
+if (((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "YES")) || ($_SESSION['auth'] === 'AUTHORISED')) {
 
 include_once  '../include/config.php';
 include_once  '../include/functions.php';
@@ -162,25 +110,19 @@ if (isset($_POST['btnDashUpdate']))
         $owner = 'svxlink';
         $group = 'svxlink';
 
-        $command = "sudo chown $owner:$group " . escapeshellarg($file) . " >>" . $log;
+        $command = "sudo chown $owner:$group " . escapeshellarg($file) . " >" . $log . " 2>&1";
         $output = [];
         $return_var = 0;
-        echo "C1:" . $command;
         exec($command, $output, $return_var);
-        echo "O1:";
-        print_r($output);
         $retval = null;
         $screen = null;
-        $command = "sudo chmod g+x " . $file . " >>" . $log;
-        echo "C2:" . $command;
+        $command = "sudo chmod g+x " . $file . " >>" . $log . " 2>&1";
         exec($command,$output,$retval);
-        echo "O2:" . $output;
-        print_r($output);
-        $command = $file . " " . $gitdir . " >>" . $log;
-        echo "C3:" . $command;
+        $command = $file . " " . $gitdir . " >>" . $log . " 2>&1";
         exec($command,$output,$retval);
-        echo "O3:" . $output;
-        print_r($output);
+        $content = file_get_contents($log);
+        // Display in textarea           
+        echo '<textarea name="content" rows="35" cols="72">' . htmlspecialchars($content) . '</textarea><br>';
 }
 
 if (isset($_POST['btnrstc710']))
@@ -220,7 +162,7 @@ if (isset($_POST['btnrstc710']))
         echo '<button name="btnrstc710" type="submit" class="green" style = "height:30px; width:400px; font-size:12px;">Reset Sound C710</button>';
       }    
    }   
-  if ((defined('DL3EL_BASE')) && (file_exists(DL3EL_BASE.'git_pull.sh')) && (DL3EL_VERSION === "develop")) {
+  if (((defined('DL3EL_BASE')) && (file_exists(DL3EL_BASE.'git_pull.sh'))) && ((defined('DL3EL_GIT_UPDATE')) && (DL3EL_GIT_UPDATE === "yes"))) {
       echo '<br><br><br>';
       echo '<button name="btnDashUpdate" type="submit" class="green" style = "height:30px; width:400px; font-size:12px;">Dashboard Update (GitHub)</button>';
   }

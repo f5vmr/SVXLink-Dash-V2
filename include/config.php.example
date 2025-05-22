@@ -125,7 +125,7 @@ define("DL3EL_DB_VERSION", "2.5");
 // if you are unable to configure the system with *only* one soundcard for svxlink, the inde4x to the card could be different after a reboot
 // setting DL3EL_SC_CHANGE to "yes" enables the dashboard to select the correct soundcard and restart svxlink on the first run after reboot.
 define("DL3EL_SC_CHANGE", "no");
-// this string has to macht the name of the card in the linux system
+// this string has to match the name of the card in the linux system
 define("DL3EL_SC_STRING", "Audio Device");
 //
 
