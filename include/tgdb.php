@@ -1,6 +1,6 @@
 <?php
 /* talkgroup / number alias database */
-/* last update: 20.05.2025 from https://fm-funknetz.de/Download/tgdb_site.php */
+/* last update: 22.05.2025 from https://fm-funknetz.de/Download/tgdb_site.php */
 /* (C) 2022 by Heiko, DL1BZ */
 $tgdb_array = [ 
 '1' => 'MultiRegio (DL-Repeater exklusiv)',
