@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
     if (file_exists($knowledgeFile)) {
 	$knowledge = trim(shell_exec('cat ' . $knowledgeFile));
     } else {
-	if ((defined('DL3EL_VERSION')) && (strncmp(DL3EL_EXPERT, "yes", 3) === 0)) {
+	if ((defined('DL3EL_EXPERT')) && (DL3EL_EXPERT === "yes")) {
 	    $knowledge = "Expert";
 	} else {
 	    $knowledge = "Normal";
@@ -55,8 +55,7 @@ if (session_status() === PHP_SESSION_NONE) {
 	<a href="./editor.php?id=log" style = "color: crimson;" id="log">Log</a> |
 	<a href="./monitor.php" style = "color: crimson;" id="log">MonitorCalls</a> 
 <?php
-
-	if ((defined('DL3EL_NOAUTH')) && (strncmp(DL3EL_NOAUTH, "yes", 3) === 0)) {
+	if ((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "yes")) {
 	    echo ' ';
 	} else {    
 	    echo '| <a href="./authorise.php" style = "color: crimson;">Authorise</a>';
