@@ -2,9 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
-include_once "include/config.php";
-include_once "include/tools.php";
+include_once "include/settings.php";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -50,6 +48,7 @@ include_once "include/tools.php";
 <span style = "font-size: 32px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $callsign; ?></span>
 <p style = "margin-top:0px;margin-bottom:0px;">
 <span style = "font-size: 18px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $fmnetwork; ?></span>
+<span style = "font-size: 12px;letter-spacing:2px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $dbversion; ?></span>
 </p></center>
 </div></div>
 </div>
