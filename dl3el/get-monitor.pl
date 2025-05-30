@@ -132,7 +132,8 @@ my $curr_act = 0;
 		$callfound = ($entry =~ /.*<td style=\"padding:5px;padding-right:20px;white-space:nowrap;\">([\w-]+)<\/td>/i)? $1 : "undef";
         printf "Call: %s\n",$callfound if ($verbose >3);
         if ($callfound ne "undef") {
-            $call = ($callfound =~ /([\w]+)([-\w]*)/i)? $1 : "undef";
+#            $call = ($callfound =~ /([\w]+)([-\w]*)/i)? $1 : "undef";
+            $call = $callfound;
             $DataTabFN{$call}{'CALL'} = $call;
             $tg1 = ($entry =~ /.*<td style=\"padding:5px;padding-right:20px;white-space:nowrap;\">([\w-]+)<\/td><td style="padding:5px;padding-right:20px;">([\w]+)&nbsp;\/&nbsp;([\w]+)<\/td><td>Monitor:(.*)<\/td>/i)? $2 : "undef";
             printf "$call TGs: %s %s / %s Monitor TGs: %s ->\n",$1,$2,$3,$4 if ($verbose >3);
