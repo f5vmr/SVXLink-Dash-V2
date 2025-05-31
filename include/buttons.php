@@ -236,7 +236,7 @@ if (defined('KEY20')) {
    echo "<meta http-equiv='refresh' content='0'>";
     }
  if (isset($_POST["jmptoA"])) {
-   $exec= "echo '91" . $_POST['jmptoA'] . "#' > /tmp/dtmf_svx";
+   $exec= "echo '*91" . $_POST['jmptoA'] . "#' > /tmp/dtmf_svx";
    exec($exec,$output);
    echo "<meta http-equiv='refresh' content='0'>";
     }
