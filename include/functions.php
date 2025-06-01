@@ -160,10 +160,29 @@ function getConnectedEcholink($echolog) {
             if (strpos($ElogLine,"state changed to CONNECTED")) {
                 $lineParts = explode(" ", $ElogLine);
                 if (!strlen($lineParts[2])) {
-                  $nn = 4;
+                  $nn = 6;
                 } else {
                   $nn = 5;
                 }
+// Sun Jun  1 16:30:23 2025: DL3EL: EchoLink QSO state changed to CONNECTED
+// 01.06.:
+// vorher
+//E1:Jun
+//E2:()
+//E3:1
+//E4:16:30:23
+//E5:2025:
+//E6:DL3EL:/4/0
+//EchoLink Users
+//16:3Ø:2
+// nachher
+//E1:Jun
+//E2:()
+//E3:1
+//E4:16:30:23
+//E5:2025:
+//E6:DL3EL:/6/0
+
 // echo "E1:" . $lineParts[1]  . "<br>E2:(" . $lineParts[2] . ")<br>E3:"  . $lineParts[3]. "<br>";
 // echo "E4:" . $lineParts[4]  . "<br>E5:" . $lineParts[5] . "<br>E6:"  . $lineParts[6]. "/" . $nn . "/" .strlen($lineParts[2]) . "<br>";
                 if (!in_array(substr($lineParts[$nn],0,-1), $users)) {
