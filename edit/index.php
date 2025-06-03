@@ -14,7 +14,7 @@ include_once "../include/config.php";
 <body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 
 <center>
-<h1 id="conf-editor" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Configurator Editor (Expert)
+<h1 id="conf-editor" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;"
 <?php
 
 if (((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "yes")) || ($_SESSION['auth'] === 'AUTHORISED')) {
@@ -48,11 +48,12 @@ if ($file == "log") {
         $file = SVXLOGPATH . SVXLOGPREFIX . ".1";
     }
   }
+echo ">Log Display: " . $file . " (reverse order)</h1>";
 } else {
 //  $file = SVXCONFPATH . $file; 
   $log = 0;
+echo ">Configurator Editor (Expert): " . $file . "</h1>";
 }
-echo "File: " . $file . "</h1>";
 
 echo '<script type="text/javascript">
         function reloadPage() {
@@ -64,8 +65,14 @@ include_once "../include/functions.php";
 include_once "../include/config.php";
 
 // Read file contents
+if ($log) {
+//    $command = "tac $file";
+    $command = "tac $file > " . DL3EL . "/logfile.txt";
+    passthru($command);
+    $file = DL3EL . "/logfile.txt";
+//    $content = str_replace("X","<br>",$content2); 
+}    
 $content = file_get_contents($file);
-
 // Display in textarea & edit
 echo '<form method="post">';
 echo '<textarea name="content" rows="35" cols="120">' . htmlspecialchars($content) . '</textarea><br>';
