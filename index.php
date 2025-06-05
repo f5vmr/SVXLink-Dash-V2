@@ -7,8 +7,14 @@ if (session_status() === PHP_SESSION_NONE) {
     $base_dir_dl3el_def = '<?php define("DL3EL", "' . __DIR__ . '/dl3el");?>' . "\n";;
     $base_dir_file = __DIR__ . "/include/basedir.php";
     if (!$handle = fopen($base_dir_file, 'w')) {
+//        die("Cannot open file ($base_dir_file) for writing. Check file permissions.");
+//        echo("Cannot open file ($base_dir_file) for writing. Check file permissions. ");
+//        echo("find " . __DIR__ . " ! -exec sudo chown svxlink:svxlink {} +");
+        exec("find " . __DIR__ . " ! -exec sudo chown svxlink:svxlink {} +");
+        if (!$handle = fopen($base_dir_file, 'w')) {
             die("Cannot open file ($base_dir_file) for writing. Check file permissions.");
         }
+    }
     fwrite($handle, $base_dir_def);
     fwrite($handle, $base_dir_dl3el_def);
     fclose($handle);
@@ -95,7 +101,9 @@ if ((defined('DL3EL_SC_CHANGE')) && (DL3EL_SC_CHANGE === "yes")) {
     <script type="text/javascript" src="scripts/functions.js"></script>
     <script type="text/javascript" src="scripts/pcm-player.min.js"></script>
 <!---- ## PTT --->
+<!----
     <script type="text/javascript" src="scripts/ptt.js"></script>
+--->
     <script type="text/javascript">
       $.ajaxSetup({ cache: false });
     </script>
