@@ -2,11 +2,11 @@
 <h1>SVXLink Node dashboard repository inspired by a pi-star dashboard</h1>
 <h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.</h2>
 Updated the code from Chris slightly and added some enhancements
-<b>all requirements listed below in the original readme are still valid and need to be executed</b>
+<b>all requirements listed below in the original readme are still valid and need to be executed.</b> The only difference is, if you a different directory than /var/www/html, you have to your your selected name instead.<br><br>
 <b>Changes</b>
 <p>The major change is that the dashboard now runs in every directory below /var/www/html. So you can have two dashboards parallel, for test reasons or whatever.  </p>
 <p>So in /var/www/ run the following command line. </p>
-<p><b>sudo git clone https://github.com/f5vmr/SVXLink-Dash-V2 html/SVXLink-Dash-V2.5</b></p>
+<p><b>sudo git clone https://github.com/DL3EL/SVXLink-Dash-V2 html/SVXLink-Dash-V2.5</b></p>
 <p><b> cd html/SVXLink-Dash-V2.5</b></p>
 <p>You can choose any other name than "SVXLink-Dash-V2.5"</p>
 <p>Some minor changes clearing double definitions and eliminating path names in the code when definitions are available. So the only file, that has to be changed for an individual configuration should be ./include/config.php.<br>
