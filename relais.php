@@ -106,13 +106,19 @@ include_once "include/buttons.php";
    </p> 
     <?php
 //wget -O relais.csv -q "http://relais.dl3el.de/cgi-bin/relais.pl?ctrcall=dl3el-14&sel=ctrcall&type_fr=1&printas=csv&maxgateways=20&nohtml=yes"
+    $loc = "";
+    $loc_found = 0;
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_submitted'])) {
 //    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['type_el'])) { $query_el = "&type_el=" . $_POST['type_el'];}
         if (isset($_POST['type_fr'])) { $query_fr = "&type_fr=" . $_POST['type_fr'];}
         if (isset($_POST['type_fhs'])) { $query_fhs = "&type_fhs=" . $_POST['type_fhs'];}
         if (isset($_POST['prefix'])) { $query_loc = "sel=ctrcall&ctrcall=" . $_POST['prefix'] ;}
-        if (isset($_POST['locator']) && ($_POST['locator'] != "")) { $query_loc = "sel=gridsq&gs=" . $_POST['locator'] ;}
+        if (isset($_POST['locator']) && ($_POST['locator'] != "")) { 
+            $query_loc = "sel=gridsq&gs=" . $_POST['locator'] ;
+            $loc = $_POST['locator'];
+            $loc_found = 1;
+        }
     
 //        echo "EL: " . $query_el . "&nbsp; FMR" . $query_fr . "<br>";
 //        $cmd = "wget -O " . $RelaisFile . " -q \"http://relais.dl3el.de/cgi-bin/relais.pl?sel=ctrcall&ctrcall=" . $_POST['prefix'] . $query_el . $query_fr . $query_fhs . "&printas=csv&maxgateways=20&nohtml=yes&quelle=y\"";
@@ -130,6 +136,10 @@ include_once "include/buttons.php";
         echo '<form method="post">';
         while (($data = fgetcsv($handle, 1000, ";", "\"", "\\")) !== FALSE) {
 //        echo "0: " . $data[0] . "/ 1:" . $data[1] . "/ 2:"  . $data[2] . "/ 3:"  . $data[3] . "/ 4:"  . $data[4] . "/ 5:" . $data[5] . "/ 6:" . $data[6] . "/ 7:"  . $data[7] . "/ 8:"  . $data[8] . "/ 9:"  . $data[9] . "/ 10:" . $data[10] . "/ 11:"  . $data[11] . "/ 12:"  . $data[12] . "<br>";
+            if (!$loc_found && ($data[3] !== "Locator")) {
+                $loc = $data[3];
+                $loc_found = 1;
+            }    
             if ((strncmp($data[0], "Daten m", 7) !== 0) && (strncmp($data[0], "Call", 4) !== 0)) {
                 if (strncmp($data[12], "FR", 2) === 0) {
                     $bold_b = "<b>";
@@ -151,8 +161,10 @@ include_once "include/buttons.php";
                 echo "<tr><td>" . $bold_b . $data[0] . $bold_e . "</td><td>" . $data[1] . "</td><td>"  . $data[2] . "</td><td>"  . $data[3] . "</td><td>" . $bold_b . substr($data[4], 0, 50) . $bold_e . "</td><td>"  . $data[9] . "</td><td>"  . $echolink_conn . "</td><td>"  . $data[11] . "</td></tr>";
             }
         }
-        echo '</form>';
         fclose($handle);
+        $cmd = "wget -O- -q \"http://relais.dl3el.de/cgi-bin/adds.pl?sel=gridsq&gs=" . $loc . "&umkreis=30&svx\"";
+        echo "",exec($cmd, $output, $retval);
+        echo '</form>';
     } else {
       echo "wrong file: " . $RelaisFile ."<br>";  
     }
