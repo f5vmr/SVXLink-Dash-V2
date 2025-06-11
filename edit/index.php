@@ -27,32 +27,36 @@ if (((defined('DL3EL_NOAUTH')) && (DL3EL_NOAUTH === "yes")) || ($_SESSION['auth'
 
 // Get filename from query parameter
 $file = $_GET['file']; 
-if ($file == "log") {
-  $file = SVXLOGPATH . SVXLOGPREFIX;
-  $log = 1;
-  if (!filesize($file)) {
-    $zipfile = SVXLOGPATH . SVXLOGPREFIX . ".1.gz";
-    if (file_exists($zipfile)) {
+if (($file == "log") || ($file == "msg")) {
+  if ($file == "log") {
+    $file = SVXLOGPATH . SVXLOGPREFIX;
+    $log = 1;
+    if (!filesize($file)) {
+      $zipfile = SVXLOGPATH . SVXLOGPREFIX . ".1.gz";
+      if (file_exists($zipfile)) {
 // to getthis working, you have to add 
 // svxlink ALL=NOPASSWD: /usr/bin/gunzip
 // in the file www-data.sudoers in the dashboards root directory, copy that file to /etc/sudoers.d/svxlink and restart the apache
-      exec('sudo gunzip ' . $zipfile,$output,$retval);
-      if ($retval === 0) {
-        echo "unzip sucessfull:";
-        $file = SVXLOGPATH . SVXLOGPREFIX . ".1";
-        echo $file;
+        exec('sudo gunzip ' . $zipfile,$output,$retval);
+        if ($retval === 0) {
+          echo "unzip sucessfull:";
+          $file = SVXLOGPATH . SVXLOGPREFIX . ".1";
+          echo $file;
+        } else {
+          echo "unzip failure";
+        }
       } else {
-        echo "unzip failure";
+          $file = SVXLOGPATH . SVXLOGPREFIX . ".1";
       }
-    } else {
-        $file = SVXLOGPATH . SVXLOGPREFIX . ".1";
     }
-  }
-echo ">Log Display: " . $file . " (reverse order)</h1>";
+    echo ">Log Display: " . $file . " (reverse order)</h1>";
+  } else {
+    $file = DL3EL . "/aprs-is.msg";
+    $log = 1;
+    echo ">Message Display: " . $file . " (reverse order)</h1>";
+  }  
 } else {
-//  $file = SVXCONFPATH . $file; 
-  $log = 0;
-echo ">Configurator Editor (Expert): " . $file . "</h1>";
+    echo ">Expert-Editor " . $file . "</h1>";
 }
 
 echo '<script type="text/javascript">
