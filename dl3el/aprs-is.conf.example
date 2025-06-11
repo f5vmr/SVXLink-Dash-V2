@@ -1,0 +1,3 @@
+aprs_login  = "N0CALL-M"
+aprs_passwd = "-1"
+aprs_msg_call = "N0CALL*"

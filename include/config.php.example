@@ -130,6 +130,8 @@ define("DL3EL_SC_STRING", "Audio Device");
 // therefore for the command "git" had to be added in the file "www-data.sudoers", to activate this command, the script "upd_sudoer" has to be executed (as root)
 define("DL3EL_GIT_UPDATE", "no");
 //
+define("DL3EL_APRS_MSG", "yes");
+//
 
 $svxConfigFile = SVXCONFPATH . SVXCONFIG;
 if (fopen($svxConfigFile,'r'))

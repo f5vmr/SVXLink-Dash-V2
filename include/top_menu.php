@@ -45,12 +45,13 @@ if (session_status() === PHP_SESSION_NONE) {
 	<!--<a href="./audio.php" style = "color: #0000ff;">Audio </a> | -->
 <?php
 	if ((defined('DL3EL_VERSION')) && (strncmp(DL3EL_VERSION, "develop", 7) === 0)) {
+		echo '<a href="./audio.php" style = "color: #0000ff;">Audio </a> | ';
 		echo '<a href="./wifi.php" style = "color: #0000ff;">Wifi</a> | ';
 		echo '<a href="./network.php" style = "color: #0000ff;">Network</a> |';
+		echo '<a href="/nodeInfo.php" style = "color: #0000ff;">Node Info</a> |';
 	}	
 
 ?>
-	<!--<a href="/nodeInfo.php" style = "color: #0000ff;">Node Info</a> |-->
 
 	<a href="./editor.php?id=log" style = "color: crimson;" id="log">Log</a> |
 	<a href="./monitor.php" style = "color: crimson;" id="log">MonitorCalls</a> 
@@ -108,7 +109,9 @@ if (session_status() === PHP_SESSION_NONE) {
 		echo '<a href="./rf.php" style = "color: black;" id="radio">Radio</a> | ';
 	    }
 	}
-
+	if ((defined('DL3EL_APRS_MSG')) && (DL3EL_APRS_MSG === "yes")) {
+	    echo '<a href="./edit.php?file=msg" style = "color: black;" id="msg">APRS MSG</a> | ';
+	}
 ?>
 	<a href="./editor.php?id=power" style = "color: green;">Power</a></p>
     </div>
