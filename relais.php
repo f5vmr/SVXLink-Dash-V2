@@ -123,6 +123,7 @@ include_once "include/buttons.php";
 //        echo "EL: " . $query_el . "&nbsp; FMR" . $query_fr . "<br>";
 //        $cmd = "wget -O " . $RelaisFile . " -q \"http://relais.dl3el.de/cgi-bin/relais.pl?sel=ctrcall&ctrcall=" . $_POST['prefix'] . $query_el . $query_fr . $query_fhs . "&printas=csv&maxgateways=20&nohtml=yes&quelle=y\"";
         $cmd = "wget -O " . $RelaisFile . " -q \"http://relais.dl3el.de/cgi-bin/relais.pl?" . $query_loc . $query_el . $query_fr . $query_fhs . "&printas=csv&maxgateways=20&nohtml=yes&quelle=y\"";
+//        $cmd = "wget -O " . $RelaisFile . " -q \"https://relais.dl3el.de/FM-Relais/DM7DS/relaisgeo_fmn_el.php\"";
 //        echo "<br>Aufruf: " . $cmd . "<br>";
         echo "",exec($cmd, $output, $retval);
         if (defined('DL3EL')) {
@@ -162,7 +163,7 @@ include_once "include/buttons.php";
             }
         }
         fclose($handle);
-        $cmd = "wget -O- -q \"http://relais.dl3el.de/cgi-bin/adds.pl?sel=gridsq&gs=" . $loc . "&umkreis=30&svx\"";
+        $cmd = "wget -O- -q \"http://relais.dl3el.de/cgi-bin/metar.pl?sel=gridsq&gs=" . $loc . "\"";
         echo "",exec($cmd, $output, $retval);
         echo '</form>';
     } else {
