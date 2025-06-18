@@ -791,9 +791,5 @@ function display_config($config) {
         // Optionally, you can add success/failure handling here
         echo "Configuration saved and restarted";
     }
-    
 
-
-   
-    
-
+?>

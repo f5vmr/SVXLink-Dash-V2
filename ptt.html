@@ -59,9 +59,72 @@
     </script>
 </head>
 <body>
-    <div>
-            <button id="myButton" onclick="executeCommand()" style = "color:white; background-color:green; border-color:transparent; border-radius:8px; height:40px; width:200px; font-size:14px;"><b>PTT off</b></button>
+<?php
+    
+function execute_amixer($command) {
+    $output = [];
+    exec($command, $output);
+    return $output;
+}
 
-    </div>
+// Function to parse current values from amixer output
+function parse_amixer_value($output) {
+    foreach ($output as $line) {
+        if (strpos($line, ": values=") !== false) {
+            $value = trim(str_replace(": values=", "", $line));
+            return $value;
+        }
+    }
+    return null;
+}
+
+// Retrieve and parse current values using amixer cget
+function get_current_headphone_values() {
+    $sc = 'aplay -l | grep "Audio Device"';
+    $sc = substr(shell_exec($sc),5,1);
+    $headphone_value = execute_amixer("sudo amixer -c" . $sc . " cget numid=6");
+    $headphone_output =  parse_amixer_value($headphone_value);
+    return $headphone_output;
+}
+// from amixer
+function ls_change($value) {
+//amixer -c 0 set Speaker 5%-
+    $sc = 'aplay -l | grep "Audio Device"';
+    $sc = substr(shell_exec($sc),5,1);$cmd = "sudo amixer -c" . $sc . " set Speaker " . $value;
+    $new_value = execute_amixer("sudo amixer -c" . $sc . " set Speaker " . $value);
+    $new_value =  parse_amixer_value($new_value);
+}
+
+// Get current values from amixer
+if (defined('DL3EL_SC_STRING')) {
+    $sc = 'aplay -l | grep "' . DL3EL_SC_STRING . '"';
+    $sc = substr(shell_exec($sc),5,1);
+} else {
+    $sc = 0;
+}    
+$current_values = get_current_headphone_values();
+
+if (isset($_POST['buttonA'])) { ls_change("5%-"); }
+if (isset($_POST['buttonB'])) { ls_change("5%+"); }
+if (isset($_POST['button_off'])) { ls_change("mute"); }
+if (isset($_POST['button_on'])) { ls_change("unmute"); }
+?>
+<span style="display: inline;">
+<button id="myButton" onclick="executeCommand()" style = "color:white; background-color:green; border-color:transparent; border-radius:8px; height:40px; width:200px; font-size:14px;"><b>PTT off</b></button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<form action="" method="post" style="display: inline;" >
+<?php
+$color = "red";
+echo '<button name="button_off" type="submit" style = "border-radius:8px; color:white;border-color:transparent; background-color:' . $color .'; height:30px; font-size:18px;"><b>Vol off</b></button>';
+$color = "darkgray";
+echo '<button name="buttonA" type="submit" style = "border-radius:8px; color:white;border-color:transparent; background-color:' . $color .'; height:30px; width:70px; font-size:18px;"><b>-</b></button>';
+$color = "gray";
+echo '<button name="buttonB" type="submit" style = "border-radius:8px; color:white;border-color:transparent; background-color:' . $color .'; height:30px; width:70px; font-size:18px;"><b>+</b></button>';
+$color = "green";
+echo '<button name="button_on" type="submit" style = "border-radius:8px; color:white;border-color:transparent; background-color:' . $color .'; height:30px; font-size:18px;"><b>Vol on</b></button>';
+?>
+
+</form>
+</span>
 </body>
 </html>

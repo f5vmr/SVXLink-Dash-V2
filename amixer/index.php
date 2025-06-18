@@ -175,7 +175,6 @@ $current_values = get_current_amixer_values();
                                     $sc_port_cmp = "Audio Device";
                                 }
                                 $sc_port_linux = 'aplay -l | grep "' . $sc_port_cmp . '"';
-                                echo "SC: " . $sc_port_linux;
                                 $sc_port_linux = shell_exec($sc_port_linux);
                                 echo "<br>Soundcard configuration: <b>" . $sc_port_raw . "</b> (svxlink.conf" . ")<br>";
                                 echo "<b>" . $sc_port_linux . " (Linux)<br>";
