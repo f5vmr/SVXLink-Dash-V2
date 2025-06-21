@@ -1,14 +1,16 @@
 #!/bin/bash
+SCRIPT_DIR=$(dirname "$(realpath $0)")
+TGDB_File="$SCRIPT_DIR/"tgdb.php
+TGDB_File_new="$SCRIPT_DIR/"tgdb.txt
 
-cd /var/www/html/include
+cd "$SCRIPT_DIR/"
 
-rm tgdb.php
+rm $TGDB_File
 
 wget https://xlx169.26269.de/ysf/download/tgdb.txt
-cp /var/www/html/include/tgdb.txt /var/www/html/include/tgdb.php
+cp $TGDB_File_new $TGDB_File
 
-sudo chown svxlink:svxlink /var/www/html/include/tgdb.txt /var/www/html/include/tgdb.php
-sudo chmod 755 /var/www/html/include/tgdb.txt /var/www/html/include/tgdb.php 
+sudo chown svxlink:svxlink $TGDB_File_new $TGDB_File
+sudo chmod 755 $TGDB_File_new $TGDB_File
 
-rm tgdb.txt
-
+rm $TGDB_File_new
