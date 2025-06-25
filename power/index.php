@@ -121,8 +121,10 @@ if (isset($_POST['btnDashUpdate']))
         $command = $file . " " . $gitdir . " >>" . $log . " 2>&1";
         exec($command,$output,$retval);
         $content = file_get_contents($log);
+        exec("find " . DL3EL_BASE . "* ! -exec sudo chown $owner:$group {} +");
         // Display in textarea           
         echo '<textarea name="content" rows="35" cols="72">' . htmlspecialchars($content) . '</textarea><br>';
+
 }
 
 if (isset($_POST['btnrstc710']))
