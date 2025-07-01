@@ -66,6 +66,9 @@ print (output.decode("utf-8"))
 ser.write(b'AT+DMOREADGROUP\r\n')
 output = ser.readline()
 print (output.decode("utf-8"))
+ser.write(b'RSSI?\r\n')
+output = ser.readline()
+print (output.decode("utf-8"))
 
 # Go into loop that outputs radio signal strength. Invoke this by using SA818-prog -r
 number_of_args = len(sys.argv) -1
