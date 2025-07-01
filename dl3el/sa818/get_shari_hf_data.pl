@@ -42,8 +42,10 @@ my @CTCSS = (
 # +DMOREADGROUP:1,430.5750,430.5750,0000,1,0002
     $data = ($cmd =~ /.*\+DMOREADGROUP:(\d),([\d-|\.]+),([\d-|\.]+),([\w]+),(\d),([\w]+)/s)? $1 : "undef";
     $txctcss = $CTCSS[$4];
+    $txctcss = $txctcss . "Hz" if ($4 ne "0000");
     $rxctcss = $CTCSS[$6];
-    printf "%s / RSSI:%s<br>RX:%sHz/TX:%sHz",$2,$rssi,$rxctcss,$txctcss;
+    $rxctcss = $rxctcss . "Hz" if ($6 ne "0000");
+    printf "%s / RSSI:%s<br>RX:%s/TX:%s",$2,$rssi,$rxctcss,$txctcss;
     if (!$verbose) {
 	exit 0;
     } else {
