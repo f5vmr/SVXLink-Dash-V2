@@ -15,7 +15,7 @@
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                button.textContent = "PTT on (" + minutes + ":" + seconds + ")";
+                button.textContent = "PTT (" + minutes + ":" + seconds + ")";
                 button.style.fontWeight = "bold";
                 button.style.backgroundColor = "red";
                 button.style.color = "white";
@@ -43,7 +43,7 @@
             } else {
                 xhr.send("command=second");
                 clearInterval(interval);
-                button.textContent = "PTT off";
+                button.textContent = "PTT";
                 button.style.fontWeight = "bold";
                 button.style.backgroundColor = "blue";
                 button.style.color = "white";
@@ -119,21 +119,33 @@ if (isset($_POST['buttonA'])) { ls_change("5%-"); }
 if (isset($_POST['buttonB'])) { ls_change("5%+"); }
 if (isset($_POST['button_off'])) { ls_change("mute"); }
 if (isset($_POST['button_on'])) { ls_change("unmute"); }
-?>
-<span style="display: inline;">
-<button id="myButton" onclick="executeCommand()" style = "margin-right:25px; color:white; background-color:green; border-color:transparent; border-radius:8px; height:40px; width:200px; font-size:14px;"><b>PTT off</b></button>
-<form action="" method="post" style="display: inline;" >
-<?php
-$color = "red";
-echo '<button name="button_off" type="submit" style = "margin-right:5px; border-radius:8px; color:white;border-color:transparent; background-color:' . $color .'; height:30px; font-size:18px;"><b>Vol off</b></button>';
-$color = "darkgray";
-echo '<button name="buttonA" type="submit" style = "margin-right:5px;border-radius:8px; color:white;border-color:transparent; background-color:' . $color .'; height:30px; width:70px; font-size:18px;"><b>-</b></button>';
-$color = "gray";
-echo '<button name="buttonB" type="submit" style = "margin-right:5px;border-radius:8px; color:white;border-color:transparent; background-color:' . $color .'; height:30px; width:70px; font-size:18px;"><b>+</b></button>';
-$color = "green";
-echo '<button name="button_on" type="submit" style = "margin-right:5px;border-radius:8px; color:white;border-color:transparent; background-color:' . $color .'; height:30px; font-size:18px;"><b>Vol on</b></button>';
-?>
 
+echo '<p></p>';
+echo '<span style="display: inline;">';
+echo '<button id="myButton" onclick="executeCommand()" style = "margin-right:90px; width:150px; color:white; background-color:green; border-color:transparent; border-radius:8px; height:40px; font-size:16px;"><b>PTT off</b></button>';
+echo '<form action="" method="post" style="display: inline;" >';
+
+//read Speaker on/off from amixer
+$status = exec("amixer -c" . $sc . " get Speaker |grep % |awk '{print $7}'");
+
+if ($status == "[on]") {
+	$volume = exec("amixer -c" . $sc . " get Speaker |grep % |awk '{print $5}'|sed 's/[^0-9\%]//g'");
+	$color = "#7a4a4a";
+	echo '<button name="button_off" type="submit" style = "margin-right:15px; width:70px; border-radius:8px; color:white; border-color:transparent; background-color:' . $color .'; height:28px; font-size:16px;"><img src=images/speaker_off.png></button>';
+        $color = "darkred";
+	echo '<button name="buttonA" type="submit" style = "margin-right:10px; width:30px; border-radius:8px; color:white; border-color:transparent; background-color:' . $color .'; height:28px; font-size:18px;"><b>-</b></button>';
+	echo '<font style="margin-right:10px; width:30px; color:black; font-size:16px">' . $volume . '</font>';
+	$color = "seagreen";
+	echo '<button name="buttonB" type="submit" style = "margin-right:100px; width:30px; border-radius:8px;color:white; border-color:transparent; background-color:' . $color .';height:28px; font-size:18px;"><b>+</b></button>';
+        }
+   else {
+	$volume = "&ensp;<img src=images/speaker_off_b.png>&emsp;";
+	$color = "#4a7a7a";
+	echo '<button name="button_on" type="submit" style = "margin-right:55px; width:70px; border-radius:8px; color:white; border-color:transparent; background-color:' . $color .'; height:28px; font-size:16px;"><img src=images/speaker.png></button>';
+        $color = "transparent";
+        echo '<font style="margin-right:140px; width:30px;">' . $volume . '</font>';
+        }
+?>
 </form>
 </span>
 </body>
