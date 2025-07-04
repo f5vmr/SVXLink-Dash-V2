@@ -2,12 +2,13 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+include_once "../include/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link href="/css/css.php" type="text/css" rel="stylesheet" />
+    <link href="../css/css.php" type="text/css" rel="stylesheet" />
 <style type="text/css">
 body {
   background-color: #eee;
@@ -57,8 +58,6 @@ textarea {
 }
 
 
-
-
 </style>
 </head>
 <body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
@@ -69,10 +68,7 @@ textarea {
 <center>
 <h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">RF Module Configurator</h1>
 
-
 <?php 
-
-
 
 //if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //  if (empty($_POST["ssid"])) {
@@ -90,15 +86,14 @@ $conns = null;
 // find the gateway
 //$ipgw = null;
 
-$RfConfFile = '/opt/sa818/sa818.json';
+$RfConfFile = DL3EL . '/sa818/sa818.json';
 
 if (fopen($RfConfFile,'r'))
 {
         $filedata = file_get_contents($RfConfFile);
         $RfData = json_decode($filedata,true);
-       // print_r($RfData);
+//        print_r($RfData);
 };
-
 
 $screen[0] = "Welcome to SA818 RF MODULE configuration tool.";
 $screen[1] = "Please use buttons for actions.";
@@ -118,7 +113,7 @@ if (isset($_POST['btnDetect']))
 	
         $port = $_POST['port'];
 
-	$command_top = "ls -1 /dev/ttyA* /dev/ttyUSB* /dev/ttyS* 2>&1";
+	$command_top = "ls -1 /dev/ttyS* /dev/ttyUSB* 2>&1";
 	exec($command_top,$screen_top,$retval);
 	
 	//print_r($screen_top); 
@@ -129,7 +124,7 @@ if (isset($_POST['btnDetect']))
 	foreach ($screen_top as $port_test)
 	{ 
 		$screen[$i] = "Detection for:" .$port_test; 
-		$command = "sa818 --port \"" .$port_test. "\" version 2>&1";
+		$command = "python3 sa818.py --port \"" .$port_test. "\" version 2>&1";
         	exec($command,$screen_small,$retval);
 		
 		//print_r($screen_small);
@@ -150,17 +145,21 @@ if (isset($_POST['btnVersion']))
         $retval = null;
         $screen = null;
         $port = $_POST['port'];
-        $command = "sa818 --port \"" .$port. "\" version 2>&1";
+        $command = "python3 sa818.py --port \"" .$port. "\" version 2>&1";
+
 	if (!$retval) exec($command,$screen,$retval);
-	//if ($retval) echo("NOK");
+//	echo "<br>SHARI: $retval";
+  	//if ($retval) echo("NOK");
 	if (!$retval) {
 		$RfData['port']=$port;
 		$jsonRfData = json_encode($RfData);
-        	file_put_contents("/var/www/html/rf/sa818.json", $jsonRfData ,FILE_USE_INCLUDE_PATH);
+        	file_put_contents("sa818.json", $jsonRfData ,FILE_USE_INCLUDE_PATH);
                 //archive the current config
-                exec('sudo cp /opt/sa818/sa818.json /opt/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
+//                exec('sudo cp /opt/sa818/sa818.json /opt/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
+                exec('sudo cp ' . DL3EL . '/sa818/sa818.json ' . DL3EL . '/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
                 //move generated file to current config
-                exec('sudo mv /var/www/html/rf/sa818.json /opt/sa818/sa818.json', $screen, $retval);
+//                exec('sudo mv sa818.json /opt/sa818/sa818.json', $screen, $retval);
+                exec('sudo mv sa818.json ' . DL3EL . '/sa818/sa818.json', $screen, $retval);
 	}
 }
 
@@ -177,18 +176,22 @@ if (isset($_POST['btnRadio']))
 	$squelch = $_POST['squelch'];
 	$ctcss = $_POST['ctcss'];
 	$tail = $_POST['tail'];
+	$bw = $_POST['bw'];
 
-        $command = "sa818 --port \"" .$port. "\" radio --frequency \"" .$freq. "\" --offset \"" .$offset. "\" --squelch \"" .$squelch. "\" --ctcss \"" .$ctcss. "\" --close-tail \"" .$tail. "\" 2>&1";
+#        $command = "python3 sa818.py --port \"" .$port. "\" radio --frequency \"" .$freq. "\" --offset \"" .$offset. "\" --squelch \"" .$squelch. "\" --ctcss \"" .$ctcss. "\" --close-tail \"" .$tail. "\" 2>&1";
+        $command = "python3 sa818.py --port \"" .$port. "\" radio --frequency \"" .$freq. "\" --offset \"" .$offset. "\" --squelch \"" .$squelch. "\" --ctcss \"" .$ctcss. "\" --tail \"" .$tail. "\" --bw \"" .$bw. "\" 2>&1";
         if (!$retval) exec($command,$screen,$retval);
 
 	if (!$retval) {
                 $RfData['port']=$port;$RfData['freq']=$freq;$RfData['offset']=$offset;$RfData['squelch']=$squelch;$RfData['ctcss']=$ctcss;$RfData['tail']=$tail;
                 $jsonRfData = json_encode($RfData);
-                file_put_contents("/var/www/html/rf/sa818.json", $jsonRfData ,FILE_USE_INCLUDE_PATH);
+                file_put_contents("sa818.json", $jsonRfData ,FILE_USE_INCLUDE_PATH);
                 //archive the current config
-                exec('sudo cp /opt/sa818/sa818.json /opt/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
+//                exec('sudo cp /opt/sa818/sa818.json /opt/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
+                exec('sudo cp ' . DL3EL . '/sa818/sa818.json ' . DL3EL . '/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
                 //move generated file to current config
-                exec('sudo mv /var/www/html/rf/sa818.json /opt/sa818/sa818.json', $screen, $retval);
+//                exec('sudo mv sa818.json /opt/sa818/sa818.json', $screen, $retval);
+                exec('sudo mv sa818.json ' . DL3EL . '/sa818/sa818.json', $screen, $retval);
         }
 }
 
@@ -202,16 +205,18 @@ if (isset($_POST['btnFilters']))
         $fLow = $_POST['fLow'];
         $fHigh = $_POST['fHigh'];
 
-        $command = "sa818 --port \"" .$port. "\" filters  --emphasis \"" .$fEmph. "\" --lowpass \"" .$fLow. "\" --highpass \"" .$fHigh. "\" 2>&1";
+        $command = "python3 sa818.py --port \"" .$port. "\" filters  --emphasis \"" .$fEmph. "\" --lowpass \"" .$fLow. "\" --highpass \"" .$fHigh. "\" 2>&1";
         if (!$retval) exec($command,$screen,$retval);
 	        if (!$retval) {
                 $RfData['port']=$port;$RfData['fEmph']=$fEmph; $RfData['fLow']=$fLow;$RfData['fHigh']=$fHigh;
                 $jsonRfData = json_encode($RfData);
-                file_put_contents("/var/www/html/rf/sa818.json", $jsonRfData ,FILE_USE_INCLUDE_PATH);
+                file_put_contents("sa818.json", $jsonRfData ,FILE_USE_INCLUDE_PATH);
                 //archive the current config
-                exec('sudo cp /opt/sa818/sa818.json /opt/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
+//                exec('sudo cp /opt/sa818/sa818.json /opt/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
+                exec('sudo cp ' . DL3EL . '/sa818/sa818.json ' . DL3EL . '/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
                 //move generated file to current config
-                exec('sudo mv /var/www/html/rf/sa818.json /opt/sa818/sa818.json', $screen, $retval);
+//                exec('sudo mv sa818.json /opt/sa818/sa818.json', $screen, $retval);
+                exec('sudo mv sa818.json ' . DL3EL . '/sa818/sa818.json', $screen, $retval);
         }
 
 }
@@ -227,16 +232,18 @@ if (isset($_POST['btnVol']))
         $port = $_POST['port'];
         $volume = $_POST['volume'];
 
-        $command = "sa818 --port \"" .$port. "\" volume  --level \"" .$volume. "\" 2>&1";
+        $command = "python3 sa818.py --port \"" .$port. "\" volume  --level \"" .$volume. "\" 2>&1";
         if (!$retval) exec($command,$screen,$retval);
                 if (!$retval) {
                 $RfData['volume']=$volume;
                 $jsonRfData = json_encode($RfData);
-                file_put_contents("/var/www/html/rf/sa818.json", $jsonRfData ,FILE_USE_INCLUDE_PATH);
+                file_put_contents("sa818.json", $jsonRfData ,FILE_USE_INCLUDE_PATH);
                 //archive the current config
-                exec('sudo cp /opt/sa818/sa818.json /opt/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
+//                exec('sudo cp /opt/sa818/sa818.json /opt/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
+                exec('sudo cp ' . DL3EL . '/sa818/sa818.json ' . DL3EL . '/sa818/sa818.json.' .date("YmdThis") ,$screen,$retval);
                 //move generated file to current config
-                exec('sudo mv /var/www/html/rf/sa818.json /opt/sa818/sa818.json', $screen, $retval);
+//                exec('sudo mv sa818.json /opt/sa818/sa818.json', $screen, $retval);
+                exec('sudo mv sa818.json ' . DL3EL . '/sa818/sa818.json', $screen, $retval);
         }
 
 }
@@ -248,27 +255,29 @@ $port = $RfData['port'];
 $freq = $RfData['freq'];$offset=$RfData['offset'];$ctcss=$RfData['ctcss'];$tail=$RfData['tail'];$squelch=$RfData['squelch'];
 $fEmph = $RfData['fEmph'];$fLow=$RfData['fLow'];$fHigh=$RfData['fHigh'];
 $volume = $RfData['volume'];
-
+$tail = $RfData['tail'];
+$bw = $RfData['bw'];
 
 // default section
 // port
-if ($port === "" || is_null($port)) $port = "/dev/ttyAMA0";
+#if ($port === "" || is_null($port)) $port = "/dev/ttyS1";
+if ($port === "" || is_null($port)) $port = "/dev/ttyUSB.shari";
 
 //radio
-if ($freq === "" || is_null($freq)) $freq = "433.5375";
+if ($freq === "" || is_null($freq)) $freq = "433.025";
 if ($offset === "" || is_null($offset)) $offset = "0.0";
-if ($ctcss === "" || is_null($ctcss)) $ctcss = "77.0";
+if ($ctcss === "" || is_null($ctcss)) $ctcss = "94.8";
 if ($tail === "" || is_null($tail)) $tail = "yes";
-if ($squelch === "" || is_null($squelch)) $squelch = "5";
+if ($squelch === "" || is_null($squelch)) $squelch = "1";
+if ($bw === "" || is_null($bw)) $bw = "1";
 
 //filter
-if ($fEmph === "" || is_null($fEmph)) $fEmph = "no";
-if ($fLow === "" || is_null($fLow)) $fLow = "yes";
-if ($fHigh === "" || is_null($fHigh)) $fHigh = "yes";
+if ($fEmph === "" || is_null($fEmph)) $fEmph = "enable";
+if ($fLow === "" || is_null($fLow)) $fLow = "enable";
+if ($fHigh === "" || is_null($fHigh)) $fHigh = "enable";
 
 //
 if ($volume === "" || is_null($volume)) $volume = "8";
-
 
 ?>
 
@@ -317,8 +326,9 @@ if ($volume === "" || is_null($volume)) $volume = "8";
    	Freq: <input type "text" name="freq" style = "width: 180px" value="<?php echo $freq;?>">
 	Shift: <input type "text" name="offset" style = "width: 50px" value="<?php echo $offset;?>"> <br>
    	Ctcss: <input type "text" name="ctcss" style = "width: 50px" value="<?php echo $ctcss;?>">
-	Squelch: <input type "text" name="squelch" style = "width: 50px" value="<?php echo $squelch;?>">
+	Squelch: <input type "text" name="squelch" style = "width: 50px" value="<?php echo $squelch;?>"><br>
 	Tail: <input type "text" name="tail" style = "width: 50px" value="<?php echo $tail;?>">
+	Bandwidth: <input type "text" name="bw" style = "width: 50px" value="<?php echo $bw;?>">
 </TD>
 <td>
 <button name="btnRadio" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Radio</button>

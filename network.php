@@ -45,13 +45,6 @@ include "include/settings.php";
     <div class="img" style = "padding-left:30px"><img src="images/svxlink.ico" /></div>
     <div class="text"style = "padding-right:230px">
 <center><p style = "margin-top:5px;margin-bottom:0px;">
-<?php
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
-    if (fopen($svxConfigFile,'r')) 
-       { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); 
-         $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];}
-    else { $callsign="NOCALL";}
-?>
 <span style = "font-size: 32px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $callsign; ?></span>
 <p style = "margin-top:0px;margin-bottom:0px;">
 <span style = "font-size: 18px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $fmnetwork; ?></span>
@@ -89,7 +82,7 @@ include_once "include/buttons.php";
     echo '</td>'."\n";
 
     echo '<td valign="top"  style = "height:500px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';
-    echo '<iframe src="/network"  style = "width:615px; height:490px"></iframe>';
+    echo '<iframe src="./network"  style = "width:615px; height:490px"></iframe>';
     echo '</td>';
 ?>
 </tr></table>

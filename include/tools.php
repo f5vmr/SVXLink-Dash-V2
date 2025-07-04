@@ -98,3 +98,4 @@ function debug_log($message) {
   // Also display on screen if needed
   //echo "<div style='background-color:#ffeeee;border:1px solid red;padding:5px;margin:5px;'><pre>DEBUG: " . htmlspecialchars($message) . "</pre></div>";
 }
+?>

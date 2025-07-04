@@ -19,7 +19,7 @@ function startHotspot() {
 }
 
 // Always turn on Wi-Fi radio at the start, regardless of connection state
-exec('sudo -n nmcli radio wifi on 2>&1');
+exec('sudo nmcli radio wifi on 2>&1');
 
 // If no Wi-Fi device, or not connected, start the hotspot
 if (!isWifiAvailable()) {
@@ -38,21 +38,21 @@ if (!isWifiAvailable()) {
 if (isset($_POST['btnScan'])) {
     $retval = null;
     $screen = null;
-    exec('sudo -n nmcli dev wifi rescan');
-    exec('sudo -n nmcli dev wifi list 2>&1', $screen, $retval);
+    exec('sudo nmcli dev wifi rescan');
+    exec('sudo nmcli dev wifi list 2>&1', $screen, $retval);
 }
 
 if (isset($_POST['btnConnList'])) {
     $retval = null;
     $screen = null;
-    exec('sudo -n nmcli con show --order type 2>&1', $screen, $retval);
+    exec('sudo nmcli con show --order type 2>&1', $screen, $retval);
 }
 
 if (isset($_POST['btnSwitch'])) {
     $retval = null;
     $screen = null;
     $ssid = $_POST['ssid'];
-    $command = "sudo -n nmcli dev wifi connect \"" . $ssid . "\" 2>&1";
+    $command = "sudo nmcli dev wifi connect \"" . $ssid . "\" 2>&1";
     exec($command, $screen, $retval);
 }
 
@@ -60,7 +60,7 @@ if (isset($_POST['btnDelete'])) {
     $retval = null;
     $screen = null;
     $ssid = $_POST['ssid'];
-    $command = "sudo -n nmcli con delete \"" . $ssid . "\" 2>&1";
+    $command = "sudo nmcli con delete \"" . $ssid . "\" 2>&1";
     exec($command, $screen, $retval);
 }
 
@@ -69,23 +69,23 @@ if (isset($_POST['btnAdd'])) {
     $screen = null;
     $ssid = $_POST['ssid'];
     $password = $_POST['password'];
-    $command = "sudo -n nmcli dev wifi connect \"" . $ssid . "\" password  \"" . $password . "\"  2>&1";
+    $command = "sudo nmcli dev wifi connect \"" . $ssid . "\" password  \"" . $password . "\"  2>&1";
     exec($command, $screen, $retval);
 }
 
 if (isset($_POST['btnWifiStatus'])) {
     $retval = null;
     $screen = null;
-    $command = 'sudo -n nmcli radio 2>&1';
+    $command = 'sudo nmcli radio 2>&1';
     exec($command, $screen, $retval);
 }
 
 if (isset($_POST['btnWifiOn'])) {
     $retval = null;
     $screen = null;
-    $command = 'sudo -n nmcli radio wifi on 2>&1';
+    $command = 'sudo nmcli radio wifi on 2>&1';
     exec($command, $screen, $retval);
-    $command = 'sudo -n nmcli radio wifi 2>&1';
+    $command = 'sudo nmcli radio wifi 2>&1';
     exec($command, $screen, $retval);
 }
 ?>
@@ -94,7 +94,7 @@ if (isset($_POST['btnWifiOn'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/css/css.php" type="text/css" rel="stylesheet" />
+    <link href="../css/css.php" type="text/css" rel="stylesheet" />
     <style type="text/css">
         body {
             background-color: #eee;

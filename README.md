@@ -1,3 +1,38 @@
+# SVXLink-Dashboard-V2.5 Enhancements by DL3EL
+<h1>SVXLink Node dashboard repository inspired by a pi-star dashboard</h1>
+<h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.</h2>
+Updated the code from Chris slightly and added some enhancements
+<b>all requirements listed below in the original readme are still valid and need to be executed.</b> The only difference is, if you use a different directory than /var/www/html, you have to your your selected name instead.<br><br>
+<b>Changes</b>
+<p>The major change is that the dashboard now runs in every directory below /var/www/html. So you can have two dashboards parallel, for test reasons or whatever.  </p>
+<p>So in /var/www/ run the following command line. </p>
+<p><b>sudo git clone https://github.com/DL3EL/SVXLink-Dash-V2 html/SVXLink-Dash-V2.5</b></p>
+<p><b> cd html/SVXLink-Dash-V2.5</b></p>
+<p>You can choose any other name than "SVXLink-Dash-V2.5"</p>
+<p>Some minor changes clearing double definitions and eliminating path names in the code when definitions are available. So the only file, that has to be changed for an individual configuration should be ./include/config.php.<br>
+To make it more  obvious, the button definition has moved from ./include/config.inc.php to ./include/config.php. This repository does not include both files, but ./include/config.inc.php.example and ./include/config.php.example. So old changes will not be overridden. As a disadvantage the .example files should be checked for any new or changed definitions. When the dashboard runs and does not find ./include/config.inc.php.example or ./include/config.php.example, the files will be created with the contents from the .example files (which is basically a factory reset for the dashboard).</p><br>
+Because of this, the script "upgrade.sh", mentioned below, will not work on the first run, because config.php et al. are not present. Therefore, it is necessary to open the dasboard via browser direct after the git clone command. In this run, the files will be created. Next, run the upgrade script where the rest is done.<br>
+<b>Enhancements</b><br>
+<p>The topic <b>Echolink</b> asks for a call or a part of if and, after hitting "Query" it shows all active Echolink stations, matching the query. A click on the station starts Echolink and tries to connect the station. Same happen, if "Echotest" is clicked. This page is not refreshed automatically.</p>
+<p>The topic <b>FM Relais</b> requires a Repeater or APRS Call or alternatively a QTH locator to show all active repeaters from FM-Funknetz and/or with an active Echolink connection. Clicking the TG / Nodenumber tries to connect the Echolink Node or activates the FM-Funknetz TG locally. This page is not refreshed automatically.</p>
+<p><b>MonitorCalls</b> shows all calls which are monitoring the TGs you have selected as monitoring or active TGs. Additionally it shows at the top who is currently talking (if any, at the time of this call) and below the list aof active TGS enhanced by the number of active users. A click joines the selected TG locally. This page is not refreshed automatically.</p>
+<p><b>Expert / Normal</b> user. You can choose, what type you are. The normal user will see the change masks for svxlink, echolink, etc as already known. The expert user will have a full screen editor with *no* syntax checking. The selection will be restored on a new start. Expert Users will also have access to the full log of svxlink. The log is displayed in reverse order, the newest entry on top. That is convenient especially for longer log files.</p>
+<p><b>Radio:</b> if it is defined in ./include/config.php, that the connected radio is a "Shari", then there will be this additional topic visible. When clicking you will be able to to all configurations of the radio directly in the dashbard. At the first time all fields should be adjusted to the actual value. Currently I do not read data from the radio to fill the fields. The data are stored in ./dl3el/sa818/sa818.json</p>
+<p><b>NoAuth:</b> if you choose not to authenticate the usage in ./include/config.php, it could be that at some points the autorization is still requested. Then click on "Dashboard" once and you are authorized. </p>
+<p><b>SoundCard:</b>if you are unable to configure the system with *only* one soundcard for svxlink, the inde4x to the card could be different after a reboot <br>
+Setting <b>DL3EL_SC_CHANGE</b> to "yes" enables the dashboard to select the correct soundcard and restart svxlink on the first run after reboot.<br>
+The string <b>DL3EL_SC_STRING</b> has to match the name of the card in the linux system.<br>
+<p><b>Update via git pull:</b> as I have taken action, that the user defined files sa818.json, config.php and config.inc.php are not changed by the update, you have to pay attention of changes happen in the respective ".example" files and evaluate, if you apply this to your files. If you set the variable <b>DL3EL_GIT_UPDATE</b> to "yes" (default), you find the 
+button "Dashboard Update (GitHub)" in the Power Menu. A simple click installs the latest update from GitHub and shows in the middle window the result. You can try this at any time, if there are no updates, you will see the message "Already up to date.". If there are any error, correct them and try again. Most frequent errors happen, if you change one of the files, whioch should be updated. Best way forward then is to rename the file, do the update and later compare both files.
+<p><b>Receiver for APRS Messages:</b> you can enable your installation to receive APRS Messages with the following steps:
+<li>insert "@reboot /var/www/html/dl3el/aprs-is.pl" in your crontab, change "/var/www/html" to your directory
+<li>copy /your directory/aprs-is.conf.example to /your directory/aprs-is.conf and replace the values to your data. The call configured in "aprs_msg_call", will be the receiver of the messages. It will also be used as a filter for the aprs login. Ie.: DL3EL* will receive all messages to any DL3EL Call
+<li>even if you currently cannot send messages, you do need an aprs password. That is needed for the ackowledgement of the messages.
+<li> add define("DL3EL_APRS_MSG", "yes"); to your config.php, that enabled the menu entry "APRS MSG"
+<li>call /var/www/html/dl3el/aprs-is.pl & manually or wait for the next reboot :-)
+ </p>
+<br>
+<p>Have fun and feedback is welcome<br> Thomas, DL3EL</p><hr>
 # SVXLink-Dashboard-V2
 <h1>SVXLink Node dashboard repository inspired by a pi-star dashboard</h1>
 <h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.

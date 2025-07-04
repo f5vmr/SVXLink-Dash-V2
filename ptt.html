@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button mit Timer und Skriptausführung</title>
+    <script type="text/javascript">
+        let isCommandExecuted = false;
+        let interval;
+
+        function startTimer(duration, button) {
+            let timer = duration, minutes, seconds;
+            interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                button.textContent = "PTT (" + minutes + ":" + seconds + ")";
+                button.style.fontWeight = "bold";
+                button.style.backgroundColor = "red";
+                button.style.color = "white";
+                if (--timer < 0) {
+                    clearInterval(interval); 
+                    button.textContent = "PTT Time!";
+                    button.style.fontWeight = "bold";
+                    button.style.backgroundColor = "yellow";
+                    button.style.color = "black";
+                    //alert("Zeit abgelaufen!");
+                }
+            }, 1000);
+        }
+
+        function executeCommand() {
+            let button = document.getElementById('myButton');
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "executePTT.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            if (!isCommandExecuted) {
+                xhr.send("command=first");
+                startTimer(180, button); // 10 Sekunden Timer
+                isCommandExecuted = true;
+            } else {
+                xhr.send("command=second");
+                clearInterval(interval);
+                button.textContent = "PTT";
+                button.style.fontWeight = "bold";
+                button.style.backgroundColor = "blue";
+                button.style.color = "white";
+                isCommandExecuted = false;
+            }
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    //alert(xhr.responseText);
+                }
+            };
+        }
+    </script>
+</head>
+<body>
+<?php
+    
+function execute_amixer($command) {
+    $output = [];
+    exec($command, $output);
+    return $output;
+}
+
+// Function to parse current values from amixer output
+function parse_amixer_value($output) {
+    foreach ($output as $line) {
+        if (strpos($line, ": values=") !== false) {
+            $value = trim(str_replace(": values=", "", $line));
+            return $value;
+        }
+    }
+    return null;
+}
+
+// Retrieve and parse current values using amixer cget
+function get_current_headphone_values() {
+//    $sc = 'aplay -l | grep "Audio Device"';
+    if (defined('DL3EL_SC_STRING')) {
+        $sc = 'aplay -l | grep "' . DL3EL_SC_STRING . '"';
+        $sc = substr(shell_exec($sc),5,1);
+    } else {
+        $sc = 0;
+    }    
+    $headphone_value = execute_amixer("sudo amixer -c" . $sc . " cget numid=6");
+    $headphone_output =  parse_amixer_value($headphone_value);
+    return $headphone_output;
+}
+// from amixer
+function ls_change($value) {
+//amixer -c 0 set Speaker 5%-
+//    $sc = 'aplay -l | grep "Audio Device"';
+    if (defined('DL3EL_SC_STRING')) {
+        $sc = 'aplay -l | grep "' . DL3EL_SC_STRING . '"';
+        $sc = substr(shell_exec($sc),5,1);
+//        $cmd = "sudo amixer -c" . $sc . " set Speaker " . $value;
+    } else {
+        $sc = 0;
+    }    
+    $new_value = execute_amixer("sudo amixer -c" . $sc . " set Speaker " . $value);
+    $new_value =  parse_amixer_value($new_value);
+}
+
+// Get current values from amixer
+if (defined('DL3EL_SC_STRING')) {
+    $sc = 'aplay -l | grep "' . DL3EL_SC_STRING . '"';
+    $sc = substr(shell_exec($sc),5,1);
+} else {
+    $sc = 0;
+}    
+$current_values = get_current_headphone_values();
+
+if (isset($_POST['buttonA'])) { ls_change("5%-"); }
+if (isset($_POST['buttonB'])) { ls_change("5%+"); }
+if (isset($_POST['button_off'])) { ls_change("mute"); }
+if (isset($_POST['button_on'])) { ls_change("unmute"); }
+
+echo '<p></p>';
+echo '<span style="display: inline;">';
+echo '<button id="myButton" onclick="executeCommand()" style = "margin-right:90px; width:150px; color:white; background-color:green; border-color:transparent; border-radius:8px; height:40px; font-size:16px;"><b>PTT off</b></button>';
+echo '<form action="" method="post" style="display: inline;" >';
+
+//read Speaker on/off from amixer
+$status = exec("amixer -c" . $sc . " get Speaker |grep % |awk '{print $7}'");
+
+if ($status == "[on]") {
+	$volume = exec("amixer -c" . $sc . " get Speaker |grep % |awk '{print $5}'|sed 's/[^0-9\%]//g'");
+	$color = "#7a4a4a";
+	echo '<button name="button_off" type="submit" style = "margin-right:15px; width:70px; border-radius:8px; color:white; border-color:transparent; background-color:' . $color .'; height:28px; font-size:16px;"><img src=images/speaker_off.png></button>';
+        $color = "darkred";
+	echo '<button name="buttonA" type="submit" style = "margin-right:10px; width:30px; border-radius:8px; color:white; border-color:transparent; background-color:' . $color .'; height:28px; font-size:18px;"><b>-</b></button>';
+	echo '<font style="margin-right:10px; width:30px; color:black; font-size:16px">' . $volume . '</font>';
+	$color = "seagreen";
+	echo '<button name="buttonB" type="submit" style = "margin-right:100px; width:30px; border-radius:8px;color:white; border-color:transparent; background-color:' . $color .';height:28px; font-size:18px;"><b>+</b></button>';
+        }
+   else {
+	$volume = "&ensp;<img src=images/speaker_off_b.png>&emsp;";
+	$color = "#4a7a7a";
+	echo '<button name="button_on" type="submit" style = "margin-right:55px; width:70px; border-radius:8px; color:white; border-color:transparent; background-color:' . $color .'; height:28px; font-size:16px;"><img src=images/speaker.png></button>';
+        $color = "transparent";
+        echo '<font style="margin-right:140px; width:30px;">' . $volume . '</font>';
+        }
+?>
+</form>
+</span>
+</body>
+</html>

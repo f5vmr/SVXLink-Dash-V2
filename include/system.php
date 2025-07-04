@@ -40,13 +40,31 @@ $voltageHTML = "<td style=\"background: $voltageColor;\">$voltageStatus</td>\n";
 
 // Operating System Info
 $os_info = shell_exec('lsb_release -d | awk -F"\t" \'{print $2}\'');
+if (file_exists('/usr/local/sbin/platformDetect.sh')) {
+    $os_info = $os_info . "<br>" . shell_exec('/usr/local/sbin/platformDetect.sh');
+}
 
+$svxConfigFile = SVXCONFPATH.SVXCONFIG;
+if (fopen($svxConfigFile,'r')) {
+    $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW); 
+    $default_tg = $svxconfig['ReflectorLogic']['DEFAULT_TG'];     
+    $ctcss_to_tg = $svxconfig['SimplexLogic']['CTCSS_TO_TG'];     
+    if (($ctcss_to_tg != "") && ($default_tg == "0")) {
+        echo '<fieldset style="box-shadow:5px 5px 20px #999;background-color:#e8e8e8e8; width:855px;margin-top:0px;margin-bottom:10px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">';
+        echo '<table style="margin-top:2px;"><tr>';
+        echo "CTCSS_TO_TG&nbsp;=&nbsp;$ctcss_to_tg <br>";
+        echo '</tr></table></fieldset>';
+    }    
+}
 ?>
 <p style="margin-bottom:10px;margin-top:4px;"><a target=_blank href=esm><span style="font-weight: bold;font-size:14px;">Hardware Info</span></a></p>
 <fieldset style="box-shadow:5px 5px 20px #999;background-color:#e8e8e8e8; width:855px;margin-top:0px;margin-bottom:10px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <table style="margin-top:2px;">
   <tr>
+<!----
     <th>Hostname<br/><span style="font-weight: bold;color:#effd5f;font-size:10px;">IP: <?php echo str_replace(' ', '<br />', exec('hostname -I | awk \'{print $1}\''));?></span></th>
+--->
+    <th>Hostname<br/><span style="font-weight: bold;color:#effd5f;font-size:10px;">IP: <?php echo str_replace(' ', '<br />', exec('hostname -I'));?></span></th>
     <th><b>Kernel<br/>release</b></th>
     <th colspan="2">Operating System<br><span style="font-weight: bold;color:#effd5f;font-size:12px;">Uptime: <?php echo $uptime; ?></span></th>
     <th><span>&nbsp;<b>Disk&nbsp;<br> used</b></span></th>

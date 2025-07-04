@@ -70,9 +70,12 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <?php
             include_once "../include/functions.php";
-            $directory = "/etc/svxlink/";
-            $svxConfigFile = 'svxlink.conf';
+//            $directory = "/etc/svxlink/";
+            $directory = SVXCONFPATH;
+//            $svxConfigFile = 'svxlink.conf';
+            $svxConfigFile = SVXCONFIG;
             $file = $directory . $svxConfigFile;
+
             $owner = 'svxlink';
             $group = 'svxlink';
 

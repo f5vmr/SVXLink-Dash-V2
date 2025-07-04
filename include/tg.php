@@ -6,15 +6,6 @@ include_once "config.php";
 include_once "tools.php";        
 include_once "functions.php";    
 include_once "tgdb.php";    
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
-    if (fopen($svxConfigFile,'r'))
-       { $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);  
-        $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];
-        $fmnetwork =$svxconfig['ReflectorLogic']['HOSTS'];
-        //$tgUri = $svxconfig['ReflectorLogic']['TG_URI'];
-}
-
-
 
 if (isset($_POST['btnUpdateTgs']))
     {

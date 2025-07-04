@@ -1,0 +1,7 @@
+# block pulseaudio using the soundcard for SVXLINK
+ATTRS{idVendor}=="0d8c", ENV{PULSE_IGNORE}="1"
+# create a symlink /dev/hidrawX to /dev/cm108gpio
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0d8c", SYMLINK+="cm108gpio", MODE="0666"
+ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="1d6b", ATTRS{idProduct}=="0002", SYMLINK+="ttyUSB.shari"
+# von alter 32bit Installation, ggf. neues SHARI Modell
+ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="ttyUSB.shari_n"

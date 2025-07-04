@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/css/css.php" type="text/css" rel="stylesheet" />
+    <link href="../css/css.php" type="text/css" rel="stylesheet" />
     <style type="text/css">
         body {
             background-color: #eee;
@@ -70,8 +70,11 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <?php
             include_once "../include/functions.php";
-            $directory = "/etc/svxlink/";
-            $svxConfigFile = 'TclVoiceMail.conf';
+//            $directory = "/etc/svxlink/";
+//            $directory = "SVXCONFPATH";
+//            $svxConfigFile = 'TclVoiceMail.conf';
+            $directory = MODULEPATH;
+            $svxConfigFile = TclVoiceMail;
             $file = $directory . $svxConfigFile;
             $owner = 'svxlink';
             $group = 'svxlink';

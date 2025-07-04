@@ -2,6 +2,8 @@ svxlink ALL=NOPASSWD: /usr/sbin/service
 svxlink ALL=NOPASSWD: /usr/bin/cp
 svxlink ALL=NOPASSWD: /usr/bin/chown
 svxlink ALL=NOPASSWD: /usr/bin/chmod
+svxlink ALL=NOPASSWD: /usr/bin/gunzip
+svxlink ALL=NOPASSWD: /usr/bin/git
 svxlink ALL=NOPASSWD: /usr/bin/systemctl
 svxlink ALL=NOPASSWD: /usr/sbin/reboot
 svxlink ALL=NOPASSWD: /usr/sbin/shutdown
@@ -9,3 +11,5 @@ svxlink ALL=NOPASSWD: /usr/bin/mv
 svxlink ALL=NOPASSWD: /usr/bin/nmcli
 svxlink ALL=NOPASSWD: /usr/bin/amixer
 svxlink ALL=NOPASSWD: /bin/echo * > /tmp/dtmf_svx
+svxlink ALL=NOPASSWD: /usr/bin/echo
+

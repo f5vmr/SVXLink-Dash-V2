@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link href="/css/css.php" type="text/css" rel="stylesheet" />
+    <link href="../css/css.php" type="text/css" rel="stylesheet" />
 <style type="text/css">
 body {
   background-color: #eee;
