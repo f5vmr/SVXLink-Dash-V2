@@ -66,7 +66,7 @@ find /etc/svxlink -type f -exec sudo chown svxlink:svxlink {} +
 # Set DTMF active.
 sudo touch /tmp/dtmf_svx
 sudo chown svxlink:svxlink /tmp/dtmf_svx
-sudo chmod 666 /tmp/dtmf_svx
+sudo chmod 775 /tmp/dtmf_svx
 #find the terminal active.
 
 
