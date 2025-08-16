@@ -201,15 +201,15 @@ if (isset($_POST['button4'])) {
 }
 
 if (isset($_POST['button5'])) {
-    shell_exec('echo "9191#" > /tmp/dtmf_svx');
+    shell_exec('echo "919050#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button6'])) {
-    shell_exec('echo "91#" > /tmp/dtmf_svx');
+    shell_exec('echo "9143136#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button7'])) {
-    shell_exec('echo "91#" > /tmp/dtmf_svx');
+    shell_exec('echo "9149720#" > /tmp/dtmf_svx');
 }
 
 if (isset($_POST['button8'])) {
@@ -333,28 +333,45 @@ if (isset($_POST['buttonDD']))
 }
 
 // POWER OFF
-if (isset($_POST['button99']))
-{
+
+
+if (isset($_POST['button99'])) {
     shell_exec('sudo poweroff');
-//     echo '<pre><h1><center><p style="color: #454545; ">POWER OFF</center></h1></p></pre>';
-}
+    // Optionally, display a shutdown message here.
+    echo '<p>System is powering off...</p>';
+} else {
 ?>
 <form method="post">
     <p>
-         <center><button style="height: 60px; width: 100px;font-size:25px;" name="button21">1</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button22">2</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button23">3</button><button style="height: 60px; width: 100px;font-size:25px;" button name="buttonAA">A</button></center>
-         <center><button style="height: 60px; width: 100px;font-size:25px;" name="button24">4</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button25">5</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button26">6</button><button style="height: 60px; width: 100px;font-size:25px;" button name="buttonBB">B</button></center>
-         <center><button style="height: 60px; width: 100px;font-size:25px;" name="button27">7</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button28">8</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button29">9</button><button style="height: 60px; width: 100px;font-size:25px;" button name="buttonCC">C</button></center>
-         <center><button style="height: 60px; width: 100px;font-size:25px;" name="button30">*</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button20">0</button><button style="height: 60px; width: 100px;font-size:25px;" button name="button31">#</button><button style="height: 60px; width: 100px;font-size:25px;" button name="buttonDD">D</button></center>
+        <center>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button21">1</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button22">2</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button23">3</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="buttonAA">A</button>
+        </center>
+        <center>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button24">4</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button25">5</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button26">6</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="buttonBB">B</button>
+        </center>
+        <center>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button27">7</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button28">8</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button29">9</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="buttonCC">C</button>
+        </center>
+        <center>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button30">*</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button20">0</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="button31">#</button>
+            <button style="height: 60px; width: 100px;font-size:25px;" name="buttonDD">D</button>
+        </center>
     </p>
-    </form>
-
-
-                    <?php
-} else {
-
-    //header("Location: http://svxlink.pl:888");
-    //exit();
-    }                    ?>
+</form>
+<?php
+}
+?>
         </fieldset>
 </body>
 </html>
