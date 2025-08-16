@@ -180,150 +180,150 @@ if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE) {
 // Defined buttons:
 
     if (isset($_POST['button1'])) {
-        shell_exec('echo "*91260#" > /tmp/dtmf_svx');
+        shell_exec('echo "*91260#" > /etc/svxlink/dtmf_svx');
     }
 
    if (isset($_POST['button2'])) {
-        shell_exec('echo "*912600#" > /tmp/dtmf_svx');
+        shell_exec('echo "*912600#" > /etc/svxlink/dtmf_svx');
     }
 
  if (isset($_POST['button3'])) {
-        shell_exec('echo "*9126078#" > /tmp/dtmf_svx');
+        shell_exec('echo "*9126078#" > /etc/svxlink/dtmf_svx');
     }
 
  if (isset($_POST['button4'])) {
-        shell_exec('echo "*91999#" > /tmp/dtmf_svx');
+        shell_exec('echo "*91999#" > /etc/svxlink/dtmf_svx');
     }
 
  if (isset($_POST['button5'])) {
-        shell_exec('echo "9191#" > /tmp/dtmf_svx');
+        shell_exec('echo "9191#" > /etc/svxlink/dtmf_svx');
     }
 
  if (isset($_POST['button6'])) {
-        shell_exec('echo "9126021#" > /tmp/dtmf_svx');
+        shell_exec('echo "9126021#" > /etc/svxlink/dtmf_svx');
     }
 
  if (isset($_POST['button7'])) {
-        shell_exec('echo "9126062#" > /tmp/dtmf_svx');
+        shell_exec('echo "9126062#" > /etc/svxlink/dtmf_svx');
     }
 
  if (isset($_POST['button8'])) {
-        shell_exec('echo "910#" > /tmp/dtmf_svx');
+        shell_exec('echo "910#" > /etc/svxlink/dtmf_svx');
     }
 
 if (isset($_POST['button9'])) {
-        shell_exec('echo "*#" > /tmp/dtmf_svx');
+        shell_exec('echo "*#" > /etc/svxlink/dtmf_svx');
     }
 
  if (isset($_POST['button10'])) {
-        shell_exec('echo "*1#" > /tmp/dtmf_svx');
+        shell_exec('echo "*1#" > /etc/svxlink/dtmf_svx');
     }
 
  if (isset($_POST['button11'])) {
-        shell_exec('echo "*2# 453582#" > /tmp/dtmf_svx');
+        shell_exec('echo "*2# 453582#" > /etc/svxlink/dtmf_svx');
     }
 
  if (isset($_POST['button12'])) {
-        shell_exec('echo "2# 871657## " > /tmp/dtmf_svx');
+        shell_exec('echo "2# 871657## " > /etc/svxlink/dtmf_svx');
     }
  if (isset($_POST['button13'])) {
-        shell_exec('echo "2# 871657#" > /tmp/dtmf_svx');
+        shell_exec('echo "2# 871657#" > /etc/svxlink/dtmf_svx');
     }
 
 
 // Keyboard
  if (isset($_POST['button20']))
     {
-        shell_exec('echo "0" > /tmp/dtmf_svx');
+        shell_exec('echo "0" > /etc/svxlink/dtmf_svx');
       //  echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 0</center></h1></p></pre>';
     }
 
  if (isset($_POST['button21']))
     {
-        shell_exec('echo "1" > /tmp/dtmf_svx');
+        shell_exec('echo "1" > /etc/svxlink/dtmf_svx');
      //  echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 1</center></h1></p></pre>';
     }
 
  if (isset($_POST['button22']))
     {
-        shell_exec('echo "2" > /tmp/dtmf_svx');
+        shell_exec('echo "2" > /etc/svxlink/dtmf_svx');
       //  echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 2</center></h1></p></pre>';
     }
 
  if (isset($_POST['button23']))
     {
-        shell_exec('echo "3" > /tmp/dtmf_svx');
+        shell_exec('echo "3" > /etc/svxlink/dtmf_svx');
        // echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 3</center></h1></p></pre>';
     }
 
  if (isset($_POST['button24']))
     {
-        shell_exec('echo "4" > /tmp/dtmf_svx');
+        shell_exec('echo "4" > /etc/svxlink/dtmf_svx');
        // echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 4</center></h1></p></pre>';
     }
 
  if (isset($_POST['button25']))
     {
-        shell_exec('echo "5" > /tmp/dtmf_svx');
+        shell_exec('echo "5" > /etc/svxlink/dtmf_svx');
        // echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 5</center></h1></p></pre>';
     }
 
  if (isset($_POST['button26']))
     {
-        shell_exec('echo "6" > /tmp/dtmf_svx');
+        shell_exec('echo "6" > /etc/svxlink/dtmf_svx');
        // echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 6</center></h1></p></pre>';
     }
 
  if (isset($_POST['button27']))
     {
-        shell_exec('echo "7" > /tmp/dtmf_svx');
+        shell_exec('echo "7" > /etc/svxlink/dtmf_svx');
       //  echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 7</center></h1></p></pre>';
     }
 
  if (isset($_POST['button28']))
     {
-        shell_exec('echo "8" > /tmp/dtmf_svx');
+        shell_exec('echo "8" > /etc/svxlink/dtmf_svx');
     //    echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 8</center></h1></p></pre>';
     }
 
  if (isset($_POST['button29']))
     {
-        shell_exec('echo "9" > /tmp/dtmf_svx');
+        shell_exec('echo "9" > /etc/svxlink/dtmf_svx');
     //    echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: 9</center></h1></p></pre>';
     }
 
  if (isset($_POST['button30']))
     {
-        shell_exec('echo "*" > /tmp/dtmf_svx');
+        shell_exec('echo "*" > /etc/svxlink/dtmf_svx');
        // echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: *</center></h1></p></pre>';
     }
 
 if (isset($_POST['button31']))
     {
-        shell_exec('echo "#" > /tmp/dtmf_svx');
+        shell_exec('echo "#" > /etc/svxlink/dtmf_svx');
      //   echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: #</center></h1></p></pre>';
     }
 
 if (isset($_POST['buttonAA']))
     {
-        shell_exec('echo "A" > /tmp/dtmf_svx');
+        shell_exec('echo "A" > /etc/svxlink/dtmf_svx');
      //   echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 if (isset($_POST['buttonBB']))
     {
-        shell_exec('echo "B" > /tmp/dtmf_svx');
+        shell_exec('echo "B" > /etc/svxlink/dtmf_svx');
      //   echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 
 if (isset($_POST['buttonCC']))
     {
-        shell_exec('echo "C" > /tmp/dtmf_svx');
+        shell_exec('echo "C" > /etc/svxlink/dtmf_svx');
      //   echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 
 if (isset($_POST['buttonDD']))
     {
-        shell_exec('echo "D" > /tmp/dtmf_svx');
+        shell_exec('echo "D" > /etc/svxlink/dtmf_svx');
      //   echo '<pre><h1><center><p style="color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 

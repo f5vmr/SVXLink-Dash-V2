@@ -8,4 +8,4 @@ svxlink ALL=NOPASSWD: /usr/sbin/shutdown
 svxlink ALL=NOPASSWD: /usr/bin/mv
 svxlink ALL=NOPASSWD: /usr/bin/nmcli
 svxlink ALL=NOPASSWD: /usr/bin/amixer
-svxlink ALL=NOPASSWD: /bin/echo * > /tmp/dtmf_svx
+svxlink ALL=NOPASSWD: /bin/echo * > /etc/svxlink/dtmf_svx
