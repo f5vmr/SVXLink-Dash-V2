@@ -156,6 +156,23 @@ include "../include/tools.php";
     </style>
 </head>
 
+
+<?php
+include "../include/tools.php";
+function cidr_match($ip, $cidr) {
+    $outcome = false;
+    $pattern = '/^(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])\/(\d{1}|[0-2]{1}\d{1}|3[0-2])$/';
+    if (preg_match($pattern, $cidr)){
+        list($subnet, $mask) = explode('/', $cidr);
+        if (ip2long($ip) >> (32 - $mask) == ip2long($subnet) >> (32 - $mask)) {
+            $outcome = true;
+        }
+    }
+    return $outcome;
+}
+$url = $_SERVER['REQUEST_URI'] . "/include";
+    header("Refresh: 10; URL=$url");
+    ?>
 <body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
     <center>
         <fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
@@ -163,23 +180,7 @@ include "../include/tools.php";
                 <center>
                     <h1 id="dtmf_info" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">DTMF Dialer</h1>
 
-                    <?php
-//function cidr_match($ip, $cidr) {
-//    $outcome = false;
-//    $pattern = '/^(([01]?\d?\d|2[0-4]\d|25[0-5])\.){3}([01]?\d?\d|2[0-4]\d|25[0-5])\/(\d{1}|[0-2]{1}\d{1}|3[0-2])$/';
-//    if (preg_match($pattern, $cidr)){
-//        list($subnet, $mask) = explode('/', $cidr);
-//        if (ip2long($ip) >> (32 - $mask) == ip2long($subnet) >> (32 - $mask)) {
-//            $outcome = true;
-//        }
-//    }
-//    return $outcome;
-//}
-$url = $_SERVER['REQUEST_URI'] . "/include";
-//    header("Refresh: 10; URL=$url");
-
-
-
+<?php
 
 
 // Defined buttons:
