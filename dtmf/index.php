@@ -186,11 +186,6 @@ $url = $_SERVER['REQUEST_URI'] . "/include";
 
 if (isset($_POST['button1'])) {
     shell_exec('echo "91235#" > /etc/svxlink/dtmf_svx');
-    if (file_exists('/etc/svxlink/dtmf_svx')) {
-    echo '<div style="color:green;">Write succeeded: ' . htmlspecialchars(file_get_contents('/etc/svxlink/dtmf_svx')) . '</div>';
-} else {
-    echo '<div style="color:red;">Write failed: file not found</div>';
-}
 }
 
 if (isset($_POST['button2'])) {
