@@ -64,9 +64,9 @@ find /var/www/html ! -name "$SCRIPT_FILE" -exec sudo chown svxlink:svxlink {} +
 # Change ownership of all files in /etc/svxlink and sub directories.
 find /etc/svxlink -type f -exec sudo chown svxlink:svxlink {} +
 # Set DTMF active.
-sudo touch /etc/svxlink/dtmf_svx
-sudo chown svxlink:svxlink /etc/svxlink/dtmf_svx
-sudo chmod 775 /etc/svxlink/dtmf_svx
+sudo touch /var/run/svxlink/dtmf_svx
+sudo chown svxlink:svxlink /var/run/svxlink/dtmf_svx
+sudo chmod 775 /var/run/svxlink/dtmf_svx
 #find the terminal active.
 
 
