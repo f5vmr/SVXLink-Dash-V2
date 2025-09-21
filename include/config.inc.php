@@ -206,10 +206,10 @@ define("KEY1", array(' TG235 ','91235#','green'));
 define("KEY2", array(' TG2350 ','912350#','green'));
 define("KEY3", array(' TG23561 ','9123561#','green'));
 define("KEY4", array(' Disconnect ','910#','red'));
-define("KEY5", array(' D5', 'D5#','purple'));
-define("KEY6", array(' D6 ','D6#','purple'));
-define("KEY7", array(' D7 ','D7#','purple'));
-define("KEY8", array(' D8 ','D8#','blue'));
+define("KEY5", array(' OARC', '917920#','purple'));
+define("KEY6", array(' HR20 ','9143136#','purple'));
+define("KEY7", array(' ANGLOSCOT ','9123529#','purple'));
+define("KEY8", array(' NWAG ','9153573#','purple'));
 define("KEY9", array(' D9 ','D9#','blue'));
 define("KEY10", array(' D10 ','D10#','red'));
 // additional DTMF keys
