@@ -206,7 +206,7 @@ define("KEY1", array(' TG235 ','91235#','green'));
 define("KEY2", array(' TG2350 ','912350#','green'));
 define("KEY3", array(' TG23561 ','9123561#','green'));
 define("KEY4", array(' Disconnect ','910#','red'));
-define("KEY5", array(' OARC', '917920#','purple'));
+define("KEY5", array(' OARC', '9147920#','purple'));
 define("KEY6", array(' HR20 ','9143136#','purple'));
 define("KEY7", array(' ANGLOSCOT ','9123529#','purple'));
 define("KEY8", array(' NWAG ','9153573#','purple'));
