@@ -177,19 +177,19 @@ border-radius:10px;">
                 </tr>
                 <tr>
                     <td>
-                        <button name="btnScan" type="submit">Air Scan</button><br>
-                        <button name="btnConnList" type="submit">Conn List</button><br>
-                        <button name="btnWifiStatus" type="submit">WiFi Status</button>
+                        <button name="btnScan" type="submit" class="red" style="height:30px;width:150px;font-size:12px;>Air Scan</button><br>
+                        <button name="btnConnList" type="submit" class="red" style="height:30px;width:150px;font-size:12px;>Conn List</button><br>
+                        <button name="btnWifiStatus" type="submit" class="red" style="height:30px;width:150px;font-size:12px;>WiFi Status</button>
                     </td>
                     <td>
                         SSID: <input type="text" name="ssid" value="<?php echo htmlspecialchars($_POST['ssid'] ?? ''); ?>"><br>
                         Password: <input type="password" name="password" value="<?php echo htmlspecialchars($_POST['password'] ?? ''); ?>"><br>
-                        <button name="btnAdd" type="submit">Add & Connect</button>
+                        <button name="btnAdd" type="submit" class="red" style="height:30px;width:150px;font-size:12px;>Add & Connect</button>
                     </td>
                     <td>
-                        <button name="btnSwitch" type="submit">Switch SSID</button><br>
-                        <button name="btnDelete" type="submit">Delete SSID</button><br>
-                        <button name="btnWifiOn" type="submit">WiFi On</button>
+                        <button name="btnSwitch" type="submit" class="red" style="height:30px;width:150px;font-size:12px;>Switch SSID</button><br>
+                        <button name="btnDelete" type="submit" class="red" style="height:30px;width:150px;font-size:12px;>Delete SSID</button><br>
+                        <button name="btnWifiOn" type="submit" class="red" style="height:30px;width:150px;font-size:12px;>WiFi On</button>
                     </td>
                 </tr>
             </table>
