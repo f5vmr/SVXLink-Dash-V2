@@ -1,11 +1,12 @@
-svxlink ALL=NOPASSWD: /usr/sbin/service
-svxlink ALL=NOPASSWD: /usr/bin/cp
-svxlink ALL=NOPASSWD: /usr/bin/chown
-svxlink ALL=NOPASSWD: /usr/bin/chmod
-svxlink ALL=NOPASSWD: /usr/bin/systemctl
-svxlink ALL=NOPASSWD: /usr/sbin/reboot
-svxlink ALL=NOPASSWD: /usr/sbin/shutdown
-svxlink ALL=NOPASSWD: /usr/bin/mv
-svxlink ALL=NOPASSWD: /usr/bin/nmcli
-svxlink ALL=NOPASSWD: /usr/bin/amixer
-svxlink ALL=NOPASSWD: /bin/echo * > /var/run/svxlink/dtmf_svx
+svxlink ALL=(ALL) NOPASSWD: /usr/sbin/service
+svxlink ALL=(ALL) NOPASSWD: /usr/bin/cp
+svxlink ALL=(ALL) NOPASSWD: /usr/bin/chown
+svxlink ALL=(ALL) NOPASSWD: /usr/bin/chmod
+svxlink ALL=(ALL) NOPASSWD: /usr/bin/systemctl
+svxlink ALL=(ALL) NOPASSWD: /usr/sbin/reboot
+svxlink ALL=(ALL) NOPASSWD: /usr/sbin/shutdown
+svxlink ALL=(ALL) NOPASSWD: /usr/bin/mv
+svxlink ALL=(ALL) NOPASSWD: /usr/bin/nmcli, /usr/sbin/hostapd, /usr/sbin/dnsmasq, /sbin/ip, /bin/systemctl
+
+svxlink ALL=(ALL) NOPASSWD: /usr/bin/amixer
+svxlink ALL=(ALL) NOPASSWD: /bin/echo * > /var/run/svxlink/dtmf_svx
