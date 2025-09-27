@@ -103,6 +103,52 @@ if (isset($_POST['btnWifiOn'])) {
 <head>
     <meta charset="UTF-8">
     <link href="/css/css.php" type="text/css" rel="stylesheet" />
+<style type="text/css">
+        body {
+            background-color: #eee;
+            font-size: 18px;
+            font-family: Arial;
+            font-weight: 300;
+            margin: 2em auto;
+            max-width: 40em;
+            line-height: 1.5;
+            color: #444;
+            padding: 0 0.5em;
+        }
+        h1, h2, h3 {
+            line-height: 1.2;
+        }
+        a {
+            color: #607d8b;
+        }
+        .highlighter-rouge {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: .2em;
+            font-size: .8em;
+            overflow-x: auto;
+            padding: .2em .4em;
+        }
+        pre {
+            margin: 0;
+            padding: .6em;
+            overflow-x: auto;
+        }
+        #player {
+            position:relative;
+            width:205px;
+            overflow: hidden;
+            direction: ltr;
+        }
+        textarea {
+            background-color: #111;
+            border: 1px solid #000;
+            color: #ffffff;
+            padding: 1px;
+            font-family: courier new;
+            font-size:10px;
+        }
+    </style>
 </head>
 <body style="background-color:#e1e1e1;font:11pt arial,sans-serif;">
 <fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999;
