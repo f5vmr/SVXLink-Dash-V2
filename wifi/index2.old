@@ -35,12 +35,7 @@ if (!isWifiAvailable()) {
 }
 
 // Existing code for other actions
-if (isset($_POST['btnScan'])) {
-    $retval = null;
-    $screen = null;
-    exec('sudo -n nmcli dev wifi rescan');
-    exec('sudo -n nmcli dev wifi list 2>&1', $screen, $retval);
-}
+
 
 if (isset($_POST['btnConnList'])) {
     $retval = null;
