@@ -1,100 +1,87 @@
 <?php
-// ---------- Helper Functions ----------
-
-// Check if wlan0 exists
+// Function to check if Wi-Fi is available
 function isWifiAvailable() {
+    // Check if wlan0 exists
     $output = shell_exec("iw dev");
     return strpos($output, 'wlan0') !== false;
 }
 
-// Check if wlan0 is connected to Wi-Fi
+// Function to check if connected to Wi-Fi
 function isWifiConnected() {
-    $output = shell_exec("nmcli -t -f DEVICE,STATE device | grep 'wlan0:connected'");
-    return !empty($output);
+    $output = shell_exec("nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d':' -f2");
+    return !empty($output);  // If a connection is active, the output will not be empty
 }
 
-// Assign static IP to wlan0 for hotspot mode
-function assignHotspotIP() {
-    exec('sudo -n ip link set wlan0 down');
-    exec('sudo -n ip addr flush dev wlan0');
-    exec('sudo -n ip addr add 192.168.50.1/24 dev wlan0');
-    exec('sudo -n ip link set wlan0 up');
-}
-
-// Start hotspot
+// Function to start hotspot if no Wi-Fi connection
 function startHotspot() {
-    assignHotspotIP();
-    exec('sudo -n systemctl start dnsmasq');
-    exec('sudo -n systemctl start hostapd');
+    exec('sudo systemctl start hostapd');
+    exec('sudo systemctl start dnsmasq');
 }
 
-// Stop hotspot
-function stopHotspot() {
-    exec('sudo -n systemctl stop hostapd');
-    exec('sudo -n systemctl stop dnsmasq');
-}
-
-// ---------- Main Logic ----------
-$screen = [];
-
+// Always turn on Wi-Fi radio at the start, regardless of connection state
 exec('sudo -n nmcli radio wifi on 2>&1');
 
+// If no Wi-Fi device, or not connected, start the hotspot
 if (!isWifiAvailable()) {
     $screen[] = "No Wi-Fi device detected.";
     $screen[] = "Starting hotspot...";
     startHotspot();
 } elseif (!isWifiConnected()) {
-    $screen[] = "Not connected to any Wi-Fi.";
+    $screen[] = "Not connected to any Wi-Fi network.";
     $screen[] = "Starting hotspot...";
     startHotspot();
 } else {
-    $screen[] = "Connected to Wi-Fi.";
-    stopHotspot();
+    $screen[] = "Connected to a Wi-Fi network.";
 }
 
-// ---------- Button Actions ----------
-if (isset($_POST['btnScan'])) {
-    $retval = null; $screen = null;
-    exec('sudo -n nmcli dev wifi rescan');
-    exec('sudo -n nmcli dev wifi list 2>&1', $screen, $retval);
-}
+// Existing code for other actions
+
 
 if (isset($_POST['btnConnList'])) {
-    $retval = null; $screen = null;
+    $retval = null;
+    $screen = null;
     exec('sudo -n nmcli con show --order type 2>&1', $screen, $retval);
 }
 
 if (isset($_POST['btnSwitch'])) {
-    $retval = null; $screen = null;
+    $retval = null;
+    $screen = null;
     $ssid = $_POST['ssid'];
     $command = "sudo -n nmcli dev wifi connect \"" . $ssid . "\" 2>&1";
     exec($command, $screen, $retval);
 }
 
 if (isset($_POST['btnDelete'])) {
-    $retval = null; $screen = null;
+    $retval = null;
+    $screen = null;
     $ssid = $_POST['ssid'];
     $command = "sudo -n nmcli con delete \"" . $ssid . "\" 2>&1";
     exec($command, $screen, $retval);
 }
 
 if (isset($_POST['btnAdd'])) {
-    $retval = null; $screen = null;
+    $retval = null;
+    $screen = null;
     $ssid = $_POST['ssid'];
     $password = $_POST['password'];
-    $command = "sudo -n nmcli dev wifi connect \"" . $ssid . "\" password \"" . $password . "\" 2>&1";
+    $command = "sudo -n nmcli dev wifi connect \"" . $ssid . "\" password  \"" . $password . "\"  2>&1";
     exec($command, $screen, $retval);
 }
 
 if (isset($_POST['btnWifiStatus'])) {
-    $retval = null; $screen = null;
-    exec('sudo -n nmcli radio 2>&1', $screen, $retval);
+    $retval = null;
+    $screen = null;
+    $command = 'sudo -n nmcli radio 2>&1';
+    exec($command, $screen, $retval);
 }
 
 if (isset($_POST['btnWifiOn'])) {
-    $retval = null; $screen = null;
-    exec('sudo -n nmcli radio wifi on 2>&1', $screen, $retval);
-    exec('sudo -n nmcli radio wifi 2>&1', $screen, $retval);
+    $retval = null;
+    $screen = null;
+    $command = 'sudo -n nmcli radio wifi on 2>&1';
+    exec($command, $screen, $retval);
+    $command = 'sudo -n nmcli radio wifi 2>&1';
+    exec($command, $screen, $retval);
 }
 ?>
 
@@ -103,7 +90,7 @@ if (isset($_POST['btnWifiOn'])) {
 <head>
     <meta charset="UTF-8">
     <link href="/css/css.php" type="text/css" rel="stylesheet" />
-<style type="text/css">
+    <style type="text/css">
         body {
             background-color: #eee;
             font-size: 18px;
@@ -150,24 +137,24 @@ if (isset($_POST['btnWifiOn'])) {
         }
     </style>
 </head>
-<body style="background-color:#e1e1e1;font:11pt arial,sans-serif;">
-<fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999;
-background-color:#f1f1f1;width:555px;margin:15px 5px;font-size:13px;
-border-radius:10px;">
-    <div style="padding:0;width:550px;background:linear-gradient(to bottom,#e9e9e9 50%,#bcbaba 100%);
-    border-radius:10px;border:1px solid LightGrey;margin:4px auto;line-height:1.6;white-space:normal;">
-        <h1 style="color:#00aee8;font:18pt arial,sans-serif;font-weight:bold;
-        text-shadow:0.25px 0.25px gray;">WiFi Configurator</h1>
+<body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
+<fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+    <div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
+        <h1 id="web-audio-peak-meters" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">WiFi Configurator</h1>
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-            <div style="height:150px">
+            <DIV style="height:150px">
                 <table>
-                    <tr><th>Screen</th></tr>
-                    <tr><td>
-                        <textarea rows="10" cols="80"><?php echo implode("\n", (array)$screen); ?></textarea>
-                    </td></tr>
+                    <tr>
+                        <th>Screen</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea name="scan" rows="10" cols="80"><?php echo implode("\n", $screen); ?></textarea>
+                        </td>
+                    </tr>
                 </table>
-            </div>
+            </DIV>
 
             <table>
                 <tr>
@@ -177,24 +164,34 @@ border-radius:10px;">
                 </tr>
                 <tr>
                     <td>
-                        <button name="btnScan" type="submit" class="red" style="height:30px;width:105px;font-size:12px;" >Air Scan</button><br>
-                        <button name="btnConnList" type="submit" class="red" style="height:30px; width:105px;font-size:12px;">Conn List</button><br>
-                        <button name="btnWifiStatus" type="submit" class="red" style="height:30px; width:105px;font-size:12px;">WiFi Status</button>
+                        <button name="btnScan" type="submit" class="red" style="height:30px;width:105px;font-size:12px;">Air Scan</button>
+                        <br>
+                        <button name="btnConnList" type="submit" class="red" style="height:30px; width:105px;font-size:12px;">Conn List</button>
+                        <br>
+                        <button name="btnWifiStatus" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">WiFi Status</button>
                     </td>
                     <td>
-                        SSID: <input type="text" name="ssid" value="<?php echo htmlspecialchars($_POST['ssid'] ?? ''); ?>"><br>
-                        Password: <input type="password" name="password" value="<?php echo htmlspecialchars($_POST['password'] ?? ''); ?>"><br>
-                        <button name="btnAdd" type="submit" class="red" style="height:30px;font-size:12px;">Add & Connect</button>
+                        SSID (network name): <input type="text" name="ssid" value="<?php echo $ssid;?>">
+                        <br>
+                        Password: <input type="password" name="password" value="<?php echo $password;?>">
+                        <br>
+                        <button name="btnAdd" type="submit" class="red" style="height:30px;font-size:12px;">Add Network & Connect</button>
                     </td>
                     <td>
-                        <button name="btnSwitch" type="submit" class="red" style="height:30px;font-size:12px;">Switch SSID</button><br>
-                        <button name="btnDelete" type="submit" class="red" style="height:30px;font-size:12px;">Delete SSID</button><br>
-                        <button name="btnWifiOn" type="submit" class="red" style="height:30px;font-size:12px;">WiFi On</button>
+                        <button name="btnSwitch" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Switch to SSID</button>
+                        <br>
+                        <button name="btnDelete" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Delete SSID</button>
+                        <br>
+                        <button name="btnWifiOn" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">WiFi On</button>
                     </td>
                 </tr>
             </table>
         </form>
     </div>
 </fieldset>
+
+<p style="margin: 0 auto;"></p>
+<p style="margin-bottom:-2px;"></p>
+
 </body>
 </html>
