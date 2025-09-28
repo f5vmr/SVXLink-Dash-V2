@@ -15,7 +15,11 @@ function isWifiConnected() {
     $output = shell_exec("nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d':' -f2");
     return !empty($output);  // If a connection is active, the output will not be empty
 }
-
+// Function to check if wired ethernet is connected
+function isWiredConnected() {
+    $output = shell_exec("nmcli -t -f DEVICE,STATE device | grep '^eth0:connected'");
+    return !empty(trim($output));
+}
 // Function to start hotspot if no Wi-Fi connection
 function startHotspot() {
     exec('sudo systemctl start hostapd');
@@ -30,8 +34,8 @@ if (!isWifiAvailable()) {
     $screen[] = "No Wi-Fi device detected.";
     $screen[] = "Starting hotspot...";
     startHotspot();
-} elseif (!isWifiConnected()) {
-    $screen[] = "Not connected to any Wi-Fi network.";
+} elseif (!isWifiConnected() && !isWiredConnected())  {
+    $screen[] = "Not connected to any Wi-Fi or Wired network.";
     $screen[] = "Starting hotspot...";
     startHotspot();
 } else {
