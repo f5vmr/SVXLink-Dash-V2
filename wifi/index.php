@@ -1,4 +1,8 @@
 <?php
+$screen = [];
+$ssid = '';
+$password = '';
+
 // Function to check if Wi-Fi is available
 function isWifiAvailable() {
     // Check if wlan0 exists
@@ -35,8 +39,12 @@ if (!isWifiAvailable()) {
 }
 
 // Existing code for other actions
-
-
+if (isset($_POST['btnScan'])) {
+    $retval = null;
+    $screen = null;
+    exec('sudo -n nmcli dev wifi rescan 2>&1', $output, $retval); // trigger rescan
+    exec('sudo -n nmcli dev wifi list 2>&1', $screen, $retval);   // get list
+}
 if (isset($_POST['btnConnList'])) {
     $retval = null;
     $screen = null;
