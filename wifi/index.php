@@ -171,8 +171,7 @@ if (isset($_POST['btnHotspotStatus'])) {
                         <button name="btnDelete" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Delete SSID</button>
                         <br>
                         <button name="btnWifiOn" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">WiFi On</button>
-                    </td>
-                    <td>
+                        <br>
                         <button name="btnStartHotspot" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Start Hotspot</button>
                         <br>
                         <button name="btnStopHotspot" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Stop Hotspot</button>
