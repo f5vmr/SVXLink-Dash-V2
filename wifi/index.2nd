@@ -5,74 +5,98 @@ $password = '';
 
 // Function to check if Wi-Fi is available
 function isWifiAvailable() {
-    $output = shell_exec("nmcli device status");
+    // Check if wlan0 exists
+    $output = shell_exec("iw dev");
     return strpos($output, 'wlan0') !== false;
 }
 
 // Function to check if connected to Wi-Fi
 function isWifiConnected() {
-    $output = shell_exec("nmcli -t -f DEVICE,STATE device | grep '^wlan0:connected'");
-    return !empty(trim($output));
+    $output = shell_exec("nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d':' -f2");
+    return !empty($output);  // If a connection is active, the output will not be empty
 }
-
 // Function to check if wired ethernet is connected
 function isWiredConnected() {
     $output = shell_exec("nmcli -t -f DEVICE,STATE device | grep '^eth0:connected'");
     return !empty(trim($output));
 }
+// Function to start hotspot if no Wi-Fi connection
+function startHotspot() {
+    exec('sudo systemctl start hostapd');
+    exec('sudo systemctl start dnsmasq');
+}
 
-// Always turn on Wi-Fi radio at the start
+// Always turn on Wi-Fi radio at the start, regardless of connection state
 exec('sudo -n nmcli radio wifi on 2>&1');
 
-// If no Wi-Fi device, or not connected, start hotspot
+// If no Wi-Fi device, or not connected, start the hotspot
 if (!isWifiAvailable()) {
     $screen[] = "No Wi-Fi device detected.";
-    $screen[] = "Hotspot profile available for fallback.";
-} elseif (!isWifiConnected() && !isWiredConnected()) {
+    $screen[] = "Starting hotspot...";
+    startHotspot();
+} elseif (!isWifiConnected() && !isWiredConnected())  {
     $screen[] = "Not connected to any Wi-Fi or Wired network.";
-    $screen[] = "You may start the hotspot manually below.";
+    $screen[] = "Starting hotspot...";
+    startHotspot();
 } else {
-    $screen[] = "Connected to a Wi-Fi or Wired network.";
+    $screen[] = "Connected to a Wi-Fi network.";
 }
 
-// Button actions
+// Existing code for other actions
 if (isset($_POST['btnScan'])) {
-    exec('sudo -n nmcli dev wifi rescan 2>&1', $output);
-    exec('sudo -n nmcli dev wifi list 2>&1', $screen);
+    $retval = null;
+    $screen = null;
+    exec('sudo -n nmcli dev wifi rescan 2>&1', $output, $retval); // trigger rescan
+    exec('sudo -n nmcli dev wifi list 2>&1', $screen, $retval);   // get list
 }
 if (isset($_POST['btnConnList'])) {
-    exec('sudo -n nmcli con show --order type 2>&1', $screen);
+    $retval = null;
+    $screen = null;
+    exec('sudo -n nmcli con show --order type 2>&1', $screen, $retval);
 }
+
 if (isset($_POST['btnSwitch'])) {
+    $retval = null;
+    $screen = null;
     $ssid = $_POST['ssid'];
-    exec("sudo -n nmcli dev wifi connect \"$ssid\" 2>&1", $screen);
+    $command = "sudo -n nmcli dev wifi connect \"" . $ssid . "\" 2>&1";
+    exec($command, $screen, $retval);
 }
+
 if (isset($_POST['btnDelete'])) {
+    $retval = null;
+    $screen = null;
     $ssid = $_POST['ssid'];
-    exec("sudo -n nmcli con delete \"$ssid\" 2>&1", $screen);
+    $command = "sudo -n nmcli con delete \"" . $ssid . "\" 2>&1";
+    exec($command, $screen, $retval);
 }
+
 if (isset($_POST['btnAdd'])) {
+    $retval = null;
+    $screen = null;
     $ssid = $_POST['ssid'];
     $password = $_POST['password'];
-    exec("sudo -n nmcli dev wifi connect \"$ssid\" password \"$password\" 2>&1", $screen);
+    $command = "sudo -n nmcli dev wifi connect \"" . $ssid . "\" password  \"" . $password . "\"  2>&1";
+    exec($command, $screen, $retval);
 }
+
 if (isset($_POST['btnWifiStatus'])) {
-    exec('sudo -n nmcli radio 2>&1', $screen);
+    $retval = null;
+    $screen = null;
+    $command = 'sudo -n nmcli radio 2>&1';
+    exec($command, $screen, $retval);
 }
+
 if (isset($_POST['btnWifiOn'])) {
-    exec('sudo -n nmcli radio wifi on 2>&1', $screen);
-    exec('sudo -n nmcli radio wifi 2>&1', $screen);
-}
-if (isset($_POST['btnStartHotspot'])) {
-    exec('sudo -n nmcli connection up PiHotspot 2>&1', $screen);
-}
-if (isset($_POST['btnStopHotspot'])) {
-    exec('sudo -n nmcli connection down PiHotspot 2>&1', $screen);
-}
-if (isset($_POST['btnHotspotStatus'])) {
-    exec('sudo -n nmcli -t -f NAME,TYPE,DEVICE connection show --active 2>&1', $screen);
+    $retval = null;
+    $screen = null;
+    $command = 'sudo -n nmcli radio wifi on 2>&1';
+    exec($command, $screen, $retval);
+    $command = 'sudo -n nmcli radio wifi 2>&1';
+    exec($command, $screen, $retval);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,13 +195,6 @@ if (isset($_POST['btnHotspotStatus'])) {
                         <button name="btnDelete" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Delete SSID</button>
                         <br>
                         <button name="btnWifiOn" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">WiFi On</button>
-                    </td>
-                    <td>
-                        <button name="btnStartHotspot" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Start Hotspot</button>
-                        <br>
-                        <button name="btnStopHotspot" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Stop Hotspot</button>
-                        <br>
-                        <button name="btnHotspotStatus" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Hotspot Status</button>
                     </td>
                 </tr>
             </table>
