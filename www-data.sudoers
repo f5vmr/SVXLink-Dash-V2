@@ -6,7 +6,8 @@ svxlink ALL=(ALL) NOPASSWD: /usr/bin/systemctl
 svxlink ALL=(ALL) NOPASSWD: /usr/sbin/reboot
 svxlink ALL=(ALL) NOPASSWD: /usr/sbin/shutdown
 svxlink ALL=(ALL) NOPASSWD: /usr/bin/mv
-svxlink ALL=(ALL) NOPASSWD: /usr/bin/nmcli, /usr/sbin/hostapd, /usr/sbin/dnsmasq, /sbin/ip, /bin/systemctl
-
+svxlink ALL=(ALL) NOPASSWD: /usr/bin/nmcli
+svxlink ALL=(ALL) NOPASSWD: /usr/sbin/ip
+svxlink ALL=(ALL) NOPASSWD: /usr/bin/systemctl
 svxlink ALL=(ALL) NOPASSWD: /usr/bin/amixer
 svxlink ALL=(ALL) NOPASSWD: /bin/echo * > /var/run/svxlink/dtmf_svx
