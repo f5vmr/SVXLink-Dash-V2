@@ -64,10 +64,10 @@ if (isset($_POST['btnWifiOn'])) {
     exec('sudo -n nmcli radio wifi 2>&1', $screen);
 }
 if (isset($_POST['btnStartHotspot'])) {
-    exec('sudo -n nmcli connection up PiHotspot 2>&1', $screen);
+    exec('sudo -n nmcli connection up Hotspot 2>&1', $screen);
 }
 if (isset($_POST['btnStopHotspot'])) {
-    exec('sudo -n nmcli connection down PiHotspot 2>&1', $screen);
+    exec('sudo -n nmcli connection down Hotspot 2>&1', $screen);
 }
 if (isset($_POST['btnHotspotStatus'])) {
     exec('sudo -n nmcli -t -f NAME,TYPE,DEVICE connection show --active 2>&1', $screen);
