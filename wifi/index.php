@@ -172,11 +172,6 @@ if (isset($_POST['btnHotspotStatus'])) {
                         <br>
                         <button name="btnWifiOn" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">WiFi On</button>
                         <br>
-                        <button name="btnStartHotspot" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Start Hotspot</button>
-                        <br>
-                        <button name="btnStopHotspot" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Stop Hotspot</button>
-                        <br>
-                        <button name="btnHotspotStatus" type="submit" class="red" style="height:30px; width:105px; font-size:12px;">Hotspot Status</button>
                     </td>
                 </tr>
             </table>
