@@ -5,19 +5,19 @@ $password = '';
 
 // Function to check if Wi-Fi is available
 function isWifiAvailable() {
-    $output = shell_exec("nmcli device status");
+    $output = shell_exec("sudo nmcli device status");
     return strpos($output, 'wlan0') !== false;
 }
 
 // Function to check if connected to Wi-Fi
 function isWifiConnected() {
-    $output = shell_exec("nmcli -t -f DEVICE,STATE device | grep '^wlan0:connected'");
+    $output = shell_exec("sudo nmcli -t -f DEVICE,STATE device | grep '^wlan0:connected'");
     return !empty(trim($output));
 }
 
 // Function to check if wired ethernet is connected
 function isWiredConnected() {
-    $output = shell_exec("nmcli -t -f DEVICE,STATE device | grep '^eth0:connected'");
+    $output = shell_exec("sudo nmcli -t -f DEVICE,STATE device | grep '^eth0:connected'");
     return !empty(trim($output));
 }
 
