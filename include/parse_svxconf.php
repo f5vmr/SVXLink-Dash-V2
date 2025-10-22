@@ -31,11 +31,11 @@ foreach ($check_logics as $logic_key) {
 $_SESSION['system_type'] = $system_type;
 
 
-// additional variables need to define in svxlink.conf in stanza [ReflectorLogic]: API, FMNET, TG_URI
+// additional variables need to define in svxlink.conf in sector [ReflectorLogic]: API, FMNET, TG_URI
 // FMNET - Name of FM-Network
 // API - URI for access the status of SVXReflector you are connected
 // TG_URI ??? I don't know...
-// $refApi = $svxconfig['ReflectorLogic']['API'];
+// $refApi = $svxconfig['ReflectorLogic']['HOSTS'];
 // $fmnetwork =$svxconfig['ReflectorLogic']['HOSTS'];
 // //$tgUri = $svxconfig['ReflectorLogic']['TG_URI'];
 // $nodeInfoFile = $svxconfig['ReflectorLogic']['NODE_INFO_FILE'];
