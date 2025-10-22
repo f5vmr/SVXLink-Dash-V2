@@ -1,3 +1,0 @@
-
-Determine if MYCALL in svxlink.conf is Set or Unset.
-Then read all.conf files into databases.
