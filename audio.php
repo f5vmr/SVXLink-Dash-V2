@@ -41,15 +41,14 @@ include_once "include/tools.php";
     <script src="scripts/featherlight.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
-<center>
-<fieldset style = "box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:0px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<body style="background-color: #e1e1e1; font: 11pt arial, sans-serif;">
+  <fieldset style="box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:0px; margin: 15px auto 0 auto; font-size:13px; border-radius: 10px 10px 10px 10px;">
 <div class="container"> 
 <div class="header">
 <div class="parent">
     <div class="img" style = "padding-left:30px"><img src="images/svxlink.ico" /></div>
     <div class="text"style = "padding-right:230px">
-<center><p style = "margin-top:5px;margin-bottom:0px;">
+<p style = "margin-top:5px;margin-bottom:0px;text-align:center;">
 <?php
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
     if (fopen($svxConfigFile,'r')) 
@@ -66,9 +65,9 @@ $svxConfigFile = '/etc/svxlink/svxlink.conf';
 
 <?php include_once "include/top_menu.php"; ?>
 
-<div class="content"><center>
-<div style = "margin-top:0px;">
-</div></center>
+<div class="content">
+<div style = "margin-top:0px;text-align:center;">
+</div>
 </div>
 <?php
 if (MENUBUTTON=="TOP") {
@@ -126,7 +125,7 @@ include_once "include/buttons.php"; }
     echo '</div>'."\n";
 ?>
 
-<center><span title="Dashboard " style = "font: 7pt arial, sans-serif;">SvxLink Dashboard Ver 2.1 ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate; ?>
+<span title="Dashboard " style = "font: 7pt arial, sans-serif; text-align:center;">SvxLink Dashboard Ver 2.1 ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate; ?>
 	</div>
 </div>
 </fieldset>

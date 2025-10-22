@@ -61,9 +61,7 @@ $max_values = [
 
 // Get current values from amixer
 $current_values = get_current_amixer_values();
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

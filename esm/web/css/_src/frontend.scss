@@ -46,7 +46,7 @@ nav[role="main"] {
     padding-left: 5px;
     color: #fff;
     font-size: 16px;
-    text-align: center;
+    text-align:center;
     z-index: 2;
     
     #appname {
@@ -175,7 +175,7 @@ table:not(.no-style) {
         font-weight: bold;
         
         tr th {
-            text-align: center;
+            text-align:center;
         }
     }
     tbody tr:hover {

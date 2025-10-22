@@ -1,11 +1,8 @@
 <?php
 include "../include/tools.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="UTF-8" />
     <link href="/css/css.php" type="text/css" rel="stylesheet" />
@@ -57,7 +54,7 @@ include "../include/tools.php";
             border: none;
             color: #454545;
             padding: 16px 32px;
-            text-align: center;
+            text-align:center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
@@ -156,12 +153,38 @@ include "../include/tools.php";
     </style>
 </head>
 
-<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
-    <center>
-        <fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-            <div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
-                <center>
-                    <h1 id="dtmf_info" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">DTMF Dialer</h1>
+<body style="background-color: #e1e1e1; font: 11pt arial, sans-serif;">
+  <div style="display: flex; justify-content: center; margin-top: 15px;">
+    <fieldset
+      style="border:#3083b8 2px groove;
+             box-shadow:5px 5px 20px #999;
+             background-color:#f1f1f1;
+             width:555px;
+             font-size:13px;
+             border-radius:10px;">
+      <div
+        style="padding:0px;
+               width:550px;
+               background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);
+               border-radius:10px;
+               border:1px solid LightGrey;
+               margin:4px 0;
+               line-height:1.6;
+               white-space:normal;
+               text-align:center;">
+        
+        <h1 id="dtmf_info"
+            style="color:#00aee8;
+                   font: 18pt arial, sans-serif;
+                   font-weight:bold;
+                   text-shadow: 0.25px 0.25px gray;">
+          DTMF Dialer
+        </h1>
+
+      </div>
+    </fieldset>
+  </div>
+</body>
 
                     <?php
 //function cidr_match($ip, $cidr) {
@@ -341,34 +364,30 @@ if (isset($_POST['button99'])) {
     echo '<p>System is powering off...</p>';
 } else {
 ?>
-<form method="post">
-    <p>
-        <center>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button21">1</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button22">2</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button23">3</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="buttonAA">A</button>
-        </center>
-        <center>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button24">4</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button25">5</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button26">6</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="buttonBB">B</button>
-        </center>
-        <center>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button27">7</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button28">8</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button29">9</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="buttonCC">C</button>
-        </center>
-        <center>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button30">*</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button20">0</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="button31">#</button>
-            <button style="height: 60px; width: 100px;font-size:25px;" name="buttonDD">D</button>
-        </center>
-    </p>
+<form method="post" style="display: flex; justify-content: center; margin-top: 10px;">
+  <div style="display: grid; grid-template-columns: repeat(4, 100px); gap: 10px; text-align: center;">
+    <button style="height: 60px; font-size: 25px;" name="button21">1</button>
+    <button style="height: 60px; font-size: 25px;" name="button22">2</button>
+    <button style="height: 60px; font-size: 25px;" name="button23">3</button>
+    <button style="height: 60px; font-size: 25px;" name="buttonAA">A</button>
+
+    <button style="height: 60px; font-size: 25px;" name="button24">4</button>
+    <button style="height: 60px; font-size: 25px;" name="button25">5</button>
+    <button style="height: 60px; font-size: 25px;" name="button26">6</button>
+    <button style="height: 60px; font-size: 25px;" name="buttonBB">B</button>
+
+    <button style="height: 60px; font-size: 25px;" name="button27">7</button>
+    <button style="height: 60px; font-size: 25px;" name="button28">8</button>
+    <button style="height: 60px; font-size: 25px;" name="button29">9</button>
+    <button style="height: 60px; font-size: 25px;" name="buttonCC">C</button>
+
+    <button style="height: 60px; font-size: 25px;" name="button30">*</button>
+    <button style="height: 60px; font-size: 25px;" name="button20">0</button>
+    <button style="height: 60px; font-size: 25px;" name="button31">#</button>
+    <button style="height: 60px; font-size: 25px;" name="buttonDD">D</button>
+  </div>
 </form>
+
 <?php
 }
 ?>

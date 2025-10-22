@@ -54,20 +54,20 @@ body, font {
     padding : 1px 5px 5px 5px;
     color : #<?php echo $textContent; ?>;
     background : #<?php echo $backgroundContent; ?>;
-    text-align: center;
+    text-align:center;
 }
 .content2 {
     margin : 0 0 0 0px;
     padding : 1px 5px 5px 5px;
     color : #<?php echo $textContent; ?>;
     background : #<?php echo $backgroundContent; ?>;
-    text-align: center;
+    text-align:center;
 }
 .contentwide {
     padding: 5px 5px 5px 5px;
     color: #<?php echo $textContent; ?>;
     background: #<?php echo $backgroundContent; ?>;
-    text-align: center;
+    text-align:center;
 }
 
 .footer {
@@ -93,7 +93,7 @@ body, font {
 
 table {
     vertical-align: middle;
-    text-align: center;
+    text-align:center;
     empty-cells: show;
     padding-left: 0px;
     padding-right: 0px;
@@ -217,7 +217,7 @@ a.ext:link, a.ext:visited {
   background-color: #7E7E7E;
   box-shadow: 4px 4px 6px #3b3b3b;
   color: #FFFFFF;
-  text-align: center;
+  text-align:center;
   border-radius: 6px;
   padding: 8px 0;
   left: 100%;
@@ -294,7 +294,7 @@ ul.mmenu li a.current span, ul.mmenu li a:hover span {
 
 h1 {
     text-shadow: 2px 2px #<?php echo $bannerDropShaddows; ?>;
-    text-align: center;
+    text-align:center;
 }
 
 /* CSS Toggle Code here */
@@ -360,7 +360,7 @@ input.toggle-round-flat:checked + label:after {
   border: none;
   color: white;
   padding: 8px;
-  text-align: center;
+  text-align:center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
@@ -380,7 +380,7 @@ input.toggle-round-flat:checked + label:after {
   border: none;
   color: white;
   padding: 8px;
-  text-align: center;
+  text-align:center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
@@ -460,7 +460,7 @@ input[type=text] {
     border: 1px solid #0f0;
     border-radius: 5px;
     margin: 3px 5px;
-    text-align: center;
+    text-align:center;
     font-weight:600;
     background: linear-gradient(to bottom, transparent 0%, #20cf52 0%), linear-gradient(#F7f7f7, #EEE);
 }

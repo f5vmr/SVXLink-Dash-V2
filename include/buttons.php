@@ -102,27 +102,38 @@ include_once "../dtmf.php";
 <div style = "padding:0px;width:100%;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;white-space:normal;">
 <p style = "margin-bottom:0px;"></p>
 <form method="post">
-    <center>
-        <input type="submit" name="button1"
-            class=<?php echo KEY1[2] ?>  value='<?php echo KEY1[0] ?>' />
-        <input type="submit" name="button2"
-            class=<?php echo KEY2[2] ?> value='<?php echo KEY2[0] ?>' />
-        <input type="submit" name="button3"
-            class=<?php echo KEY3[2] ?> value='<?php echo KEY3[0] ?>' />
-        <input type="submit" name="button4"
-	    class=<?php echo KEY4[2] ?> value='<?php echo KEY4[0] ?>' />
-        <input type="submit" name="button5"
-	    class=<?php echo KEY5[2] ?> value='<?php echo KEY5[0] ?>' />
-	<input type="submit" name="button6"
-            class=<?php echo KEY6[2] ?> value='<?php echo KEY6[0] ?>' />
-	<input type="submit" name="button7"
-            class=<?php echo KEY7[2] ?> value='<?php echo KEY7[0] ?>' />
-	<input type="submit" name="button8"
-            class=<?php echo KEY8[2] ?> value='<?php echo KEY8[0] ?>' />
-	<input type="submit" name="button9"
-            class=<?php echo KEY9[2] ?> value='<?php echo KEY9[0] ?>' />
-	<input type="submit" name="button10"
-            class=<?php echo KEY10[2] ?> value='<?php echo KEY10[0] ?>' />
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px;">
+    <input type="submit" name="button1"
+        class="<?php echo KEY1[2]; ?>" value="<?php echo KEY1[0]; ?>" />
+
+    <input type="submit" name="button2"
+        class="<?php echo KEY2[2]; ?>" value="<?php echo KEY2[0]; ?>" />
+
+    <input type="submit" name="button3"
+        class="<?php echo KEY3[2]; ?>" value="<?php echo KEY3[0]; ?>" />
+
+    <input type="submit" name="button4"
+        class="<?php echo KEY4[2]; ?>" value="<?php echo KEY4[0]; ?>" />
+
+    <input type="submit" name="button5"
+        class="<?php echo KEY5[2]; ?>" value="<?php echo KEY5[0]; ?>" />
+
+    <input type="submit" name="button6"
+        class="<?php echo KEY6[2]; ?>" value="<?php echo KEY6[0]; ?>" />
+
+    <input type="submit" name="button7"
+        class="<?php echo KEY7[2]; ?>" value="<?php echo KEY7[0]; ?>" />
+
+    <input type="submit" name="button8"
+        class="<?php echo KEY8[2]; ?>" value="<?php echo KEY8[0]; ?>" />
+
+    <input type="submit" name="button9"
+        class="<?php echo KEY9[2]; ?>" value="<?php echo KEY9[0]; ?>" />
+
+    <input type="submit" name="button10"
+        class="<?php echo KEY10[2]; ?>" value="<?php echo KEY10[0]; ?>" />
+</div>
+
 
 <?php	
 //    if (KEY6[0]!="") {
@@ -142,11 +153,14 @@ include_once "../dtmf.php";
     </form>
 <p style = "margin: 0 auto;"></p>
 <form action="" method="POST" style = "margin-top:4px;">
-  <center>
-  <label style = "text-shadow: 1px 1px 1px Lightgrey, 0 0 0.5em LightGrey, 0 0 1em whitesmoke;font-weight:bold;color:#464646;" for="dtmfsvx">DTMF command (must end with #):</label>  
-  <input type="text" id="dtmfsvx" name="dtmfsvx">
-  <input type="submit" value="Send DTMF code" class="green"><br>
-  </center>
+<div style="text-align: center; margin-top: 10px;">
+    <label for="dtmfsvx" style="text-shadow: 1px 1px 1px Lightgrey, 0 0 0.5em LightGrey, 0 0 1em whitesmoke; font-weight: bold; color: #464646;">
+        DTMF command (must end with #):
+    </label>
+    <input type="text" id="dtmfsvx" name="dtmfsvx" style="margin-left: 5px;">
+    <input type="submit" value="Send DTMF code" class="green" style="margin-left: 5px;"><br>
+</div>
+
 </form>
 <?php
   if (isset($_POST["dtmfsvx"])){

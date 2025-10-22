@@ -51,7 +51,6 @@ $max_headphone = 151; // numid=6
 $max_mic = 32; // numid=4
 $max_capture = 16; // numid=8
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
