@@ -102,7 +102,7 @@ include_once "include/buttons.php";
     echo "<br />\n";
     if (URLSVXRAPI!="") {
     echo '<center><div id="svxref" style = "margin-bottom:30px;">'."\n";
-    //include "include/svxref.php";
+    include "include/svxref.php";
     echo '</div></center>'."\n";
     }
     echo '</td></tr></table>';

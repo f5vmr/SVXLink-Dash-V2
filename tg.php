@@ -87,7 +87,7 @@ include_once "include/buttons.php";
 
     if (URLSVXRAPI!="") {
     echo 'function reloadSVXREF(){'."\n";
-    //echo '  $("#svxref").load("include/svxref.php",function(){ setTimeout(reloadSVXREF,90000) });'."\n";
+    echo '  $("#svxref").load("include/svxref.php",function(){ setTimeout(reloadSVXREF,90000) });'."\n";
     echo '}'."\n";
     echo 'setTimeout(reloadSVXREF,90000);'."\n";
      }
@@ -105,7 +105,7 @@ include_once "include/buttons.php";
     echo "<br />\n";
     if (URLSVXRAPI!="") {
     echo '<center><div id="svxref" style = "margin-bottom:30px;">'."\n";
-    //include "include/svxref.php";
+    include "include/svxref.php";
     echo '</div></center>'."\n";
     }
     echo '</td></tr></table>';
