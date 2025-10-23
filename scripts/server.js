@@ -36,9 +36,9 @@ const server = http.createServer((req, res) => {
 
     // Start arecord from the loopback device
     const arecord = spawn("arecord", [
-      "-D", "plughw:Loopback,0,0",
+      "-D", "plughw:Loopback,1,0",
       "-f", "S16_LE",
-      "-r", "44100",
+      "-r", "48000",
       "-c", "1"
     ]);
 
