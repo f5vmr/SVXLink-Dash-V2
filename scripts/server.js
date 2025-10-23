@@ -53,7 +53,7 @@ server.listen(httpPort, hostname, () => {
 
 // Spawn arecord to capture PCM audio from Loopback
 const arecord = spawn('arecord', [
-  '-D', 'hw:Loopback,0,0',
+  '-D', 'hw:Loopback,1,0',
   '-f', 'S16_LE',
   '-r', '44100',
   '-c', '2'
