@@ -3,144 +3,156 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $_SESSION['auth'] = 'UNAUTHORISED';
+
 include "include/settings.php";
 include "include/config.php";
-
 ?>
-<!DOCTYPE html >
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="robots" content="index" />
-    <meta name="robots" content="follow" />
-    <meta name="language" content="English" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="generator" content="SVXLink" />
-    <meta name="Author" content="G4NAB, SP2ONG, SP0DZ" />
-    <meta name="Description" content="Dashboard for SVXLink by G4NAB, SP2ONG, SP0DZ" />
-    <meta name="KeyWords" content="SVXLink,G4NAB, SP2ONG, SP0DZ" />
-    <meta http-equiv="cache-control" content="max-age=0" />
-    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="expires" content="0" />
-    <meta http-equiv="pragma" content="no-cache" />
-<link rel="shortcut icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/png">    
+    <meta charset="UTF-8">
+    <meta name="robots" content="index,follow">
+    <meta name="language" content="English">
+    <meta name="generator" content="SVXLink">
+    <meta name="author" content="G4NAB, SP2ONG, SP0DZ">
+    <meta name="description" content="Dashboard for SVXLink by G4NAB, SP2ONG, SP0DZ">
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/png">
+    <title><?php echo $callsign; ?> Ver 2.1 Dashboard</title>
 
-<?php echo ("<title>" . $callsign ." Ver 2.1 Dashboard</title>" ); ?>
-
-<?php include_once "include/browserdetect.php"; ?>
-    <script type="text/javascript" src="scripts/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/functions.js"></script>
-    <script type="text/javascript" src="scripts/pcm-player.min.js"></script>
-    <script type="text/javascript">
-      $.ajaxSetup({ cache: false });
+    <!-- jQuery & Scripts -->
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script src="scripts/pcm-player.min.js"></script>
+    <script>
+        $.ajaxSetup({ cache: false });
     </script>
-    <link href="css/featherlight.css" type="text/css" rel="stylesheet" />
-    <script src="scripts/featherlight.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="">
 
+    <!-- Featherlight lightbox -->
+    <link href="css/featherlight.css" rel="stylesheet">
+    <script src="scripts/featherlight.js"></script>
+
+    <style>
+        body {
+            background-color: #e1e1e1;
+            font: 11pt Arial, sans-serif;
+        }
+        .container { max-width: 1000px; margin: auto; }
+        .header { display: flex; align-items: center; justify-content: space-between; padding: 10px; }
+        .header .img img { height: 64px; }
+        .header .text { text-align: right; color: PaleBlue; }
+        .button.link { padding: 8px 12px; font-weight: bold; cursor: pointer; }
+        .nav { margin-bottom: 20px; }
+        .content { margin: 10px 0; }
+        .content2 { margin-top: 20px; }
+        iframe { border: none; }
+    </style>
 </head>
-<body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
-<center>
-<fieldset style = "box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:0px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div class="container"> 
-<div class="header">
-<div class="parent">
-    <div class="img" style = "padding-left:30px"><img src="images/svxlink.ico" /></div>
-    <div class="text"style = "padding-right:230px">
-<center><p style = "margin-top:5px;margin-bottom:0px;">
-<span style = "font-size: 32px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $callsign;?></span>
-<p style = "margin-top:0px;margin-bottom:0px;">
-<span style = "font-size: 18px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:PaleBlue"><?php echo $fmnetwork; ?></span>
-</p></center>
-</div></div>
-</div>
-<?php include_once "include/top_menu.php"; ?>
+<body>
+<div class="container">
 
-<div class="content"><center>
-<div style = "margin-top:0px;">
-</div></center>
-</div>
-<?php
-if (isProcessRunning('node')) {
-echo '&nbsp;&nbsp;<button class="button link" onclick="playAudioToggle(8000, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style = "vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button><br><br>';
-}
-?>
-<?php
-if (MENUBUTTON=="TOP") {
-include_once "include/buttons.php"; 
-}
-?>
-<?php
+    <!-- Header -->
+    <div class="header">
+        <div class="img"><img src="images/svxlink.ico" alt="SVXLink"></div>
+        <div class="text">
+            <h1 style="margin:0; font-size:32px; letter-spacing:4px;"><?php echo $callsign; ?></h1>
+            <h2 style="margin:0; font-size:18px;"><?php echo $fmnetwork; ?></h2>
+        </div>
+    </div>
 
-    echo '<table style = "margin-bottom:0px;border:0; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#f1f1f1;"><tr style = "border:none;background-color:#f1f1f1;">';
-    echo '<td width="200px" valign="top" class="hide" style = "height:auto;border:0;background-color:#f1f1f1;">';
-    echo '<div class="nav" style = "margin-bottom:1px;margin-top:10px;">'."\n";
+    <!-- Top menu -->
+    <?php include_once "include/top_menu.php"; ?>
 
-    echo '<script type="text/javascript">'."\n";
-    echo 'function reloadStatusInfo(){'."\n";
-    echo '$("#statusInfo").load("include/status.php",function(){ setTimeout(reloadStatusInfo,3000) });'."\n";
-    echo '}'."\n";
-    echo 'setTimeout(reloadStatusInfo,3000);'."\n";
-    echo '$(window).trigger(\'resize\');'."\n";
-    echo '</script>'."\n";
-    echo '<div id="statusInfo" style = "margin-bottom:30px;">'."\n";
-    include "include/status.php";
-    echo '</div>'."\n";
-    echo '</div>'."\n";
-    echo '</td>'."\n";
+    <!-- RX Monitor Button -->
+    <?php if (isProcessRunning('node')): ?>
+        <div class="content">
+            <button class="button link" onclick="playAudioToggle(8000, this)">
+                <img src="images/speaker.png" alt="" style="vertical-align:middle">
+                &nbsp;RX Monitor
+            </button>
+        </div>
+    <?php endif; ?>
 
-    echo '<td valign="top" style = "height:auto;border:none;  background-color:#f1f1f1;">';
-    echo '<div class="content">'."\n";
-    echo '<script type="text/javascript">'."\n";
-
-    if (URLSVXRAPI!="") {
-    echo 'function reloadSVXREF(){'."\n";
-    echo '  $("#svxref").load("include/svxref.php",function(){ setTimeout(reloadSVXREF,90000) });'."\n";
-    echo '}'."\n";
-    echo 'setTimeout(reloadSVXREF,90000);'."\n";
-     }
-
-    echo 'function reloadLastHeard(){'."\n";
-    echo '  $("#LastHeard").load("include/lh.php",function(){ setTimeout(reloadLastHeard,3000) });'."\n";
-    echo '}'."\n";
-    echo 'setTimeout(reloadLastHeard,3000);'."\n";
-
-    echo '$(window).trigger(\'resize\');'."\n";
-    echo '</script>'."\n";
-    echo '<center><div id="LastHeard" style = "margin-bottom:30px;">'."\n";
-    include "include/lh.php";
-    echo '</div></center>'."\n";
-    echo "<br />\n";
-    if (URLSVXRAPI!="") {
-    echo '<center><div id="svxref" style = "margin-bottom:30px;">'."\n";
-    include "include/svxref.php";
-    echo '</div></center>'."\n";
+    <!-- Buttons include -->
+    <?php
+    if (MENUBUTTON == "TOP") {
+        include_once "include/buttons.php";
     }
-    echo '</td></tr></table>';
-?>
+    ?>
 
-<?php
-if (MENUBUTTON=="BOTTOM") {
-include_once "include/buttons.php"; }
-?>
-<?php
-    echo '<div class="content2">'."\n";
-    echo '<script type="text/javascript">'."\n";
-    echo 'function reloadSysInfo(){'."\n";
-    echo '  $("#sysInfo").load("include/system.php",function(){ setTimeout(reloadSysInfo,15000) });'."\n";
-    echo '}'."\n";
-    echo 'setTimeout(reloadSysInfo,15000);'."\n";
-    echo '$(window).trigger(\'resize\');'."\n";
-    echo '</script>'."\n";
-    echo '<div id="sysInfo">'."\n";
-    include "include/system.php";
-    echo '</div>'."\n";
-    echo '</div>'."\n";
-?>
+    <!-- Main table layout -->
+    <table style="width:100%; border-collapse: collapse; margin-bottom:0;">
+        <tr>
+            <!-- Left nav / status -->
+            <td width="200px" valign="top" class="hide">
+                <div class="nav" id="statusInfo">
+                    <?php include "include/status.php"; ?>
+                </div>
+                <script>
+                    function reloadStatusInfo() {
+                        $("#statusInfo").load("include/status.php", function() {
+                            setTimeout(reloadStatusInfo, 3000);
+                        });
+                    }
+                    setTimeout(reloadStatusInfo, 3000);
+                </script>
+            </td>
 
-<center><span title="Dashboard" style = "font: 7pt arial, sans-serif;">SvxLink Dashboard Ver 2.1 ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate ;
- ?>
+            <!-- Main content -->
+            <td valign="top">
+                <div class="content">
+                    <div id="LastHeard">
+                        <?php include "include/lh.php"; ?>
+                    </div>
+
+                    <?php if(URLSVXRAPI != ""): ?>
+                        <div id="svxref">
+                            <?php include "include/svxref.php"; ?>
+                        </div>
+                        <script>
+                            function reloadSVXREF() {
+                                $("#svxref").load("include/svxref.php", function() {
+                                    setTimeout(reloadSVXREF, 90000);
+                                });
+                            }
+                            setTimeout(reloadSVXREF, 90000);
+                        </script>
+                    <?php endif; ?>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Bottom buttons -->
+    <?php
+    if (MENUBUTTON == "BOTTOM") {
+        include_once "include/buttons.php";
+    }
+    ?>
+
+    <!-- System Info -->
+    <div class="content2" id="sysInfo">
+        <?php include "include/system.php"; ?>
+    </div>
+    <script>
+        function reloadSysInfo() {
+            $("#sysInfo").load("include/system.php", function() {
+                setTimeout(reloadSysInfo, 15000);
+            });
+        }
+        setTimeout(reloadSysInfo, 15000);
+    </script>
+
+    <!-- Footer -->
+    <div style="text-align:center; font-size:7pt; margin-top:15px;">
+        SvxLink Dashboard Ver 2.1 &copy; G4NAB, SP2ONG, SP0DZ
+        <?php
+            $cdate=date("Y");
+            echo ($cdate > "2021") ? "2021-" . $cdate : $cdate;
+        ?>
+    </div>
+
 </div>
-</fieldset>
-<br>
 </body>
 </html>
