@@ -1,15 +1,16 @@
+// server.js
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
-const WebSocket = require('ws');
 const { spawn } = require('child_process');
+const WebSocket = require('ws');
 
-const hostname = '0.0.0.0'; // Listen on all network interfaces
-const port = 8000;           // Default port for HTTP
-const audioPort = 8001;      // WebSocket port for audio stream
+const hostname = '0.0.0.0';
+const httpPort = 8000;
+const wsPort = 8001;
 
-// Function to serve static files
+// Serve static files (dashboard HTML, JS, etc.)
 function serveStaticFile(res, filePath, contentType) {
   fs.readFile(filePath, (err, data) => {
     if (err) {
@@ -23,69 +24,64 @@ function serveStaticFile(res, filePath, contentType) {
   });
 }
 
-// Create the HTTP server
 const server = http.createServer((req, res) => {
-  console.log(`Request for ${req.url}`);
+  console.log(`HTTP request: ${req.url}`);
 
-  // Serve the dashboard page
   if (req.url === '/' || req.url === '/index.html') {
     serveStaticFile(res, path.join(__dirname, 'index.html'), 'text/html');
-  }
-  // Serve other static files (CSS, JS, images)
-  else if (req.url.match(/\.(css|js|png|jpg|gif)$/)) {
+  } else if (req.url.match(/\.(css|js|png|jpg|gif)$/)) {
     const extname = path.extname(req.url);
-    let contentType = 'text/plain';
-    switch (extname) {
-      case '.css': contentType = 'text/css'; break;
-      case '.js': contentType = 'application/javascript'; break;
-      case '.png': contentType = 'image/png'; break;
-      case '.jpg': contentType = 'image/jpeg'; break;
-      case '.gif': contentType = 'image/gif'; break;
-    }
-    serveStaticFile(res, path.join(__dirname, req.url), contentType);
-  }
-  else {
+    const contentTypes = {
+      '.css': 'text/css',
+      '.js': 'application/javascript',
+      '.png': 'image/png',
+      '.jpg': 'image/jpeg',
+      '.gif': 'image/gif',
+    };
+    serveStaticFile(res, path.join(__dirname, req.url), contentTypes[extname] || 'text/plain');
+  } else {
     res.statusCode = 404;
     res.end('Not Found');
   }
 });
 
-// Start the HTTP server
-server.listen(port, hostname, () => {
-  console.log(`HTTP Server running at http://${hostname}:${port}/`);
+server.listen(httpPort, hostname, () => {
+  console.log(`HTTP server running at http://${hostname}:${httpPort}/`);
 });
 
-// -----------------------------
-// WebSocket server for audio streaming
-// -----------------------------
-const wss = new WebSocket.Server({ port: audioPort }, () => {
-  console.log(`Audio WebSocket server running at ws://${hostname}:${audioPort}/`);
+// 🎧 AUDIO STREAM SECTION 🎧
+
+// Spawn arecord to capture PCM audio from Loopback
+const arecord = spawn('arecord', [
+  '-D', 'hw:Loopback,0,0',
+  '-f', 'S16_LE',
+  '-r', '44100',
+  '-c', '2'
+]);
+
+arecord.on('error', (err) => {
+  console.error('arecord failed to start:', err);
 });
 
-// Spawn arecord to capture audio from Loopback,0,0
-const arecord = spawn('arecord', ['-D', 'hw:Loopback,0,0', '-f', 'S16_LE', '-r', '44100', '-c', '2']); 
-// 16-bit PCM, 44100Hz, stereo
+arecord.stderr.on('data', (data) => {
+  console.error(`arecord: ${data}`);
+});
 
-// Broadcast audio chunks to all connected WebSocket clients
-arecord.stdout.on('data', (chunk) => {
-  wss.clients.forEach(client => {
+// WebSocket server for clients (browsers)
+const wss = new WebSocket.Server({ port: wsPort }, () => {
+  console.log(`WebSocket audio server listening on ws://${hostname}:${wsPort}/`);
+});
+
+wss.on('connection', (ws) => {
+  console.log('Client connected to audio stream');
+  ws.on('close', () => console.log('Client disconnected'));
+});
+
+// Pipe audio from arecord to connected clients
+arecord.stdout.on('data', (data) => {
+  wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
-      client.send(chunk);
+      client.send(data);
     }
   });
-});
-
-// Handle errors from arecord
-arecord.stderr.on('data', (data) => {
-  console.error(`arecord error: ${data}`);
-});
-
-arecord.on('close', (code) => {
-  console.log(`arecord process exited with code ${code}`);
-});
-
-// Optional: handle WebSocket client connections
-wss.on('connection', (ws) => {
-  console.log('New client connected for audio stream');
-  ws.on('close', () => console.log('Client disconnected'));
 });
