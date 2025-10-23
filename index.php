@@ -60,10 +60,15 @@ include "include/config.php";
 </div></center>
 </div>
 <?php
+<?php
 if (isProcessRunning('node')) {
-echo '&nbsp;&nbsp;<button class="button link" onclick="playAudioToggle(8000, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style = "vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button><br><br>';
+    echo '&nbsp;&nbsp;<button class="button link" onclick="playAudioToggle(8000, this)"><b>&nbsp;&nbsp;&nbsp;<img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button><br><br>';
+} else {
+    // DEBUGGING ONLY: shows why the icon is missing
+    echo '<p style="color:red;font-weight:bold;">Node process not detected by isProcessRunning()</p>';
 }
 ?>
+
 <?php
 if (MENUBUTTON=="TOP") {
 include_once "include/buttons.php"; 
