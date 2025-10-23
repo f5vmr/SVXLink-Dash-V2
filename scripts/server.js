@@ -1,75 +1,43 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
-const { spawn } = require("child_process");
+const WebSocket = require('ws');
+const { spawn } = require('child_process');
 
-const hostname = "0.0.0.0";
-const port = 8000;
+const wsPort = 8001;                 // WebSocket port for dashboard
+const alsaDevice = 'plughw:Loopback,1,0'; // Capture device
+const sampleRate = 48000;            // Match SVXLink output
+const channels = 1;                  
 
-// Serve static files
-function serveStaticFile(res, filePath, contentType) {
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.end(`Error reading file: ${err}`);
-      return;
+// Start arecord process
+const arecord = spawn('arecord', [
+  '-D', alsaDevice,
+  '-f', 'S16_LE',
+  '-r', sampleRate,
+  '-c', channels
+]);
+
+// Create WebSocket server
+const wss = new WebSocket.Server({ port: wsPort });
+
+wss.on('connection', (ws) => {
+  console.log('Dashboard connected');
+
+  // Send ALSA audio data to client
+  arecord.stdout.on('data', (chunk) => {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(chunk);
     }
-    res.statusCode = 200;
-    res.setHeader("Content-Type", contentType);
-    res.end(data);
   });
-}
 
-// Create the server
-const server = http.createServer((req, res) => {
-  if (req.url === "/" || req.url === "/index.html") {
-    serveStaticFile(res, path.join(__dirname, "index.html"), "text/html");
-  } 
-  else if (req.url === "/audio") {
-    console.log("Client connected for audio stream...");
-
-    res.writeHead(200, {
-      "Content-Type": "audio/wav",
-      "Transfer-Encoding": "chunked",
-      "Connection": "keep-alive"
-    });
-
-    // Start arecord from the loopback device
-    const arecord = spawn("arecord", [
-      "-D", "plughw:Loopback,1,0",
-      "-f", "S16_LE",
-      "-r", "48000",
-      "-c", "1"
-    ]);
-
-    arecord.stdout.pipe(res);
-
-    arecord.stderr.on("data", (data) => {
-      console.error(`arecord error: ${data}`);
-    });
-
-    req.on("close", () => {
-      console.log("Client disconnected, stopping arecord");
-      arecord.kill("SIGTERM");
-    });
-  } 
-  else if (req.url.match(/\.(css|js|png|jpg|gif)$/)) {
-    const extname = path.extname(req.url);
-    const mimeTypes = {
-      ".css": "text/css",
-      ".js": "application/javascript",
-      ".png": "image/png",
-      ".jpg": "image/jpeg",
-      ".gif": "image/gif"
-    };
-    serveStaticFile(res, path.join(__dirname, req.url), mimeTypes[extname] || "text/plain");
-  } 
-  else {
-    res.statusCode = 404;
-    res.end("Not Found");
-  }
+  ws.on('close', () => console.log('Dashboard disconnected'));
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+wss.on('listening', () => {
+  console.log(`WebSocket server listening on ws://0.0.0.0:${wsPort}/`);
 });
+
+// Handle errors
+arecord.stderr.on('data', (data) => {
+  console.error(`arecord error: ${data}`);
+});
+
+process.on('exit', () => arecord.kill());
+process.on('SIGINT', () => process.exit());
