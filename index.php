@@ -63,7 +63,7 @@ include "include/config.php";
 // Temporary debug output to check Node process
 $nodeRunning = isProcessRunning('node');
 if ($nodeRunning) {
-    echo '<button class="button link" onclick="playAudioToggle(8000, this)">
+    echo '<button class="button link" onclick="playAudioToggle(8001, this)">
         <b><img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;RX Monitor</b>
     </button><br><br>';
 } else {
