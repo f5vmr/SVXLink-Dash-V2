@@ -60,10 +60,18 @@ include "include/config.php";
 </div></center>
 </div>
 <?php
-if (isProcessRunning('node')) {
-echo '&nbsp;&nbsp;<button class="button link" onclick="playAudioToggle(8000, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style = "vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button><br><br>';
+// Temporary debug output to check Node process
+$nodeRunning = isProcessRunning('node');
+if ($nodeRunning) {
+    echo '<button class="button link" onclick="playAudioToggle(8000, this)">
+        <b><img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;RX Monitor</b>
+    </button><br><br>';
+} else {
+    // Debug output: safe plain text
+    echo 'Node process not detected';
 }
 ?>
+
 <?php
 if (MENUBUTTON=="TOP") {
 include_once "include/buttons.php"; 
