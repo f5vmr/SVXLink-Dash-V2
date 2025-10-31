@@ -71,26 +71,35 @@ foreach(glob('*.wav') as $filename) {
 $filelist[] = $filename;
 }
 $filelist = array_reverse($filelist);
-foreach($filelist as $value) {
-echo '<p style = "margin-bottom:10px;margin-top:10px;"><a href='.$filelist[0].'><span style = "font-size:14px;color:blue;font-weight:bold">'.$filelist[0].'</span>&nbsp&nbsp&nbsp&nbsp;<img src=/images/download.png></a></p>';
-echo '<div id="player"><audio id="my-audio" preload="none" crossorigin="anonymous" controls="controls"><source src="'.$filelist[0].'?[';
-echo time(); 
-echo ']" type="audio/wav"></audio></div>';
+if (!empty($filelist)) {
+    $latestFile = $filelist[0];
+    echo '<div id="player"><audio id="my-audio" preload="none" crossorigin="anonymous" controls>';
+    echo '<source src="' . $latestFile . '?t=' . time() . '" type="audio/wav">';
+    echo '</audio></div>';
 }
+
 ?>
   </center>
-  <script>
-    var myMeterElement = document.getElementById('my-peak-meter');
+
+   <script>
+window.addEventListener('DOMContentLoaded', function() {
     var myAudio = document.getElementById('my-audio');
-    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    var sourceNode = audioCtx.createMediaElementSource(myAudio);
-    sourceNode.connect(audioCtx.destination);
-    var meterNode = webAudioPeakMeter.createMeterNode(sourceNode, audioCtx);
-    webAudioPeakMeter.createMeter(myMeterElement, meterNode, {});
-    myAudio.addEventListener('play', function() {
-      audioCtx.resume();
-    });
-  </script>
+    var myMeterElement = document.getElementById('my-peak-meter');
+
+    if(myAudio && myMeterElement) {
+        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        var sourceNode = webAudioPeakMeter.createMeterNode(myAudio, audioCtx);
+        webAudioPeakMeter.createMeter(myMeterElement, sourceNode, {});
+
+        myAudio.addEventListener('play', function() {
+            audioCtx.resume();
+        });
+    } else {
+        console.error('Audio element or meter element not found.');
+    }
+});
+</script>
+
 <br>
 </div>
 </fieldset>
