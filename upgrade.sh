@@ -137,6 +137,29 @@ fi
 # Verify service status
 sudo systemctl is-active --quiet svxlink-node.service && show_info "svxlink-node.service is running." || show_info "svxlink-node.service is not running!"
 
+# ==============================
+# Create /home/pi/scripts/dtmf_setup.sh if missing and run it
+# ==============================
+
+DTMF_SCRIPT="/home/pi/scripts/dtmf_setup.sh"
+
+if [ ! -f "$DTMF_SCRIPT" ]; then
+    show_info "Creating $DTMF_SCRIPT..."
+    sudo mkdir -p /home/pi/scripts
+    echo "#!/bin/sh
+sudo mkdir -p /var/run/svxlink
+sudo chown svxlink:svxlink /var/run/svxlink
+sudo chmod 775 /var/run/svxlink" | sudo tee "$DTMF_SCRIPT" > /dev/null
+
+    sudo chmod +x "$DTMF_SCRIPT"
+    show_info "$DTMF_SCRIPT created and made executable."
+else
+    show_info "$DTMF_SCRIPT already exists."
+fi
+
+# Run the script immediately
+show_info "Running $DTMF_SCRIPT..."
+sudo "$DTMF_SCRIPT"
 
 # New section to create /home/pi/scripts and cleanup.sh
 SCRIPT_DIR="/home/pi/scripts"

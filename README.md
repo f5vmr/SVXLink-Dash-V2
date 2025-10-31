@@ -2,7 +2,8 @@
 <h1>SVXLink Node dashboard repository inspired by a pi-star dashboard</h1>
 <h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.
 
-Brought up to date by Chris Jackson G4NAB with new code. The DTMF section has yet to be modified to work.</h2>
+Brought up to date by Chris Jackson G4NAB with new code.</h2> 
+<h3>The DTMF section is now operational subject to changes to the DTMF_CTR_PTY=/var/run/svxlink/dtmf_svx being inserted in SimplexLogic or RepeaterLogic, replacing the existing line.</h3>
 
 <b>This installation requires that svxlink has been compiled on Debian 12 with PHP 8.2 installed. </b>
 
