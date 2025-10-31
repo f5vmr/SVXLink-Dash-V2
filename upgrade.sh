@@ -69,12 +69,74 @@ sudo chown svxlink:svxlink /var/run/svxlink
 sudo chmod 775 /var/run/svxlink
 
 #find the terminal active.
-
-
-
-
 # Inform the user that the ownership change was successful
 show_info "Ownership of files in /var/www/html has been changed to svxlink:svxlink, except for the script itself."
+# ==============================
+# Node.js, npm, and svxlink-node.service setup
+# ==============================
+
+# Check if Node.js is installed
+if ! command -v node >/dev/null 2>&1; then
+    show_info "Node.js not found. Installing Node.js and npm..."
+    sudo apt update
+    sudo apt install -y nodejs npm
+else
+    show_info "Node.js is already installed: $(node -v)"
+fi
+
+# Check if npm is installed (optional)
+if ! command -v npm >/dev/null 2>&1; then
+    show_info "npm not found. Installing npm..."
+    sudo apt install -y npm
+else
+    show_info "npm is already installed: $(npm -v)"
+fi
+
+# Ensure ws module is installed for svxlink user in scripts folder
+SCRIPT_DIR="/var/www/html/scripts"
+if [ ! -d "$SCRIPT_DIR/node_modules/ws" ]; then
+    show_info "Installing ws Node module for svxlink user..."
+    sudo -u svxlink bash -c "cd $SCRIPT_DIR && npm install ws"
+else
+    show_info "Node module ws is already installed."
+fi
+
+# Create the systemd service only if it doesn't exist
+SERVICE_FILE="/etc/systemd/system/svxlink-node.service"
+if [ ! -f "$SERVICE_FILE" ]; then
+    show_info "Creating svxlink-node.service..."
+    sudo tee "$SERVICE_FILE" > /dev/null <<EOL
+[Unit]
+Description=SVXLink Node.js Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=svxlink
+Group=svxlink
+ExecStart=/usr/bin/node $SCRIPT_DIR/server.js
+Restart=on-failure
+RestartSec=5
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+    show_info "Reloading systemd, enabling, and starting svxlink-node.service..."
+    sudo systemctl daemon-reload
+    sudo systemctl enable svxlink-node.service
+    sudo systemctl start svxlink-node.service
+else
+    show_info "svxlink-node.service already exists."
+    # Optional: restart it to ensure it's running
+    sudo systemctl restart svxlink-node.service
+fi
+
+# Verify service status
+sudo systemctl is-active --quiet svxlink-node.service && show_info "svxlink-node.service is running." || show_info "svxlink-node.service is not running!"
+
 
 # New section to create /home/pi/scripts and cleanup.sh
 SCRIPT_DIR="/home/pi/scripts"
