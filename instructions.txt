@@ -52,7 +52,7 @@ card 1: Loopback [Loopback], device 1: Loopback PCM [Loopback PCM]
   If you have no Loopback card visible then 
   sudo modprobe snd_aloop
 
-  and then sudo nano /etc/loopback.conf
+  and then sudo nano /etc/asound.conf
 
   and copy this to it.
 
@@ -68,10 +68,14 @@ pcm.loopout {
     slave.pcm "loophw"
 }
 and save it.
+If you already have an asound.conf that is symlinked, such as for a wm8960 soundcard
+then instead paste the above pcm.loophw settings into a loopback.conf card in the same folder.
 
-then sudo alsactl nrestore.
+then sudo alsactl nrestore. Ignore any error output by alsactl, it is a known bug.
+Finally :
+sudo systemctl restart svxlink svxlink-node 
 
-sudo systemctl restart svxlink svxlink-node and your dashboard should be complete
+and your dashboard should be complete
 and display Ver 2.3 Dashboard on the browser tab.
 
 Chris G4NAB
