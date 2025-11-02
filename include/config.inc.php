@@ -1,7 +1,26 @@
 <?php
 //Access to the Webserver for editing the config files
-define("PHP_AUTH_USER", "svxlink");
-define("PHP_AUTH_PW", "password");
+define('DASHBOARD_AUTH_FILE', '/etc/svxlink/dashboard.auth.ini');
+define('DASHBOARD_AUTH_SECTION', 'dashboard');
+// Load and verify credentials
+$auth_config = @parse_ini_file(DASHBOARD_AUTH_FILE, true);
+if ($auth_config !== false) {
+    $section = DASHBOARD_AUTH_SECTION;
+    if (isset($auth_config[$section]['auth_user']) && isset($auth_config[$section]['auth_pass'])) {
+        define("PHP_AUTH_USER", $auth_config[$section]['auth_user']);
+        define("PHP_AUTH_PW", $auth_config[$section]['auth_pass']);
+    } else {
+        error_log("Error: Missing auth_user or auth_pass in " . DASHBOARD_AUTH_FILE);
+        // Fallback to defaults if needed
+        define("PHP_AUTH_USER", "svxlink");
+        define("PHP_AUTH_PW", "password");
+    }
+} else {
+    error_log("Error: Cannot read " . DASHBOARD_AUTH_FILE);
+    // Fallback to defaults if needed
+    define("PHP_AUTH_USER", "svxlink");
+    define("PHP_AUTH_PW", "password");
+}
 
 // header lines for information
 define("HEADER_CAT","FM-Repeater");
