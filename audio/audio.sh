@@ -10,7 +10,7 @@ fi
 echo ""
 echo "Audio recording 10 seconds, to stop recording before 10 seconds use CTRL+C"
 echo " "
-arecord -D hw:Loopback,1,0 -V mono -r 48000 -f S16_LE -c1 -d 15 /var/www/html/audio/audio-$(date +%Y-%m-%d-%H -%M-%S).wav
+arecord -D plughw:Loopback,0,1 -V mono -r 48000 -f S16_LE -c1 -d 15 /var/www/html/audio/audio-$(date +%Y-%m-%d-%H -%M-%S).wav
 echo ""
 MYIP=$(hostname -I | awk '{print $1}')
 echo " "
