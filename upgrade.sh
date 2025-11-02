@@ -220,3 +220,4 @@ CRON_JOB="01 00 * * * /home/pi/scripts/cleanup.sh"
 
 # Inform the user that the crontab entry has been added if it was not present
 show_info "Ensured that the crontab entry for $CLEANUP_SCRIPT exists."
+## End of script
