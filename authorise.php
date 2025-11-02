@@ -23,7 +23,7 @@ include "include/settings.php";
     <meta http-equiv="pragma" content="no-cache" />
 <link rel="shortcut icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/png">
 
-<?php echo ("<title>" . $callsign ." Ver 2.1 Dashboard</title>"); ?>
+<?php echo ("<title>" . $callsign ." Ver 2.3 Dashboard</title>"); ?>
 
 <?php include_once "include/browserdetect.php"; ?>
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
@@ -114,7 +114,7 @@ include_once "include/buttons.php"; }
 ?>
 
 <!--- Please do not remove copyright info -->
-<center><span title="Dashboard" style = "font: 7pt arial, sans-serif;">SvxLink Dashboard Ver 2.1 ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate; ?>
+<center><span title="Dashboard" style = "font: 7pt arial, sans-serif;">SvxLink Dashboard Ver 2.3 ©  G4NAB, SP2ONG, SP0DZ <?php $cdate=date("Y"); if ($cdate > "2021") {$cdate="2021-".date("Y");} echo $cdate; ?>
 	</div>
 </div>
 </fieldset>
