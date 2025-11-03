@@ -6,7 +6,6 @@ SUDOERS_FILE="/etc/sudoers.d/svxlink"
 SOURCE_FILE="www-data.sudoers"
 SCRIPT_FILE=$(basename "$0")
 CONFIG_FILE="include/config.inc.php"
-AUTH_FILE="/etc/svxlink/dashboard.auth.ini"
 
 # Function to display an info message using whiptail
 show_info() {
@@ -17,35 +16,17 @@ show_info() {
 DASHBOARD_USER=$(whiptail --title "Dashboard Username" --inputbox "Please enter your dashboard username:" 8 78 svxlink 3>&1 1>&2 2>&3)
 
 # Prompt the user for their dashboard password
-DASHBOARD_PASSWORD=$(whiptail --title "Dashboard Password" --passwordbox "Please enter your dashboard password (leave blank to auto-generate):" 8 78 3>&1 1>&2 2>&3)
+DASHBOARD_PASSWORD=$(whiptail --title "Dashboard Password" --passwordbox "Please enter your dashboard password:" 8 78 3>&1 1>&2 2>&3)
 
-# If user cancelled whiptail, fallback to defaults
-: "${DASHBOARD_USER:=svxlink}"
-: "${DASHBOARD_PASSWORD:=}"
-
-# Ensure /etc/svxlink/dashboard.auth.ini exists; create it if missing (do not overwrite)
-if [ ! -f "$AUTH_FILE" ]; then
-  # generate a random password if user left blank
-  if [ -z "$DASHBOARD_PASSWORD" ]; then
-    DASHBOARD_PASSWORD=$(openssl rand -base64 16)
-    # intentionally do not display the generated password in UI/logs
-  fi
-
-  sudo mkdir -p /etc/svxlink
-  sudo bash -c "cat > '$AUTH_FILE' <<'EOF'
-[dashboard]
-auth_user = \"$DASHBOARD_USER\"
-auth_pass = \"$DASHBOARD_PASSWORD\"
-EOF
-"
-  sudo chown svxlink:svxlink "$AUTH_FILE"
-  sudo chmod 0640 "$AUTH_FILE"
-  show_info "Created $AUTH_FILE (owned by svxlink)."
+# Update the config file with the provided username and password
+if [ -f "$CONFIG_FILE" ]; then
+  sed -i "s/define(\"PHP_AUTH_USER\", \".*\");/define(\"PHP_AUTH_USER\", \"$DASHBOARD_USER\");/" "$CONFIG_FILE"
+  sed -i "s/define(\"PHP_AUTH_PW\", \".*\");/define(\"PHP_AUTH_PW\", \"$DASHBOARD_PASSWORD\");/" "$CONFIG_FILE"
+  show_info "The config file $CONFIG_FILE has been updated with the new username and password."
 else
-  show_info "$AUTH_FILE already exists; leaving it unchanged."
+  whiptail --title "Error" --msgbox "Config file $CONFIG_FILE does not exist. Exiting." 8 78
+  exit 1
 fi
-
-# ...existing code...
 
 # Check if the source file exists
 if [ ! -f "$SOURCE_FILE" ]; then
@@ -220,4 +201,3 @@ CRON_JOB="01 00 * * * /home/pi/scripts/cleanup.sh"
 
 # Inform the user that the crontab entry has been added if it was not present
 show_info "Ensured that the crontab entry for $CLEANUP_SCRIPT exists."
-## End of script

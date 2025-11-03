@@ -1,0 +1,41 @@
+{
+    "nodeLocation": "Where",
+    "hidden": false,
+    "sysop": "G4NAB",
+    "qth": [
+        {
+            "name": "Place",
+            "pos": {
+                "lat": "55.0",
+                "long": "-1.5",
+                "loc": "AA01AA"
+            },
+            "rx": {
+                "K": {
+                    "name": "Rx1",
+                    "freq": 145.2375,
+                    "sqlType": "COR",
+                    "ant": {
+                        "comment": "Vertical",
+                        "height": "5",
+                        "dir": "Omni"
+                    }
+                }
+            },
+            "tx": {
+                "K": {
+                    "name": "Tx1",
+                    "freq": 145.3375,
+                    "pwr": "5",
+                    "ant": {
+                        "comment": "Vertical",
+                        "height": "5",
+                        "dir": "Omni",
+                        "gain": "",
+                        "Antenna_type": "omni"
+                    }
+                }
+            }
+        }
+    ]
+}

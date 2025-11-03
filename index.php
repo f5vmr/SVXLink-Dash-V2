@@ -27,10 +27,9 @@ include "include/config.php";
 <?php echo ("<title>" . $callsign ." Ver 2.3 Dashboard</title>" ); ?>
 
 <?php include_once "include/browserdetect.php"; ?>
-    
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/functions.js"></script>
-    <script type="text/javascript" src="scripts/pcm-player.min.js?v2"></script>
+    <script type="text/javascript" src="scripts/pcm-player.min.js"></script>
     <script type="text/javascript">
       $.ajaxSetup({ cache: false });
     </script>
@@ -61,49 +60,17 @@ include "include/config.php";
 </div></center>
 </div>
 <?php
+// Temporary debug output to check Node process
 $nodeRunning = isProcessRunning('node');
-
 if ($nodeRunning) {
-    echo '<button class="button link" onclick="playAudioToggle(8001, this)" style="position: relative; display: inline-block; text-align: center;">
-            <b><img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;RX Monitor</b>
-            <div id="listenerCount" style="
-                font-weight: bold;
-                font-size: 0.85em;
-                margin-top: 4px;
-            "></div>
-          </button>';
+    echo '<button class="button link" onclick="playAudioToggle(8001, this)">
+        <b><img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;RX Monitor</b>
+    </button><br><br>';
 } else {
+    // Debug output: safe plain text
     echo 'Node process not detected';
 }
 ?>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    // Persistent WebSocket for this page
-    if (!window.svxpSocket) {
-        window.svxpSocket = new WebSocket("ws://" + document.location.hostname + ":8001");
-        window.svxpSocket.binaryType = "arraybuffer";
-
-        window.svxpSocket.addEventListener("open", () => {
-            console.log("WebSocket connected for this page.");
-        });
-
-        window.svxpSocket.addEventListener("message", (event) => {
-            const data = new Uint8Array(event.data);
-            if (!window.svxp) {
-                window.svxp = new SVXPlayer(8001, document.querySelector("#playBtn"));
-            }
-            window.svxp.player.feed(data);
-        });
-
-        window.svxpSocket.addEventListener("close", () => {
-            console.log("WebSocket closed for this page.");
-        });
-    }
-});
-</script>
-
 
 <?php
 if (MENUBUTTON=="TOP") {

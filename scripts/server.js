@@ -1,9 +1,9 @@
 const WebSocket = require('ws');
 const { spawn } = require('child_process');
 
-const wsPort = 8001;
+const wsPort = 8001; // WebSocket port for dashboard
 
-// Start arecord
+// Function to start arecord safely
 function startRecording() {
   console.log('Starting audio capture...');
   const record = spawn('arecord', [
@@ -11,7 +11,9 @@ function startRecording() {
     '-f', 'S16_LE',
     '-r', '48000',
     '-c', '1'
-  ], { stdio: ['ignore', 'pipe', 'ignore'] });
+  ], {
+    stdio: ['ignore', 'pipe', 'ignore'] // stdout only
+  });
 
   record.on('exit', (code, signal) => {
     console.warn(`arecord exited (code ${code}, signal ${signal}). Restarting...`);
@@ -21,35 +23,28 @@ function startRecording() {
   return record;
 }
 
+// Start arecord
 let record = startRecording();
 
-// WebSocket server
+// Create WebSocket server
 const wss = new WebSocket.Server({ port: wsPort });
-
-// Broadcast listener count to all clients
-function broadcastListenerCount() {
-  const count = wss.clients.size;
-  const msg = JSON.stringify({ type: 'listenerCount', count });
-  wss.clients.forEach(client => {
-    if (client.readyState === WebSocket.OPEN) client.send(msg);
-  });
-}
 
 wss.on('connection', (ws) => {
   console.log('Dashboard connected');
 
-  // Immediately send updated count on new connection
-  broadcastListenerCount();
-
-  ws.on('close', () => {
-    console.log('Dashboard disconnected');
-    broadcastListenerCount();
+  record.stdout.on('data', (chunk) => {
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(chunk);
+    }
   });
+
+  ws.on('close', () => console.log('Dashboard disconnected'));
 });
 
 wss.on('listening', () => {
   console.log(`WebSocket server listening on ws://0.0.0.0:${wsPort}/`);
 });
 
+// Handle clean shutdown
 process.on('exit', () => record.kill());
 process.on('SIGINT', () => process.exit());

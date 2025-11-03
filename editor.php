@@ -44,7 +44,7 @@ else { $callsign="NOCALL";
 <?php include_once "include/browserdetect.php"; ?>
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/functions.js"></script>
-    <script type="text/javascript" src="scripts/pcm-player.min.js?v2"></script>
+    <script type="text/javascript" src="scripts/pcm-player.min.js"></script>
     <script type="text/javascript">
       $.ajaxSetup({ cache: false });
     </script>
@@ -68,58 +68,22 @@ else { $callsign="NOCALL";
 </p></center>
 </div></div>
 </div>
+
+
 <?php
+
 include_once "include/top_menu.php"; 
 ?>
+
 <div class="content"><center>
 <div style = "margin-top:0px;">
 </div></center>
 </div>
 <?php
-$nodeRunning = isProcessRunning('node');
-
-if ($nodeRunning) {
-    echo '<button class="button link" onclick="playAudioToggle(8001, this)" style="position: relative; display: inline-block; text-align: center;">
-            <b><img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;RX Monitor</b>
-            <div id="listenerCount" style="
-                font-weight: bold;
-                font-size: 0.85em;
-                margin-top: 4px;
-            "></div>
-          </button>';
-} else {
-    echo 'Node process not detected';
+if (isProcessRunning('node')) {
+echo '&nbsp;&nbsp;<button class="button link" onclick="playAudioToggle(8001, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style = "vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button><br><br>';
 }
 ?>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    // Persistent WebSocket for this page
-    if (!window.svxpSocket) {
-        window.svxpSocket = new WebSocket("ws://" + document.location.hostname + ":8001");
-        window.svxpSocket.binaryType = "arraybuffer";
-
-        window.svxpSocket.addEventListener("open", () => {
-            console.log("WebSocket connected for this page.");
-        });
-
-        window.svxpSocket.addEventListener("message", (event) => {
-            const data = new Uint8Array(event.data);
-            if (!window.svxp) {
-                window.svxp = new SVXPlayer(8001, document.querySelector("#playBtn"));
-            }
-            window.svxp.player.feed(data);
-        });
-
-        window.svxpSocket.addEventListener("close", () => {
-            console.log("WebSocket closed for this page.");
-        });
-    }
-});
-</script>
-
-
 <?php
 if (MENUBUTTON=="TOP") {
 include_once "include/buttons.php";
