@@ -79,28 +79,31 @@ if ($nodeRunning) {
 
 
 <script>
-window.addEventListener('DOMContentLoaded', () => {
-    if (!window.dashboardWS) {
-        window.dashboardWS = new WebSocket("ws://" + document.location.hostname + ":8001");
+document.addEventListener("DOMContentLoaded", () => {
+    // Persistent WebSocket for this page
+    if (!window.svxpSocket) {
+        window.svxpSocket = new WebSocket("ws://" + document.location.hostname + ":8001");
+        window.svxpSocket.binaryType = "arraybuffer";
 
-        window.dashboardWS.onmessage = (event) => {
-            if (typeof event.data === 'string') {
-                try {
-                    const msg = JSON.parse(event.data);
-                    if (msg.type === 'listenerCount') {
-                        const el = document.getElementById('listenerCount');
-                        if (el) {
-                            el.textContent = msg.count > 0 ? `Listeners: ${msg.count}` : '';
-                        }
-                    }
-                } catch(e) {
-                    // Ignore non-JSON messages
-                }
+        window.svxpSocket.addEventListener("open", () => {
+            console.log("WebSocket connected for this page.");
+        });
+
+        window.svxpSocket.addEventListener("message", (event) => {
+            const data = new Uint8Array(event.data);
+            if (!window.svxp) {
+                window.svxp = new SVXPlayer(8001, document.querySelector("#playBtn"));
             }
-        };
+            window.svxp.player.feed(data);
+        });
+
+        window.svxpSocket.addEventListener("close", () => {
+            console.log("WebSocket closed for this page.");
+        });
     }
 });
 </script>
+
 
 <?php
 if (MENUBUTTON=="TOP") {
