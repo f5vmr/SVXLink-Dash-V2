@@ -73,6 +73,29 @@ if ($nodeRunning) {
     echo 'Node process not detected';
 }
 ?>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    if (!window.dashboardWS) {
+        window.dashboardWS = new WebSocket("ws://" + document.location.hostname + ":8001");
+
+        window.dashboardWS.onmessage = (event) => {
+            if (typeof event.data === 'string') {
+                try {
+                    const msg = JSON.parse(event.data);
+                    if (msg.type === 'listenerCount') {
+                        const el = document.getElementById('listenerCount');
+                        if (el) {
+                            el.textContent = msg.count > 0 ? `Listeners: ${msg.count}` : '';
+                        }
+                    }
+                } catch(e) {
+                    // Ignore non-JSON messages
+                }
+            }
+        };
+    }
+});
+</script>
 
 <?php
 if (MENUBUTTON=="TOP") {
