@@ -62,12 +62,25 @@ include "include/config.php";
 <?php
 $nodeRunning = isProcessRunning('node');
 if (isProcessRunning('node')) {
-    echo '<div class="rx-monitor-container" style="text-align:center; margin-bottom:20px;">
-            <button class="button link" onclick="playAudioToggle(8001, this)" style="display:block; margin:0 auto;">
+    echo '<div class="rx-monitor-button" style="
+            display: inline-block; 
+            text-align: center; 
+            background-color: #f0f0f0; 
+            border: 1px solid #ccc; 
+            padding: 10px 20px; 
+            border-radius: 8px;
+        ">
+            <button class="button link" onclick="playAudioToggle(8001, this)" style="
+                display: block; 
+                margin: 0 auto; 
+                background: none; 
+                border: none; 
+                cursor: pointer;
+            ">
                 <b><img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;RX Monitor</b>
             </button>
-            <div id="listenerCount" style="font-weight:bold; margin-top:5px;"></div>
-          </div>';
+            <div id="listenerCount" style="font-weight:bold; margin-top:5px; font-size:0.9em;"></div>
+        </div>';
 } else {
     echo 'Node process not detected';
 }
