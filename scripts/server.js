@@ -23,11 +23,12 @@ function startRecording() {
 
 let record = startRecording();
 
-// WebSocket server
+// --- WebSocket server ---
 const wss = new WebSocket.Server({ port: wsPort });
 
+// Function to broadcast the total number of connected dashboards
 function broadcastListenerCount() {
-  const count = [...wss.clients].filter(c => c.readyState === WebSocket.OPEN).length;
+  const count = wss.clients.size;
   const msg = JSON.stringify({ type: 'listenerCount', count });
   wss.clients.forEach(client => {
     if (client.readyState === WebSocket.OPEN) {
@@ -38,19 +39,22 @@ function broadcastListenerCount() {
 
 wss.on('connection', (ws) => {
   console.log('Dashboard connected');
+
+  // Immediately broadcast new connection count
   broadcastListenerCount();
 
+  // Send audio data to all connected clients
   const audioHandler = (chunk) => {
-    if (ws.readyState === WebSocket.OPEN) ws.send(chunk);
+    if (ws.readyState === WebSocket.OPEN) {
+      ws.send(chunk);
+    }
   };
-
-  // Send audio stream
   record.stdout.on('data', audioHandler);
 
   ws.on('close', () => {
     console.log('Dashboard disconnected');
     record.stdout.off('data', audioHandler);
-    broadcastListenerCount();
+    broadcastListenerCount(); // update count when one disconnects
   });
 });
 
