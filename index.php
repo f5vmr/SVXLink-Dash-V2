@@ -27,9 +27,10 @@ include "include/config.php";
 <?php echo ("<title>" . $callsign ." Ver 2.3 Dashboard</title>" ); ?>
 
 <?php include_once "include/browserdetect.php"; ?>
+    
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/functions.js"></script>
-    <script type="text/javascript" src="scripts/pcm-player.min.js"></script>
+    <script type="text/javascript" src="scripts/pcm-player.min.js?v2"></script>
     <script type="text/javascript">
       $.ajaxSetup({ cache: false });
     </script>
