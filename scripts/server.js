@@ -48,6 +48,7 @@ wss.on('connection', (ws) => {
 
     ws.on('close', () => {
         console.log('Dashboard disconnected');
+       
         broadcastListenerCount();
     });
 });
