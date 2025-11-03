@@ -29,38 +29,51 @@ let record = startRecording();
 const wss = new WebSocket.Server({ port: wsPort });
 let listenerCount = 0;
 
+const activeListeners = new Map(); // Track which clients are actively playing
+
 wss.on('connection', (ws) => {
     console.log('Dashboard connected');
 
-    // Send listener count to all clients
-    function broadcastListenerCount() {
-        const count = wss.clients.size;
-        const msg = JSON.stringify({ type: 'listenerCount', count });
-        wss.clients.forEach(client => {
-            if (client.readyState === WebSocket.OPEN) {
-                client.send(msg);
+    // Handle messages from client
+    ws.on('message', (msg) => {
+        try {
+            const data = JSON.parse(msg);
+            if (data.type === 'start') {
+                activeListeners.set(ws, true);
+                broadcastActiveListeners();
+            } else if (data.type === 'stop') {
+                activeListeners.delete(ws);
+                broadcastActiveListeners();
             }
-        });
-    }
-
-    // Immediately send updated count on new connection
-    broadcastListenerCount();
+        } catch (e) {
+            console.error('Invalid message from client:', msg);
+        }
+    });
 
     // Send audio as before
     const audioHandler = (chunk) => {
-        if (ws.readyState === WebSocket.OPEN) {
-            ws.send(chunk);
-        }
+        if (ws.readyState === WebSocket.OPEN) ws.send(chunk);
     };
     record.stdout.on('data', audioHandler);
 
     ws.on('close', () => {
         console.log('Dashboard disconnected');
-        // Stop sending audio to this ws
+        activeListeners.delete(ws);
         record.stdout.off('data', audioHandler);
-        broadcastListenerCount();
+        broadcastActiveListeners();
     });
 });
+
+// Broadcast active listener count
+function broadcastActiveListeners() {
+    const count = activeListeners.size;
+    const msg = JSON.stringify({ type: 'listenerCount', count });
+    wss.clients.forEach(client => {
+        if (client.readyState === WebSocket.OPEN) {
+            client.send(msg);
+        }
+    });
+}
 
 
 // Broadcast listener count to all connected clients
