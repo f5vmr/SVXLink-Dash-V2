@@ -61,16 +61,17 @@ include "include/settings.php";
 <?php
 $nodeRunning = isProcessRunning('node');
 if (isProcessRunning('node')) {
-    echo '<button class="button link" onclick="playAudioToggle(8001, this)">
-    <b><img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;RX Monitor</b>
-    </button><br><br>';
-       // Add listener count container
-    echo '<div id="listenerCount" style="font-weight:bold; margin-top:5px;"></div>';
+    echo '<div class="rx-monitor-container" style="text-align:center; margin-bottom:20px;">
+            <button class="button link" onclick="playAudioToggle(8001, this)" style="display:block; margin:0 auto;">
+                <b><img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;RX Monitor</b>
+            </button>
+            <div id="listenerCount" style="font-weight:bold; margin-top:5px;"></div>
+          </div>';
 } else {
-    // Debug output: safe plain text
     echo 'Node process not detected';
 }
 ?>
+
 <script>
 window.addEventListener('DOMContentLoaded', () => {
     if (!window.dashboardWS) {
