@@ -30,23 +30,38 @@ const wss = new WebSocket.Server({ port: wsPort });
 let listenerCount = 0;
 
 wss.on('connection', (ws) => {
-  console.log('Dashboard connected');
-  listenerCount++;
-  broadcastListenerCount();
+    console.log('Dashboard connected');
 
-  // Send audio to this client
-  const audioHandler = (chunk) => {
-    if (ws.readyState === WebSocket.OPEN) ws.send(chunk);
-  };
-  record.stdout.on('data', audioHandler);
+    // Send listener count to all clients
+    function broadcastListenerCount() {
+        const count = wss.clients.size;
+        const msg = JSON.stringify({ type: 'listenerCount', count });
+        wss.clients.forEach(client => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(msg);
+            }
+        });
+    }
 
-  ws.on('close', () => {
-    console.log('Dashboard disconnected');
-    listenerCount--;
+    // Immediately send updated count on new connection
     broadcastListenerCount();
-    record.stdout.off('data', audioHandler);
-  });
+
+    // Send audio as before
+    const audioHandler = (chunk) => {
+        if (ws.readyState === WebSocket.OPEN) {
+            ws.send(chunk);
+        }
+    };
+    record.stdout.on('data', audioHandler);
+
+    ws.on('close', () => {
+        console.log('Dashboard disconnected');
+        // Stop sending audio to this ws
+        record.stdout.off('data', audioHandler);
+        broadcastListenerCount();
+    });
 });
+
 
 // Broadcast listener count to all connected clients
 function broadcastListenerCount() {
