@@ -61,20 +61,18 @@ include "include/config.php";
 </div>
 <?php
 $nodeRunning = isProcessRunning('node');
-
 if ($nodeRunning) {
-    echo '<button class="button link" onclick="playAudioToggle(8001, this)" style="position: relative; display: inline-block; text-align: center;">
-            <b><img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;RX Monitor</b>
-            <div id="listenerCount" style="
-                font-weight: bold;
-                font-size: 0.85em;
-                margin-top: 4px;
-            "></div>
-          </button>';
+    echo '<div style="display:inline-block; text-align:center;">';
+    echo '<button class="button link" onclick="playAudioToggle(8001, this)">
+        <b><img src="images/speaker.png" alt="" style="vertical-align:middle">&nbsp;RX Monitor</b>
+    </button><br>';
+    echo '<span id="listenerCount" style="font-weight:bold; margin-top:5px; display:block;"></span>';
+    echo '</div>';
 } else {
     echo 'Node process not detected';
 }
 ?>
+
 
 
 <script>

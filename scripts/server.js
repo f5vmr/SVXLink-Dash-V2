@@ -1,80 +1,59 @@
 const WebSocket = require('ws');
-const { spawn } = require('child_process');
+const wsPort = 8001;
 
-const wsPort = 8001; // WebSocket port for dashboard
-
-// Start arecord
-function startRecording() {
-  console.log('Starting audio capture...');
-  const record = spawn('arecord', [
-    '-D', 'plughw:Loopback,1,0',
-    '-f', 'S16_LE',
-    '-r', '48000',
-    '-c', '1'
-  ], {
-    stdio: ['ignore', 'pipe', 'ignore']
-  });
-
-  record.on('exit', (code, signal) => {
-    console.warn(`arecord exited (code ${code}, signal ${signal}). Restarting...`);
-    setTimeout(startRecording, 1000);
-  });
-
-  return record;
-}
-
-let record = startRecording();
-
-// WebSocket server
 const wss = new WebSocket.Server({ port: wsPort });
-let listenerCount = 0;
 
+console.log(`WebSocket server running on port ${wsPort}`);
+
+// Track clients that are actively listening
 wss.on('connection', (ws) => {
     console.log('Dashboard connected');
 
-    // Send listener count to all clients
-    function broadcastListenerCount() {
-        const count = wss.clients.size;
-        const msg = JSON.stringify({ type: 'listenerCount', count });
-        wss.clients.forEach(client => {
-            if (client.readyState === WebSocket.OPEN) {
-                client.send(msg);
+    // Default: not listening
+    ws.isListening = false;
+
+    // Handle messages from client
+    ws.on('message', (msg) => {
+        try {
+            const data = JSON.parse(msg);
+            if (data.type === 'startListening') {
+                ws.isListening = true;
+            } else if (data.type === 'stopListening') {
+                ws.isListening = false;
             }
-        });
-    }
-
-    // Immediately send updated count on new connection
-    broadcastListenerCount();
-
-    // Send audio as before
-    const audioHandler = (chunk) => {
-        if (ws.readyState === WebSocket.OPEN) {
-            ws.send(chunk);
+        } catch (e) {
+            console.error('Invalid message', e);
         }
-    };
-    record.stdout.on('data', audioHandler);
+        broadcastListenerCount();
+    });
 
     ws.on('close', () => {
         console.log('Dashboard disconnected');
-        // Stop sending audio to this ws
-        record.stdout.off('data', audioHandler);
         broadcastListenerCount();
     });
+
+    // Send updated listener count to all clients
+    function broadcastListenerCount() {
+        const count = [...wss.clients].filter(c => c.isListening).length;
+        const msg = JSON.stringify({ type: 'listenerCount', count });
+        wss.clients.forEach(client => {
+            if (client.readyState === WebSocket.OPEN) client.send(msg);
+        });
+    }
+
+    // Optionally send initial count
+    broadcastListenerCount();
+
+    // Audio streaming logic (same as before)
+    const audioHandler = (chunk) => {
+        if (ws.readyState === WebSocket.OPEN && ws.isListening) {
+            ws.send(chunk);
+        }
+    };
+    // Replace `record.stdout` with your actual audio source
+    record.stdout.on('data', audioHandler);
+
+    ws.on('close', () => {
+        record.stdout.off('data', audioHandler);
+    });
 });
-
-
-// Broadcast listener count to all connected clients
-function broadcastListenerCount() {
-  const countMessage = JSON.stringify({ type: 'listenerCount', count: listenerCount });
-  wss.clients.forEach(client => {
-    if (client.readyState === WebSocket.OPEN) client.send(countMessage);
-  });
-}
-
-wss.on('listening', () => {
-  console.log(`WebSocket server listening on ws://0.0.0.0:${wsPort}/`);
-});
-
-process.on('exit', () => record.kill());
-process.on('SIGINT', () => process.exit());
-//end of script
