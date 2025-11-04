@@ -32,17 +32,6 @@ include "include/settings.php";
     <script type="text/javascript">
       $.ajaxSetup({ cache: false });
     </script>
-    <script>
-    function playAudioToggle(port, btn) {
-        if (!window.svxp) window.svxp = new SVXPlayer(port, btn);
-        if (window.svxp.isPlaying()) {
-            window.svxp.stop();
-        } else {
-            window.svxp.play();
-        }
-    }
-    </script>
-
     <link href="css/featherlight.css" type="text/css" rel="stylesheet" />
     <script src="scripts/featherlight.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" href="">
