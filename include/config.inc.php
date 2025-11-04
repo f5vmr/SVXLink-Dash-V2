@@ -1,7 +1,22 @@
 <?php
-//Access to the Webserver for editing the config files
-define("PHP_AUTH_USER", "svxlink");
-define("PHP_AUTH_PW", "password");
+// Path to the authentication file
+$auth_file = '/etc/svxlink/dashboard.auth.ini';
+
+// Create dummy fallback if the file doesn't exist yet
+if (!file_exists($auth_file)) {
+    $dummy_user = 'svxlink';
+    $dummy_pass = 'password';
+    $auth_content = "[dashboard]\nauth_user = $dummy_user\nauth_pass = $dummy_pass\n";
+    file_put_contents($auth_file, $auth_content);
+}
+
+// Parse the INI file
+$auth_data = parse_ini_file($auth_file);
+
+// Set constants based on the parsed data (fallback to dummy values if keys missing)
+define('PHP_AUTH_USER', $auth_data['auth_user'] ?? 'svxlink');
+define('PHP_AUTH_PW', $auth_data['auth_pass'] ?? 'password');
+
 
 // header lines for information
 define("HEADER_CAT","FM-Repeater");
