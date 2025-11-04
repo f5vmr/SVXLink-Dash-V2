@@ -31,7 +31,7 @@ include_once "../include/config.php";
             box-sizing: border-box;
         }
 
-```
+
     body {
         background-color: #eee;
         font-size: 18px;
@@ -121,7 +121,7 @@ include_once "../include/config.php";
         font-size: 1em;
     }
 </style>
-```
+
 
 </head>
 <body>
