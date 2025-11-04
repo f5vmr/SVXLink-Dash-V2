@@ -92,9 +92,3 @@ function cidr_match($ip, $cidr) {
     }
     return $outcome;
 }
-function debug_log($message) {
-  // Log to file
-  file_put_contents('/var/www/html/include/buttons_debug.log', date('[Y-m-d H:i:s] ') . $message . PHP_EOL, FILE_APPEND);
-  // Also display on screen if needed
-  //echo "<div style='background-color:#ffeeee;border:1px solid red;padding:5px;margin:5px;'><pre>DEBUG: " . htmlspecialchars($message) . "</pre></div>";
-}
