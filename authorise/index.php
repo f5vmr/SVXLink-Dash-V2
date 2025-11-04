@@ -12,66 +12,162 @@ include_once "../include/config.php";
     <meta charset="UTF-8">
     <link href="/css/css.php" type="text/css" rel="stylesheet"/>
     <style type="text/css">
-        body {
-            background-color: #eee;
-            font-size: 18px;
-            font-family: Arial;
-            font-weight: 300;
-            margin: 2em auto;
-            max-width: 40em;
-            line-height: 1.5;
-            color: #444;
-            padding: 0 0.5em;
+        <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+include_once "../include/functions.php";
+include_once "../include/config.php";
+?>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/css.php" type="text/css" rel="stylesheet"/>
+    <style type="text/css">
+        *, *:before, *:after {
+            box-sizing: border-box;
         }
-        h1 { line-height: 1.2; }
-        fieldset {
-            border:#3083b8 2px groove;
-            box-shadow:5px 5px 20px #999;
-            background-color:#f1f1f1;
-            width:555px;
-            margin: 15px auto 0 auto;
-            font-size:13px;
-            border-radius: 10px;
-        }
-        .container {
-            padding: 0.5em;
-            background: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);
-            border-radius: 10px;
-            border: 1px solid LightGrey;
-            text-align: center;
-        }
-        input[type="text"], input[type="password"] {
-            font-size: 14px;
-            padding: 4px;
-            margin: 4px 0;
-        }
-        input[type="submit"] {
-            font-size: 14px;
-            padding: 4px 10px;
-        }
-    </style>
+
+```
+    body {
+        background-color: #eee;
+        font-size: 18px;
+        font-family: Arial, sans-serif;
+        font-weight: 300;
+        margin: 2em auto;
+        max-width: 40em;
+        line-height: 1.5;
+        color: #444;
+        padding: 0 1em;
+    }
+
+    h1, h2, h3 {
+        line-height: 1.2;
+    }
+
+    a {
+        color: #607d8b;
+    }
+
+    .highlighter-rouge {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: .2em;
+        font-size: .8em;
+        overflow-x: auto;
+        padding: .2em .4em;
+    }
+
+    pre {
+        margin: 0;
+        padding: .6em;
+        overflow-x: auto;
+    }
+
+    #player {
+        position: relative;
+        width: 205px;
+        overflow: hidden;
+        direction: ltl;
+    }
+
+    textarea {
+        background-color: #111;
+        border: 1px solid #000;
+        color: #ffffff;
+        padding: 1px;
+        font-family: courier new;
+        font-size: 10px;
+    }
+
+    fieldset {
+        width: 90%;
+        max-width: 550px;
+        margin: 15px auto;
+        border: #3083b8 2px groove;
+        box-shadow: 5px 5px 20px #999;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+        font-size: 13px;
+        padding: 0;
+    }
+
+    .container {
+        padding: 0.5em;
+        width: 100%;
+        background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);
+        border-radius: 10px;
+        border: 1px solid LightGrey;
+        line-height: 1.6;
+        white-space: normal;
+    }
+
+    form {
+        margin-top: 1em;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 0.3em;
+        margin: 0.3em 0;
+        font-size: 1em;
+    }
+
+    input[type="submit"] {
+        padding: 0.4em 1em;
+        font-size: 1em;
+    }
+</style>
+```
+
 </head>
 <body>
 <center>
     <fieldset>
         <div class="container">
-            <?php if ($_SESSION['auth'] === 'AUTHORISED') { ?>
-                <h1 style="color:#00ff00;font-weight:bold;">Authorised</h1>
-            <?php } else { ?>
-                <h1 style="color:#00aee8;font-weight:bold;">Authorise</h1>
-                <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') { ?>
-                    <p style="color:red;">Incorrect username or password.</p>
-                <?php } ?>
-                <form method="POST">
-                    Username:<br>
-                    <input type="text" name="username" required><br>
-                    Password:<br>
-                    <input type="password" name="password" required><br>
-                    <input type="submit" value="Submit">
-                </form>
-            <?php } ?>
-        </div>
-    </fieldset>
+            <center>
+                <?php
+                if ($_SESSION['auth'] === 'AUTHORISED') {
+                    echo '<h1 id="authorise" style="color:#00ff00;font:18pt arial, sans-serif;font-weight:bold;text-shadow:0.25px 0.25px gray;">Authorised</h1>';
+                } else {
+                    echo '<h1 id="authorise" style="color:#00aee8;font:18pt arial, sans-serif;font-weight:bold;text-shadow:0.25px 0.25px gray;">Authorise</h1>';
+                }
+            function checkAuth($username, $password)
+            {
+                if (session_status() == PHP_SESSION_NONE) session_start();
+
+                if ($username == PHP_AUTH_USER && $password == PHP_AUTH_PW) {
+                    $_SESSION['auth'] = "AUTHORISED";
+                } else {
+                    $_SESSION['auth'] = "UNAUTHORISED";
+                }
+                session_write_close();
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                include_once "../include/config.php";
+                $username = $_POST['username'] ?? '';
+                $password = $_POST['password'] ?? '';
+                checkAuth($username, $password);
+            }
+            ?>
+            <form method="POST">
+                Username:<input type="text" id="username" name="username" value="<?php echo $username ?? ''; ?>"><br>
+                Password:<input type="password" id="password" name="password" value="<?php echo $password ?? ''; ?>"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </center>
+    </div>
+</fieldset>
+
+
+</center>
+</body>
+</html>
+
 </center>
 </body>
 </html>
