@@ -110,7 +110,7 @@ include_once "../include/config.php";
     }
 
     input[type="text"], input[type="password"] {
-        width: 100%;
+        width: 40%;
         padding: 0.3em;
         margin: 0.3em 0;
         font-size: 1em;
