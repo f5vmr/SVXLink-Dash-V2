@@ -84,7 +84,7 @@ include_once "../include/config.php";
     }
 
     fieldset {
-        width: 90%;
+        width: 75%;
         max-width: 550px;
         margin: 15px auto;
         border: #3083b8 2px groove;
