@@ -1,7 +1,7 @@
 <?php
 //Access to the Webserver for editing the config files
 define("PHP_AUTH_USER", "svxlink");
-define("PHP_AUTH_PW", "megan26923");
+define("PHP_AUTH_PW", "password");
 
 // header lines for information
 define("HEADER_CAT","FM-Repeater");
