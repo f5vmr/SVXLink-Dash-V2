@@ -33,6 +33,7 @@ wss.on('connection', (ws) => {
   console.log('Dashboard connected');
 
   record.stdout.on('data', (chunk) => {
+    console.log('Sending audio chunk:', chunk.length, 'bytes');
     if (ws.readyState === WebSocket.OPEN) {
       ws.send(chunk);
     }
