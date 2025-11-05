@@ -108,16 +108,26 @@ if [ ! -f "$SERVICE_FILE" ]; then
     sudo tee "$SERVICE_FILE" > /dev/null <<EOL
 [Unit]
 Description=SVXLink Node.js Server
-After=network-online.target
-Wants=network-online.target
+After=network.target
 
 [Service]
+# Send logs directly to journald instead of syslog or files
+StandardOutput=journal
+StandardError=journal
+
+# Ensure service restarts even after journal restarts or SIGHUPs
+Restart=always
+RestartSec=5
+
+# Allow clean reloads (optional, useful if you add reload scripts later)
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Give the process a few seconds to shut down gracefully
+TimeoutStopSec=10
 Type=simple
 User=svxlink
 Group=svxlink
-ExecStart=/usr/bin/node $SCRIPT_DIR/server.js
-Restart=on-failure
-RestartSec=5
+ExecStart=/usr/bin/node /var/www/html/scripts/server.js
 Environment=NODE_ENV=production
 
 [Install]
