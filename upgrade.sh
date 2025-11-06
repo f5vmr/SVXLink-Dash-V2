@@ -97,22 +97,28 @@ show_info "Ownership of files in /var/www/html has been changed to svxlink:svxli
 # Node.js, npm, and svxlink-node.service setup
 # ==============================
 
-# Check if Node.js is installed
-if ! command -v node >/dev/null 2>&1; then
-    show_info "Node.js not found. Installing Node.js and npm..."
+# Check if Node.js is installed for the pi user
+if ! sudo -u pi command -v node >/dev/null 2>&1; then
+    show_info "Node.js not found. Installing Node.js and npm as pi..."
     sudo apt update
     sudo apt install -y nodejs npm
 else
-    show_info "Node.js is already installed: $(node -v)"
+    show_info "Node.js is already installed: $(sudo -u pi node -v)"
 fi
 
-# Check if npm is installed (optional)
-if ! command -v npm >/dev/null 2>&1; then
-    show_info "npm not found. Installing npm..."
+# Check if npm is installed for the pi user
+CURRENT_USER=$(whoami)
+if ! sudo -u $CURRENT_USER command -v npm >/dev/null 2>&1; then
+    show_info "npm not found. Installing npm as "
     sudo apt install -y npm
 else
-    show_info "npm is already installed: $(npm -v)"
+    show_info "npm is already installed: $(sudo -u $CURRENT_USER npm -v)"
 fi
+
+# Ensure webserver user (svxlink) can run npm-installed scripts if needed
+sudo chown -R $CURRENT_USER:$CURRENT_USER /home/$CURRENT_USER/.npm*
+sudo chmod -R 755 /home/$CURRENT_USER/.npm-global
+
 
 # Ensure ws module is installed for svxlink user in scripts folder
 SCRIPT_DIR="/var/www/html/scripts"
