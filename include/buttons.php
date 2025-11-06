@@ -18,9 +18,7 @@ include_once "../dtmf.php";
 
  if(array_key_exists('button1', $_POST)) {
         $exec= "echo '" . KEY1[1] . "' > /var/run/svxlink/dtmf_svx";
-        debug_log("Button 1 Executed");
-        exec($exec,$output);
-        debug_log("output: " . print_r($output,true));
+            exec($exec,$output);
             echo "<meta http-equiv='refresh' content='0'>";
         }
  if(array_key_exists('button2', $_POST)) {
@@ -110,18 +108,18 @@ include_once "../dtmf.php";
         <input type="submit" name="button3"
             class=<?php echo KEY3[2] ?> value='<?php echo KEY3[0] ?>' />
         <input type="submit" name="button4"
-	    class=<?php echo KEY4[2] ?> value='<?php echo KEY4[0] ?>' />
+	        class=<?php echo KEY4[2] ?> value='<?php echo KEY4[0] ?>' />
         <input type="submit" name="button5"
-	    class=<?php echo KEY5[2] ?> value='<?php echo KEY5[0] ?>' />
-	<input type="submit" name="button6"
+	        class=<?php echo KEY5[2] ?> value='<?php echo KEY5[0] ?>' />
+	    <input type="submit" name="button6"
             class=<?php echo KEY6[2] ?> value='<?php echo KEY6[0] ?>' />
-	<input type="submit" name="button7"
+	    <input type="submit" name="button7"
             class=<?php echo KEY7[2] ?> value='<?php echo KEY7[0] ?>' />
-	<input type="submit" name="button8"
+	    <input type="submit" name="button8"
             class=<?php echo KEY8[2] ?> value='<?php echo KEY8[0] ?>' />
-	<input type="submit" name="button9"
+	    <input type="submit" name="button9"
             class=<?php echo KEY9[2] ?> value='<?php echo KEY9[0] ?>' />
-	<input type="submit" name="button10"
+	    <input type="submit" name="button10"
             class=<?php echo KEY10[2] ?> value='<?php echo KEY10[0] ?>' />
 
 <?php	
@@ -151,10 +149,7 @@ include_once "../dtmf.php";
 <?php
   if (isset($_POST["dtmfsvx"])){
    $exec= "echo '" . $_POST['dtmfsvx'] . "' > /var/run/svxlink/dtmf_svx";
-   debug_log("DTMF command: " . $_POST['dtmfsvx']);
-   debug_log("Command:  $exec");
    exec($exec,$output);
-   debug_log("Output: " . print_r($output,true));
    echo "<meta http-equiv='refresh' content='0'>";
     }
   if (isset($_POST["jmpto"])) {
