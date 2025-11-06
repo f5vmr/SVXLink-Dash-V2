@@ -6,27 +6,49 @@ SUDOERS_FILE="/etc/sudoers.d/svxlink"
 SOURCE_FILE="www-data.sudoers"
 SCRIPT_FILE=$(basename "$0")
 CONFIG_FILE="include/config.inc.php"
-
+AUTH_FILE="/etc/svxlink/dashboard.auth.ini"
 # Function to display an info message using whiptail
 show_info() {
   whiptail --title "Information" --msgbox "$1" 8 78
 }
 
-# Prompt the user for their dashboard username
-DASHBOARD_USER=$(whiptail --title "Dashboard Username" --inputbox "Please enter your dashboard username:" 8 78 svxlink 3>&1 1>&2 2>&3)
 
-# Prompt the user for their dashboard password
-DASHBOARD_PASSWORD=$(whiptail --title "Dashboard Password" --passwordbox "Please enter your dashboard password:" 8 78 3>&1 1>&2 2>&3)
 
-# Update the config file with the provided username and password
-if [ -f "$CONFIG_FILE" ]; then
-  sed -i "s/define(\"PHP_AUTH_USER\", \".*\");/define(\"PHP_AUTH_USER\", \"$DASHBOARD_USER\");/" "$CONFIG_FILE"
-  sed -i "s/define(\"PHP_AUTH_PW\", \".*\");/define(\"PHP_AUTH_PW\", \"$DASHBOARD_PASSWORD\");/" "$CONFIG_FILE"
-  show_info "The config file $CONFIG_FILE has been updated with the new username and password."
-else
-  whiptail --title "Error" --msgbox "Config file $CONFIG_FILE does not exist. Exiting." 8 78
-  exit 1
+# Only proceed if the auth file doesn't exist
+if [ ! -f "$AUTH_FILE" ]; then
+    # Prompt the user for their dashboard username
+    DASHBOARD_USER=$(whiptail --title "Dashboard Username" --inputbox "Please enter your dashboard username:" 8 78 svxlink 3>&1 1>&2 2>&3)
+
+    if [ $? -ne 0 ]; then
+        echo "User cancelled the username input."
+        exit 1
+    fi
+
+    # Prompt the user for their dashboard password
+    DASHBOARD_PASSWORD=$(whiptail --title "Dashboard Password" --passwordbox "Please enter your dashboard password:" 8 78 3>&1 1>&2 2>&3)
+
+    if [ $? -ne 0 ]; then
+        echo "User cancelled the password input."
+        exit 1
+    fi
+
+    # Create the auth file with the entered credentials
+    sudo bash -c "cat > '$AUTH_FILE' <<EOF
+[dashboard]
+auth_user = '$DASHBOARD_USER'
+auth_pass = '$DASHBOARD_PASSWORD'
+EOF"
+
+    # Set ownership and permissions
+    sudo chown svxlink:svxlink "$AUTH_FILE"
+    sudo chmod 640 "$AUTH_FILE"
+
+    # Optional feedback
+    whiptail --title "Success" --msgbox "Dashboard authentication file has been created." 8 78
+else 
+    show_info "Dashboard authentication file already exists. Skipping creation."
 fi
+
 
 # Check if the source file exists
 if [ ! -f "$SOURCE_FILE" ]; then
