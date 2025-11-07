@@ -91,6 +91,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'fetch_log') {
             //    document.getElementById('log').innerHTML = data;
             //})
             .then(data => {
+                data = data.replace(/(<br\s*\/?>)+$/i, '').trimEnd();
                 document.getElementById('log').innerText = data;
         })
 
