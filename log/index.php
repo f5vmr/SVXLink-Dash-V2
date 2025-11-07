@@ -73,9 +73,13 @@ if (isset($_GET['action']) && $_GET['action'] === 'fetch_log') {
     function fetchLog() {
         fetch('index.php?action=fetch_log')
             .then(response => response.text())
+            //.then(data => {
+            //    document.getElementById('log').innerHTML = data;
+            //})
             .then(data => {
-                document.getElementById('log').innerHTML = data;
-            })
+                document.getElementById('log').innerText = data;
+        })
+
             .catch(error => console.error('Error fetching log:', error));
     }
     // Fetch log every 5 seconds
