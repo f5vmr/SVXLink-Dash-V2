@@ -68,6 +68,20 @@ if (isset($_GET['action']) && $_GET['action'] === 'fetch_log') {
             white-space: pre-wrap; /* Ensures that long lines wrap */
             word-wrap: break-word; /* Ensures that long words wrap */
         }
+        #log {
+            background-color: #000;       /* Pure black background */
+            color: #0f0;                  /* Bright green text */
+            font-family: "Courier New", monospace; /* Classic log font */
+            font-size: 11px;
+            border: 1px solid #222;       /* Subtle border */
+            padding: 6px;
+            height: 550px;                /* Adjust vertical size as desired */
+            overflow-y: auto;             /* Scroll when full */
+            white-space: pre-wrap;        /* Preserve formatting and wrap long lines */
+            line-height: 1.2;             /* Slightly tighter line spacing */
+            border-radius: 6px;           /* Optional: soft rounded corners */
+           }
+
     </style>
 <script>
     function fetchLog() {
