@@ -48,18 +48,15 @@ a { color: #607d8b; }
 </fieldset>
 
 <p style="margin-top:30px;"></p>
-
 <?php
-error_reporting(0);
-$filelist = glob('/var/www/html/audio/*.wav');
-rsort($filelist);
-$liveFile = 'audio/live.wav';  // Path to the live recording
+$filelist = glob('/var/www/html/audio/audio-*.wav');
+rsort($filelist); // newest first
 
-// Ensure the file exists before creating the audio element
-if (file_exists($liveFile)) {
+if (!empty($filelist)) {
+    $latestFile = $filelist[0];
     echo '<div id="player">';
     echo '<audio id="my-audio" preload="auto" controls style="width:100%; display:block; border-radius:8px; box-sizing:border-box;">';
-    echo '<source src="' . $liveFile . '?t=' . time() . '" type="audio/wav">';
+    echo '<source src="' . $latestFile . '?t=' . time() . '" type="audio/wav">';
     echo '</audio></div>';
 }
 ?>

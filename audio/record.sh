@@ -1,15 +1,12 @@
 #!/bin/bash
-# Recording test audio for level measurement (RX only)
-# Always overwrite live.wav
+# Remove old files
+rm -f /var/www/html/audio/*.wav
 
-# Remove old live file if it exists
-LIVE_FILE="/var/www/html/audio/live.wav"
-if [ -f "$LIVE_FILE" ]; then
-    rm "$LIVE_FILE"
-fi
+# Record 15 seconds from rx_monitor
+file="/var/www/html/audio/audio-$(date +%Y-%m-%d-%H-%M-%S).wav"
+arecord -D rx_monitor -V mono -r 48000 -f S16_LE -c1 -d 15 "$file"
 
-# Record from RX loopback
-arecord -D rx_monitor -V mono -r 48000 -f S16_LE -c1 -d 15 "$LIVE_FILE"
+# Update live.wav symlink
+ln -sf "$file" /var/www/html/audio/live.wav
 
-# Optional short pause after recording
 sleep 2
