@@ -88,7 +88,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
     if(myAudio && myMeterElement) {
         var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        var sourceNode = webAudioPeakMeter.createMeterNode(myAudio, audioCtx);
+        var sourceNode = audioCtx.createMediaElementSource(myAudio);
+        var meterNode = webAudioPeakMeter.createMeterNode(myAudio, audioCtx);
         webAudioPeakMeter.createMeter(myMeterElement, sourceNode, {});
 
         myAudio.addEventListener('play', function() {

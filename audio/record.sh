@@ -7,5 +7,8 @@ if [ $count != 0 ]
 then
 rm /var/www/html/audio/*.wav
 fi
-arecord -D hw:Loopback,1,0 -r 48000 -f S16_LE -c1 -d 15 /var/www/html/audio/audio-$(date +%Y-%m-%d-%H-%M -%S).wav
+#arecord -D hw:Loopback,1,0 -r 48000 -f S16_LE -c1 -d 15 /var/www/html/audio/audio-$(date +%Y-%m-%d-%H-%M -%S).wav
+arecord -D rx_monitor -V mono -r 48000 -f S16_LE -c1 -d 15 /var/www/html/audio/audio-$(date +%Y-%m-%d-%H-%M-%S).wav
+
+
 sleep 2
