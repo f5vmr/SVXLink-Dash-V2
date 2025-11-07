@@ -53,15 +53,18 @@ pre {
 <body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <script src="web-audio-peak-meter.js"></script>
 <center>
-<fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:500px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div style = "padding:0px;width:495px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
-<center>
-<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">SVXLink Audio Test Peak Meter</h1>
-<p style = "font-size:14px;color:#454545;font-weight:bold;">Ideal Audio Level: <span style = "color:brown;"><b>-15</b> to  <b>-10dB</b></span> Max top Audio level (peak) <span style = "color:brown;"><b> -10dB</b>.</span></p>
-<div>
-<fieldset style = "border:rgb(255, 156, 42) 2px groove; box-shadow: 5px 5px 20px rgb(255, 236, 214); background-color:#f1f1f1; width:400px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<div id="my-peak-meter" style = "width: 32em; height: 65px; margin: 10px;"></div>
+<fieldset style="border:#3083b8 2px groove; box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:500px; margin-top:15px; font-size:13px; border-radius:10px;">
+  <div style="padding:0; width:100%; background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%); border-radius:10px; border:1px solid LightGrey; margin-top:4px; line-height:1.6; white-space:normal;">
+    <center>
+      <h1 id="web-audio-peak-meters" style="color:#00aee8; font:18pt arial, sans-serif; font-weight:bold; text-shadow:0.25px 0.25px gray;">SVXLink Audio Test Peak Meter</h1>
+      <p style="font-size:14px; color:#454545; font-weight:bold;">Ideal Audio Level: <span style="color:brown;"><b>-15</b> to  <b>-10dB</b></span> Max top Audio level (peak) <span style="color:brown;"><b>-10dB</b>.</span></p>
+      <fieldset style="border:rgb(255, 156, 42) 2px groove; box-shadow:5px 5px 20px rgb(255, 236, 214); background-color:#f1f1f1; width:100%; margin-top:15px; font-size:13px; border-radius:10px;">
+        <div id="my-peak-meter" style="width:100%; height:65px; margin:10px;"></div>
+      </fieldset>
+    </center>
+  </div>
 </fieldset>
+
 <p style = "margin-top:30px;"></p>
 <?php
 
