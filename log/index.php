@@ -94,24 +94,34 @@ if (isset($_GET['action']) && $_GET['action'] === 'fetch_log') {
 
     </style>
 <script>
-    function fetchLog() {
-        fetch('index.php?action=fetch_log')
-            .then(response => response.text())
-            //.then(data => {
-            //    document.getElementById('log').innerHTML = data;
-            //})
-            .then(data => {
-                data = data.replace(/(<br\s*\/?>)+$/i, '').trimEnd();
-                document.getElementById('log').innerText = data;
-        })
+function fetchLog() {
+    fetch('index.php?action=fetch_log')
+        .then(response => response.text())
+        .then(data => {
+            // Remove any stray <br> from the PHP output (extra safety)
+            data = data.replace(/<br\s*\/?>/gi, '').trimEnd();
 
-            .catch(error => console.error('Error fetching log:', error));
-    }
-    // Fetch log every 5 seconds
-    setInterval(fetchLog, 5000);
-    // Initial fetch
-    window.onload = fetchLog;
+            const logElement = document.getElementById('log');
+            const isAtBottom = logElement.scrollHeight - logElement.scrollTop === logElement.clientHeight;
+
+            // Update log content
+            logElement.innerText = data;
+
+            // Auto-scroll only if we were already at the bottom
+            if (isAtBottom) {
+                logElement.scrollTop = logElement.scrollHeight;
+            }
+        })
+        .catch(error => console.error('Error fetching log:', error));
+}
+
+// Fetch log every 2–5 seconds
+setInterval(fetchLog, 2000);
+
+// Initial fetch on page load
+window.onload = fetchLog;
 </script>
+
 </head>
 <body style="background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <center>
