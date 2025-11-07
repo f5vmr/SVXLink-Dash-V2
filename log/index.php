@@ -75,7 +75,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'fetch_log') {
             font-size: 11px;
             border: 1px solid #222;       /* Subtle border */
             padding: 6px;
-            height: 500px;                /* Adjust vertical size as desired */
+            height: 450px;                /* Adjust vertical size as desired */
             overflow-y: auto;             /* Scroll when full */
             white-space: pre-wrap;        /* Preserve formatting and wrap long lines */
             line-height: 1.2;             /* Slightly tighter line spacing */
