@@ -53,14 +53,25 @@ pre {
 <body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <script src="web-audio-peak-meter.js"></script>
 <center>
-<fieldset style="border:#3083b8 2px groove; box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:500px; margin-top:15px; font-size:13px; border-radius:10px;">
-  <div style="padding:0; width:100%; background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%); border-radius:10px; border:1px solid LightGrey; margin-top:4px; line-height:1.6; white-space:normal;">
+<fieldset style="border:#3083b8 2px groove; box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:500px; margin-top:15px; font-size:13px; border-radius:10px; padding:0;">
+  <div style="width:100%; padding:10px; background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%); border-radius:10px; border:1px solid LightGrey; box-sizing:border-box;">
     <center>
       <h1 id="web-audio-peak-meters" style="color:#00aee8; font:18pt arial, sans-serif; font-weight:bold; text-shadow:0.25px 0.25px gray;">SVXLink Audio Test Peak Meter</h1>
-      <p style="font-size:14px; color:#454545; font-weight:bold;">Ideal Audio Level: <span style="color:brown;"><b>-15</b> to  <b>-10dB</b></span> Max top Audio level (peak) <span style="color:brown;"><b>-10dB</b>.</span></p>
-      <fieldset style="border:rgb(255, 156, 42) 2px groove; box-shadow:5px 5px 20px rgb(255, 236, 214); background-color:#f1f1f1; width:100%; margin-top:15px; font-size:13px; border-radius:10px;">
-        <div id="my-peak-meter" style="width:100%; height:65px; margin:10px;"></div>
+      <p style="font-size:14px; color:#454545; font-weight:bold;">
+        Ideal Audio Level: <span style="color:brown;"><b>-15</b> to <b>-10dB</b></span>
+        Max top Audio level (peak) <span style="color:brown;"><b>-10dB</b></span>.
+      </p>
+
+      <!-- Peak meter fieldset -->
+      <fieldset style="border:rgb(255, 156, 42) 2px groove; box-shadow:5px 5px 20px rgb(255, 236, 214); background-color:#f1f1f1; width:100%; margin-top:15px; font-size:13px; border-radius:10px; padding:10px; box-sizing:border-box;">
+        <div id="my-peak-meter" style="width:100%; height:65px;"></div>
       </fieldset>
+
+      <!-- Audio playback -->
+      <div style="width:100%; margin-top:15px; padding:0; box-sizing:border-box;">
+        <audio id="my-audio" controls style="width:100%; display:block; border-radius:8px; box-sizing:border-box;"></audio>
+      </div>
+
     </center>
   </div>
 </fieldset>
