@@ -36,33 +36,6 @@ function getSVXLog() {
 	$logLines = array_slice($logLines, -500);
 	return $logLines;
 }
-function getLogContent($offset = 0) {
-    $logFile = '/var/log/svxlink.log'; // adjust path as needed
-    $result = ['content' => '', 'offset' => $offset];
-
-    if (!file_exists($logFile)) {
-        return $result;
-    }
-
-    $filesize = filesize($logFile);
-
-    // If log rotated or truncated, reset offset
-    if ($offset > $filesize) {
-        $offset = 0;
-    }
-
-    $handle = fopen($logFile, 'r');
-    if ($handle) {
-        fseek($handle, $offset);
-        $data = fread($handle, $filesize - $offset);
-        fclose($handle);
-
-        $result['content'] = $data;
-        $result['offset'] = $filesize;
-    }
-
-    return $result;
-}
 function getLogContent() {
     // Possible log file names
     $logFiles = ['/var/log/svxlink.log', '/var/log/svxlink'];
