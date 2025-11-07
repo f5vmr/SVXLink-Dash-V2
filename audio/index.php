@@ -67,11 +67,6 @@ pre {
         <div id="my-peak-meter" style="width:100%; height:65px;"></div>
       </fieldset>
 
-      <!-- Audio playback -->
-      <div style="width:100%; margin-top:15px; padding:0; box-sizing:border-box;">
-        <audio id="my-audio" controls style="width:100%; display:block; border-radius:8px; box-sizing:border-box;"></audio>
-      </div>
-
     </center>
   </div>
 </fieldset>
@@ -87,7 +82,7 @@ $filelist[] = $filename;
 $filelist = array_reverse($filelist);
 if (!empty($filelist)) {
     $latestFile = $filelist[0];
-    echo '<div id="player"><audio id="my-audio" preload="none" crossorigin="anonymous" controls>';
+    echo '<div id="player"><audio id="my-audio" preload="none" controls style="width:100%; display:block; border-radius:8px; box-sizing:border-box;">';
     echo '<source src="' . $latestFile . '?t=' . time() . '" type="audio/wav">';
     echo '</audio></div>';
 }
