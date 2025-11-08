@@ -107,13 +107,15 @@ else
 fi
 
 # Check if npm is installed for the pi user
-CURRENT_USER=$(whoami)
-if ! sudo -u $CURRENT_USER command -v npm >/dev/null 2>&1; then
-    show_info "npm not found. Installing npm as "
+CURRENT_USER=${SUDO_USER:-$(whoami)}
+
+if ! sudo -u "$CURRENT_USER" command -v npm >/dev/null 2>&1; then
+    show_info "npm not found. Installing npm as $CURRENT_USER"
     sudo apt install -y npm
 else
-    show_info "npm is already installed: $(sudo -u $CURRENT_USER npm -v)"
+    show_info "npm is already installed: $(sudo -u "$CURRENT_USER" npm -v)"
 fi
+
 
 # Ensure webserver user (svxlink) can run npm-installed scripts if needed
 sudo chown -R $CURRENT_USER:$CURRENT_USER /home/$CURRENT_USER/.npm*
@@ -164,7 +166,7 @@ EOL
 
     show_info "Reloading systemd, enabling, and starting svxlink-node.service..."
     sudo systemctl daemon-reload
-    sudo systemctl enable svxlink-node.service
+    sudo systemctl enable --now svxlink-node.service
     sudo systemctl start svxlink-node.service
 else
     show_info "svxlink-node.service already exists."
