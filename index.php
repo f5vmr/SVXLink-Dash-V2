@@ -10,6 +10,7 @@ include "include/config.php";
 <!DOCTYPE html >
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index" />
     <meta name="robots" content="follow" />
     <meta name="language" content="English" />
