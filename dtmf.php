@@ -56,9 +56,9 @@ $svxConfigFile = '/etc/svxlink/svxlink.conf';
          $callsign = $svxconfig['ReflectorLogic']['CALLSIGN'];}
     else { $callsign="NOCALL";}
 ?>
-<span style = "font-size: 32px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:#00ffff"><?php echo $callsign; ?></span>
+<span style = "font-size: 32px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:#fff8dc"><?php echo $callsign; ?></span>
 <p style = "margin-top:0px;margin-bottom:0px;">
-<span style = "font-size: 18px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:#00ffff"><?php echo $fmnetwork; ?></span>
+<span style = "font-size: 18px;letter-spacing:4px;font-family: &quot;sans-serif&quot;, sans-serif;font-weight:500;color:#fff8dc"><?php echo $fmnetwork; ?></span>
 </p></center>
 </div></div>
 </div>
