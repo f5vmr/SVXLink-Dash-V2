@@ -40,7 +40,7 @@ include "include/config.php";
 </head>
 <body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <center>
-<fieldset style = "box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:0px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<fieldset style="box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:95%; max-width:1200px; margin:auto; margin-top:15px; font-size:13px; border-radius:10px;">
 <div class="container"> 
 <div class="header">
 <div class="parent">
