@@ -544,7 +544,7 @@ input[type=text] {
 {
   background: none;
   border: 1px;
-  color: darkblue;
+  color: #0000ff;
   font-weight: 600;
   font-size: 13px;
   padding: 1px 1px;
@@ -555,7 +555,7 @@ input[type=text] {
 
 .active_id:hover
 {
-  background: lightblue;
+  background: #00bfff;
 }
 
 
@@ -598,7 +598,7 @@ input[type=text] {
 
 .qrz_link:hover
 {
-  background: lightblue;
+  background: #00bfff;
 }
 
 .blue
