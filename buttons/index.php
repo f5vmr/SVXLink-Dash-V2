@@ -82,7 +82,9 @@ if (!file_exists(__DIR__ . '/../include/config.buttons.php')) {
             <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">To comment '//' a line, clear the checkbox</h3>
 
 <?php
-$configFile = __DIR__ . '/config.buttons.php';
+$configFile = __DIR__ . '/../include/config.buttons.php';
+
+
 $maxKeys = 20;
 
 // Load config file lines
