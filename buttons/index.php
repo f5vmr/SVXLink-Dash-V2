@@ -175,7 +175,6 @@ function clearRow(k) {
 </script>
 </head>
 <body>
-<h2>Button Configuration Editor</h2>
 <form method="post">
 <table>
 <tr><th>Key</th><th>Enable</th><th>Label</th><th>Code</th><th>Color</th><th>Clear</th></tr>
