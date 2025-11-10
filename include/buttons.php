@@ -1,7 +1,7 @@
 
 <?php
-include_once __DIR__ . "/include/tools.php";
-include_once __DIR__ . "/include/config.buttons.php";
+include_once "tools.php";
+include_once "config.buttons.php";
 //include_once __DIR__ . "/../dtmf.php";
 ?>
 
