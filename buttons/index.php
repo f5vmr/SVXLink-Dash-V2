@@ -94,7 +94,7 @@ $buttons = [];
 $colorSet = [];
 // Add default colors
 sort($colorSet);
-$defaultColors = ['red','green','blue','purple','orange','yellow','grey','black','white'];
+$defaultColors = ['red','green','blue','purple','orange','yellow','cyan','brown','gold'];
 foreach ($defaultColors as $c) {
     if (!in_array($c, $colorSet)) $colorSet[] = $c;
 }
