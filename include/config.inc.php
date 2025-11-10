@@ -1,4 +1,5 @@
 <?php
+include_once "../include/config.buttons.php";
 // Path to the authentication file
 $auth_file = '/etc/svxlink/dashboard.auth.ini';
 
@@ -16,8 +17,6 @@ $auth_data = parse_ini_file($auth_file);
 // Set constants based on the parsed data (fallback to dummy values if keys missing)
 define('PHP_AUTH_USER', $auth_data['auth_user'] ?? 'svxlink');
 define('PHP_AUTH_PW', $auth_data['auth_pass'] ?? 'password');
-
-
 // header lines for information
 define("HEADER_CAT","FM-Repeater");
 define("HEADER_QTH","null");
@@ -209,35 +208,7 @@ define("TONE", "");
 define("COMMENT", "");
 define('AUTHORISED', 'AUTHORISED');
 define('UNAUTHORISED', 'UNAUTHORISED');
-
-
 //
-// Button keys define: description button, DTMF command or command, color of button
-//
-// DTMF keys
-// syntax: 'KEY number,'Description','DTMF code','color button'.
-//
-define("KEY1", array(' TG235 ','91235#','green'));
-define("KEY2", array(' TG2350 ','912350#','green'));
-define("KEY3", array(' TG23561 ','9123561#','green'));
-define("KEY4", array(' Disconnect ','910#','red'));
-define("KEY5", array(' OARC', '9147920#','purple'));
-define("KEY6", array(' HR20 ','9143136#','purple'));
-define("KEY7", array(' ANGLOSCOT ','9123529#','purple'));
-define("KEY8", array(' NWAG ','9153573#','purple'));
-define("KEY9", array(' D9 ','D9#','blue'));
-define("KEY10", array(' D10 ','D10#','red'));
-// additional DTMF keys
-define("KEY11", array(' D11 ','D11#','green'));
-define("KEY12", array(' D12 ','D12#','orange'));
-define("KEY13", array(' D13 ','D13#','orange'));
-define("KEY14", array(' D14 ','D14#','orange'));
-define("KEY15", array(' D15 ','D15#','purple'));
-define("KEY16", array(' D16 ','D16#','purple'));
-define("KEY17", array(' D17 ','D17#','orange'));
-define("KEY18", array(' D18 ','D18#','blue'));
-define("KEY19", array(' D19 ','D19#','blue'));
-define("KEY20", array(' D20 ','D20#','red'));
 define("SVXCONFPATH", "/etc/svxlink/");
 define("SVXCONFIG", "svxlink.conf");
 define("SVXLOGPATH", "/var/log/");
@@ -268,10 +239,8 @@ define("FX_GAIN_LOW","inFxGainLow");
 define("AUDIO_CHANNEL","inRxAudioChannel");
 define("SQL_DELAY","inSqlDelay");
 define("HID_DEVICE","inRxHidDevice");
-
 define("HOSTS","null");
 define("DATABASES","/var/www/html/databases");
-
 
 $svxConfigFile = '/etc/svxlink/svxlink.conf';
 if (fopen($svxConfigFile, 'r')) {
