@@ -159,7 +159,7 @@ echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620p
 </tr></table>
 <?php
 if (MENUBUTTON=="BOTTOM") {
-include_once "include/buttons.php"; }
+include_once __DIR__ "include/buttons.php"; }
 ?>
 <?php
 //
