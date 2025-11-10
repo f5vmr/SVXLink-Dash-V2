@@ -97,7 +97,7 @@ include_once "include/functions.php";
 </tr></table>
 <?php
 if (MENUBUTTON=="BOTTOM") {
-include_once __DIR__ "include/buttons.php"; }
+include_once "include/buttons.php"; }
 ?>
 <?php
     echo '<div class="content2">'."\n";
