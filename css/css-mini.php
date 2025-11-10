@@ -55,23 +55,12 @@ body, font {
     text-align: center;
 }
 .content2 {
-    margin: 0;
-    padding: 1px 5px 5px 5px;
-    color: #<?php echo $textContent; ?>;
-    background: #<?php echo $backgroundContent; ?>;
+    margin : 0 0 0 0px;
+    padding : 1px 5px 5px 5px;
+    color : #<?php echo $textContent; ?>;
+    background : #<?php echo $backgroundContent; ?>;
     text-align: center;
-
-    width: 100%;            /* Fill available page width */
-    max-width: 100%;        /* Ensure it never exceeds the page */
-    box-sizing: border-box; /* Include padding in width */
 }
-
-.content2 table {
-    width: 100%;            /* Tables inside scale to the div */
-    table-layout: auto;     /* Adjust column widths automatically */
-}
-
-
 .contentwide {
     padding: 5px 5px 5px 5px;
     color: #<?php echo $textContent; ?>;
