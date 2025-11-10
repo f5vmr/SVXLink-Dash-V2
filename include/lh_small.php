@@ -7,17 +7,17 @@ include_once "tools.php";
 include_once "functions.php";    
 include_once "tgdb.php";    
 ?>
-<span style = "font-weight: bold;font-size:14px;">SVXReflector Activity</span>
+<span style = "font-weight: bold;font-size:14px;">Активность рефлектора</span>
 <fieldset style = " width:550px;box-shadow:5px 5px 20px #999;background-color:#e8e8e8e8;margin-top:10px;margin-left:0px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
   <form method="post">
   <table style = "margin-top:0px;">
     <tr height=25px>
-      <th width=150px>Time (<?php echo date('T')?>)</th>
-      <th width=100px>Callsign</th>
-      <th width=100px>TG #</th>
-	<th width=30px> M </th>
+      <th width=150px>Время (<?php echo date('T')?>)</th>
+      <th width=100px>Позывной</th>
+      <th width=100px>№</th>
+	<th width=30px> Приглушить </th>
 	<th width=30px> A </th>
-      <th>TG Name</th>
+      <th>Название группы</th>
     </tr>
 <?php
 $i = 0;

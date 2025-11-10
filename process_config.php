@@ -16,9 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Write the updated lines back to the config file
     file_put_contents($config_file, implode("\n", $lines) . "\n");
 
-    echo "Configuration file updated successfully.";
+    echo "Файл конфигурации успешно обновлен.";
 } else {
-    echo "No data received.";
+    echo "Данные не получены.";
 }
 
 

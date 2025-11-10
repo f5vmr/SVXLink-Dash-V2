@@ -5,28 +5,28 @@ if (session_status() === PHP_SESSION_NONE) {
 ?>
    <div id="display-links">
 	<p style = "padding-right: 5px; text-align: right; color: #000000;">
-	<a style = "color: black;">Display</a> |
-	<a href="/index.php" style = "color: #0000ff;">Dashboard</a> | 
-	<a href="/node.php" style = "color: #0000ff;">Nodes</a> | 
-	<a href="/tg.php" style = "color: #0000ff;">Talk Groups</a> | 
+	<a style = "color: black;">Состояние</a> |
+	<a href="/index.php" style = "color: #0000ff;">Панель</a> | 
+	<a href="/node.php" style = "color: #0000ff;">Узлы</a> | 
+	<a href="/tg.php" style = "color: #0000ff;">Разговорные группы</a> | 
 	<a href="/dtmf.php" style = "color: #0000ff;">Dtmf</a> | 
-	<a href="/audio.php" style = "color: #0000ff;">Audio</a> | 
+	<a href="/audio.php" style = "color: #0000ff;">Звук</a> | 
 	<!--<a href="/wifi.php" style = "color: #0000ff;">Wifi</a> | 
-	<a href="/network.php" style = "color: #0000ff;">Network</a> |
-	<a href="/nodeInfo.php" style = "color: #0000ff;">Node Info</a> |-->
+	<a href="/network.php" style = "color: #0000ff;">Сеть</a> |
+	<a href="/nodeInfo.php" style = "color: #0000ff;">О узле</a> |-->
 	
-	<a href="editor.php?id=log" style = "color: crimson;" id="log">Log</a> |
-	<a href="/authorise.php" style = "color: crimson;">Authorise</a></p>
+	<a href="editor.php?id=log" style = "color: crimson;" id="log">Журнал</a> |
+	<a href="/authorise.php" style = "color: crimson;">Авторизация</a></p>
 	</div>
 	<div id="full-edit-links">
-	<p style = "padding-right: 5px; text-align: right; color: #000000;" <a style = "color: black;">Full Edit</a> |
+	<p style = "padding-right: 5px; text-align: right; color: #000000;" <a style = "color: black;">Настройка</a> |
 	<a href="/editor.php?id=svxlink" style = "color: crimson;" id="svxlink">SVXLink</a> |
 	<a href="/editor.php?id=amixer" style = "color: crimson;" id="echolink">Amixer</a> |
 	<a href="/editor.php?id=echolink" style = "color: crimson;" id="echolink">EchoLink</a> |
 	<a href="/editor.php?id=tclvoicemail" style = "color: crimson;" id="tclvoicemail">TclVoiceMail</a> |
 	<a href="/editor.php?id=metarinfo" style = "color: crimson;" id="metarinfo">MetarInfo</a> |
 	<a href="/editor.php?id=nodeInfo" style = "color: crimson;" id="nodeInfo">NodeInfo</a> |
-	<a href="/editor.php?id=power" style = "color: green;">Power</a></p>
+	<a href="/editor.php?id=power" style = "color: green;">Питание</a></p>
     </div>
 
 	 
