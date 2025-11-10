@@ -79,10 +79,10 @@ $maxKeys = 20;
 // --------------------------------------------
 $lines = file($configFile, FILE_IGNORE_NEW_LINES);
 
-$buttons = [];
+
 //$pattern = '/^(\s*)(\/\/)?\s*define\("KEY(\d+)",\s*array\(\s*\'(.*?)\'\s*,\s*\'(.*?)\'\s*,\s*\'(.*?)\'\s*\)\s*\);/';
 $pattern = '/^(\s*)(\/\/)?\s*define\("KEY(\d+)",\s*array\(\s*\'([^\']*)\'\s*,\s*\'([^\']*)\'\s*,\s*\'([^\']*)\'\s*\)\s*\);/';
-
+$buttons = [];
 $colorSet = [];
 
 foreach ($lines as $i => $line) {
