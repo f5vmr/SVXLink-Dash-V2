@@ -687,6 +687,6 @@ input.blue   { background-color: blue !important; color: white; }
 input.purple { background-color: purple !important; color: white; }
 input.orange { background-color: orange !important; color: black; }
 input.yellow { background-color: yellow !important; color: black; }
-input.grey   { background-color: grey !important; color: black; }
-input.black  { background-color: black !important; color: white; }
-input.white  { background-color: white !important; color: black; }
+input.cyan   { background-color: grey !important; color: black; }
+input.brown  { background-color: black !important; color: white; }
+input.gold  { background-color: white !important; color: black; }
