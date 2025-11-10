@@ -164,14 +164,16 @@ function getConnectedEcholink($echolog) {
                 //}
                 if(strpos($ElogLine,"state changed to CONNECTED")) {
                         $lineParts = explode(" ", $ElogLine);
-              if (!in_array(substr($lineParts[2],0,-1), $users)) {
-                                array_push($users,trim(substr($lineParts[2],0,-1)));
+                        $t_EL_KeyPos = array_search('QSO', $lineParts)-2;
+              if (!in_array(substr($lineParts[$t_EL_Key_Pos],0,-1), $users)) {
+                                array_push($users,trim(substr($lineParts[$t_EL_Key_Pos],0,-1)));
                         }
                 }
                 if(strpos($ElogLine,"state changed to DISCONNECTED")) {
                     $lineParts = explode(" ", $ElogLine);
-    		    $call=substr($lineParts[2],0,-1);
-        	    $pos = array_search($call, $users);
+                    $t_EL_Key_Pos = array_search('QSO', $lineParts)-2;
+                    $call=substr($lineParts[$t_EL_Key_Pos],0,-1);
+                    $pos = array_search($call, $users);
                     array_splice($users, $pos, 1);
                 }
         }
