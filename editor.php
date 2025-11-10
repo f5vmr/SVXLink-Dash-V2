@@ -99,6 +99,9 @@ if($_GET['id']=="log") {
 if($_GET['id']=="svxlink") {
     $edit_file = "svxlink/index.php"; 
 }
+if($_GET['id']=="buttons") {
+    $edit_file = "buttons/index.php"; 
+}
 if($_GET['id']=="amixer") {
     $edit_file = "amixer/index.php"; 
 }
