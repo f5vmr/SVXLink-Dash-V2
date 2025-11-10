@@ -745,12 +745,4 @@ div.img img{
 .hideScrollbar::-webkit-scrollbar{
   display: none; 
  }
-input.red    { background-color: red !important; color: white; }
-input.green  { background-color: green !important; color: white; }
-input.blue   { background-color: blue !important; color: white; }
-input.purple { background-color: purple !important; color: white; }
-input.orange { background-color: orange !important; color: black; }
-input.yellow { background-color: yellow !important; color: black; }
-input.cyan   { background-color: cyan !important; color: black; }
-input.brown  { background-color: brown !important; color: white; }
-input.gold  { background-color: gold !important; color: black; }
+
