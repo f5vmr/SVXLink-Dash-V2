@@ -171,9 +171,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <td><input type="checkbox" name="enabled[<?=$b['key']?>]" <?=$b['commented']?"":"checked"?>></td>
 <td><input type="text" name="label[<?=$b['key']?>]" value="<?=htmlspecialchars($b['label'])?>"></td>
 <td><input type="text" name="code[<?=$b['key']?>]" value="<?=htmlspecialchars($b['code'])?>"></td>
-<td>
-<input type="color" name="color[<?=$b['key']?>]" value="<?= $b['color'] ?: '#ffffff' ?>">
-</td>
+<select name="color[<?=$b['key']?>]">
+    <option value="">--</option>
+    <?php foreach ($colorSet as $c): ?>
+        <option value="<?=$c?>" <?=$b['color']==$c ? "selected" : "" ?> style="background-color: <?=$c?>; color: <?=($c=='black' || $c=='blue') ? 'white' : 'black' ?>;">
+            <?=$c?>
+        </option>
+    <?php endforeach; ?>
+</select>
 
 
 <td><button type="button" onclick="clearRow(<?=$b['key']?>)">Clear</button></td>
