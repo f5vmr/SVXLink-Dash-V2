@@ -24,7 +24,6 @@ if (session_status() === PHP_SESSION_NONE) {
 	<a href="/editor.php?id=buttons" style = "color: crimson;" id="logic">Buttons</a> |
 	<a href="/editor.php?id=amixer" style = "color: crimson;" id="echolink">Amixer</a> |
 	<a href="/editor.php?id=echolink" style = "color: crimson;" id="echolink">EchoLink</a> |
-	<a href="/editor.php?id=tclvoicemail" style = "color: crimson;" id="tclvoicemail">TclVoiceMail</a> |
 	<a href="/editor.php?id=metarinfo" style = "color: crimson;" id="metarinfo">MetarInfo</a> |
 	<a href="/editor.php?id=nodeInfo" style = "color: crimson;" id="nodeInfo">NodeInfo</a> |
 	<a href="/editor.php?id=power" style = "color: green;">Power</a></p>

@@ -124,10 +124,6 @@ if($_GET['id']=="power") {
 // check if form has been submitted
 //$filename = by choice;
 
-
-
-
-
     echo '<table style = "margin-bottom:0px;border:0; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#f1f1f1;"><tr style = "border:none;background-color:#f1f1f1;">';
     echo '<td width="200px" valign="top" class="hide" style = "height:auto;border:0;background-color:#f1f1f1;">';
     echo '<div class="nav" style = "margin-bottom:1px;margin-top:1px;">'."\n";
@@ -144,11 +140,11 @@ if($_GET['id']=="power") {
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
-    echo '<td valign="top"  style = "height:595px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';	
+    echo '<td valign="top"  style = "height:695px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';	
 
 
 if($_SESSION['auth'] === 'AUTHORISED') {
-echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="600px" title="EDIT"></iframe>';
+echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="690px" title="EDIT"></iframe>';
 
     echo '</td>';
    }   else {
