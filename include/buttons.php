@@ -1,8 +1,10 @@
 
-<?php 
-include_once "../include/tools.php"; 
-include_once "../dtmf.php";
+<?php
+include_once __DIR__ . "/tools.php";
+include_once __DIR__ . "/config.buttons.php";
+include_once __DIR__ . "/../dtmf.php";
 ?>
+
 <div class="content">
 <?php
 //$ip = $_SERVER['REMOTE_ADDR']; 
