@@ -26,7 +26,7 @@ include_once "include/tools.php";
     <meta http-equiv="pragma" content="no-cache" />
 <link rel="shortcut icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/png">
 
-<?php echo ("<title>Панель управления" . $callsign ." Ver 2.3</title>"); ?>
+<?php echo ("<title>Панель управления " . $callsign ." Ver 2.3</title>"); ?>
 
 
 <?php include_once "include/browserdetect.php"; ?>
