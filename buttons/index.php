@@ -6,6 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Button Editor</title>
     <meta charset="UTF-8">
     <link href="/css/css.php" type="text/css" rel="stylesheet" />
     <style type="text/css">
@@ -117,15 +118,7 @@ foreach ($lines as $i => $line) {
         }
     }
 }
-
-
-sort($colorSet);
-
-$defaultColors = ['red','green','blue','purple','orange','yellow','grey','black','white'];
-foreach ($defaultColors as $c) {
-    if (!in_array($c, $colorSet)) $colorSet[] = $c;
-}
-
+// fill missing keys
 for ($k = 1; $k <= $maxKeys; $k++) {
     if (!isset($buttons[$k])) {
         $buttons[$k] = [
@@ -140,6 +133,38 @@ for ($k = 1; $k <= $maxKeys; $k++) {
     }
 }
 
+sort($colorSet);
+
+$defaultColors = ['red','green','blue','purple','orange','yellow','grey','black','white'];
+foreach ($defaultColors as $c) {
+    if (!in_array($c, $colorSet)) $colorSet[] = $c;
+}
+<form method="post">
+<table>
+<tr><th>Key</th><th>Enable</th><th>Label</th><th>Code</th><th>Color</th><th>Clear</th></tr>
+<?php foreach ($buttons as $b): ?>
+<tr>
+<td><?="KEY".$b['key']?></td>
+<td><input type="checkbox" name="enabled[<?=$b['key']?>]" <?=$b['commented']?"":"checked"?>></td>
+<td><input type="text" name="label[<?=$b['key']?>]" value="<?=htmlspecialchars($b['label'])?>"></td>
+<td><input type="text" name="code[<?=$b['key']?>]" value="<?=htmlspecialchars($b['code'])?>"></td>
+<td>
+<select name="color[<?=$b['key']?>]">
+<option value=""></option>
+<?php foreach ($colorSet as $c): ?>
+<option value="<?=$c?>" <?=$b['color']==$c?"selected":""?>><?=$c?></option>
+<?php endforeach; ?>
+</select>
+</td>
+<td><button type="button" class="small" onclick="clearRow(<?=$b['key']?>)">Clear</button></td>
+</tr>
+<?php endforeach; ?>
+</table>
+<br>
+<button type="submit">Save</button>
+</form>
+
+<?php
 // --------------------------------------------
 // Save
 // --------------------------------------------
@@ -168,51 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Button Editor</title>
-<style>
-    body { font-family: Arial; background:#eee; padding:10px; }
-    table { border-collapse: collapse; width:100%; max-width:560px; background:white; font-size:12px; }
-    th, td { border:1px solid #ccc; padding:4px 6px; }
-    input[type=text] { width:98%; padding:2px; font-size:11px; }
-    select { width:100%; padding:2px; font-size:11px; }
-    .clear-btn { font-size:10px; padding:2px 4px; }
-</style>
-<script>
-function clearRow(k) {
-    document.getElementsByName('label['+k+']')[0].value='';
-    document.getElementsByName('code['+k+']')[0].value='';
-    document.getElementsByName('color['+k+']')[0].value='';
-}
-</script>
-</head>
-<body>
-<form method="post">
-<table>
-<tr><th>Key</th><th>Enable</th><th>Label</th><th>Code</th><th>Color</th><th>Clear</th></tr>
-<?php foreach ($buttons as $b): ?>
-<tr>
-<td><?="KEY".$b['key']?></td>
-<td><input type="checkbox" name="enabled[<?=$b['key']?>]" <?=$b['commented']?"":"checked"?>></td>
-<td><input type="text" name="label[<?=$b['key']?>]" value="<?=htmlspecialchars($b['label'])?>"></td>
-<td><input type="text" name="code[<?=$b['key']?>]" value="<?=htmlspecialchars($b['code'])?>"></td>
-<td>
-<select name="color[<?=$b['key']?>]">
-<option value=""></option>
-<?php foreach ($colorSet as $c): ?>
-<option value="<?=$c?>" <?=$b['color']==$c?"selected":""?>><?=$c?></option>
-<?php endforeach; ?>
-</select>
-</td>
-<td><button type="button" class="small" onclick="clearRow(<?=$b['key']?>)">Clear</button></td>
-</tr>
-<?php endforeach; ?>
-</table>
-<br>
-<button type="submit">Save</button>
-</form>
+
 </body>
 </html>
 
