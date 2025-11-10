@@ -2,7 +2,7 @@
 <?php
 include_once __DIR__ . "/tools.php";
 include_once __DIR__ . "/config.buttons.php";
-include_once __DIR__ . "/../dtmf.php";
+//include_once __DIR__ . "/../dtmf.php";
 ?>
 
 <div class="content">
