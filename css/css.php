@@ -62,6 +62,8 @@ body, font {
     color : #<?php echo $textContent; ?>;
     background : #<?php echo $backgroundContent; ?>;
     text-align: center;
+    max-width: 855px;
+
 }
 .contentwide {
     padding: 5px 5px 5px 5px;
