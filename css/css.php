@@ -603,7 +603,7 @@ input[type=text] {
 
 .blue
 {
-  background-colour: #0000ff;
+  background-colour: blue;
   border: none;
   color: white;
   font-weight: 600;
@@ -616,7 +616,7 @@ input[type=text] {
 }
 .red
 {
-  background-color: #b00;
+  background-color: red;
   border: none;
   color: white;
   font-weight: 600;
@@ -629,7 +629,7 @@ input[type=text] {
 }
 .orange
 {
-  background-color: DarkOrange;
+  background-color: Orange;
   border: none;
   color: white;
   font-weight: 600;
@@ -642,7 +642,7 @@ input[type=text] {
 }
 .purple
 {
-  background-color: #800080;
+  background-color: purple;
   border: none;
   color: white;
   font-weight: 600;
@@ -707,7 +707,7 @@ input[type=text] {
 }
 .green
 {
-  background-color: #448f47;
+  background-color: green;
   border: none;
   color: white;
   font-weight: 600;
