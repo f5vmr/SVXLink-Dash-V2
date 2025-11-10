@@ -129,7 +129,9 @@ include_once "include/buttons.php";
 
 <?php
 if (MENUBUTTON=="BOTTOM") {
-include_once "include/buttons.php"; }
+include_once "include/buttons.php"; 
+include_once "include/config.buttons.php"; 
+}
 ?>
 <?php
     echo '<div class="content2">'."\n";
