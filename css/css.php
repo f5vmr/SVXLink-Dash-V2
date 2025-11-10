@@ -603,7 +603,7 @@ input[type=text] {
 
 .blue
 {
-  background-colour: blue;
+  background-color: blue;
   border: none;
   color: white;
   font-weight: 600;
