@@ -55,12 +55,17 @@ body, font {
     text-align: center;
 }
 .content2 {
-    margin : 0 0 0 0px;
-    padding : 1px 5px 5px 5px;
-    color : #<?php echo $textContent; ?>;
-    background : #<?php echo $backgroundContent; ?>;
+    margin: 0 0 0 0px;
+    padding: 1px 5px 5px 5px;
+    color: #<?php echo $textContent; ?>;
+    background: #<?php echo $backgroundContent; ?>;
     text-align: center;
+
+    max-width: 100%;       /* Prevent the div from exceeding page width */
+    overflow-x: auto;      /* Add horizontal scrollbar if content is wider */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
+
 .contentwide {
     padding: 5px 5px 5px 5px;
     color: #<?php echo $textContent; ?>;
