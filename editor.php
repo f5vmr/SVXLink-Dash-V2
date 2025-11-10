@@ -148,7 +148,7 @@ if($_GET['id']=="power") {
 
 
 if($_SESSION['auth'] === 'AUTHORISED') {
-echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="495px" title="EDIT"></iframe>';
+echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="600px" title="EDIT"></iframe>';
 
     echo '</td>';
    }   else {
