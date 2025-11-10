@@ -1,8 +1,4 @@
-<?php// Button keys define: description button, DTMF command or command, color of button
-//
-// DTMF keys
-// syntax:'KEY number,'Description','DTMF code','color button'.
-//
+<?php
 define("KEY1", array('TG235','91235#','green'));
 define("KEY2", array('TG2350','912350#','green'));
 define("KEY3", array('TG23561','9123561#','green'));
@@ -13,7 +9,6 @@ define("KEY7", array('ANGLOSCOT','9123529#','purple'));
 define("KEY8", array('NWAG','9153573#','purple'));
 define("KEY9", array('D9','D9#','blue'));
 define("KEY10", array('D10','D10#','red'));
-// additional DTMF keys
 define("KEY11", array('D11','D11#','green'));
 define("KEY12", array('D12','D12#','orange'));
 define("KEY13", array('D13','D13#','orange'));
