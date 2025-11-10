@@ -1,0 +1,21 @@
+<?php
+define("KEY1", array('TG235','91235#','green'));
+define("KEY2", array('TG2350','912350#','green'));
+define("KEY3", array('TG23561','9123561#','green'));
+define("KEY4", array('TG23510','9123510#','green'));
+define("KEY5", array('TG23590','9123589#','green'));
+define("KEY6", array('OARC','9147920#','blue'));
+define("KEY7", array('ANGLOSCOT','9123529#','blue'));
+define("KEY8", array('NWAG','9153573#','blue'));
+define("KEY9", array('France(49)','91208#','purple'));
+define("KEY10", array('EastCoast','919050#','orange'));
+define("KEY11", array('Freedom','9149562#','orange'));
+define("KEY12", array('HR20','9143136','orange'));
+define("KEY13", array('ROC-Ham','912385#','orange'));
+define("KEY14", array('D14','D14#','yellow'));
+define("KEY15", array('D15','D15#','yellow'));
+define("KEY16", array('D16','D16#','yellow'));
+define("KEY17", array('D17','D17#','yellow'));
+define("KEY18", array('D18','D18#','yellow'));
+define("KEY19", array('D19','D19#','yellow'));
+define("KEY20", array('Disconnect','910#','red'));

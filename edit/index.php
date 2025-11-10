@@ -172,7 +172,7 @@ $content = file_get_contents($file);
 
 // Display in textarea
 echo '<form method="post">';
-echo '<textarea name="content" rows="33" cols="75">' . htmlspecialchars($content) . '</textarea><br>';
+echo '<textarea name="content" rows="42" cols="75">' . htmlspecialchars($content) . '</textarea><br>';
 echo '<div style = "text-align:center">Make your changes here</div>';  
 
 // Save button

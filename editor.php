@@ -56,7 +56,7 @@ else { $callsign="NOCALL";
 </head>
 <body style = "background-color: #e1e1e1;font: 11pt arial, sans-serif;">
 <center>
-<fieldset style = "box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:0px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<fieldset style = "box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:900px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <div class="container"> 
 <div class="header">
 <div class="parent">
@@ -99,6 +99,9 @@ if($_GET['id']=="log") {
 if($_GET['id']=="svxlink") {
     $edit_file = "svxlink/index.php"; 
 }
+if($_GET['id']=="buttons") {
+    $edit_file = "buttons/index.php"; 
+}
 if($_GET['id']=="amixer") {
     $edit_file = "amixer/index.php"; 
 }
@@ -121,10 +124,6 @@ if($_GET['id']=="power") {
 // check if form has been submitted
 //$filename = by choice;
 
-
-
-
-
     echo '<table style = "margin-bottom:0px;border:0; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#f1f1f1;"><tr style = "border:none;background-color:#f1f1f1;">';
     echo '<td width="200px" valign="top" class="hide" style = "height:auto;border:0;background-color:#f1f1f1;">';
     echo '<div class="nav" style = "margin-bottom:1px;margin-top:1px;">'."\n";
@@ -141,11 +140,11 @@ if($_GET['id']=="power") {
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
-    echo '<td valign="top"  style = "height:595px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';	
+    echo '<td valign="top"  style = "height:695px; width=620px; text-align: center; border:none;  background-color:#f1f1f1;">';	
 
 
 if($_SESSION['auth'] === 'AUTHORISED') {
-echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="495px" title="EDIT"></iframe>';
+echo '<iframe height="100%" id="editIframe" src="' . $edit_file . '" width="620px" height="690px" title="EDIT"></iframe>';
 
     echo '</td>';
    }   else {

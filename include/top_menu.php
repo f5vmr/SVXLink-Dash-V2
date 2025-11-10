@@ -21,9 +21,9 @@ if (session_status() === PHP_SESSION_NONE) {
 	<div id="full-edit-links">
 	<p style = "padding-right: 5px; text-align: right; color: #000000;" <a style = "color: black;">Full Edit</a> |
 	<a href="/editor.php?id=svxlink" style = "color: crimson;" id="svxlink">SVXLink</a> |
+	<a href="/editor.php?id=buttons" style = "color: crimson;" id="logic">Buttons</a> |
 	<a href="/editor.php?id=amixer" style = "color: crimson;" id="echolink">Amixer</a> |
 	<a href="/editor.php?id=echolink" style = "color: crimson;" id="echolink">EchoLink</a> |
-	<a href="/editor.php?id=tclvoicemail" style = "color: crimson;" id="tclvoicemail">TclVoiceMail</a> |
 	<a href="/editor.php?id=metarinfo" style = "color: crimson;" id="metarinfo">MetarInfo</a> |
 	<a href="/editor.php?id=nodeInfo" style = "color: crimson;" id="nodeInfo">NodeInfo</a> |
 	<a href="/editor.php?id=power" style = "color: green;">Power</a></p>

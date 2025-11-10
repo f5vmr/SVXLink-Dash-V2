@@ -603,7 +603,7 @@ input[type=text] {
 
 .blue
 {
-  background-image: linear-gradient(to bottom, #337ab7 0%, #265a88 100%);color:white;
+  background-image: #0000ff;
   border: none;
   color: white;
   font-weight: 600;
@@ -614,7 +614,6 @@ input[type=text] {
   cursor: pointer;
   border-radius: 4px;
 }
-
 .red
 {
   background-color: #b00;
@@ -654,6 +653,71 @@ input[type=text] {
   cursor: pointer;
   border-radius: 4px;
 }
+.gold
+{
+  background-color: gold;
+  border: none;
+  color: black;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.brown
+{
+  background-color: brown;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.cyan 
+{
+  background-color: cyan;
+  border: none;
+  color: black;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.yellow
+{
+  background-color: yellow;
+  border: none;
+  color: black;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.green
+{
+  background-color: #448f47;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
 
 div.parent{ 
     //border:solid black 1px;
@@ -681,3 +745,12 @@ div.img img{
 .hideScrollbar::-webkit-scrollbar{
   display: none; 
  }
+input.red    { background-color: red !important; color: white; }
+input.green  { background-color: green !important; color: white; }
+input.blue   { background-color: blue !important; color: white; }
+input.purple { background-color: purple !important; color: white; }
+input.orange { background-color: orange !important; color: black; }
+input.yellow { background-color: yellow !important; color: black; }
+input.cyan   { background-color: cyan !important; color: black; }
+input.brown  { background-color: brown !important; color: white; }
+input.gold  { background-color: gold !important; color: black; }
