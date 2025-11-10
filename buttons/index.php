@@ -92,6 +92,12 @@ $lines = file($configFile, FILE_IGNORE_NEW_LINES);
 
 $buttons = [];
 $colorSet = [];
+// Add default colors
+sort($colorSet);
+$defaultColors = ['red','green','blue','purple','orange','yellow','grey','black','white'];
+foreach ($defaultColors as $c) {
+    if (!in_array($c, $colorSet)) $colorSet[] = $c;
+}
 
 // Parse each line
 foreach ($lines as $i => $line) {
@@ -114,12 +120,7 @@ foreach ($lines as $i => $line) {
     }
 }
 
-// Add default colors
-sort($colorSet);
-$defaultColors = ['red','green','blue','purple','orange','yellow','grey','black','white'];
-foreach ($defaultColors as $c) {
-    if (!in_array($c, $colorSet)) $colorSet[] = $c;
-}
+
 
 // Fill missing buttons
 for ($k = 1; $k <= $maxKeys; $k++) {
@@ -172,12 +173,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <td><input type="text" name="code[<?=$b['key']?>]" value="<?=htmlspecialchars($b['code'])?>"></td>
 <td>
 <select name="color[<?=$b['key']?>]">
-<option value=""></option>
-<?php foreach ($colorSet as $c): ?>
-<option value="<?=$c?>" <?=$b['color']==$c?"selected":""?>><?=$c?></option>
-<?php endforeach; ?>
+    <option value="">--</option>
+    <?php foreach ($colorSet as $c): ?>
+        <option value="<?=$c?>" 
+            <?=$b['color']==$c ? "selected" : "" ?> 
+            style="background-color: <?=$c?>; color: <?=($c=='black' || $c=='blue' || $c=='purple') ? 'white' : 'black' ?>;">
+            <?=$c?>
+        </option>
+    <?php endforeach; ?>
 </select>
 </td>
+
 <td><button type="button" onclick="clearRow(<?=$b['key']?>)">Clear</button></td>
 </tr>
 <?php endforeach; ?>
