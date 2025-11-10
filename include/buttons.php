@@ -4,7 +4,9 @@ include_once __DIR__ . "/config.buttons.php";
 
 // Debug mode: don't refresh automatically
 $debug = true;
-
+?>
+<div class="content">  
+<?php
 for ($i = 1; $i <= 20; $i++) {
     $buttonName = "button$i";
     if (array_key_exists($buttonName, $_POST)) {
@@ -54,7 +56,7 @@ for ($i = 1; $i <= 20; $i++) {
 
 
 
-<div class="content">   
+ 
 <fieldset style = "box-shadow:5px 5px 20px #999;background-color:#e8e8e8e8; width:855px;margin-top:5px;margin-bottom:14px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <div style = "padding:0px;width:100%;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;white-space:normal;">
 <p style = "margin-bottom:0px;"></p>
