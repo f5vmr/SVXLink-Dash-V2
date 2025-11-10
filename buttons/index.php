@@ -86,25 +86,38 @@ $buttons = [];
 $colorSet = [];
 
 foreach ($lines as $i => $line) {
-    if (preg_match($pattern, $line, $m)) {
-        $keyNum = intval($m[3]);
+    // check if line defines a KEY and whether it's commented
+    if (preg_match('/^\s*(\/\/)?\s*define\("KEY(\d+)",\s*array\(/', $line, $m)) {
+        $commented = !empty($m[1]);
+        $keyNum = intval($m[2]);
         if ($keyNum > $maxKeys) continue;
+
+        // extract the three single-quoted values
+        preg_match_all("/'([^']*)'/", $line, $vals);
+        $label = $vals[1][0] ?? '';
+        $code  = $vals[1][1] ?? '';
+        $color = $vals[1][2] ?? '';
+
+        // detect leading indentation
+        preg_match('/^(\s*)/', $line, $im);
+        $indent = $im[1] ?? '';
 
         $buttons[$keyNum] = [
             'key' => $keyNum,
-            'indent' => $m[1],
-            'commented' => !empty($m[2]),
-            'label' => trim($m[4]),
-            'code' => trim($m[5]),
-            'color' => trim($m[6]),
+            'indent' => $indent,
+            'commented' => $commented,
+            'label' => $label,
+            'code' => $code,
+            'color' => $color,
             'line_index' => $i
         ];
 
-        if ($m[6] !== '' && !in_array($m[6], $colorSet)) {
-            $colorSet[] = trim($m[6]);
+        if ($color !== '' && !in_array($color, $colorSet)) {
+            $colorSet[] = $color;
         }
     }
 }
+
 
 sort($colorSet);
 
