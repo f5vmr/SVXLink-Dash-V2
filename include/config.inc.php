@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__."/config.buttons.php";
+
 // Path to the authentication file
 $auth_file = '/etc/svxlink/dashboard.auth.ini';
 
