@@ -69,16 +69,138 @@ if (session_status() === PHP_SESSION_NONE) {
             <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">To comment '#' a line, clear the checkbox</h3>
 
             <?php
-            include_once "../include/functions.php";
-            include_once "../include/buttons.config.php";
-            
+// button_editor.php - Enhanced: dropdown colors, clear row buttons, max KEY1–KEY20
 
-            echo '</table>';
-            echo '<button name="btnSave" type="submit" class="green" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
-            echo '</form>';
-            ?>
-        </div>
-    </fieldset>
-    </center>
+$configFile = __DIR__ . '/buttons.config.php';
+$maxKeys = 20;
+
+// --------------------------------------------
+// Load config file as lines
+// --------------------------------------------
+$lines = file($configFile, FILE_IGNORE_NEW_LINES);
+
+$buttons = [];
+$pattern = '/^(\s*)(\/\/)?\s*define\("KEY(\d+)",\s*array\(\s*\'(.*?)\'\s*,\s*\'(.*?)\'\s*,\s*\'(.*?)\'\s*\)\s*\);/';
+
+$colorSet = [];
+
+foreach ($lines as $i => $line) {
+    if (preg_match($pattern, $line, $m)) {
+        $keyNum = intval($m[3]);
+        if ($keyNum > $maxKeys) continue;
+
+        $buttons[$keyNum] = [
+            'key' => $keyNum,
+            'indent' => $m[1],
+            'commented' => !empty($m[2]),
+            'label' => trim($m[4]),
+            'code' => trim($m[5]),
+            'color' => trim($m[6]),
+            'line_index' => $i
+        ];
+
+        if ($m[6] !== '' && !in_array($m[6], $colorSet)) {
+            $colorSet[] = trim($m[6]);
+        }
+    }
+}
+
+sort($colorSet);
+
+$defaultColors = ['red','green','blue','purple','orange','yellow','grey','black','white'];
+foreach ($defaultColors as $c) {
+    if (!in_array($c, $colorSet)) $colorSet[] = $c;
+}
+
+for ($k = 1; $k <= $maxKeys; $k++) {
+    if (!isset($buttons[$k])) {
+        $buttons[$k] = [
+            'key' => $k,
+            'indent' => '',
+            'commented' => true,
+            'label' => '',
+            'code' => '',
+            'color' => '',
+            'line_index' => null
+        ];
+    }
+}
+
+// --------------------------------------------
+// Save
+// --------------------------------------------
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    for ($key = 1; $key <= $maxKeys; $key++) {
+        $label = $_POST['label'][$key] ?? '';
+        $code  = $_POST['code'][$key] ?? '';
+        $color = $_POST['color'][$key] ?? '';
+        $enabled = isset($_POST['enabled'][$key]);
+
+        $line = '';
+        if (!$enabled) $line .= '// ';
+
+        $line .= 'define("KEY' . $key . '", array(\'' . $label . '\',\'' . $code . '\',\'' . $color . '\'));';
+
+        if ($buttons[$key]['line_index'] !== null) {
+            $idx = $buttons[$key]['line_index'];
+            $lines[$idx] = $buttons[$key]['indent'] . $line;
+        } else {
+            $lines[] = $line;
+        }
+    }
+
+    file_put_contents($configFile, implode("\n", $lines) . "\n");
+    header('Location: ' . $_SERVER['REQUEST_URI']);
+    exit;
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Button Editor</title>
+<style>
+    body { font-family: Arial; background:#eee; padding:10px; }
+    table { border-collapse: collapse; width:100%; max-width:560px; background:white; font-size:12px; }
+    th, td { border:1px solid #ccc; padding:4px 6px; }
+    input[type=text] { width:98%; padding:2px; font-size:11px; }
+    select { width:100%; padding:2px; font-size:11px; }
+    .clear-btn { font-size:10px; padding:2px 4px; }
+</style>
+<script>
+function clearRow(k) {
+    document.getElementsByName('label['+k+']')[0].value='';
+    document.getElementsByName('code['+k+']')[0].value='';
+    document.getElementsByName('color['+k+']')[0].value='';
+}
+</script>
+</head>
+<body>
+<h2>Button Configuration Editor</h2>
+<form method="post">
+<table>
+<tr><th>Key</th><th>Enable</th><th>Label</th><th>Code</th><th>Color</th><th>Clear</th></tr>
+<?php foreach ($buttons as $b): ?>
+<tr>
+<td><?="KEY".$b['key']?></td>
+<td><input type="checkbox" name="enabled[<?=$b['key']?>]" <?=$b['commented']?"":"checked"?>></td>
+<td><input type="text" name="label[<?=$b['key']?>]" value="<?=htmlspecialchars($b['label'])?>"></td>
+<td><input type="text" name="code[<?=$b['key']?>]" value="<?=htmlspecialchars($b['code'])?>"></td>
+<td>
+<select name="color[<?=$b['key']?>]">
+<option value=""></option>
+<?php foreach ($colorSet as $c): ?>
+<option value="<?=$c?>" <?=$b['color']==$c?"selected":""?>><?=$c?></option>
+<?php endforeach; ?>
+</select>
+</td>
+<td><button type="button" class="small" onclick="clearRow(<?=$b['key']?>)">Clear</button></td>
+</tr>
+<?php endforeach; ?>
+</table>
+<br>
+<button type="submit">Save</button>
+</form>
 </body>
 </html>
+
+    
