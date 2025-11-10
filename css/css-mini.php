@@ -532,7 +532,7 @@ input[type=text] {
 }
 .orange
 {
-  background-color: Orange;
+  background-color: DarkOrange;
   border: none;
   color: white;
   font-weight: 600;
