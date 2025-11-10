@@ -603,7 +603,7 @@ input[type=text] {
 
 .blue
 {
-  background-image: linear-gradient(to bottom, #337ab7 0%, #265a88 100%);color:white;
+  background-image: #0000ff;
   border: none;
   color: white;
   font-weight: 600;
@@ -614,7 +614,6 @@ input[type=text] {
   cursor: pointer;
   border-radius: 4px;
 }
-
 .red
 {
   background-color: #b00;
@@ -644,6 +643,71 @@ input[type=text] {
 .purple
 {
   background-color: #800080;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.gold
+{
+  background-color: gold;
+  border: none;
+  color: black;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.brown
+{
+  background-color: brown;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.cyan 
+{
+  background-color: cyan;
+  border: none;
+  color: black;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.yellow
+{
+  background-color: yellow;
+  border: none;
+  color: black;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.green
+{
+  background-color: #448f47;
   border: none;
   color: white;
   font-weight: 600;
