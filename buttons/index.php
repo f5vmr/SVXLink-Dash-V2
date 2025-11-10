@@ -189,7 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php endforeach; ?>
 </table>
 <br>
-<button type="submit">Save</button>
+<button type="submit" class="green">Save</button>
 </form>
 </fieldset>
 </center>
