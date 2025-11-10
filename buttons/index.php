@@ -2,7 +2,14 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include_once __DIR__ . '../include/config.buttons.php';
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+include_once __DIR__ . '/../include/config.buttons.php';
+if (!file_exists(__DIR__ . '/../include/config.buttons.php')) {
+    die("config.buttons.php not found at " . realpath(__DIR__ . '/../include/config.buttons.php'));
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
