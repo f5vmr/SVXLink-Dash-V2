@@ -42,19 +42,19 @@ $voltageHTML = "<td style=\"background: $voltageColor;\">$voltageStatus</td>\n";
 $os_info = shell_exec('lsb_release -d | awk -F"\t" \'{print $2}\'');
 
 ?>
-<p style="margin-bottom:10px;margin-top:4px;"><a target=_blank href=esm><span style="font-weight: bold;font-size:14px;">Hardware Info</span></a></p>
+<p style="margin-bottom:10px;margin-top:4px;"><a target=_blank href=esm><span style="font-weight: bold;font-size:14px;">Аппаратное обеспечение</span></a></p>
 <fieldset style="box-shadow:5px 5px 20px #999;background-color:#e8e8e8e8; width:855px;margin-top:0px;margin-bottom:10px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <table style="margin-top:2px;">
   <tr>
-    <th>Hostname<br/><span style="font-weight: bold;color:#effd5f;font-size:10px;">IP: <?php echo str_replace(' ', '<br />', exec('hostname -I | awk \'{print $1}\''));?></span></th>
-    <th><b>Kernel<br/>release</b></th>
-    <th colspan="2">Operating System<br><span style="font-weight: bold;color:#effd5f;font-size:12px;">Uptime: <?php echo $uptime; ?></span></th>
-    <th><span>&nbsp;<b>Disk&nbsp;<br> used</b></span></th>
-    <th><span>&nbsp;<b>Memory&nbsp;<br> used</b></span></th>
-    <th><span><b>CPU Usage</b></span></th>
-    <th><span><b>Voltage</b></span></th>
+    <th>Хост<br/><span style="font-weight: bold;color:#effd5f;font-size:10px;">IP: <?php echo str_replace(' ', '<br />', exec('hostname -I | awk \'{print $1}\''));?></span></th>
+    <th>Релиз<br/><b>ядра</b></th>
+    <th colspan="2">Операционная система<br><span style="font-weight: bold;color:#effd5f;font-size:12px;">Работает: <?php echo $uptime; ?></span></th>
+    <th><span>&nbsp;<b>Диск&nbsp;<br> занято</b></span></th>
+    <th><span>&nbsp;<b>Память&nbsp;<br> занято</b></span></th>
+    <th><span><b>Загрузка CPU</b></span></th>
+    <th><span><b>Питание</b></span></th>
     <?php if (file_exists('/sys/class/thermal/thermal_zone0/temp')) {
-        echo "<th><span><b>CPU Temp</b></span></th>"; 
+        echo "<th><span><b>Темп. CPU</b></span></th>"; 
     } ?>
   </tr>
   <tr height="24px">
