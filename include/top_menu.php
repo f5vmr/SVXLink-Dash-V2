@@ -2,6 +2,8 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+include '../include/functions.php';
+	
 ?>
    <div id="display-links">
 	<p style = "padding-right: 5px; text-align: right; color: #000000;">
@@ -26,15 +28,16 @@ if (session_status() === PHP_SESSION_NONE) {
 	<a href="/editor.php?id=tclvoicemail" style = "color: crimson;" id="tclvoicemail">TclVoiceMail</a> |
 	<a href="/editor.php?id=metarinfo" style = "color: crimson;" id="metarinfo">MetarInfo</a> |
 	<a href="/editor.php?id=nodeInfo" style = "color: crimson;" id="nodeInfo">NodeInfo</a> |
-	<a href="/editor.php?id=power" style = "color: green;">Питание</a></p>
+	<a href="/editor.php?id=power" style = "color: green;">Питание</a>
+	</p>
     </div>
 
-	 
+
+
 
 
 
 <?php
-
 include_once('parse_svxconf.php');
 
 

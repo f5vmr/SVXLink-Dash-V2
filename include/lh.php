@@ -14,9 +14,9 @@ include_once "tgdb.php";
     <tr height=25px>
       <th width=150px>Время (<?php echo date('T')?>)</th>
       <th width=100px>Позывной</th>
-      <th width=100px>№</th>
-	<th width=30px> Приглушить </th>
-	<th width=30px> A </th>
+      <th width=100px>Номер</th>
+	<th width=30px> Монитор </th>
+	<th width=30px> Выбрать </th>
       <th>Название группы</th>
     </tr>
 <?php

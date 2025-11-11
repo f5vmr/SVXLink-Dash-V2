@@ -141,7 +141,7 @@ include_once "../dtmf.php";
 <p style = "margin: 0 auto;"></p>
 <form action="" method="POST" style = "margin-top:4px;">
   <center>
-  <label style = "text-shadow: 1px 1px 1px Lightgrey, 0 0 0.5em LightGrey, 0 0 1em whitesmoke;font-weight:bold;color:#464646;" for="dtmfsvx">DTMF command (must end with #):</label>  
+  <label style = "text-shadow: 1px 1px 1px Lightgrey, 0 0 0.5em LightGrey, 0 0 1em whitesmoke;font-weight:bold;color:#464646;" for="dtmfsvx">DTMF команда (должна заканчиваться #):</label>  
   <input type="text" id="dtmfsvx" name="dtmfsvx">
   <input type="submit" value="Send DTMF code" class="green"><br>
   </center>

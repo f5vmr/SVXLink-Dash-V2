@@ -41,9 +41,9 @@ if (isset($_POST['btnUpdateTgs']))
   <form method="post">
   <table style = "margin-top:0px;">
     <tr height=25px>
-      <th width=100px>#</th>
-      <th width=30px> M </th>
-      <th width=30px> A </th>
+      <th width=100px>Номер группы</th>
+      <th width=30px> Mонитор </th>
+      <th width=30px> Выбрать </th>
       <th>Название</th>
     </tr>
 <?php
