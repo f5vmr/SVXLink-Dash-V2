@@ -67,7 +67,7 @@ textarea {
 <fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Network Configurator</h1>
+<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Конфигуратор сети</h1>
 
 
 <?php 
@@ -248,13 +248,13 @@ if (isset($_POST['btnDown']))
 
 <table>
         <tr>
-        <th width = "100px">Action</th>
-        <th width = "380px">Input</th>
-	<th width = "100px">Action</th>
+        <th width = "100px">Действие</th>
+        <th width = "380px">Ввод</th>
+	<th width = "100px">Действие</th>
         </tr>
 <tr>
 <td>
-	<button name="btnDetails" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Show Details</button>        
+	<button name="btnDetails" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Показать детали</button>        
 	<br>
 	<button name="btnPingGw" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Ping GW</button>
  	<br>
@@ -262,8 +262,8 @@ if (isset($_POST['btnDown']))
 	<br>
         <button name="btnPingRef" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Ping Reflector</button>
 
-</tD><td>
-	connection: 
+</td><td>
+	соединение: 
    <select name="sAconn">
 	
 <?php
@@ -284,13 +284,13 @@ foreach ($conns as $conn){
        DNS: <input type="text" name="dns" style = "width: 120px;" value="<?php echo $dns;?>">
 </td>
 <td> 
-	<button name="btnAuto" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Auto IP</button>
+	<button name="btnAuto" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Получить IP</button>
 	<br>
-	<button name="btnUp" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">conn UP</button>
+	<button name="btnUp" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Установить соединение</button>
 	<br>
-	<button name="btnDown" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">conn DOWN</button>
+	<button name="btnDown" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Разорвать соединение</button>
 	<br>
-	<button name="btnStatic" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Static IP</$
+	<button name="btnStatic" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Установить статичный IP</$
 
 </td>
 </tr>

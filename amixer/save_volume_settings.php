@@ -7,9 +7,9 @@ exec($command, $output, $return_var);
 
 // Check if the command executed successfully
 if ($return_var === 0) {
-    echo "Settings saved successfully.";
+    echo "Настройки успешно сохранены.";
 } else {
-    echo "Failed to save settings. Error code: $return_var";
+    echo "Не удалось сохранить настройки. Код ошибки: $return_var";
     // Output any error messages from the command
     if (!empty($output)) {
         echo "<pre>" . implode("\n", $output) . "</pre>";

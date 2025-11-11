@@ -145,9 +145,9 @@ window.onload = fetchLog;
                                              font:16pt arial, sans-serif;
                                              font-weight:bold; 
                                              text-shadow:0.25px 0.25px gray;">
-            Live Log Viewer
+            Просмотр журнала в реальном времени
         </h1>
-        <pre id="log" style="text-align:left;">Loading log...</pre>
+        <pre id="log" style="text-align:left;">Загружается журнал...</pre>
     </div>
 </fieldset>
 

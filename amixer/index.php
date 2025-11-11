@@ -136,31 +136,31 @@ $current_values = get_current_amixer_values();
         <fieldset style="border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
             <div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
                 <center>
-                    <h1 id="svxlink" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Configurator</h1>
-                    <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">AMixer settings</h3>
+                    <h1 id="svxlink" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Конфигуратор звука</h1>
+                    <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Настройки AMixer</h3>
 
                     <!-- HTML Form to adjust ALSA settings -->
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="reloadPage()">
-                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Headphone - TX Levels</h3>
-                        <label for="headphone">Set for 65 (0-100):</label>
+                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Наушники - Выходной уровень</h3>
+                        <label for="headphone">Установите на 65 (0-100):</label>
                         <input type="number" id="headphone" name="headphone" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_values['headphone'], $max_values['headphone'])); ?>" required>
                         <br>
-                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Microphone - Not Used</h3>
-                        <label for="mic">(0-100): Set to 0</label>
+                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Микрофон - Не используется</h3>
+                        <label for="mic">(0-100): Установите в 0</label>
                         <input type="number" id="mic" name="mic" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_values['mic'], $max_values['mic'])); ?>" required>
                         <br>
-                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Audio Capture - RX Levels</h3>
-                        <label for="capture">(0-100) Set for 25:</label>
+                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Захват звука - Входной уровень</h3>
+                        <label for="capture">(0-100) Установите в 25:</label>
                         <input type="number" id="capture" name="capture" min="0" max="100" value="<?php echo htmlspecialchars(calculate_percentage($current_values['capture'], $max_values['capture'])); ?>" required>
                         <br>
-                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Auto Gain</h3>
-                        <label for="autogain">Set to OFF for optimum control</label>
+                        <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">АРУ</h3>
+                        <label for="autogain">Выключите для оптимального контроля</label>
                         <select id="autogain" name="autogain" required>
                             <option value="0" <?php if ($current_autogain === '0' || $current_autogain === 'off') echo 'selected'; ?>>Off</option>
                             <option value="1" <?php if ($current_autogain === '1' || $current_autogain === 'on') echo 'selected'; ?>>On</option>
                         </select>
                         <br>
-                        <button type="submit">Apply Settings</button>
+                        <button type="submit">Применить</button>
                         <input type="hidden" name="form_submitted" value="1">
                     </form>
                 </center>

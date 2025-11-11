@@ -67,7 +67,7 @@ textarea {
 <fieldset style = "border:#3083b8 2px groove;box-shadow:5px 5px 20px #999; background-color:#f1f1f1; width:555px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <div style = "padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
 <center>
-<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">RF Module Configurator</h1>
+<h1 id="web-audio-peak-meters" style = "color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Конфигуратор модуля RF</h1>
 
 
 <?php 
@@ -276,7 +276,7 @@ if ($volume === "" || is_null($volume)) $volume = "8";
 <DIV style = "height:77px">
 <table>
 	<tr>
-	<th>Screen</th> 
+	<th>Экран</th> 
 	</tr>
 <tr>
 <td>
@@ -293,8 +293,8 @@ if ($volume === "" || is_null($volume)) $volume = "8";
 
 <table>
         <tr>
-        <th width = "380px">Port</th>
-	<th width = "100px">Action</th>
+        <th width = "380px">Порт</th>
+	<th width = "100px">Действие</th>
         </tr>
 <tr>
 <td> 
@@ -302,34 +302,34 @@ if ($volume === "" || is_null($volume)) $volume = "8";
 	Port: <input type "text" name="port" style = "width: 150px" value="<?php echo $port;?>"
 </TD>
 <td>
-<button name="btnVersion" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Get Version</button>
+<button name="btnVersion" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Получить версию</button>
 </TD>
 </tr>
 </table>
 
 <table>
         <tr>
-        <th width = "380px">Radio</th>
-        <th width = "100px">Action</th>
+        <th width = "380px">Радио</th>
+        <th width = "100px">Действие</th>
         </tr>
 <tr>
 <td>
-   	Freq: <input type "text" name="freq" style = "width: 180px" value="<?php echo $freq;?>">
-	Shift: <input type "text" name="offset" style = "width: 50px" value="<?php echo $offset;?>"> <br>
+   	Частота: <input type "text" name="freq" style = "width: 180px" value="<?php echo $freq;?>">
+	Сдвиг: <input type "text" name="offset" style = "width: 50px" value="<?php echo $offset;?>"> <br>
    	Ctcss: <input type "text" name="ctcss" style = "width: 50px" value="<?php echo $ctcss;?>">
 	Squelch: <input type "text" name="squelch" style = "width: 50px" value="<?php echo $squelch;?>">
 	Tail: <input type "text" name="tail" style = "width: 50px" value="<?php echo $tail;?>">
 </TD>
 <td>
-<button name="btnRadio" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Radio</button>
+<button name="btnRadio" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Установить</button>
 </TD>
 </tr>
 </table>
 
 <table>
         <tr>
-        <th width = "380px">Enable Filters</th>
-        <th width = "100px">Action</th>
+        <th width = "380px">Фильтры</th>
+        <th width = "100px">Действие</th>
         </tr>
 <tr>
 <td>
@@ -339,22 +339,22 @@ if ($volume === "" || is_null($volume)) $volume = "8";
 
 </TD>
 <td>
-<button name="btnFilters" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Filters</button>
+<button name="btnFilters" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Установить</button>
 </TD>
 </tr>
 </table>
 
 <table>
         <tr>
-        <th width = "380px">Volume</th>
-        <th width = "100px">Action</th>
+        <th width = "380px">Громкость</th>
+        <th width = "100px">Действие</th>
         </tr>
 <tr>
 <td>
    Volume: <input type "text" name="volume" style = "width: 50px" value="<?php echo $volume;?>">
 </TD>
 <td>
-<button name="btnVol" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Set Vol</button>
+<button name="btnVol" type="submit" class="red" style = "height:30px; width:105px; font-size:12px;">Установить</button>
 </TD>
 </tr>
 </table>

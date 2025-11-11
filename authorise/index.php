@@ -82,9 +82,9 @@ include_once "../include/config.php";
         <div class="container">
             <?php
             if ($_SESSION['auth'] === 'AUTHORISED') {
-                echo '<h1 style="color:#00ff00;">Authorised</h1>';
+                echo '<h1 style="color:#00ff00;">Авторизован</h1>';
             } else {
-                echo '<h1 style="color:#00aee8;">Authorise</h1>';
+                echo '<h1 style="color:#00aee8;">Авторизовать</h1>';
             }
 
             function checkAuth($username, $password)
@@ -106,8 +106,8 @@ include_once "../include/config.php";
             }
             ?>
             <form method="POST">
-                <input type="text" id="username" name="username" placeholder="Username" value="<?php echo $username ?? ''; ?>"><br>
-                <input type="password" id="password" name="password" placeholder="Password" value="<?php echo $password ?? ''; ?>"><br>
+                <input type="text" id="username" name="username" placeholder="Пользователь" value="<?php echo $username ?? ''; ?>"><br>
+                <input type="password" id="password" name="password" placeholder="Пароль" value="<?php echo $password ?? ''; ?>"><br>
                 <input type="submit" value="Submit">
             </form>
         </div>

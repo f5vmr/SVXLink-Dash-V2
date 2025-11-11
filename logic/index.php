@@ -118,7 +118,7 @@ if (file_exists($config)) {
   // Display form with checkboxes and editable values
 echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
 echo '<table>';
-echo '<tr><th>Command</th><th>Active</th><th>Value</th></tr>';
+echo '<tr><th>Команда</th><th>Действует</th><th>Значение</th></tr>';
 
 foreach ($svxconfig as $section => $entries) {
         echo "<tr><td colspan='3'><h2 id=\"svxlink\" style=\"color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;\">$section</h2></td></tr>\n";
@@ -137,7 +137,7 @@ foreach ($svxconfig as $section => $entries) {
 }
 
 echo '</table>';
-echo '<button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
+echo '<button name="btnSave" type="submit" class="red" style = "height:100px; width:105px; font-size:12px;">Сохранить и перезагрузить</button>';
 echo '</form>'; 
 if (isset($_POST['btnSave'])) {
         

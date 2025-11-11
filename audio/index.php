@@ -35,8 +35,8 @@ a { color: #607d8b; }
     <center>
       <h1 style="color:#00aee8; font:18pt arial, sans-serif; font-weight:bold; text-shadow:0.25px 0.25px gray;">SVXLink Audio Test Peak Meter</h1>
       <p style="font-size:14px; color:#454545; font-weight:bold;">
-        Ideal Audio Level: <span style="color:brown;"><b>-15</b> to <b>-10dB</b></span>,
-        Max top Audio level (peak) <span style="color:brown;"><b>-10dB</b></span>.
+        Идеальный уровень звука: <span style="color:brown;">от <b>-15</b> до <b>-10dB</b></span>,
+        Макс. уровень звука (пиковый) <span style="color:brown;"><b>-10dB</b></span>.
       </p>
 
       <!-- Peak meter fieldset -->
@@ -84,13 +84,13 @@ window.addEventListener('DOMContentLoaded', function() {
 // Button feedback during recording
 function func() {
     var btn = document.getElementById('runRec');
-    btn.value = 'Recording audio, please wait... ';
+    btn.value = 'Идет запись, подождите ... ';
     btn.className = 'orange';
 }
 </script>
 
 <form method="post">
-    <input name="recAudio" type="submit" class="red" onclick="func()" id="runRec" value="Click to record 15sec" style="height:45px;font-size:18px;">
+    <input name="recAudio" type="submit" class="red" onclick="func()" id="runRec" value="Записать 15 сек. фрагмент" style="height:45px;font-size:18px;">
 </form>
 
 <?php

@@ -66,7 +66,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <div style="padding:0px;width:550px;background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%);border-radius: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;border: 1px solid LightGrey;margin-left:0px; margin-right:0px;margin-top:4px;margin-bottom:0px;line-height:1.6;white-space:normal;">
             <center>
             <h1 id="svxlink" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Voice Mail Configurator</h1>
-            <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">To comment '#' a line, clear the checkbox</h3>
+            <h3 style="color:#00aee8;font: 12pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Чтобы закоментировать строку снимите галку</h3>
 
             <?php
             include_once "../include/functions.php";
@@ -112,7 +112,7 @@ if (session_status() === PHP_SESSION_NONE) {
             }
 
             echo '</table>';
-            echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Save <br> & <br> ReLoad</button>';
+            echo '<button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">Сохранить и перезагрузить</button>';
             echo '</form>';
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnSave'])) {
@@ -125,12 +125,12 @@ if (session_status() === PHP_SESSION_NONE) {
                         reloadPage();
                     </script>";
                 } else {
-                    echo "Failed to restart SVXLink.";
+                    echo "Не удалось перезагрузить SVXLink.";
                 }
             }
 
             if (isset($_GET['reloaded']) && $_GET['reloaded'] == 'true') {
-                echo "<p>Configuration updated and service restarted successfully.</p>";
+                echo "<p>Конфигурация обновлена и сервис успешно перезагружен.</p>";
             }
             ?>
         </div>
