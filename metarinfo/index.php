@@ -96,7 +96,7 @@ if (session_status() === PHP_SESSION_NONE) {
             echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
             echo '<input type="hidden" name="reloaded" value="0" id="reloaded">';
             echo '<table>';
-            echo '<tr><th>Команла</th><th>Используется</th><th>Значение</th></tr>';
+            echo '<tr><th>Команда</th><th>Используется</th><th>Значение</th></tr>';
 
             foreach ($svxconfig as $section => $entries) {
                 echo "<tr><td colspan='3'><h2 id=\"svxlink\" style=\"color:#00aee8;font: 14pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;\">$section</h2></td></tr>\n";
