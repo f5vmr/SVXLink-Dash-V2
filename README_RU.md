@@ -6,9 +6,10 @@
 
 ## Вдохновение
 
-Этот проект был вдохновлен дизайном и функциональностью:
+Этот проект был вдохновлен функциональностью:
 - [SVXLink-Dashboard-V2 от F5VMR](https://github.com/f5vmr/SVXLink-Dash-V2)
-
+и дизайном
+- [WPSD Project](https://w0chp.radio/wpsd/)
 ## Лицензия
 
 Этот проект содержит элементы дизайна, производные от WPSD Project,
@@ -24,7 +25,11 @@ Original copyright: Copyright © 2023 WPSD Project Development Team, et al.
 
 - Пользовательский интерфейс в стиле WSPD
 - Новая архитектура серверной части, написанная с нуля
-- Дополнительная информация о соединениях Echolink,Frn,ReflectorLogic 
+- Дополнительная информация о соединениях Echolink,Frn,ReflectorLogic
+	- Разговорные группы рефлектора
+	![Разговорные группы рефлектора](./readme_images/tg_panel.jpg)
+
+
 
 ## Технические примечания
 
