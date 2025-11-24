@@ -32,18 +32,23 @@ Original copyright: Copyright © 2023 WPSD Project Development Team, et al.
 ![панель состояния](./readme_images/panel.jpg)
 
 	- Разговорные группы рефлектора
+	
 	![Разговорные группы рефлектора](./readme_images/tg_panel.jpg)
 	
 	- Подключенные узлы Эхолинка
+	
 	![Подключенные узлы эхолинка](./readme_images/el_panel.jpg)
 
 	- Подключенный сервер Frn	
+	
 	![Подключенный сервер Frn](./readme_images/frn_panel.jpg)
 
 	- Отображение типов подключенных узлов
+	
 	![Отображение типов подключенных узлов](./readme_images/details.jpg)
 
 	- Клавиатура DTMF для управления svxlink
+	
 	![Клавиатура DTMF](./readme_images/dtmf_keypad.jpg)
 
 ## Технические примечания
