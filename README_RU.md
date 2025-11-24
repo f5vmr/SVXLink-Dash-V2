@@ -1,5 +1,5 @@
 ![Статус проекта](https://img.shields.io/badge/Статус-В_работе-brightgreen?style=flat)
-![Версия](https://img.shields.io/badge/Версия-0.1.2-blue?style=flat)
+![Версия](https://img.shields.io/badge/Версия-0.0.3-blue?style=flat)
 ![Лицензия](https://img.shields.io/badge/Лицензия-MIT-green?style=flat)
 
 # Svxlink Dashboard
