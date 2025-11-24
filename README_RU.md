@@ -29,6 +29,7 @@ Original copyright: Copyright © 2023 WPSD Project Development Team, et al.
 ![Ghbvthysq внешний вид](./readme_images/review.jpg)
 
 - Информативная панель состояния с информацией о соединениях Echolink,Frn,ReflectorLogic
+
 ![панель состояния](./readme_images/panel.jpg)
 
 	- Разговорные группы рефлектора
