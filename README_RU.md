@@ -1,5 +1,5 @@
-![Статус проекта](https://img.shields.io/badge/Статус-В_работе-brightgreen?style=flat)
-![Версия](https://img.shields.io/badge/Версия-0.0.3-blue?style=flat)
+![Статус проекта](https://img.shields.io/badge/Статус-В_работе-red?style=flat)
+![Версия](https://img.shields.io/badge/Версия-0.0.3-red?style=flat)
 ![Лицензия](https://img.shields.io/badge/Лицензия-MIT-green?style=flat)
 
 # Svxlink Dashboard
@@ -7,9 +7,13 @@
 ## Вдохновение
 
 Этот проект был вдохновлен функциональностью:
+
 - [SVXLink-Dashboard-V2 от F5VMR](https://github.com/f5vmr/SVXLink-Dash-V2)
+
 и дизайном
+
 - [WPSD Project](https://w0chp.radio/wpsd/)
+
 ## Лицензия
 
 Этот проект содержит элементы дизайна, производные от WPSD Project,
