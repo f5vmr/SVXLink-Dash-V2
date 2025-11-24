@@ -23,19 +23,28 @@ Original copyright: Copyright © 2023 WPSD Project Development Team, et al.
 
 ## Особенности
 
+- Новая архитектура серверной части, переписанная с нуля
+
 - Пользовательский интерфейс в стиле WSPD
 ![Ghbvthysq внешний вид](./readme_images/review.jpg)
 
-- Новая архитектура серверной части, написанная с нуля
+- Информативная панель состояния с информацией о соединениях Echolink,Frn,ReflectorLogic
+![панель состояния](./readme_images/panel.jpg)
 
-- Дополнительная информация о соединениях Echolink,Frn,ReflectorLogic
 	- Разговорные группы рефлектора
-
 	![Разговорные группы рефлектора](./readme_images/tg_panel.jpg)
-	- Подключенные узлы Эхолинка
 	
+	- Подключенные узлы Эхолинка
 	![Подключенные узлы эхолинка](./readme_images/el_panel.jpg)
 
+	- Подключенный сервер Frn	
+	![Подключенный сервер Frn](./readme_images/frn_panel.jpg)
+
+	- Отображение типов подключенных узлов
+	![Отображение типов подключенных узлов](./readme_images/details.jpg)
+
+	- Клавиатура DTMF для управления svxlink
+	![Клавиатура DTMF](./readme_images/dtmf_keypad.jpg)
 
 ## Технические примечания
 
