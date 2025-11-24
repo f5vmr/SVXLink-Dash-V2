@@ -2,6 +2,8 @@
 ![Версия](https://img.shields.io/badge/Версия-0.0.3-red?style=flat)
 ![Лицензия](https://img.shields.io/badge/Лицензия-MIT-green?style=flat)
 
+❌  Не пытайтесь использовать этот проект пока видите это сообщение!
+
 # Svxlink Dashboard
 
 ## Вдохновение
