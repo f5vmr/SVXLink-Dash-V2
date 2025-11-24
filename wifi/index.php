@@ -29,9 +29,29 @@ if (!isWifiAvailable()) {
     $screen[] = "No Wi-Fi device detected.";
     $screen[] = "Hotspot profile available for fallback.";
 } elseif (!isWifiConnected() && !isWiredConnected()) {
-    $screen[] = "Not connected to any Wi-Fi or Wired network.";
-    $screen[] = "You may start the hotspot manually below.";
-} else {
+    // No active connections. Check for known WiFi.
+    $known = shell_exec("sudo -n nmcli -t -f NAME,TYPE con show | grep ':wifi'");
+    $scan  = shell_exec("sudo -n nmcli -t -f SSID dev wifi");
+
+    $shouldStartHotspot = true;
+    foreach (explode("\n", trim($known)) as $entry) {
+        if (empty($entry)) continue;
+        list($name,$type) = explode(':', $entry);
+        if (strpos($scan, $name) !== false) {
+            // Known WiFi is in range → do NOT start hotspot
+            $shouldStartHotspot = false;
+            break;
+        }
+    }
+
+    if ($shouldStartHotspot) {
+        exec('sudo -n nmcli connection up Rpi-Hotspot 2>&1');
+        $screen[] = "No known Wi-Fi found. Hotspot started.";
+    } else {
+        $screen[] = "Known Wi-Fi detected; waiting for Wi-Fi connection.";
+    }
+}
+ else {
     $screen[] = "Connected to a Wi-Fi or Wired network.";
 }
 
@@ -45,8 +65,11 @@ if (isset($_POST['btnConnList'])) {
 }
 if (isset($_POST['btnSwitch'])) {
     $ssid = $_POST['ssid'];
-    exec("sudo -n nmcli dev wifi connect \"$ssid\" 2>&1", $screen);
+    exec("sudo -n nmcli con modify \"$ssid\" connection.autoconnect yes 2>&1", $screen);
+    exec("sudo -n nmcli con up \"$ssid\" 2>&1", $screen);
+    $screen[] = "Switched to '$ssid' and marked autoconnect=yes.";
 }
+
 if (isset($_POST['btnDelete'])) {
     $ssid = $_POST['ssid'];
     exec("sudo -n nmcli con delete \"$ssid\" 2>&1", $screen);
