@@ -27,9 +27,11 @@ Original copyright: Copyright © 2023 WPSD Project Development Team, et al.
 - Новая архитектура серверной части, написанная с нуля
 - Дополнительная информация о соединениях Echolink,Frn,ReflectorLogic
 	- Разговорные группы рефлектора
-	
-	![Разговорные группы рефлектора](./readme_images/tg_panel.jpg)
 
+	![Разговорные группы рефлектора](./readme_images/tg_panel.jpg)
+	- Подключенные узлы Эхолинка
+	
+	![Разговорные группы рефлектора](./readme_images/el_panel.jpg)
 
 
 ## Технические примечания
