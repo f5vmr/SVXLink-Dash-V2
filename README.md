@@ -1,5 +1,5 @@
 ![Статус проекта](https://img.shields.io/badge/Status-In_process-red?style=flat)
-![Версия](https://img.shields.io/badge/Версия-0.0.3-red?style=flat)
+![Версия](https://img.shields.io/badge/Version-0.0.3-red?style=flat)
 ![Лицензия](https://img.shields.io/badge/Licensy-MIT-green?style=flat)
 
 ❌  Please do not download this fork until it is announced to be ready!
