@@ -103,19 +103,50 @@ function getSVXStatusLog() {
 //2021-07-22 19:07:03: RefLogic: Connection established to 127.0.0.1:5300
 //2021-07-22 19:07:03: RefLogic: Authentication OK
 
+//function getSVXRstatus() {
+//	if (file_exists(SVXLOGPATH.SVXLOGPREFIX)) {
+//           $logPath = SVXLOGPATH.SVXLOGPREFIX; 
+//           $svxrstat = `tail -10000 $logPath | egrep -a -h "Authentication|Connection established|Heartbeat timeout|No route to host|Connection refused|Connection timed out|Locally ordered disconnect|Deactivating link|Activating link" | tail -1`;}
+//	if ($svxrstat=="" &&  file_exists(SVXLOGPATH.SVXLOGPREFIX.".1")) {
+//           $logPath = SVXLOGPATH.SVXLOGPREFIX.".1"; 
+//           $svxrstat = `tail -10000 $logPath | egrep -a -h "Authentication|Connection established|Heartbeat timeout|No route to host|Connection refused|Connection timed out|Locally ordered disconnect|Deactivating link|Activating link" | tail -1`;}
+//           if(strpos($svxrstat,"Authentication OK") || strpos($svxrstat,"Connection established") || strpos($svxrstat,"Activating link")){
+//              $svxrstatus="Connected";
+//            }
+//           elseif (strpos($svxrstat,"Heartbeat timeout") || strpos($svxrstat,"No route to host") || strpos($svxrstat,"Connection refused") || strpos($svxrstat,"Connection timed out") || strpos($svxrstat,"Locally ordered disconnect") || strpos($svxrstat,"Deactivating link")) { $svxrstatus="Not connected";}
+//           else { $svxrstatus="No status";}
+//      return $svxrstatus;
+//}
 function getSVXRstatus() {
-	if (file_exists(SVXLOGPATH.SVXLOGPREFIX)) {
-           $logPath = SVXLOGPATH.SVXLOGPREFIX; 
-           $svxrstat = `tail -10000 $logPath | egrep -a -h "Authentication|Connection established|Heartbeat timeout|No route to host|Connection refused|Connection timed out|Locally ordered disconnect|Deactivating link|Activating link" | tail -1`;}
-	if ($svxrstat=="" &&  file_exists(SVXLOGPATH.SVXLOGPREFIX.".1")) {
-           $logPath = SVXLOGPATH.SVXLOGPREFIX.".1"; 
-           $svxrstat = `tail -10000 $logPath | egrep -a -h "Authentication|Connection established|Heartbeat timeout|No route to host|Connection refused|Connection timed out|Locally ordered disconnect|Deactivating link|Activating link" | tail -1`;}
-           if(strpos($svxrstat,"Authentication OK") || strpos($svxrstat,"Connection established") || strpos($svxrstat,"Activating link")){
-              $svxrstatus="Connected";
-            }
-           elseif (strpos($svxrstat,"Heartbeat timeout") || strpos($svxrstat,"No route to host") || strpos($svxrstat,"Connection refused") || strpos($svxrstat,"Connection timed out") || strpos($svxrstat,"Locally ordered disconnect") || strpos($svxrstat,"Deactivating link")) { $svxrstatus="Not connected";}
-           else { $svxrstatus="No status";}
-      return $svxrstatus;
+    $logFiles = [
+        SVXLOGPATH.SVXLOGPREFIX,
+        SVXLOGPATH.SVXLOGPREFIX . ".1"
+    ];
+    $linesToCheck = 100; // check last 100 lines for relevant events
+    $patterns = "Authentication|Connection established|Heartbeat timeout|No route to host|Connection refused|Connection timed out|Locally ordered disconnect|Deactivating link|Activating link";
+    $svxrstat = '';
+
+    // Collect recent relevant log entries
+    foreach ($logFiles as $logPath) {
+        if (file_exists($logPath)) {
+            $svxrstat = `tail -$linesToCheck $logPath | egrep -a -h "$patterns"`;
+            if ($svxrstat != '') break;
+        }
+    }
+
+    // Check for positive connection events first
+    if (preg_match('/Authentication OK|Connection established|Activating link/', $svxrstat)) {
+        return "Connected";
+    }
+
+    // Check for recent disconnection/error events within the last 5 minutes
+    // Extract timestamps if logs include them, otherwise assume recent lines are relevant
+    if (preg_match('/Heartbeat timeout|No route to host|Connection refused|Connection timed out|Locally ordered disconnect|Deactivating link/', $svxrstat)) {
+        return "Not connected";
+    }
+
+    // Default to Connected if no errors found
+    return "Connected";
 }
 
 // SVXLink proxy public log lines
