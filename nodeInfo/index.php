@@ -121,6 +121,32 @@ if (session_status() === PHP_SESSION_NONE) {
                 $json_content = file_get_contents($filename);
                 $data = json_decode($json_content, true);
             }
+            if (isset($_POST['btnSave'])) {
+            // Encode updated array back to JSON
+            $new_json_content = json_encode($data, JSON_PRETTY_PRINT);
+
+            // Backup original file
+            $backup_filename = $backup_dir . 'node_info_backup_' . date('YmdHis') . '.json';
+            if (!copy($filename, $backup_filename)) {
+                echo "<p style='color:red;'>Error creating backup file!</p>";
+            } else {
+                // Write the new JSON to the original file
+                if (file_put_contents($filename, $new_json_content) === false) {
+                    echo "<p style='color:red;'>Error saving node_info.json!</p>";
+                } else {
+                    echo "<p style='color:green;'>File saved successfully.</p>";
+                
+                    // Optional: restart SVXLink (uncomment if needed)
+                    exec('sudo systemctl restart svxlink 2>&1', $output, $retval);
+                    if ($retval === 0) {
+                    echo "<p>SVXLink restarted successfully.</p>";
+                    } else {
+                    echo "<p style='color:red;'>Failed to restart SVXLink:<br>" . implode('<br>', $output) . "</p>";
+                    }
+                }
+            }
+}
+
             ?>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
                 <table>
