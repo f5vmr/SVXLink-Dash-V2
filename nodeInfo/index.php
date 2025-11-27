@@ -82,41 +82,51 @@ if (session_status() === PHP_SESSION_NONE) {
             }
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
                 // Read the file content again
                 $json_content = file_get_contents($filename);
                 $data = json_decode($json_content, true);
-
-                // Update the data with posted values
-                $data['nodeLocation'] = get_form_data('nodeLocation', $data['nodeLocation']);
+                        
+                // Helper function: raw values only, no escaping
+                function raw_post($key, $default = '') {
+                    return isset($_POST[$key]) ? $_POST[$key] : $default;
+                }
+            
+                // Update the data with posted raw values
+                $data['nodeLocation'] = raw_post('nodeLocation', $data['nodeLocation']);
                 $data['hidden'] = isset($_POST['hidden']) ? true : false;
-                $data['sysop'] = get_form_data('sysop', $data['sysop']);
-
-                $data['qth'][0]['name'] = get_form_data('qth_name', $data['qth'][0]['name']);
-                $data['qth'][0]['pos']['lat'] = get_form_data('qth_lat', $data['qth'][0]['pos']['lat']);
-                $data['qth'][0]['pos']['long'] = get_form_data('qth_long', $data['qth'][0]['pos']['long']);
-                $data['qth'][0]['pos']['loc'] = get_form_data('qth_loc', $data['qth'][0]['pos']['loc']);
-                $data['qth'][0]['rx']['K']['name'] = get_form_data('rx_name', $data['qth'][0]['rx']['K']['name']);
-                $data['qth'][0]['rx']['K']['freq'] = filter_input(INPUT_POST, 'rx_freq', FILTER_VALIDATE_FLOAT, ['options' => ['default' => $data['qth'][0]['rx']['K']['freq']]]);
-                $data['qth'][0]['rx']['K']['sqlType'] = get_form_data('rx_sqlType', $data['qth'][0]['rx']['K']['sqlType']);
-                $data['qth'][0]['tx']['K']['name'] = get_form_data('tx_name', $data['qth'][0]['tx']['K']['name']);
-                $data['qth'][0]['tx']['K']['freq'] = filter_input(INPUT_POST, 'tx_freq', FILTER_VALIDATE_FLOAT, ['options' => ['default' => $data['qth'][0]['tx']['K']['freq']]]);
-                $data['qth'][0]['tx']['K']['pwr'] = get_form_data('tx_pwr', $data['qth'][0]['tx']['K']['pwr']);
-
-                // Encode the updated array back to JSON
+                $data['sysop'] = raw_post('sysop', $data['sysop']);
+            
+                $data['qth'][0]['name'] = raw_post('qth_name', $data['qth'][0]['name']);
+                $data['qth'][0]['pos']['lat'] = raw_post('qth_lat', $data['qth'][0]['pos']['lat']);
+                $data['qth'][0]['pos']['long'] = raw_post('qth_long', $data['qth'][0]['pos']['long']);
+                $data['qth'][0]['pos']['loc'] = raw_post('qth_loc', $data['qth'][0]['pos']['loc']);
+            
+                $data['qth'][0]['rx']['K']['name'] = raw_post('rx_name', $data['qth'][0]['rx']['K']['name']);
+                $data['qth'][0]['rx']['K']['freq'] = raw_post('rx_freq', $data['qth'][0]['rx']['K']['freq']);
+                $data['qth'][0]['rx']['K']['sqlType'] = raw_post('rx_sqlType', $data['qth'][0]['rx']['K']['sqlType']);
+            
+                $data['qth'][0]['tx']['K']['name'] = raw_post('tx_name', $data['qth'][0]['tx']['K']['name']);
+                $data['qth'][0]['tx']['K']['freq'] = raw_post('tx_freq', $data['qth'][0]['tx']['K']['freq']);
+                $data['qth'][0]['tx']['K']['pwr'] = raw_post('tx_pwr', $data['qth'][0]['tx']['K']['pwr']);
+            
+                // Encode the updated array back to JSON without corrupting characters
                 $new_json_content = json_encode($data, JSON_PRETTY_PRINT);
-
+            
                 // Create a backup
                 $backup_filename = $backup_dir . 'node_info_backup_' . date('YmdHis') . '.json';
                 if (copy($filename, $backup_filename)) {
+                
                     if (file_put_contents($filename, $new_json_content) === false) {
                         $message = 'Error saving file';
-                    } else {
-                        $message = 'File saved successfully';
-                    }
                 } else {
-                    $message = 'Error creating backup file';
+                    $message = 'File saved successfully';
                 }
+            
             } else {
+        $message = 'Error creating backup file';
+    }
+} else {
                 // Read the file content
                 $json_content = file_get_contents($filename);
                 $data = json_decode($json_content, true);
