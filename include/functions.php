@@ -118,34 +118,31 @@ function getSVXStatusLog() {
 //      return $svxrstatus;
 //}
 function getSVXRstatus() {
+    // Current log first, fallback to last snapshot
     $logFiles = [
         SVXLOGPATH.SVXLOGPREFIX,
         SVXLOGPATH.SVXLOGPREFIX . ".1"
     ];
-    $linesToCheck = 100; // check last 100 lines for relevant events
+    $linesToCheck = 100;
     $patterns = "Authentication|Connection established|Heartbeat timeout|No route to host|Connection refused|Connection timed out|Locally ordered disconnect|Deactivating link|Activating link";
     $svxrstat = '';
 
-    // Collect recent relevant log entries
     foreach ($logFiles as $logPath) {
         if (file_exists($logPath)) {
             $svxrstat = `tail -$linesToCheck $logPath | egrep -a -h "$patterns"`;
-            if ($svxrstat != '') break;
+            if ($svxrstat != '') break;  // stop once we have relevant lines
         }
     }
 
-    // Check for positive connection events first
     if (preg_match('/Authentication OK|Connection established|Activating link/', $svxrstat)) {
         return "Connected";
     }
 
-    // Check for recent disconnection/error events within the last 5 minutes
-    // Extract timestamps if logs include them, otherwise assume recent lines are relevant
     if (preg_match('/Heartbeat timeout|No route to host|Connection refused|Connection timed out|Locally ordered disconnect|Deactivating link/', $svxrstat)) {
         return "Not connected";
     }
 
-    // Default to Connected if no errors found
+    // If nothing suspicious is found in recent log lines, assume still connected
     return "Connected";
 }
 
