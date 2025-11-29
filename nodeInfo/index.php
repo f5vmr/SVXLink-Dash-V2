@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <style type="text/css">
         body {
             background-color: #eee;
-            font-size: 18px;
+            font-size: 14px;
             font-family: Arial;
             font-weight: 300;
             margin: 2em auto;
