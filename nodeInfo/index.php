@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <style type="text/css">
         body {
             background-color: #eee;
-            font-size: 18px;
+            font-size: 16px;
             font-family: Arial;
             font-weight: 300;
             margin: 2em auto;
@@ -87,14 +87,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnSave'])) {
 
     $backup_filename = $backup_dir . 'node_info_backup_' . date('YmdHis') . '.json';
     if (!copy($filename, $backup_filename)) {
-        echo "<p style='color:red;'>Error creating backup file!</p>";
+        //echo "<p style='color:red;'>Error creating backup file!</p>";
     } elseif (file_put_contents($filename, $new_json_content) === false) {
-        echo "<p style='color:red;'>Error saving node_info.json!</p>";
+        //echo "<p style='color:red;'>Error saving node_info.json!</p>";
     } else {
-        echo "<p style='color:green;'>File saved successfully.</p>";
+        //echo "<p style='color:green;'>File saved successfully.</p>";
         exec('sudo systemctl restart svxlink 2>&1', $output, $retval);
-        if ($retval === 0) echo "<p>SVXLink restarted successfully.</p>";
-        else echo "<p style='color:red;'>Failed to restart SVXLink:<br>" . implode('<br>', $output) . "</p>";
+        if ($retval === 0) ;// echo "<p>SVXLink restarted successfully.</p>";
+        else //echo "<p style='color:red;'>Failed to restart SVXLink:<br>" . implode('<br>', $output) . "</p>";
     }
 }
 ?>
