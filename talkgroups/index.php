@@ -3,8 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 // Include parser and config if needed
-include_once __DIR__ . "/../tools.php";
-include_once __DIR__ . "/../config.talkgroups.php";
+include_once __DIR__ . "/../include/tools.php";
+include_once __DIR__ . "/../include/config.talkgroups.php";
 
 
 /**
