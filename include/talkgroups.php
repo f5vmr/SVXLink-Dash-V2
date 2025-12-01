@@ -1,7 +1,8 @@
 <?php
 // Include parser and config if needed
-include_once __DIR__ . "/tools.php";
-include_once __DIR__ . "/config.talkgroups.php";
+include_once __DIR__ . "/../tools.php";
+include_once __DIR__ . "/../config.talkgroups.php";
+
 
 /**
  * Get the DEFAULT_TG from svxlink.conf
