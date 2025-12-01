@@ -82,7 +82,7 @@ function renderTalkgroupInputs($default_tg, $monitor_tgs) {
     $html .= "<tr><td>Default TG:</td>";
     $html .= "<td><input type='text' name='default_tg' value='" 
              . htmlspecialchars($default_tg) 
-             . "' style='color:brown; font-weight:bold; width:125px; text-align:center; margin:2px;'></td></tr>";
+             . "' style='color:brown; width:125px; text-align:center; margin:2px;'></td></tr>";
     
     // MONITOR_TGS (max 6 boxes)
     $html .= "<tr><td>Monitor TGs:</td><td>";
@@ -90,7 +90,7 @@ function renderTalkgroupInputs($default_tg, $monitor_tgs) {
         $val = $monitor_tgs[$i] ?? '';
         $html .= "<input type='text' name='monitor_tgs[]' value='" 
                  . htmlspecialchars($val) 
-                 . "' style='color:brown; font-weight:bold; width:100px; text-align:center; margin:2px;'>";
+                 . "' style='color:brown;  width:100px; text-align:center; margin:2px;'>";
     }
     $html .= "</td></tr></table>";
 
