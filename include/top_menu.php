@@ -17,8 +17,8 @@ if (session_status() === PHP_SESSION_NONE) {
 	<div id="full-edit-links">
 	<p style = "padding-right: 5px; text-align: right; color: #000000;" <a style = "color: black;">Full Edit</a> |
 	<a href="/editor.php?id=svxlink" style = "color: crimson;" id="svxlink">SVXLink</a> |
-	<a href="/editor.php?id=talkgroups" style = "color: crimson;" id="logic">TalkGroups</a> |
-	<a href="/editor.php?id=buttons" style = "color: crimson;" id="logic">Buttons</a> |
+	<a href="/editor.php?id=talkgroups" style = "color: crimson;" id="talkgroups">TalkGroups</a> |
+	<a href="/editor.php?id=buttons" style = "color: crimson;" id="buttons">Buttons</a> |
 	<a href="/editor.php?id=amixer" style = "color: crimson;" id="echolink">Amixer</a> |
 	<a href="/editor.php?id=echolink" style = "color: crimson;" id="echolink">EchoLink</a> |
 	<a href="/editor.php?id=metarinfo" style = "color: crimson;" id="metarinfo">MetarInfo</a> |
@@ -34,30 +34,5 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include_once('parse_svxconf.php');
 
-
-/*if (fopen($svxConfigFile,'r'))
-{
-
-  $svxconfig = parse_ini_file($svxConfigFile,true,INI_SCANNER_RAW);
-  $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
-  foreach ($logics as $key) {
-	if ($key == "SimplexLogic") $isSimplex = true;
-	if ($key == "RepeaterLogic") $isRepeater = true; 
-  };
-  $logics = explode(",",$svxconfig['GLOBAL']['LOGICS']);
-  if ($isSimplex) $modules = explode(",",str_replace('Module','',$svxconfig['SimplexLogic']['MODULES']));
-  if ($isRepeater) $modules = explode(",",str_replace('Module','',$svxconfig['RepeaterLogic']['MODULES']));
-  foreach ($modules as $key){
-	if ($key == "EchoLink") $isEchoLink = true;
- }
- */
- //if ($isEchoLink==true) {echo ' <a href="/echolink.php" style = "color: #0000ff;">EchoLink</a> |';};
-//$globalRf = $svxconfig['GLOBAL']['RF_MODULE'];
-
-/*if ($globalRf <> "No")
-{
-	echo'	<a href="/rf.php" style = "color: #0000ff;"> Rf</a> |';
-}
-}*/
 ?>
 
