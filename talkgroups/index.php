@@ -73,7 +73,7 @@ if (isset($_POST['btnSave'])) {
 
     <!-- Row 2: Monitoring TGs label and blank field -->
     <tr>
-        <td style="background:#0000ff; color:white; font-weight:bold; padding:5px;">
+        <td style="background:#0000ff; color:white; padding:5px;">
             Monitoring TGs:
         </td>
         <td style="padding:5px;">
