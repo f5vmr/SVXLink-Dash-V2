@@ -44,14 +44,17 @@ function validateSuffixes($tgs) {
 function updateTalkgroups($default_tg, $monitoring_array) {
     $file = "/etc/svxlink/svxlink.conf";  // adjust path if needed
     $lines = file($file, FILE_IGNORE_NEW_LINES);
-    foreach ($lines as &$line) {
-        if (str_starts_with(trim($line), "DEFAULT_TG=")) {
-            $line = "DEFAULT_TG=" . $default_tg;
-        }
-        if (str_starts_with(trim($line), "MONITOR_TGS=")) {
-            $line = "MONITOR_TGS=" . implode(",", array_filter($monitoring_array, fn($tg) => $tg !== ""));
-        }
+    foreach ($lines as $line) {
+    $cleanLine = str_replace(' ', '', $line); // remove spaces
+    if (str_starts_with($cleanLine, "DEFAULT_TG=")) {
+        $default = substr($cleanLine, strlen("DEFAULT_TG="));
     }
+    if (str_starts_with($cleanLine, "MONITORING_TGS=") || str_starts_with($cleanLine, "MONITOR_TGS=")) {
+        $tgs = substr($cleanLine, str_contains($cleanLine,"MONITORING_TGS=") ? strlen("MONITORING_TGS=") : strlen("MONITOR_TGS="));
+        $monitoring_array = array_map('trim', explode(",", $tgs));
+    }
+}
+
     file_put_contents($file, implode("\n", $lines));
 }
 
