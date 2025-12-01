@@ -49,8 +49,8 @@ function updateTalkgroups($default_tg, $monitoring_array) {
     if (str_starts_with($cleanLine, "DEFAULT_TG=")) {
         $default = substr($cleanLine, strlen("DEFAULT_TG="));
     }
-    if (str_starts_with($cleanLine, "MONITORING_TGS=") || str_starts_with($cleanLine, "MONITOR_TGS=")) {
-        $tgs = substr($cleanLine, str_contains($cleanLine,"MONITORING_TGS=") ? strlen("MONITORING_TGS=") : strlen("MONITOR_TGS="));
+    if (str_starts_with($cleanLine, "MONITOR_TGS=") || str_starts_with($cleanLine, "MONITOR_TGS=")) {
+        $tgs = substr($cleanLine, str_contains($cleanLine,"MONITOR_TGS=") ? strlen("MONITOR_TGS=") : strlen("MONITOR_TGS="));
         $monitoring_array = array_map('trim', explode(",", $tgs));
     }
 }
