@@ -57,35 +57,61 @@ if (isset($_POST['btnSave'])) {
                 }
                 ?>
 
-                <table style="margin:auto; text-align:center; width:100%; max-width:400px;">
-                    <tr>
-                        <!--td style="font-weight:bold; text-align:right; padding-right:5px;">Default TG:</td-->
-                        <tr><td>Default Talkgroup:</td><td><input type="text" name="talkgroup" style="width:98%" value="<?php echo htmlspecialchars($default_tg); ?>"></td></tr>
+                <table style="margin:auto; text-align:center; width:100%; max-width:400px; border:2px solid #0000ff; border-collapse:collapse;">
+    
+    <!-- Row 1: Default Talkgroup -->
+    <tr>
+        <td style="background:#0000ff; color:white; font-weight:bold; padding:5px; width:40%;">
+            Default Talkgroup:
+        </td>
+        <td style="padding:5px;">
+            <input type="text" name="default_tg" 
+                   value="<?php echo htmlspecialchars($default_tg); ?>" 
+                   style="width:90%; text-align:center; color:brown; font-weight:bold;">
+        </td>
+    </tr>
 
-                        <!--td>
-                            <input type="text" name="default_tg" value="<?php echo htmlspecialchars($default_tg); ?>" style="color:brown; font-weight:bold; width:90px; text-align:center; margin:2px;">
-                        </td-->
-                    </tr>
-                    <tr>
-                        <!--td style="font-weight:bold; text-align:right; padding-right:5px;">Monitoring TGs:</td-->
-                        <tr><td>Monitoring TGs:</td><td><input type="text" name="monitoring TGs" style="width:98%" value="<?php echo htmlspecialchars($data); ?>"></td></tr>
+    <!-- Row 2: Monitoring TGs label and blank field -->
+    <tr>
+        <td style="background:#0000ff; color:white; font-weight:bold; padding:5px;">
+            Monitoring TGs:
+        </td>
+        <td style="padding:5px;">
+            <!-- Empty on purpose -->
+        </td>
+    </tr>
 
-                        <td>
-                            <?php
-                            for ($i = 0; $i < 6; $i++) {
-                            $val = $monitoring_tgs[$i] ?? '';
-                            echo "<input type='text' name='monitoring_tgs[]' value='" . htmlspecialchars($val) . "' 
-                                  style='color:brown; font-weight:bold; width:90px; text-align:center; margin:2px;'>";
+    <!-- Row 3: 6 monitoring TG inputs (two rows of three) + Save button -->
+    <tr>
+        <td style="padding:10px;">
 
-                            if (($i + 1) % 3 == 0) {
-                                echo "<br>";
-                            }
-                        }
+            <?php
+            // monitoring_tgs[] already loaded
+            for ($i = 0; $i < 6; $i++) {
+                $val = $monitoring_tgs[$i] ?? '';
+                echo "<input type='text' name='monitoring_tgs[]' 
+                        value='" . htmlspecialchars($val) . "' 
+                        style='color:brown; font-weight:bold; width:70px; text-align:center; margin:3px;'>";
 
-                            ?>
-                        </td>
-                    </tr>
-                </table>
+                if (($i + 1) % 3 == 0) {
+                    echo "<br>";
+                }
+            }
+            ?>
+
+        </td>
+
+        <!-- Save button moved into Column 2 -->
+        <td style="padding:10px;">
+            <button name="btnSave" type="submit" class="red" 
+                    style="height:70px; width:90px; font-size:12px;">
+                Save<br>&<br>Reload
+            </button>
+        </td>
+    </tr>
+
+</table>
+
 
                 <!-- Save & ReLoad Button -->
                 <div style="margin-top:15px;">
