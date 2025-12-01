@@ -57,7 +57,7 @@ if (isset($_POST['btnSave'])) {
                 }
                 ?>
 
-                <table style="margin:auto; text-align:center; width:100%; max-width:400px; border:2px solid #0000ff; border-collapse:collapse;">
+                <table style="margin:auto; text-align:center; width:100%; max-width:500px; border:2px solid #0000ff; border-collapse:collapse;">
     
     <!-- Row 1: Default Talkgroup -->
     <tr>
