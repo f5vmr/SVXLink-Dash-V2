@@ -16,7 +16,7 @@ $monitor_tgs = getMonitorTGs();
 // Handle POST
 if (isset($_POST['btnSave'])) {
     $new_default = trim($_POST['default_tg'] ?? DEFAULT_TG);
-    $raw_monitor = $_POST['monitoring_tgs'] ?? [];
+    $raw_monitor = $_POST['monitor_tgs'] ?? [];
     $clean_monitor = array_map('trim', $raw_monitor);
 
     $error = validateSuffixes($clean_monitor);
