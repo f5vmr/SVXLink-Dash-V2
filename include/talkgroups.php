@@ -11,11 +11,11 @@ function getDefaultTG() {
 }
 
 /**
- * Get MONITORING_TGS from svxlink.conf as an array
+ * Get MONITOR_TGS from svxlink.conf as an array
  */
 function getMonitoringTGs() {
     global $config;
-    $tgs = $config['ReflectorLogic']['MONITORING_TGS'] ?? '';
+    $tgs = $config['ReflectorLogic']['MONITOR_TGS'] ?? '';
     return array_map('trim', explode(',', $tgs));
 }
 
@@ -39,7 +39,7 @@ function validateSuffixes($tgs) {
 }
 
 /**
- * Update svxlink.conf with new DEFAULT_TG and MONITORING_TGS
+ * Update svxlink.conf with new DEFAULT_TG and MONITOR_TGS
  */
 function updateTalkgroups($default_tg, $monitoring_array) {
     $file = "/etc/svxlink/svxlink.conf";  // adjust path if needed
@@ -48,15 +48,15 @@ function updateTalkgroups($default_tg, $monitoring_array) {
         if (str_starts_with(trim($line), "DEFAULT_TG=")) {
             $line = "DEFAULT_TG=" . $default_tg;
         }
-        if (str_starts_with(trim($line), "MONITORING_TGS=")) {
-            $line = "MONITORING_TGS=" . implode(",", array_filter($monitoring_array, fn($tg) => $tg !== ""));
+        if (str_starts_with(trim($line), "MONITOR_TGS=")) {
+            $line = "MONITOR_TGS=" . implode(",", array_filter($monitoring_array, fn($tg) => $tg !== ""));
         }
     }
     file_put_contents($file, implode("\n", $lines));
 }
 
 /**
- * Render the input boxes for DEFAULT_TG and MONITORING_TGS
+ * Render the input boxes for DEFAULT_TG and MONITOR_TGS
  */
 function renderTalkgroupInputs($default_tg, $monitoring_tgs) {
     $html = "<table style='margin:auto; text-align:center;'>";
@@ -64,7 +64,7 @@ function renderTalkgroupInputs($default_tg, $monitoring_tgs) {
     $html .= "<tr><td>Default TG:</td>";
     $html .= "<td><input type='text' name='default_tg' value='" . htmlspecialchars($default_tg) . "' style='color:brown; font-weight:bold; width:90px; text-align:center; margin:2px;'></td></tr>";
     
-    // MONITORING_TGS (max 6 boxes)
+    // MONITOR_TGS (max 6 boxes)
     $html .= "<tr><td>Monitoring TGs:</td><td>";
     for ($i = 0; $i < 6; $i++) {
         $val = $monitoring_tgs[$i] ?? '';
