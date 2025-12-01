@@ -59,20 +59,24 @@ if (isset($_POST['btnSave'])) {
 
                 <table style="margin:auto; text-align:center; width:100%; max-width:400px;">
                     <tr>
-                        <td style="font-weight:bold; text-align:right; padding-right:5px;">Default TG:</td>
-                        <td>
+                        <!--td style="font-weight:bold; text-align:right; padding-right:5px;">Default TG:</td-->
+                        <tr><td>Default Talkgroup:</td><td><input type="text" name="talkgroup" style="width:98%" value="<?php echo htmlspecialchars($default_tg); ?>"></td></tr>
+
+                        <!--td>
                             <input type="text" name="default_tg" value="<?php echo htmlspecialchars($default_tg); ?>" style="color:brown; font-weight:bold; width:90px; text-align:center; margin:2px;">
-                        </td>
+                        </td-->
                     </tr>
                     <tr>
-                        <td style="font-weight:bold; text-align:right; padding-right:5px;">Monitoring TGs:</td>
+                        <!--td style="font-weight:bold; text-align:right; padding-right:5px;">Monitoring TGs:</td-->
+                        <tr><td>Monitoring TGs:</td><td><input type="text" name="monitoring TGs" style="width:98%" value="<?php echo htmlspecialchars($data); ?>"></td></tr>
+
                         <td>
                             <?php
                             for ($i = 0; $i < 6; $i++) {
                             $val = $monitoring_tgs[$i] ?? '';
                             echo "<input type='text' name='monitoring_tgs[]' value='" . htmlspecialchars($val) . "' 
                                   style='color:brown; font-weight:bold; width:90px; text-align:center; margin:2px;'>";
-                                                    
+
                             if (($i + 1) % 3 == 0) {
                                 echo "<br>";
                             }
