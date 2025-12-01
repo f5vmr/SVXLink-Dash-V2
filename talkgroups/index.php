@@ -77,8 +77,8 @@ if (isset($_POST['btnSave'])) {
                             echo "<input type='text' name='monitoring_tgs[]' value='" . htmlspecialchars($val) . "' 
                                   style='color:brown; font-weight:bold; width:90px; text-align:center; margin:2px;'>";
 
-                            //if (($i + 1) % 3 == 0) {
-                            //    echo "<br>";
+                            if (($i + 1) % 3 == 0) {
+                                echo "<br>";
                             }
                         }
 
