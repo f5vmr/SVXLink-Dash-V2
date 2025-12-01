@@ -1,8 +1,6 @@
 <?php
-// Include parser and config if needed
-include_once __DIR__ . "/tools.php";
-include_once __DIR__ . "/config.talkgroups.php";
-
+include_once __DIR__ . '/tools.php';
+include_once __DIR__ . '/config.talkgroups.php';
 
 /**
  * Get the DEFAULT_TG from svxlink.conf
@@ -44,7 +42,7 @@ function validateSuffixes($tgs) {
  * Update svxlink.conf with new DEFAULT_TG and MONITORING_TGS
  */
 function updateTalkgroups($default_tg, $monitoring_array) {
-    $file = "/etc/svxlink/svxlink.conf";  // adjust path as needed
+    $file = "/etc/svxlink/svxlink.conf";  // adjust path if needed
     $lines = file($file, FILE_IGNORE_NEW_LINES);
     foreach ($lines as &$line) {
         if (str_starts_with(trim($line), "DEFAULT_TG=")) {
@@ -83,4 +81,3 @@ function restartSVXLink() {
     exec("systemctl restart svxlink");
 }
 ?>
-
