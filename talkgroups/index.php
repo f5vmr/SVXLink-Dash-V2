@@ -39,7 +39,7 @@ if (isset($_POST['btnSave'])) {
         <div style="padding:10px; width:100%; background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%); border-radius:10px; border:1px solid LightGrey; white-space:normal; box-sizing:border-box;">
 
             <form method="POST" style="text-align:center;">
-                <h1 id="svxlink" style="color:#00aee8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Reflector Talkgroup Settings</h1>
+                <h1 id="svxlink" style="color:#e8e8e8e8;font: 18pt arial, sans-serif;font-weight:bold; text-shadow: 0.25px 0.25px gray;">Reflector Talkgroup Settings</h1>
 
                 <?php
                 // Single hints block
@@ -57,7 +57,7 @@ if (isset($_POST['btnSave'])) {
                 }
                 ?>
 
-                <table style="margin-top:0px; text-align:center; width:100%; max-width:400px; border:2px solid #0000ff; border-collapse:collapse;">
+                <table style="margin-auto:0px; text-align:center; width:100%; max-width:400px; border:2px solid #0000ff; border-collapse:collapse;">
     
     <!-- Row 1: Default Talkgroup -->
     <tr>
