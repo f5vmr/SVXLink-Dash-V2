@@ -1,53 +1,26 @@
 <?php
-include_once __DIR__ . "/../../tools.php";       // Adjust path if needed
-include_once __DIR__ . "/../../config.talkgroups.php"; // For DEFAULT_TG and priority constants
+include_once __DIR__ . "/../../include/talkgroups.php";
 
-// Load current values from svxlink.conf parser functions
-$default_tg = $config['ReflectorLogic']['DEFAULT_TG'] ?? DEFAULT_TG;
-$monitoring_tgs = isset($config['ReflectorLogic']['MONITORING_TGS']) 
-                  ? explode(",", $config['ReflectorLogic']['MONITORING_TGS']) 
-                  : [];
+// Load current values
+$default_tg = getDefaultTG();
+$monitoring_tgs = getMonitoringTGs();
 
-// Ensure 6 boxes for MONITORING_TGS
-$monitoring_tgs = array_pad($monitoring_tgs, 6, "");
-
-// Handle form POST
+// Handle POST
 if (isset($_POST['btnSave'])) {
-    // Trim and clean default TG
     $new_default = trim($_POST['default_tg'] ?? DEFAULT_TG);
-
-    // Collect monitoring TGs and remove empties
     $raw_monitor = $_POST['monitoring_tgs'] ?? [];
-    $clean_monitor = array_filter(array_map('trim', $raw_monitor), fn($tg) => $tg !== "");
+    $clean_monitor = array_map('trim', $raw_monitor);
 
-    // Validate that each priority suffix occurs at most once
-    $suffixes = [
-        '++' => 0,
-        '+'  => 0,
-        '-'  => 0
-    ];
-    foreach ($clean_monitor as $tg) {
-        foreach ($suffixes as $suf => $count) {
-            if (str_ends_with($tg, $suf)) {
-                $suffixes[$suf]++;
-                if ($suffixes[$suf] > 1) {
-                    $error = "Suffix '{$suf}' can only appear once in MONITORING_TGS.";
-                    break 2;
-                }
-            }
-        }
-    }
+    $error = validateSuffixes($clean_monitor);
 
-    if (!isset($error)) {
-        $new_monitor_line = implode(",", $clean_monitor);
-
-        // Call your existing function to write back to svxlink.conf
-        updateReflectorTalkgroups($new_default, $new_monitor_line);
-
-        // Restart SVXLink
-        restart_svxlink(); // replace with your existing restart function
-
+    if ($error === "") {
+        updateTalkgroups($new_default, $clean_monitor);
+        restartSVXLink();
         $message = "Talkgroup settings updated and SVXLink restarted.";
+
+        // Refresh values
+        $default_tg = getDefaultTG();
+        $monitoring_tgs = getMonitoringTGs();
     }
 }
 ?>
@@ -64,39 +37,13 @@ if (isset($_POST['btnSave'])) {
                         <p style="color:red; font-weight:bold;">Notice: This device is single-talkgroup. DEFAULT_TG will be used as the only talkgroup.</p>
                     <?php endif; ?>
 
-                    <?php if (isset($error)): ?>
+                    <?php if (isset($error) && $error !== ""): ?>
                         <p style="color:red; font-weight:bold;"><?php echo htmlspecialchars($error); ?></p>
                     <?php elseif (isset($message)): ?>
                         <p style="color:green; font-weight:bold;"><?php echo htmlspecialchars($message); ?></p>
                     <?php endif; ?>
 
-                    <!-- DEFAULT_TG -->
-                    <label style="font-weight:bold; color:#464646;">Default TG:</label><br>
-                    <input type="text" name="default_tg" value="<?php echo htmlspecialchars($default_tg); ?>" maxlength="6"><br><br>
-
-                    <!-- MONITORING_TGS with tooltips -->
-                    <label style="font-weight:bold; color:#464646;">Monitoring TGs:</label><br>
-                    <?php for ($i = 0; $i < 6; $i++): ?>
-                        <div class="tooltip" style="display:inline-block; margin:2px;">
-                            <input type="text" 
-                                   name="monitoring_tgs[]" 
-                                   value="<?php echo htmlspecialchars(trim($monitoring_tgs[$i])); ?>" 
-                                   maxlength="6">
-                            <span class="tooltiptext">
-                                Optional suffixes:<br>
-                                ++ (High Priority), + (Low Priority), - (Exclude)
-                            </span>
-                        </div>
-                    <?php endfor; ?>
-                    <br><br>
-
-                    <!-- Legend and Default TG Reminder -->
-                    <div style="font-size:11px; color:#333; margin-top:5px;">
-                        <strong>Legend:</strong> 
-                        <span>++ = High Priority, + = Low Priority, - = Exclude</span><br>
-                        <span>Current Default TG: <?php echo htmlspecialchars($default_tg); ?></span>
-                    </div>
-                    <br>
+                    <?php echo renderTalkgroupInputs($default_tg, $monitoring_tgs); ?>
 
                     <!-- Save & ReLoad Button -->
                     <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">
@@ -109,3 +56,4 @@ if (isset($_POST['btnSave'])) {
         </div>
     </fieldset>
 </div>
+
