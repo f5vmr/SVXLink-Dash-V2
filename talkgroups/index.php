@@ -113,12 +113,7 @@ if (isset($_POST['btnSave'])) {
 </table>
 
 
-                <!-- Save & ReLoad Button -->
-                <div style="margin-top:15px;">
-                    <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">
-                        Save <br> & <br> ReLoad
-                    </button>
-                </div>
+                
 
             </form>
 
