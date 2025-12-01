@@ -34,6 +34,7 @@ if (isset($_POST['btnSave'])) {
 ?>
 
 <div class="content">
+    <link href="/css/css.php" type="text/css" rel="stylesheet" />
     <fieldset style="box-shadow:5px 5px 20px #999; background-color:#e8e8e8; max-width:850px; width:95%; margin:5px auto 14px auto; font-size:12px; border-radius:10px;">
         <div style="padding:10px; width:100%; background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%); border-radius:10px; border:1px solid LightGrey; white-space:normal; box-sizing:border-box;">
 
