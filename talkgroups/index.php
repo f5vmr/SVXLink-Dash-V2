@@ -11,12 +11,12 @@ include_once __DIR__ . '/../include/talkgroups.php';
 
 // Load current values
 $default_tg = getDefaultTG();
-$monitoring_tgs = getMonitoringTGs();
+$monitor_tgs = getMonitorTGs();
 
 // Handle POST
 if (isset($_POST['btnSave'])) {
     $new_default = trim($_POST['default_tg'] ?? DEFAULT_TG);
-    $raw_monitor = $_POST['monitoring_tgs'] ?? [];
+    $raw_monitor = $_POST['monitor_tgs'] ?? [];
     $clean_monitor = array_map('trim', $raw_monitor);
 
     $error = validateSuffixes($clean_monitor);
@@ -28,7 +28,7 @@ if (isset($_POST['btnSave'])) {
 
         // Refresh values
         $default_tg = getDefaultTG();
-        $monitoring_tgs = getMonitoringTGs();
+        $monitor_tgs = getMonitorTGs();
     }
 }
 ?>
@@ -71,10 +71,10 @@ if (isset($_POST['btnSave'])) {
         </td>
     </tr>
 
-    <!-- Row 2: Monitoring TGs label and blank field -->
+    <!-- Row 2: Monitor TGs label and blank field -->
     <tr>
         <td style="background:#0000ff; color:white; padding:5px;">
-            Monitoring TGs:
+            Monitor TGs:
         </td>
         <td style="padding:5px;">
             <!-- Empty on purpose -->
@@ -86,10 +86,10 @@ if (isset($_POST['btnSave'])) {
         <td style="padding:10px;">
 
             <?php
-            // monitoring_tgs[] already loaded
+            // monitor_tgs[] already loaded
             for ($i = 0; $i < 6; $i++) {
-                $val = $monitoring_tgs[$i] ?? '';
-                echo "<input type='text' name='monitoring_tgs[]' 
+                $val = $monitor_tgs[$i] ?? '';
+                echo "<input type='text' name='monitor_tgs[]' 
                         value='" . htmlspecialchars($val) . "' 
                         style='color:brown; font-weight:bold; width:70px; text-align:center; margin:3px;'>";
 
