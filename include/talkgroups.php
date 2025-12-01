@@ -75,7 +75,7 @@ function updateTalkgroups($default_tg, $monitoring_array) {
  * Render the input boxes for DEFAULT_TG and MONITOR_TGS
  */
 function renderTalkgroupInputs($default_tg, $monitor_tgs) {
-    $html = "<table style='margin:auto; text-align:center; width:580px;'>";
+    $html = "<table style='margin:auto; text-align:center; width:600px;'>";
 
 
     // DEFAULT_TG single box

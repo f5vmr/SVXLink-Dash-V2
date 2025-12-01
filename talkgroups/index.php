@@ -91,7 +91,7 @@ if (isset($_POST['btnSave'])) {
                 $val = $monitor_tgs[$i] ?? '';
                 echo "<input type='text' name='monitor_tgs[]' 
                         value='" . htmlspecialchars($val) . "' 
-                        style='color:brown; width:70px; text-align:center; margin:3px;'>";
+                        style='color:brown; width:100px; text-align:center; margin:3px;'>";
 
                 if (($i + 1) % 3 == 0) {
                     echo "<br>";
