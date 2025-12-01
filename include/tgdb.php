@@ -24,6 +24,7 @@ $tgdb_array = [
     '240'   => 'FM Sweden',
     '260'    => 'FM Poland',
     '262'   => 'FM Germany',
-    'Any TG'   => 'can be used anywhere even if unlisted',
+    'Any TG'   => 'can be used anywhere even if unlisted'
+    'Your TGs' => 'Take a look at the full list on the svxreflector for suitable TGs to use',
     ];
 ?>
