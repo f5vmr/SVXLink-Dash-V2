@@ -112,9 +112,8 @@ if (isset($_POST['btnSave'])) {
 
 </table>
 <p style = text-align:justify; font-size:12px; color:#444; font-size=12px ; margin-top:10px;">
-You may enter your Default Talkgroup and up to six Monitoring Talkgroups.<br><br>
-TG 0 is the unnconnected or passive state, and permits other local transmissions without connecting to a reflector.<br>
-If you replace it then other talkgroups cannot access your node or repeater. perhaps an undesireable situation.<br><br>
+You may enter your Default Talkgroup and up to six Monitoring Talkgroups.<br><br> 
+TG 0 is the unnconnected or passive state, and permits other local transmissions without connecting to a reflector. If you replace it then other talkgroups cannot access your node or repeater. perhaps an undesireable situation.<br><br>
 Suffixes (+,-,++) are allowed in Monitoring Talkgroups to indicate special behavior.<br>
 E.g., "12345+" to temporarily monitor TG 12345, "12345-" to exclude it from monitoring, "12345++" to permanently monitor it.<br>
 Leave fields blank if not used.<br><br>
