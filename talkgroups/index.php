@@ -67,16 +67,18 @@ if (isset($_POST['btnSave'])) {
                     <tr>
                         <td style="font-weight:bold; text-align:right; padding-right:5px;">Monitoring TGs:</td>
                         <td>
+                            <?php
                             for ($i = 0; $i < 6; $i++) {
                             $val = $monitoring_tgs[$i] ?? '';
                             echo "<input type='text' name='monitoring_tgs[]' value='" . htmlspecialchars($val) . "' 
                                   style='color:brown; font-weight:bold; width:90px; text-align:center; margin:2px;'>";
-
+                                                    
                             if (($i + 1) % 3 == 0) {
-                            echo "<br>";
-    }
-}
+                                echo "<br>";
+                            }
+                        }
 
+                            ?>
                         </td>
                     </tr>
                 </table>
