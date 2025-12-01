@@ -57,11 +57,11 @@ if (isset($_POST['btnSave'])) {
                 }
                 ?>
 
-                <table style="margin-auto:0px; text-align:center; width:100%; max-width:400px; border:2px solid #0000ff; border-collapse:collapse;">
+                <table style="margin:auto; text-align:center; width:100%; max-width:400px; border:2px solid #0000ff; border-collapse:collapse;">
     
     <!-- Row 1: Default Talkgroup -->
     <tr>
-        <td style="background:#0000ff; color:white; font-weight:bold; padding:5px; width:40%;">
+        <td style="background:#0000ff; color:white; padding:5px; width:40%;">
             Default Talkgroup:
         </td>
         <td style="padding:5px;">
