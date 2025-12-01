@@ -1,62 +1,84 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+// Include parser and config if needed
+include_once __DIR__ . "/tools.php";
+include_once __DIR__ . "/config.talkgroups.php";
+
+/**
+ * Get the DEFAULT_TG from svxlink.conf
+ */
+function getDefaultTG() {
+    global $config;
+    return $config['ReflectorLogic']['DEFAULT_TG'] ?? DEFAULT_TG;
 }
-include_once __DIR__ . '/../include/talkgroups.php';
 
-// Load current values
-$default_tg = getDefaultTG();
-$monitoring_tgs = getMonitoringTGs();
+/**
+ * Get MONITORING_TGS from svxlink.conf as an array
+ */
+function getMonitoringTGs() {
+    global $config;
+    $tgs = $config['ReflectorLogic']['MONITORING_TGS'] ?? '';
+    return array_map('trim', explode(',', $tgs));
+}
 
-// Handle POST
-if (isset($_POST['btnSave'])) {
-    $new_default = trim($_POST['default_tg'] ?? DEFAULT_TG);
-    $raw_monitor = $_POST['monitoring_tgs'] ?? [];
-    $clean_monitor = array_map('trim', $raw_monitor);
-
-    $error = validateSuffixes($clean_monitor);
-
-    if ($error === "") {
-        updateTalkgroups($new_default, $clean_monitor);
-        restartSVXLink();
-        $message = "Talkgroup settings updated and SVXLink restarted.";
-
-        // Refresh values
-        $default_tg = getDefaultTG();
-        $monitoring_tgs = getMonitoringTGs();
+/**
+ * Validate suffixes in monitoring TGs
+ */
+function validateSuffixes($tgs) {
+    $seen = ['++'=>0,'+'=>0,'-'=>0];
+    foreach ($tgs as $tg) {
+        if ($tg === "") continue;
+        foreach ($seen as $suffix => $count) {
+            if (str_ends_with($tg, $suffix)) {
+                $seen[$suffix]++;
+                if ($seen[$suffix] > 1) {
+                    return "Only one of each suffix (++,+,-) can appear in the monitoring TGs.";
+                }
+            }
+        }
     }
+    return "";
+}
+
+/**
+ * Update svxlink.conf with new DEFAULT_TG and MONITORING_TGS
+ */
+function updateTalkgroups($default_tg, $monitoring_array) {
+    $file = "/etc/svxlink/svxlink.conf";  // adjust path as needed
+    $lines = file($file, FILE_IGNORE_NEW_LINES);
+    foreach ($lines as &$line) {
+        if (str_starts_with(trim($line), "DEFAULT_TG=")) {
+            $line = "DEFAULT_TG=" . $default_tg;
+        }
+        if (str_starts_with(trim($line), "MONITORING_TGS=")) {
+            $line = "MONITORING_TGS=" . implode(",", array_filter($monitoring_array, fn($tg) => $tg !== ""));
+        }
+    }
+    file_put_contents($file, implode("\n", $lines));
+}
+
+/**
+ * Render the input boxes for DEFAULT_TG and MONITORING_TGS
+ */
+function renderTalkgroupInputs($default_tg, $monitoring_tgs) {
+    $html = "<table style='margin:auto; text-align:center;'>";
+    // DEFAULT_TG single box
+    $html .= "<tr><td style='font-weight:bold;'>Default TG:</td>";
+    $html .= "<td><input type='text' name='default_tg' value='" . htmlspecialchars($default_tg) . "' style='color:brown; font-weight:bold; width:90px; text-align:center; margin:2px;'></td></tr>";
+    
+    // MONITORING_TGS (max 6 boxes)
+    $html .= "<tr><td style='font-weight:bold;'>Monitoring TGs:</td><td>";
+    for ($i = 0; $i < 6; $i++) {
+        $val = $monitoring_tgs[$i] ?? '';
+        $html .= "<input type='text' name='monitoring_tgs[]' value='" . htmlspecialchars($val) . "' style='color:brown; font-weight:bold; width:90px; text-align:center; margin:2px;'>";
+    }
+    $html .= "</td></tr></table>";
+    return $html;
+}
+
+/**
+ * Restart SVXLink
+ */
+function restartSVXLink() {
+    exec("systemctl restart svxlink");
 }
 ?>
-
-<div class="content">
-    <fieldset style="box-shadow:5px 5px 20px #999; background-color:#e8e8e8; width:855px; margin:5px 0 14px 6px; font-size:12px; border-radius:10px;">
-        <div style="padding:10px; width:100%; background-image: linear-gradient(to bottom, #e9e9e9 50%, #bcbaba 100%); border-radius:10px; border:1px solid LightGrey; white-space:normal;">
-
-            <form method="POST">
-                <center>
-                    <h3 style="margin-bottom:10px; color:#464646; text-shadow:1px 1px 1px Lightgrey;">Reflector Talkgroup Settings</h3>
-
-                    <?php if (defined('SINGLE_TG_DEVICE') && SINGLE_TG_DEVICE): ?>
-                        <p style="color:red; font-weight:bold;">Notice: This device is single-talkgroup. DEFAULT_TG will be used as the only talkgroup.</p>
-                    <?php endif; ?>
-
-                    <?php if (isset($error) && $error !== ""): ?>
-                        <p style="color:red; font-weight:bold;"><?php echo htmlspecialchars($error); ?></p>
-                    <?php elseif (isset($message)): ?>
-                        <p style="color:green; font-weight:bold;"><?php echo htmlspecialchars($message); ?></p>
-                    <?php endif; ?>
-
-                    <?php echo renderTalkgroupInputs($default_tg, $monitoring_tgs); ?>
-
-                    <!-- Save & ReLoad Button -->
-                    <button name="btnSave" type="submit" class="red" style="height:100px; width:105px; font-size:12px;">
-                        Save <br> & <br> ReLoad
-                    </button>
-
-                </center>
-            </form>
-
-        </div>
-    </fieldset>
-</div>
-
