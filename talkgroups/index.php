@@ -115,7 +115,7 @@ if (isset($_POST['btnSave'])) {
 You may enter your Default Talkgroup and up to six Monitoring Talkgroups.<br><br> 
 TG 0 is the unnconnected or passive state, and permits other local transmissions without connecting to a reflector. If you replace it then other talkgroups cannot access your node or repeater. perhaps an undesireable situation.<br><br>
 Suffixes (+,-,++) are allowed in Monitoring Talkgroups to indicate special behavior.<br>
-E.g., "12345+" to higher prioritise TG 12345, "12345-" to exclude it from monitoring, "12345++" to give it Highest Priority.<br>
+E.g., "12345+" to higher prioritise TG 12345, "12345++" to give it Highest Priority.<br>
 Leave fields blank if not used.<br><br>
 To work effectively, each suffix type should only appear once among the Monitoring Talkgroups.<br>
 
