@@ -4,12 +4,12 @@ if ( file_exists(__DIR__."/config.inc.php") ) { include_once __DIR__."/config.in
 else {
 // header lines for information
 define("HEADER_CAT","FM-Repeater");
-define("HEADER_QTH",'$qth');
-define("HEADER_QRG",'$freq');
+define("HEADER_QTH",$qth);
+define("HEADER_QRG",$freq);
 define("HEADER_SYSOP","");
 define("FMNETWORK_EXTRA","");
 define("FULLACCESS_OUSIDE", "Full Access Outside");
-define("EL_NODE_NR",'$EL_node');
+define("EL_NODE_NR",$EL_node);
 define("CALLSIGN","");
 define("LOGICS","");
 define("REPORT_CTCSS","");
