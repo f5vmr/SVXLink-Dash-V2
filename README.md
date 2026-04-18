@@ -60,11 +60,12 @@ Brought up to date by Chris Jackson G4NAB with new code.</h2>
 <p>I will eventually examine the possibility of making improvements and additions in the future.</p>
 
 
-<p>The svxlink dashboard has some ideas created by G4NAB, SP2ONG, SP0DZ
+<p>The svxlink dashboard has some ideas created by G4NAB, W6SJM, SP2ONG, SP0DZ
 and upgraded by G4NAB</p>
 <h2>Addendum</h2>
 <p>Additional Talk Groups can be added to the Svxlink Configurator.</p>
 <p>Airports can be added and removed as required in the MetarInfo Configurator.</p
 <p>The Audio test dashboard seems not to work for the moment.</p>
 <p>Module EchoLink can be added throught the dashboard, in the EchoLink configurator first of all, then add ModuleEchoLink to the MODULES= line in the [SimplexLogic] or [RepeaterLogic] section of the Svxlink Configurator.</p>
+<p>EchoLink Stations can now be identified on the sidebar, thanks to Sam W6SJM, with a small code adjustement</p>
 <p>Amixer can be adjusted using the dashboard, and is more efficient than alsamixer in the terminal.</p>
