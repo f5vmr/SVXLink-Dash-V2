@@ -200,7 +200,8 @@ fi
 # Run the script immediately
 show_info "Running $DTMF_SCRIPT..."
 sudo "$DTMF_SCRIPT"
-
+# Add Modification to /usr/share/svxlink/events.d/local/EchoLink.tcl
+sudo cp -f /var/www/html/EchoLink.tcl /usr/share/svxlink/events.d/local/EchoLink.tcl
 # New section to create /home/pi/scripts and cleanup.sh
 SCRIPT_DIR="/home/pi/scripts"
 CLEANUP_SCRIPT="$SCRIPT_DIR/cleanup.sh"
