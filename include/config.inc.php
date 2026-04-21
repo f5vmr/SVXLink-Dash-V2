@@ -243,7 +243,8 @@ define("HID_DEVICE","inRxHidDevice");
 define("HOSTS","null");
 define("DATABASES","/var/www/html/databases");
 
-$svxConfigFile = '/etc/svxlink/svxlink.conf';
+//$svxConfigFile = '/etc/svxlink/svxlink.conf';
+$svxConfigFile = SVXCONFPATH . SVXCONFIG;
 if (fopen($svxConfigFile, 'r')) {
     $svxconfig = parse_ini_file($svxConfigFile, true, INI_SCANNER_RAW);
     $refApi = isset($svxconfig['ReflectorLogic']['API']) ? $svxconfig['ReflectorLogic']['HOSTS'] : '';
