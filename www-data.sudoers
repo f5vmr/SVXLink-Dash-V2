@@ -10,4 +10,4 @@ svxlink ALL=(ALL) NOPASSWD: /usr/bin/nmcli
 svxlink ALL=(ALL) NOPASSWD: /usr/sbin/ip
 svxlink ALL=(ALL) NOPASSWD: /usr/bin/systemctl
 svxlink ALL=(ALL) NOPASSWD: /usr/bin/amixer
-svxlink ALL=(ALL) NOPASSWD: /bin/echo * > /var/run/svxlink/dtmf_svx
+svxlink ALL=(ALL) NOPASSWD: /bin/echo * > /dev/shm/simplex_dtmf_ctrl_svx
