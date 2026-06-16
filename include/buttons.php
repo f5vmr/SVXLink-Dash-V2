@@ -37,7 +37,7 @@ for ($i = 1; $i <= 20; $i++) {
     $buttonName = "button$i";
     if (array_key_exists($buttonName, $_POST)) {
         $dtmfCode = constant("KEY$i")[1]; // DTMF code
-        $exec = "echo '$dtmfCode' > /dev/shm/simplex_dtmf_ctrl_svx";
+        $exec = "echo '$dtmfCode' > /dev/shm/simplex_dtmf_ctrl";
         exec($exec);
         echo "<meta http-equiv='refresh' content='0'>";
     }
@@ -45,7 +45,7 @@ for ($i = 1; $i <= 20; $i++) {
 
 // Handle DTMF input field
 if (isset($_POST["dtmfsvx"])) {
-    $exec = "echo '" . $_POST['dtmfsvx'] . "' > /dev/shm/simplex_dtmf_ctrl_svx";
+    $exec = "echo '" . $_POST['dtmfsvx'] . "' > /dev/shm/simplex_dtmf_ctrl";
     exec($exec);
     echo "<meta http-equiv='refresh' content='0'>";
 }
@@ -54,7 +54,7 @@ if (isset($_POST["dtmfsvx"])) {
 foreach (['jmpto', 'jmptoA', 'jmptoM'] as $field) {
     if (isset($_POST[$field])) {
         $prefix = ($field === 'jmptoM') ? '94' : '91';
-        $exec = "echo '$prefix" . $_POST[$field] . "#' > /dev/shm/simplex_dtmf_ctrl_svx";
+        $exec = "echo '$prefix" . $_POST[$field] . "#' > /dev/shm/simplex_dtmf_ctrl";
         exec($exec);
         echo "<meta http-equiv='refresh' content='0'>";
     }

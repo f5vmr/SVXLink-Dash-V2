@@ -186,162 +186,162 @@ if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE || $net5 ==
 
     if (isset($_POST['button1']))
     {
-        shell_exec('echo "91235#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "91235#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
    if (isset($_POST['button2']))
     {
-        shell_exec('echo "9123561#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "9123561#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
  if (isset($_POST['button3']))
     {
-        shell_exec('echo "9123590#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "9123590#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
  if (isset($_POST['button4']))
     {
-        shell_exec('echo "*2#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "*2#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
  if (isset($_POST['button5']))
     {
-        shell_exec('echo "5#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "5#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
  if (isset($_POST['button6']))
     {
-        shell_exec('echo "#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
  if (isset($_POST['button7']))
     {
-        shell_exec('echo "9126062#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "9126062#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
  if (isset($_POST['button8']))
     {
-        shell_exec('echo "910#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "910#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
 if (isset($_POST['button9']))
     {
-        shell_exec('echo "*#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "*#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
  if (isset($_POST['button10']))
     {
-        shell_exec('echo "*1#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "*1#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
  if (isset($_POST['button11']))
     {
-        shell_exec('echo "*2# " > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "*2# " > /dev/shm/simplex_dtmf_ctrl');
     }
 
  if (isset($_POST['button12']))
     {
-        shell_exec('echo "2#  " > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "2#  " > /dev/shm/simplex_dtmf_ctrl');
     }
  if (isset($_POST['button13']))
     {
-        shell_exec('echo "2#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "2#" > /dev/shm/simplex_dtmf_ctrl');
     }
 
 
 // Keyboard
  if (isset($_POST['button20']))
     {
-        shell_exec('echo "0" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "0" > /dev/shm/simplex_dtmf_ctrl');
       //  echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 0</center></h1></p></pre>';
     }
 
  if (isset($_POST['button21']))
     {
-        shell_exec('echo "1" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "1" > /dev/shm/simplex_dtmf_ctrl');
      //  echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 1</center></h1></p></pre>';
     }
 
  if (isset($_POST['button22']))
     {
-        shell_exec('echo "2" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "2" > /dev/shm/simplex_dtmf_ctrl');
       //  echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 2</center></h1></p></pre>';
     }
 
  if (isset($_POST['button23']))
     {
-        shell_exec('echo "3" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "3" > /dev/shm/simplex_dtmf_ctrl');
        // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 3</center></h1></p></pre>';
     }
 
  if (isset($_POST['button24']))
     {
-        shell_exec('echo "4" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "4" > /dev/shm/simplex_dtmf_ctrl');
        // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 4</center></h1></p></pre>';
     }
 
  if (isset($_POST['button25']))
     {
-        shell_exec('echo "5" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "5" > /dev/shm/simplex_dtmf_ctrl');
        // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 5</center></h1></p></pre>';
     }
 
  if (isset($_POST['button26']))
     {
-        shell_exec('echo "6" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "6" > /dev/shm/simplex_dtmf_ctrl');
        // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 6</center></h1></p></pre>';
     }
 
  if (isset($_POST['button27']))
     {
-        shell_exec('echo "7" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "7" > /dev/shm/simplex_dtmf_ctrl');
       //  echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 7</center></h1></p></pre>';
     }
 
  if (isset($_POST['button28']))
     {
-        shell_exec('echo "8" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "8" > /dev/shm/simplex_dtmf_ctrl');
     //    echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 8</center></h1></p></pre>';
     }
 
  if (isset($_POST['button29']))
     {
-        shell_exec('echo "9" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "9" > /dev/shm/simplex_dtmf_ctrl');
     //    echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: 9</center></h1></p></pre>';
     }
 
  if (isset($_POST['button30']))
     {
-        shell_exec('echo "*" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "*" > /dev/shm/simplex_dtmf_ctrl');
        // echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: *</center></h1></p></pre>';
     }
 
 if (isset($_POST['button31']))
     {
-        shell_exec('echo "#" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "#" > /dev/shm/simplex_dtmf_ctrl');
      //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre>';
     }
 
 if (isset($_POST['buttonAA']))
     {
-        shell_exec('echo "A" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "A" > /dev/shm/simplex_dtmf_ctrl');
      //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 if (isset($_POST['buttonBB']))
     {
-        shell_exec('echo "B" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "B" > /dev/shm/simplex_dtmf_ctrl');
      //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 
 if (isset($_POST['buttonCC']))
     {
-        shell_exec('echo "C" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "C" > /dev/shm/simplex_dtmf_ctrl');
      //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 
 if (isset($_POST['buttonDD']))
     {
-        shell_exec('echo "D" > /dev/shm/simplex_dtmf_ctrl_svx');
+        shell_exec('echo "D" > /dev/shm/simplex_dtmf_ctrl');
      //   echo '<pre><h1><center><p style = "color: #454545; ">Send DTMF: #</center></h1></p></pre$    }
 }
 

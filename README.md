@@ -3,7 +3,7 @@
 <h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.
 
 Brought up to date by Chris Jackson G4NAB with new code.</h2> 
-<h3>The DTMF section is now operational subject to changes to the DTMF_CTR_PTY=/dev/shm/simplex_dtmf_ctrl_svx being inserted in SimplexLogic or RepeaterLogic, replacing the existing line.</h3>
+<h3>The DTMF section is now operational subject to changes to the DTMF_CTR_PTY=/dev/shm/simplex_dtmf_ctrl being inserted in SimplexLogic or RepeaterLogic, replacing the existing line.</h3>
 
 <b>This installation requires that svxlink has been compiled on Debian 12 with PHP 8.2 installed. </b>
 
