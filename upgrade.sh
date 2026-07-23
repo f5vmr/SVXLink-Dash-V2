@@ -86,9 +86,9 @@ find /var/www/html ! -name "$SCRIPT_FILE" -exec sudo chown svxlink:svxlink {} +
 # Change ownership of all files in /etc/svxlink and sub directories.
 find /etc/svxlink -type f -exec sudo chown svxlink:svxlink {} +
 # Set DTMF active.
-sudo mkdir -p /var/run/svxlink
-sudo chown svxlink:svxlink /var/run/svxlink
-sudo chmod 775 /var/run/svxlink
+
+sudo chown -R svxlink:svxlink /dev/shm/
+sudo chmod 775 /dev/shm
 
 #find the terminal active.
 # Inform the user that the ownership change was successful
@@ -187,9 +187,8 @@ if [ ! -f "$DTMF_SCRIPT" ]; then
     show_info "Creating $DTMF_SCRIPT..."
     sudo mkdir -p /home/pi/scripts
     echo "#!/bin/sh
-sudo mkdir -p /var/run/svxlink
-sudo chown svxlink:svxlink /var/run/svxlink
-sudo chmod 775 /var/run/svxlink" | sudo tee "$DTMF_SCRIPT" > /dev/null
+sudo chown -R svxlink:svxlink /dev/shm/
+sudo chmod 775 /dev/shm" | sudo tee "$DTMF_SCRIPT" > /dev/null
 
     sudo chmod +x "$DTMF_SCRIPT"
     show_info "$DTMF_SCRIPT created and made executable."
