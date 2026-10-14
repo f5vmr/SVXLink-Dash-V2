@@ -1,4 +1,4 @@
-# SVXLink-Dashboard-V2
+# SVXLink-Dashboard-V2 Superceded by SvxLink-Dash-V4.1
 <h1>SVXLink Node dashboard repository inspired by a pi-star dashboard</h1>
 <h2>Originally constructed by SP2ONG and SP0DZ, but suffered from out of date code in PHP and Javascript.
 
